@@ -71,7 +71,9 @@ $evaluateLog = Join-Path $LogRoot "evaluate_$stamp.log"
     '--output-dir', $MetricsDirectory,
     '--seed', [string]$seed,
     '--trajectories', 'PAPERNEG_NONOVERLAP', 'PAPERNEG', 'OFFICIAL',
-    '--checkpoint', 'LAST'
+    '--checkpoint', 'LAST',
+    '--workers', '4',
+    '--resume-existing'
 ) 2>&1 | Tee-Object -FilePath $evaluateLog
 if ($LASTEXITCODE -ne 0) {
     throw "Full benchmark evaluator failed with exit code $LASTEXITCODE. Log: $evaluateLog"

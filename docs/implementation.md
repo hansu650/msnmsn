@@ -633,6 +633,7 @@ The user-confirmed Phase F extension changes experiment coverage only. It reuses
 | `code/scripts/08_finalize_full.ps1` | PowerShell entry point | Run the registered full evaluator/aggregator, render the numeric Markdown report, execute the complete unit suite, and verify the compact Git-facing result set; it performs no automatic method change or hidden result filtering. |
 | `code/scripts/09_run_full_confirmation.ps1` | Conditional PowerShell entry point | Only when the frozen seed-2027 decision is `CONTINUE_FULL_CONFIRMATION` and its schema, exact seed list, both-track gate, config SHA, and vendor SHA match the current frozen state, run the same `PAPERNEG_NONOVERLAP-LAST` arm on all 530 files for seeds 2028 and 2029. Resume is allowed only after label-free score-hash and full-provenance validation. |
 | `code/scripts/10_evaluate_confirmation.ps1` | Conditional PowerShell entry point | Require complete main-arm LAST coverage for all three registered seeds, evaluate seeds 2028/2029 after global score preflight, and aggregate the fixed three-seed U/M mean and standard deviation. |
+| `code/scripts/check_evaluator_parity.py` | `main(argv=None)` | Run the unchanged serial evaluator and spawned resumable evaluator on deterministic short U/M representatives and require byte-identical metric JSON, CSV, and summary artifacts before a live-process transition. |
 | `code/scripts/monitor_full.ps1` | read-only monitor | Report runner state, exact completion/failure count, current file/arm, GPU, disk, available physical RAM, and log freshness at 15-minute intervals for the main arm, ablations, or conditional confirmation seeds. Progress is enumerated from the frozen 530-series manifest, so stale or extra run directories cannot inflate counts; confirmation mode includes only seeds 2028/2029. The monitor remains observational: a free-RAM reading below the user floor stops unrelated parallel work but never mutates or terminates the active experiment. |
 
 ### 12.3 Data and split provenance
@@ -696,3 +697,51 @@ drop a track, family, arm, or unfavorable result.
 ```
 
 **Phase F design validation:** the extension changes only coverage and reporting. Model semantics, labels, hyperparameters, checkpoint endpoint, and external comparison values are fixed before full-run labels are evaluated.
+
+### 12.6 Resumable parallel evaluator contract
+
+The evaluator may reduce wall time without changing the experiment by using at
+most four spawned CPU workers.  This is an execution-only optimization and is
+subject to all of the following invariants:
+
+1. The parent verifies all requested committed LAST scores, hashes, and
+   provenance before it creates a worker pool, examines an existing metric
+   cache, or permits any label read.
+2. Work is grouped by series.  Each worker re-verifies every pending score for
+   that series against the parent preflight before reading the series label
+   exactly once, then calls the unchanged
+   `compute_threshold_free_metrics(..., thresholds=250)` implementation.
+3. Windows workers use the `spawn` start method, reload the same frozen vendor
+   inside the worker, and cap numerical-library threads to one.  The worker
+   count is hard-capped at four and falls back to two below 28 GiB available
+   physical RAM or to one below 24 GiB.
+4. Resume is fail-closed.  A present metric JSON must have the exact
+   `MetricRow` schema, expected filename/run ID, finite values, and exact
+   series/family/track/seed/trajectory/LAST/data/config/vendor/score
+   provenance.  Any unexpected, corrupt, stale, or mismatched JSON aborts the
+   evaluator without deleting or overwriting evidence.  Only a missing final
+   metric JSON is eligible for computation.
+5. Legacy JSONs produced by the currently live serial evaluator may be adopted
+   only through a session ledger that binds its PID command/start time, clean
+   Git HEAD, evaluator/label/vendor-metric source hashes, Python and numerical
+   package versions, the fixed threshold count, and every adopted JSON hash
+   and creation time.  Future cache reuse is bound to a durable evaluator
+   contract sidecar.
+6. Completed rows are reconstructed only in manifest order followed by frozen
+   trajectory order.  Completion order never changes any JSON, CSV, summary,
+   aggregate, decision, or manuscript value.
+7. `file_metrics.csv` and `evaluation_summary.json` are written atomically only
+   after every expected metric JSON has passed a final strict validation.  A
+   partial or failed run keeps valid atomic per-run JSONs but emits no terminal
+   files.
+8. Before replacing the live serial evaluator, the new path must pass the full
+   unit suite plus shadow evaluations spanning U and M and all three arms.
+   Metric floats and canonical artifacts must be exactly equal; resumed files
+   must retain their original hashes and modification times.  The serial
+   process is stopped only after this parity gate passes.
+
+The full and conditional-confirmation scripts invoke this evaluator with the
+same frozen scores and registered coverage.  They may use `--workers 4
+--resume-existing`, but they cannot change the model, checkpoint, labels,
+metric implementation, threshold count, aggregation, gate, or external paper
+references.

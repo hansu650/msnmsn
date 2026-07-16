@@ -141,7 +141,9 @@ foreach ($seed in @(2028, 2029)) {
         '--output-dir', $seedOutput,
         '--seed', [string]$seed,
         '--trajectories', $trajectory,
-        '--checkpoint', 'LAST'
+        '--checkpoint', 'LAST',
+        '--workers', '4',
+        '--resume-existing'
     ) 2>&1 | Tee-Object -FilePath $evaluateLog
     if ($LASTEXITCODE -ne 0) {
         throw "Seed-$seed confirmation evaluator failed. Log: $evaluateLog"

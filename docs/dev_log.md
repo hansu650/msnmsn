@@ -774,6 +774,64 @@ idea_report.md unchanged | configs unchanged
 **Document sync**: implementation.md yes | claim-evidence policy yes |
 user requirements unchanged | configs unchanged
 
+### 2026-07-16 22:49 - Iteration #15 design freeze: resumable parallel evaluator
+
+**Reason**: the frozen 1,590-row evaluator remained correct but processed only
+193 atomic rows after the outer finalizer shell timed out and left its child
+evaluator alive.  The machine has 32 logical CPUs and sufficient memory, while
+the unchanged VUS implementation is CPU-bound and serial.
+
+**Frozen execution-only change**:
+- retain the complete all-score preflight before any cache access, worker
+  creation, or label read;
+- evaluate one series per spawned worker with a hard maximum of four workers
+  and one numerical-library thread per worker;
+- add fail-closed, provenance-bound resume for valid atomic metric JSONs;
+- preserve the exact score artifacts, LAST checkpoint, seed, trajectories,
+  labels, `thresholds=250` metric call, canonical ordering, aggregation, gates,
+  and paper-reported comparison values;
+- require exact shadow parity and full tests before stopping the current serial
+  PID or adopting any of its outputs.
+
+**Expected effect**: reduce evaluator wall time without changing any scientific
+result.  A mismatch, corrupt cache, provenance ambiguity, RAM-floor violation,
+or parity failure aborts the acceleration and preserves the serial evidence.
+
+**Document sync**: implementation.md yes | idea_report.md unchanged |
+configs unchanged | manuscript unchanged
+
+### 2026-07-16 23:03 - Iteration #15 implementation and parity validation
+
+**Implementation**:
+- `evaluate_benchmark.py` now supports a provenance-bound evaluator contract,
+  strict fail-closed metric-cache validation, deterministic series-level
+  Windows `spawn` workers, one label read per pending series, atomic per-run
+  outputs, and canonical terminal reconstruction.
+- Worker selection is capped at four and automatically falls back to two below
+  28 GiB available RAM or one below 24 GiB.  BLAS/OpenMP thread counts are
+  fixed to one before worker creation.
+- Scripts 07 and 10 request four resumable workers without changing registered
+  scores, seeds, trajectories, checkpoints, metrics, thresholds, aggregation,
+  or gates.
+- Added a deterministic U/M shadow parity utility and strict resume/provenance
+  unit coverage.
+
+**Validation**:
+- focused evaluator suite: `17 passed`;
+- complete project suite: `109 passed in 10.65s`;
+- Python compilation, PowerShell AST parsing, and `git diff --check`: pass;
+- serial versus four-worker shadow check: 4 deterministic short U/M series,
+  all 3 registered arms, 12 metric rows, byte-identical metric JSON/CSV/summary;
+- partial-resume shadow check: 6 cached rows retained byte-for-byte with
+  unchanged mtimes and 6 missing rows reproduced byte-for-byte.
+
+The live serial PID remained untouched throughout design, implementation, and
+all parity checks.  Its legacy cache will be preserved rather than adopted
+because it predates the evaluator-contract sidecar.
+
+**Document sync**: implementation.md yes | tests yes | scripts yes |
+idea_report.md unchanged | configs unchanged | manuscript unchanged
+
 ### 2026-07-16 20:45 - Provisional IEEE manuscript scaffold
 
 **Reason**: the user supplied a generic IEEE conference template and ten 2025
