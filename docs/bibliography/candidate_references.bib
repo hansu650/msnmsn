@@ -1,0 +1,434 @@
+% Candidate bibliography assembled before ResearchPilot G.0.
+% Every retained entry must be cited and revalidated before release.
+% Numerical comparator values remain PaAno-paper-reported, not locally reproduced.
+
+% [Core contribution] PaAno learns patch representations for time-series anomaly detection and is the frozen 2026 baseline.
+% [Reason for citation] Baseline, method lineage, paper-reported comparison values, and paper--code analysis.
+@inproceedings{park2026paano,
+  title     = {{PaAno}: Patch-Based Representation Learning for Time-Series Anomaly Detection},
+  author    = {Park, Jinju and Kang, Seokho},
+  booktitle = {The Fourteenth International Conference on Learning Representations},
+  year      = {2026},
+  url       = {https://openreview.net/forum?id=NXThkM7Iym}
+}
+
+% [Core contribution] This immutable repository revision implements the frozen PaAno baseline used by this project.
+% [Reason for citation] Reproducibility and provenance for claims about paper--code execution differences.
+@misc{park2026paano_code,
+  title        = {{PaAno} Official {PyTorch} Implementation},
+  author       = {Park, Jinju and Kang, Seokho},
+  year         = {2026},
+  howpublished = {GitHub repository, commit d4c67116190efa4592dc6a8a157ced0def68b6af},
+  url          = {https://github.com/jinnnju/PaAno/tree/d4c67116190efa4592dc6a8a157ced0def68b6af}
+}
+
+% [Core contribution] PAI studies amplitude preservation in representation-based time-series anomaly detection.
+% [Reason for citation] Recent preprint boundary for amplitude-sensitive anomaly representations; not treated as peer reviewed.
+@misc{zhang2026pai,
+  title         = {{PAI}: Preserving Amplitude Information in Representation-Based Time-Series Anomaly Detection},
+  author        = {Zhang, Kang and Lau, Wei Jian and Ren, Shoushou and Lin, Dong and Chung, Joon Son and Sun, Chuanhao},
+  year          = {2026},
+  eprint        = {2606.08935},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  doi           = {10.48550/arXiv.2606.08935},
+  url           = {https://arxiv.org/abs/2606.08935}
+}
+
+% [Core contribution] TSB-AD provides a large, reliability-oriented benchmark for time-series anomaly detection.
+% [Reason for citation] Dataset protocol, comparator-wrapper identity, aggregation, and benchmark legitimacy.
+@inproceedings{liu2024elephant,
+  title     = {The Elephant in the Room: Towards A Reliable Time-Series Anomaly Detection Benchmark},
+  author    = {Liu, Qinghua and Paparrizos, John},
+  booktitle = {Advances in Neural Information Processing Systems},
+  volume    = {37},
+  pages     = {108231--108261},
+  year      = {2024},
+  publisher = {Curran Associates, Inc.},
+  doi       = {10.52202/079017-3437},
+  url       = {https://proceedings.neurips.cc/paper_files/paper/2024/hash/c3f3c690b7a99fba16d0efd35cb83b2c-Abstract-Datasets_and_Benchmarks_Track.html}
+}
+
+% [Core contribution] Quo Vadis argues for rigorous TSAD evaluation and strong simple baselines.
+% [Reason for citation] Evaluation philosophy and the need to separate architectural effects from learned-objective gains.
+@inproceedings{pmlr-v235-sarfraz24a,
+  title     = {Position: Quo Vadis, Unsupervised Time Series Anomaly Detection?},
+  author    = {Sarfraz, M. Saquib and Chen, Mei-Yen and Layer, Lukas and Peng, Kunyu and Koulakis, Marios},
+  booktitle = {Proceedings of the 41st International Conference on Machine Learning},
+  series    = {Proceedings of Machine Learning Research},
+  volume    = {235},
+  pages     = {43461--43476},
+  publisher = {PMLR},
+  year      = {2024},
+  url       = {https://proceedings.mlr.press/v235/sarfraz24a.html}
+}
+
+% [Core contribution] TimesURL learns universal time-series representations with temporally-aware contrastive objectives.
+% [Reason for citation] Representative contrastive time-series representation method and objective-design context.
+@article{liu2024timesurl,
+  title   = {{TimesURL}: Self-Supervised Contrastive Learning for Universal Time Series Representation Learning},
+  author  = {Liu, Jiexi and Chen, Songcan},
+  journal = {Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume  = {38},
+  number  = {12},
+  pages   = {13918--13926},
+  year    = {2024},
+  doi     = {10.1609/aaai.v38i12.29299},
+  url     = {https://ojs.aaai.org/index.php/AAAI/article/view/29299}
+}
+
+% [Core contribution] SoftCLT replaces binary contrastive assignments with graded temporal similarities.
+% [Reason for citation] Prior work showing that temporal pair semantics should not be reduced to uniform hard labels.
+@inproceedings{lee2024softclt,
+  title     = {Soft Contrastive Learning for Time Series},
+  author    = {Lee, Seunghan and Park, Taeyoung and Lee, Kibok},
+  booktitle = {The Twelfth International Conference on Learning Representations},
+  pages     = {46815--46839},
+  year      = {2024},
+  url       = {https://proceedings.iclr.cc/paper_files/paper/2024/hash/ccc48eade8845cbc0b44384e8c49889a-Abstract-Conference.html}
+}
+
+% [Core contribution] No More Shortcuts analyzes shortcut learning in temporal self-supervision.
+% [Reason for citation] Mechanistic precedent for testing whether an apparently active temporal objective learns trivial overlap cues.
+@article{dave2024nomore,
+  title   = {No More Shortcuts: Realizing the Potential of Temporal Self-Supervision},
+  author  = {Dave, Ishan Rajendrakumar and Jenni, Simon and Shah, Mubarak},
+  journal = {Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume  = {38},
+  number  = {2},
+  pages   = {1481--1491},
+  year    = {2024},
+  doi     = {10.1609/aaai.v38i2.27913},
+  url     = {https://ojs.aaai.org/index.php/AAAI/article/view/27913}
+}
+
+% [Core contribution] DADA combines adaptive bottlenecks with dual adversarial decoders for general TSAD.
+% [Reason for citation] Recent general-detector comparator appearing in both PaAno benchmark tables.
+@inproceedings{shentu2025towards,
+  title     = {Towards a General Time Series Anomaly Detector with Adaptive Bottlenecks and Dual Adversarial Decoders},
+  author    = {Shentu, Qichao and Li, Beibu and Zhao, Kai and Shu, Yang and Rao, Zhongwen and Pan, Lujia and Yang, Bin and Guo, Chenjuan},
+  booktitle = {The Thirteenth International Conference on Learning Representations},
+  pages     = {81358--81381},
+  year      = {2025},
+  url       = {https://proceedings.iclr.cc/paper_files/paper/2025/hash/ca7998666c2e53cc1e882b7268414d8a-Abstract-Conference.html}
+}
+
+% [Core contribution] IGAD uses idempotent reconstruction to reduce abnormal-input overgeneralization without extra trainable parameters.
+% [Reason for citation] Recent NeurIPS 2025 representation-learning context and a mechanism-first TSAD comparator.
+@inproceedings{sun2025igad,
+  title     = {Multivariate Time Series Anomaly Detection with Idempotent Reconstruction},
+  author    = {Sun, Xin and Zhou, Heng and Li, Chao},
+  booktitle = {Advances in Neural Information Processing Systems},
+  volume    = {38},
+  pages     = {160900--160958},
+  publisher = {Curran Associates, Inc.},
+  year      = {2025},
+  url       = {https://proceedings.neurips.cc/paper_files/paper/2025/hash/ebba26f4dbcfe7318e4a263c54e9cf42-Abstract-Conference.html}
+}
+
+% [Core contribution] CrossAD models cross-scale associations and context beyond fixed windows.
+% [Reason for citation] Recent NeurIPS 2025 TSAD architecture context; contrasts architectural expansion with our objective-execution study.
+@inproceedings{li2025crossad,
+  title     = {{CrossAD}: Time Series Anomaly Detection with Cross-scale Associations and Cross-window Modeling},
+  author    = {Li, Beibu and Shentu, Qichao and Shu, Yang and Zhang, Hui and Li, Ming and Jin, Ning and Yang, Bin and Guo, Chenjuan},
+  booktitle = {Advances in Neural Information Processing Systems},
+  volume    = {38},
+  pages     = {137959--137985},
+  publisher = {Curran Associates, Inc.},
+  year      = {2025},
+  url       = {https://proceedings.neurips.cc/paper_files/paper/2025/hash/c9658e8c20879632cb1cfca91d80ceb7-Abstract-Conference.html}
+}
+
+% [Core contribution] DoKnowAD calibrates normal representations using selected auxiliary-domain knowledge.
+% [Reason for citation] Peer-reviewed 2026 representation-calibration context and a recent boundary for normal-space coverage methods.
+@article{xing2026doknowad,
+  title   = {{DoKnowAD}: Calibrating Normal Representations with Refined Domain Knowledge to Enhance Time Series Anomaly Detection},
+  author  = {Xing, Shiwang and Niu, Jianwei and Ren, Tao},
+  journal = {Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume  = {40},
+  number  = {32},
+  pages   = {27126--27134},
+  year    = {2026},
+  doi     = {10.1609/aaai.v40i32.39927},
+  url     = {https://ojs.aaai.org/index.php/AAAI/article/view/39927}
+}
+
+% [Core contribution] Outlier Analysis systematizes statistical and subspace outlier methods including PCA-based approaches.
+% [Reason for citation] Canonical source mapped by PaAno to the (Sub)-PCA/PCA benchmark wrappers.
+@book{aggarwal2017outlier,
+  title     = {Outlier Analysis},
+  author    = {Aggarwal, Charu C.},
+  publisher = {Springer},
+  address   = {Cham, Switzerland},
+  edition   = {2nd},
+  year      = {2017},
+  doi       = {10.1007/978-3-319-47578-3},
+  url       = {https://doi.org/10.1007/978-3-319-47578-3}
+}
+
+% [Core contribution] k-Shape provides an efficient shape-based time-series clustering primitive.
+% [Reason for citation] Canonical paper mapped by PaAno to KShapeAD; the exact anomaly wrapper comes from TSB-AD.
+@article{paparrizos2017fast,
+  title   = {Fast and Accurate Time-Series Clustering},
+  author  = {Paparrizos, John and Gravano, Luis},
+  journal = {ACM Transactions on Database Systems},
+  volume  = {42},
+  number  = {2},
+  articleno = {8},
+  numpages  = {49},
+  year    = {2017},
+  doi     = {10.1145/3044711},
+  url     = {https://doi.org/10.1145/3044711}
+}
+
+% [Core contribution] DLinear and NLinear test simple linear forecasting against Transformer forecasters.
+% [Reason for citation] Single canonical source for both PaAno DLinear and NLinear comparison rows.
+@article{zeng2023transformers,
+  title   = {Are Transformers Effective for Time Series Forecasting?},
+  author  = {Zeng, Ailing and Chen, Muxi and Zhang, Lei and Xu, Qiang},
+  journal = {Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume  = {37},
+  number  = {9},
+  pages   = {11121--11128},
+  year    = {2023},
+  doi     = {10.1609/aaai.v37i9.26317},
+  url     = {https://ojs.aaai.org/index.php/AAAI/article/view/26317}
+}
+
+% [Core contribution] This early spacecraft study uses data mining for telemetry fault detection.
+% [Reason for citation] Historical source mapped by PaAno to KMeansAD; the exact benchmark wrapper is attributed to TSB-AD.
+@inproceedings{yairi2001fault,
+  title     = {Fault Detection by Mining Association Rules from House-Keeping Data},
+  author    = {Yairi, Takehisa and Kato, Yoshikiyo and Hori, Koichi},
+  booktitle = {Proceedings of the Sixth International Symposium on Artificial Intelligence, Robotics and Automation in Space},
+  year      = {2001},
+  url       = {https://robotics.estec.esa.int/i-SAIRAS/isairas2001/papers/Paper_AS012.pdf}
+}
+
+% [Core contribution] DeepAnT uses deep prediction errors for unsupervised time-series anomaly detection.
+% [Reason for citation] Canonical source for the PaAno DeepAnT comparison row.
+@article{munir2019deepant,
+  title   = {{DeepAnT}: A Deep Learning Approach for Unsupervised Anomaly Detection in Time Series},
+  author  = {Munir, Mohsin and Siddiqui, Shoaib Ahmed and Dengel, Andreas and Ahmed, Sheraz},
+  journal = {IEEE Access},
+  volume  = {7},
+  pages   = {1991--2005},
+  year    = {2019},
+  doi     = {10.1109/ACCESS.2018.2886457},
+  url     = {https://ieeexplore.ieee.org/document/8581424}
+}
+
+% [Core contribution] USAD trains an adversarial autoencoder for multivariate time-series anomaly detection.
+% [Reason for citation] Canonical source for the PaAno USAD comparison row.
+@inproceedings{audibert2020usad,
+  title     = {{USAD}: UnSupervised Anomaly Detection on Multivariate Time Series},
+  author    = {Audibert, Julien and Michiardi, Pietro and Guyard, Fr{\'e}d{\'e}ric and Marti, S{\'e}bastien and Zuluaga, Maria A.},
+  booktitle = {Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining},
+  pages     = {3395--3404},
+  year      = {2020},
+  doi       = {10.1145/3394486.3403392},
+  url       = {https://doi.org/10.1145/3394486.3403392}
+}
+
+% [Core contribution] OmniAnomaly models multivariate telemetry with a stochastic recurrent neural network.
+% [Reason for citation] Canonical source for the PaAno OmniAnomaly comparison row.
+@inproceedings{su2019omnianomaly,
+  title     = {Robust Anomaly Detection for Multivariate Time Series through Stochastic Recurrent Neural Network},
+  author    = {Su, Ya and Zhao, Youjian and Niu, Chenhao and Liu, Rong and Sun, Wei and Pei, Dan},
+  booktitle = {Proceedings of the 25th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining},
+  pages     = {2828--2837},
+  year      = {2019},
+  doi       = {10.1145/3292500.3330672},
+  url       = {https://doi.org/10.1145/3292500.3330672}
+}
+
+% [Core contribution] TimesNet models temporal 2D variations for general time-series analysis.
+% [Reason for citation] Canonical source for the PaAno TimesNet row; formal ICLR 2023 year replaces its preprint-year label.
+@inproceedings{wu2023timesnet,
+  title     = {{TimesNet}: Temporal 2D-Variation Modeling for General Time Series Analysis},
+  author    = {Wu, Haixu and Hu, Tengge and Liu, Yong and Zhou, Hang and Wang, Jianmin and Long, Mingsheng},
+  booktitle = {The Eleventh International Conference on Learning Representations},
+  year      = {2023},
+  url       = {https://openreview.net/forum?id=ju_Uqw384Oq}
+}
+
+% [Core contribution] FITS performs low-parameter frequency interpolation for time-series modeling.
+% [Reason for citation] Canonical source for the PaAno FITS row; formal ICLR 2024 year replaces its preprint-year label.
+@inproceedings{xu2024fits,
+  title     = {{FITS}: Modeling Time Series with $10k$ Parameters},
+  author    = {Xu, Zhijian and Zeng, Ailing and Xu, Qiang},
+  booktitle = {The Twelfth International Conference on Learning Representations},
+  pages     = {26295--26318},
+  year      = {2024},
+  url       = {https://proceedings.iclr.cc/paper_files/paper/2024/hash/701251e1db4a2e4dd2ef23f5265d5936-Abstract-Conference.html}
+}
+
+% [Core contribution] KAN-AD applies Kolmogorov--Arnold networks to time-series anomaly detection.
+% [Reason for citation] Recent canonical comparator represented in both PaAno benchmark tables.
+@inproceedings{pmlr-v267-zhou25u,
+  title     = {{KAN}-{AD}: Time Series Anomaly Detection with Kolmogorov--Arnold Networks},
+  author    = {Zhou, Quan and Pei, Changhua and Sun, Fei and Jing, Han and Gao, Zhengwei and Zhang, Haiming and Xie, Gaogang and Pei, Dan and Li, Jianhui},
+  booktitle = {Proceedings of the 42nd International Conference on Machine Learning},
+  series    = {Proceedings of Machine Learning Research},
+  volume    = {267},
+  pages     = {79136--79149},
+  publisher = {PMLR},
+  year      = {2025},
+  url       = {https://proceedings.mlr.press/v267/zhou25u.html}
+}
+
+% [Core contribution] Anomaly Transformer detects anomalies through association discrepancy.
+% [Reason for citation] Canonical source for the PaAno row; formal ICLR 2022 year replaces its preprint-year label.
+@inproceedings{xu2022anomalytransformer,
+  title     = {Anomaly Transformer: Time Series Anomaly Detection with Association Discrepancy},
+  author    = {Xu, Jiehui and Wu, Haixu and Wang, Jianmin and Long, Mingsheng},
+  booktitle = {The Tenth International Conference on Learning Representations},
+  year      = {2022},
+  url       = {https://openreview.net/forum?id=LzQQ89U1qm_}
+}
+
+% [Core contribution] DCdetector learns dual-attention contrastive representations for TSAD.
+% [Reason for citation] Canonical source for the PaAno DCdetector comparison row.
+@inproceedings{yang2023dcdetector,
+  title     = {{DCdetector}: Dual Attention Contrastive Representation Learning for Time Series Anomaly Detection},
+  author    = {Yang, Yiyuan and Zhang, Chaoli and Zhou, Tian and Wen, Qingsong and Sun, Liang},
+  booktitle = {Proceedings of the 29th ACM SIGKDD Conference on Knowledge Discovery and Data Mining},
+  pages     = {3033--3045},
+  year      = {2023},
+  doi       = {10.1145/3580305.3599295},
+  url       = {https://doi.org/10.1145/3580305.3599295}
+}
+
+% [Core contribution] Lag-Llama explores foundation-model forecasting with lag features.
+% [Reason for citation] Canonical source for the PaAno Lag-Llama row; explicitly identified as a NeurIPS workshop paper.
+@inproceedings{rasul2023lagllama,
+  title     = {{Lag-Llama}: Towards Foundation Models for Time Series Forecasting},
+  author    = {Rasul, Kashif and Ashok, Arjun and Williams, Andrew Robert and Khorasani, Arian and Adamopoulos, George and Bhagwatkar, Rishika and Bilo{\v{s}}, Marin and Ghonia, Hena and Hassen, Nadhir and Schneider, Anderson and Garg, Sahil and Drouin, Alexandre and Chapados, Nicolas and Nevmyvaka, Yuriy and Rish, Irina},
+  booktitle = {NeurIPS 2023 Workshop on Robustness of Few-Shot and Zero-Shot Learning in Foundation Models},
+  year      = {2023},
+  url       = {https://openreview.net/forum?id=jYluzCLFDM}
+}
+
+% [Core contribution] One Fits All adapts a frozen pretrained language model to general time-series tasks.
+% [Reason for citation] Canonical source for the PaAno OFA/GPT4TS comparison row.
+@inproceedings{zhou2023onefitsall,
+  title     = {One Fits All: Power General Time Series Analysis by Pretrained {LM}},
+  author    = {Zhou, Tian and Niu, Peisong and Wang, Xue and Sun, Liang and Jin, Rong},
+  booktitle = {Advances in Neural Information Processing Systems},
+  volume    = {36},
+  pages     = {43322--43355},
+  year      = {2023},
+  url       = {https://proceedings.neurips.cc/paper_files/paper/2023/hash/86c17de05579cde52025f9984e6e2ebb-Abstract-Conference.html}
+}
+
+% [Core contribution] PatchTST uses channel-independent patch tokens for time-series forecasting.
+% [Reason for citation] Canonical source for the PaAno PatchTST comparison row and patch-model context.
+@inproceedings{nie2023patchtst,
+  title     = {A Time Series Is Worth 64 Words: Long-Term Forecasting with Transformers},
+  author    = {Nie, Yuqi and Nguyen, Nam H. and Sinthong, Phanwadee and Kalagnanam, Jayant},
+  booktitle = {The Eleventh International Conference on Learning Representations},
+  year      = {2023},
+  url       = {https://openreview.net/forum?id=Jbdc0vTOcol}
+}
+
+% [Core contribution] iTransformer tokenizes variables and applies an inverted Transformer architecture.
+% [Reason for citation] Canonical source for the PaAno iTransformer comparison row.
+@inproceedings{liu2024itransformer,
+  title     = {{iTransformer}: Inverted Transformers Are Effective for Time Series Forecasting},
+  author    = {Liu, Yong and Hu, Tengge and Zhang, Haoran and Wu, Haixu and Wang, Shiyu and Ma, Lintao and Long, Mingsheng},
+  booktitle = {The Twelfth International Conference on Learning Representations},
+  pages     = {11116--11140},
+  year      = {2024},
+  url       = {https://proceedings.iclr.cc/paper_files/paper/2024/hash/2ea18fdc667e0ef2ad82b2b4d65147ad-Abstract-Conference.html}
+}
+
+% [Core contribution] MOMENT provides open foundation models for multiple time-series tasks.
+% [Reason for citation] Single canonical source for PaAno's MOMENT-FT and MOMENT-ZS rows.
+@inproceedings{pmlr-v235-goswami24a,
+  title     = {{MOMENT}: A Family of Open Time-series Foundation Models},
+  author    = {Goswami, Mononito and Szafer, Konrad and Choudhry, Arjun and Cai, Yifu and Li, Shuo and Dubrawski, Artur},
+  booktitle = {Proceedings of the 41st International Conference on Machine Learning},
+  series    = {Proceedings of Machine Learning Research},
+  volume    = {235},
+  pages     = {16115--16152},
+  publisher = {PMLR},
+  year      = {2024},
+  url       = {https://proceedings.mlr.press/v235/goswami24a.html}
+}
+
+% [Core contribution] TimesFM is a decoder-only foundation model for time-series forecasting.
+% [Reason for citation] Canonical source for the PaAno TimesFM comparison row.
+@inproceedings{pmlr-v235-das24c,
+  title     = {A Decoder-Only Foundation Model for Time-Series Forecasting},
+  author    = {Das, Abhimanyu and Kong, Weihao and Sen, Rajat and Zhou, Yichen},
+  booktitle = {Proceedings of the 41st International Conference on Machine Learning},
+  series    = {Proceedings of Machine Learning Research},
+  volume    = {235},
+  pages     = {10148--10167},
+  publisher = {PMLR},
+  year      = {2024},
+  url       = {https://proceedings.mlr.press/v235/das24c.html}
+}
+
+% [Core contribution] CATCH models cross-channel dependencies through frequency patching for multivariate TSAD.
+% [Reason for citation] Recent canonical comparator represented in PaAno's multivariate benchmark table.
+@inproceedings{wu2025catch,
+  title     = {{CATCH}: Channel-Aware Multivariate Time Series Anomaly Detection via Frequency Patching},
+  author    = {Wu, Xingjian and Qiu, Xiangfei and Li, Zhengyu and Wang, Yihang and Hu, Jilin and Guo, Chenjuan and Xiong, Hui and Yang, Bin},
+  booktitle = {The Thirteenth International Conference on Learning Representations},
+  pages     = {17017--17045},
+  year      = {2025},
+  url       = {https://proceedings.iclr.cc/paper_files/paper/2025/hash/2b25c39788e5cf11d3541de433ebf4c0-Abstract-Conference.html}
+}
+
+% [Core contribution] VUS extends threshold-independent evaluation to range-based time-series anomalies.
+% [Reason for citation] Primary provenance for VUS-PR and VUS-ROC used in the experiments.
+@article{paparrizos2022vus,
+  title   = {Volume Under the Surface: A New Accuracy Evaluation Measure for Time-Series Anomaly Detection},
+  author  = {Paparrizos, John and Boniol, Paul and Palpanas, Themis and Tsay, Ruey S. and Elmore, Aaron J. and Franklin, Michael J.},
+  journal = {Proceedings of the VLDB Endowment},
+  volume  = {15},
+  number  = {11},
+  pages   = {2774--2787},
+  year    = {2022},
+  doi     = {10.14778/3551793.3551830},
+  url     = {https://www.vldb.org/pvldb/vol15/p2774-paparrizos.pdf}
+}
+
+% [Core contribution] This work exposes inflation caused by point adjustment and proposes a stricter TSAD protocol.
+% [Reason for citation] Supports threshold-free, no-point-adjustment evaluation claims.
+@article{kim2022rigorous,
+  title   = {Towards a Rigorous Evaluation of Time-Series Anomaly Detection},
+  author  = {Kim, Siwon and Choi, Kukjin and Choi, Hyun-Soo and Lee, Byunghan and Yoon, Sungroh},
+  journal = {Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume  = {36},
+  number  = {7},
+  pages   = {7194--7201},
+  year    = {2022},
+  doi     = {10.1609/aaai.v36i7.20680},
+  url     = {https://ojs.aaai.org/index.php/AAAI/article/view/20680}
+}
+
+% [Core contribution] RevIN removes and restores instance statistics to handle time-series distribution shift.
+% [Reason for citation] Provenance for the normalization module inherited from the frozen PaAno implementation.
+@inproceedings{kim2022revin,
+  title     = {Reversible Instance Normalization for Accurate Time-Series Forecasting against Distribution Shift},
+  author    = {Kim, Taesung and Kim, Jinhee and Tae, Yunwon and Park, Cheonbok and Choi, Jang-Ho and Choo, Jaegul},
+  booktitle = {The Tenth International Conference on Learning Representations},
+  year      = {2022},
+  url       = {https://openreview.net/forum?id=cGDAkQo1C0p}
+}
+
+% [Core contribution] TS2Vec learns hierarchical contextual representations at timestamp and subsequence scales.
+% [Reason for citation] Foundational contrastive time-series representation method for Related Work context.
+@article{yue2022ts2vec,
+  title   = {{TS2Vec}: Towards Universal Representation of Time Series},
+  author  = {Yue, Zhihan and Wang, Yujing and Duan, Juanyong and Yang, Tianmeng and Huang, Congrui and Tong, Yunhai and Xu, Bixiong},
+  journal = {Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume  = {36},
+  number  = {8},
+  pages   = {8980--8987},
+  year    = {2022},
+  doi     = {10.1609/aaai.v36i8.20881},
+  url     = {https://ojs.aaai.org/index.php/AAAI/article/view/20881}
+}

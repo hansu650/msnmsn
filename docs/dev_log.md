@@ -452,3 +452,48 @@ powershell -ExecutionPolicy Bypass -File .\code\scripts\03_aggregate_decision.ps
 **Expected effect**: Tectonic intermediates cannot pollute result or manuscript commits.
 
 **Document sync**: `MSN2026_SUBMISSION_REQUIREMENTS.md` already specifies the isolated build contract.
+
+### 2026-07-16 19:24 - Iteration #9: pre-G.0 bibliography and comparator provenance
+
+**Reason**: stage the complete Related Work and comparison-table citation set
+while the full GPU ablations run, without initializing a manuscript before the
+user supplies the official IEEE MSN author kit.
+
+**Changes**:
+- `docs/bibliography/candidate_references.bib`: records 35 candidate entries
+  with a one-sentence core contribution and an explicit reason for citation.
+- `docs/bibliography/PAANO_TABLE23_CITATION_MAP.csv`: maps every distinct
+  PaAno Table 2/3 comparator and alias to one canonical BibTeX key.
+- `docs/bibliography/CITATION_SOURCE_MANIFEST.csv`: binds all 35 entries to a
+  canonical source, verification status, role, and any venue or wrapper caveat.
+- `docs/bibliography/RELATED_WORK_CITATION_PLAN.md`: freezes a recent-first
+  prewriting structure led by 2025--2026 work; older references are limited to
+  irreplaceable method, metric, module, or evaluation provenance.
+- Formal publication metadata replaces PaAno's preprint-year labels for
+  TimesNet (2023), FITS (2024), and Anomaly Transformer (2022). MOMENT,
+  TimesFM, OFA, DeepAnT, and USAD metadata were corrected against primary
+  proceedings or publisher records.
+
+**Provenance**:
+- Official PaAno OpenReview PDF: 1,445,413 bytes, SHA-256
+  `4860AAAEEEB04114464A98588924AAF5FB97FFE42CD769A1207D0085ECC00689`.
+- PaAno arXiv-v3 source archive (mapping aid only): SHA-256
+  `37C4D7D47F975FDF1C68551B4054BDBF7CD6CA3827F1F9E5908251C116551356`.
+- All numerical comparison rows copied later from PaAno remain explicitly
+  `PaAno-paper-reported`; citing an original model paper does not make a row a
+  local reproduction.
+
+**Validation**:
+- 35 entries, 35 unique keys, zero missing ResearchPilot citation annotations,
+  zero missing PaAno-map keys, and balanced BibTeX braces.
+- External Tectonic 0.16.9 `article`/BibTeX syntax smoke: exit 0; BibTeX read
+  the candidate database with no warning, error, missing, or undefined line.
+- The smoke build is syntax-only and does not substitute for the pending
+  venue-author-kit manuscript build.
+
+**Expected effect**: G.0 can copy only used, primary-verified entries into the
+final manuscript bibliography and keep recent narrative work separate from
+older comparator provenance.
+
+**Document sync**: bibliography staging yes | manuscript not initialized |
+idea_report.md unchanged | experiment artifacts unread
