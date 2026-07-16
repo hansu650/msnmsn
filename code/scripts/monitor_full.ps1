@@ -79,9 +79,11 @@ if ($null -ne $launcherLog) {
 $gpu = (& nvidia-smi --query-gpu=utilization.gpu,memory.used,memory.total,temperature.gpu --format=csv,noheader,nounits 2>$null | Select-Object -First 1) -split ','
 $c = Get-PSDrive -Name C
 $d = Get-PSDrive -Name D
+$os = Get-CimInstance -ClassName Win32_OperatingSystem
+$ramFreeGiB = [double]$os.FreePhysicalMemory / 1MB
 Write-Output (
-    'runner_alive={0} pid={1} completed={2}/{3} failed={4} current="{5}" gpu_util_pct={6} vram_mib={7}/{8} temp_c={9} c_free_gib={10:N2} d_free_gib={11:N2} mode={12}' -f
+    'runner_alive={0} pid={1} completed={2}/{3} failed={4} current="{5}" gpu_util_pct={6} vram_mib={7}/{8} temp_c={9} c_free_gib={10:N2} d_free_gib={11:N2} ram_free_gib={12:N2} mode={13}' -f
     ($null -ne $process), $RunnerPid, $success, $total, $failed, $current,
     $gpu[0].Trim(), $gpu[1].Trim(), $gpu[2].Trim(), $gpu[3].Trim(),
-    ($c.Free / 1GB), ($d.Free / 1GB), $Mode
+    ($c.Free / 1GB), ($d.Free / 1GB), $ramFreeGiB, $Mode
 )

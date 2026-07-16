@@ -53,19 +53,26 @@ will therefore use:
 The generic workflow's `llncs.cls`, `splncs04.bst`, `\titlerunning`, and
 `\institute` examples are explicitly inapplicable.
 
-The MSN CFP links a 2024 IEEE conference-template ZIP. That venue-hosted link
-returned HTTP 404 to the local downloader on 2026-07-16. A verified CTAN
-IEEEtran package is retained locally as a temporary standards-compatible
-fallback:
+The MSN CFP links a 2024 IEEE conference-template ZIP over plain HTTP. The
+venue package was independently downloaded, inspected, and compiled with
+Tectonic on 2026-07-16. The HTTPS variant returns 404; this explains the
+earlier false-unavailable result. The venue kit is the manuscript-template
+authority, while the verified CTAN package supplies the bibliography style
+and remains a standards-compatible fallback:
 
 | Asset | Local path | SHA-256 |
 |---|---|---|
+| MSN 2026 venue author kit | `C:/Users/qintian/Downloads/IEEE-MSN-2026-author-kit.zip` | `DCE5B5F34EF738CECE3A86A336795394CB06C2345F79E79B2D456F3D61EC9B9F` |
 | IEEEtran CTAN ZIP | `C:/Users/qintian/Downloads/IEEEtran-ctan.zip` | `E0CD4F5AFBD42C8076092280E72B3E0A5111EFE501D35DE9F715CFB8DA313CB4` |
 
-It contains `IEEEtran.cls`, `bare_conf.tex`, and `bibtex/IEEEtran.bst`; the
-sample uses `\documentclass[conference]{IEEEtran}`. Before external submission,
-the venue-hosted author kit must be retried and compared against the frozen
-paper template. A changed official kit takes precedence.
+The venue archive is 856,412 bytes, has a safe seven-file layout, and contains
+an IEEEtran V1.8b class plus a conference sample using
+`\documentclass[conference]{IEEEtran}`. Its sample compiles successfully with
+Tectonic 0.16.9. It does not include `IEEEtran.bst`; the CTAN archive contains
+`bibtex/IEEEtran.bst`. The two `IEEEtran.cls` files are byte-identical after
+line-ending normalization. Because the venue download is HTTP and has no
+publisher-posted checksum, recheck the official link and hash immediately
+before external submission; a changed official kit takes precedence.
 
 ## Local Build Tools
 
@@ -83,8 +90,8 @@ layout.
 ## Official Sources
 
 - [MSN 2026 Call for Regular Papers](https://ieee-msn.org/2026/cf-papers.php)
+- [MSN 2026 venue author kit](http://nit.msn2026.top/static/IEEE-conference-template-062824.zip)
 - [MSN 2026 home and submission entry](https://ieee-msn.org/2026/)
 - [IEEE conference authoring tools and templates](https://conferences.ieeeauthorcenter.ieee.org/write-your-paper/authoring-tools-and-templates/)
 - [IEEE conference template page](https://www.ieee.org/conferences/publishing/templates.html)
 - [CTAN IEEEtran package](https://ctan.org/pkg/ieeetran)
-

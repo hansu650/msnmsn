@@ -38,6 +38,11 @@ The original K0 terminal result remains preserved. The user's Phase F override a
   cold archives. Never delete or relocate active PaAno runs, scores,
   checkpoints, manifests, logs, the route environment, TSB-AD data, or any
   unverified file.
+- Treat `20 GiB` available physical RAM as a separate operational floor during
+  long experiments. Below that floor, stop nonessential parallel work and
+  release only unrelated idle processes or disposable caches. Never terminate,
+  suspend, or alter the active PaAno runner solely to reclaim RAM; if no safe
+  release target is identifiable, notify rather than take a risky action.
 
 ## Compute and Repository
 

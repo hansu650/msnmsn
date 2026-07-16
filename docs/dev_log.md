@@ -655,3 +655,68 @@ cleanliness | idea_report.md unchanged | configs unchanged
 - Current read-only status: C `77.86 GiB`, D `828.84 GiB`, ablations
   `676/1060`, zero failures; no cleanup was necessary and no experiment file
   was touched.
+
+### 2026-07-16 20:23 - Iteration #14: available-RAM safety floor design
+
+**Reason**: the user specified a second `20 GiB` floor for available physical
+memory during the long benchmark. Disk free space and RAM pressure are
+different resources, so the existing disk-only status cannot enforce this
+operational constraint.
+
+**Changes**:
+- `docs/user_requirements.md`: records the available-physical-RAM floor and
+  fail-safe response; the active PaAno runner is explicitly protected.
+- `docs/implementation.md`: extends the read-only full-run monitor contract to
+  report available physical RAM without changing experiment state.
+
+**Expected effect**: the 15-minute monitor can stop unrelated parallel work
+before memory pressure becomes critical while preserving the frozen runner,
+scores, data, and configuration.
+
+**Document sync**: user_requirements.md yes | implementation.md yes | configs
+unchanged | idea_report.md unchanged
+
+### 2026-07-16 20:27 - Iteration #14 complete validation
+
+- Complete Python suite: `61 passed in 10.29s`.
+- PowerShell AST parsing and live execution of the updated monitor: pass.
+- `git diff --check`: pass (line-ending notices only).
+- The existing 15-minute automation now reports `ram_free_gib` and applies
+  the separate `20 GiB` disk and physical-RAM safeguards without terminating
+  the active PaAno runner.
+- Independent finalization-transition review: `PASS`. The exact 1,060-job
+  ablation count, fail-fast 1,590-score evaluation, external-paper-value
+  labeling, conditional confirmation authorization, and exact 1,060-job
+  confirmation count are consistent. The stage-separated scripts rely on the
+  active automation for the `08 -> decision -> 09/10` handoff.
+
+### 2026-07-16 20:25 - Iteration #14 validation and venue-kit recovery
+
+- PowerShell AST parsing of `monitor_full.ps1`: pass.
+- Live exact-manifest status: ablations `721/1060`, zero failures; C
+  `77.83 GiB`, D `828.69 GiB`, available physical RAM `41.37 GiB`.
+- The active runner remained unchanged and continued without restart.
+- The CFP-linked MSN 2026 author kit was recovered from its literal HTTP URL;
+  the previously attempted HTTPS variant is the source of the 404.
+- Frozen local venue kit:
+  `C:/Users/qintian/Downloads/IEEE-MSN-2026-author-kit.zip`, 856,412 bytes,
+  SHA-256
+  `DCE5B5F34EF738CECE3A86A336795394CB06C2345F79E79B2D456F3D61EC9B9F`.
+- Its seven-file layout was independently inspected and its sample compiled
+  successfully with Tectonic 0.16.9. The included IEEEtran V1.8b class equals
+  the local CTAN class after line-ending normalization; CTAN remains the
+  source for `IEEEtran.bst` because the venue ZIP omits it.
+
+### 2026-07-16 20:24 - Iteration #14 implementation
+
+**Changes**:
+- `code/scripts/monitor_full.ps1`: adds a read-only `ram_free_gib` field from
+  `Win32_OperatingSystem.FreePhysicalMemory` while retaining the exact frozen
+  manifest count, GPU status, and C/D disk readings.
+
+**Expected effect**: every 15-minute status row now distinguishes available
+physical RAM from disk and VRAM, allowing the operational floor to be applied
+without changing the active experiment.
+
+**Document sync**: user_requirements.md yes | implementation.md yes | configs
+unchanged | idea_report.md unchanged
