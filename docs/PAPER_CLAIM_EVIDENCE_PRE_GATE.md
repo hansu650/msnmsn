@@ -140,3 +140,30 @@ alter the method or choose results:
 3. **Mean failure**: either fixed three-seed track mean does not exceed its
    external reference. Return to Phase F/stop and do not advance a positive
    method claim.
+
+## Machine-Readable Terminal Claim Audit
+
+The implementation mirrors the preceding policy in a standard-library-only
+compact audit. It is downstream of experiment execution and cannot authorize
+compute, choose a result, or modify `decision.json` or
+`confirmation_summary.json`.
+
+- `seed-2027` stage is valid only after `STOP_FULL_MAIN_FAILURE`; it recomputes
+  the external and component branches and writes the terminal negative posture.
+- `confirmation` stage is valid only after `CONTINUE_FULL_CONFIRMATION` and the
+  complete 2027/2028/2029 confirmation outputs; it recomputes every seed-track
+  comparison, both fixed means, population standard deviations, and the
+  component branch.
+- No `AWAIT_CONFIRMATION` or other mutable interim artifact is permitted.
+- All comparisons use raw finite values and strict `>` against U `0.5296` and
+  M `0.4263`; equality fails. Component attribution is cautiously available
+  only when the complete arm is strictly higher than both removal arms on both
+  tracks.
+- The terminal JSON records the SHA-256 of every compact input it consumed and
+  permanently marks local reproduction, paired improvement, statistical
+  significance versus paper-reported PaAno, Eval-label selection, and
+  family-specific selection as unsupported.
+
+The output is committed separately at
+`artifacts/paano_claim_gate/claim_gate.json`; it is not inserted into the
+frozen eight-file seed-2027 package or the three-file confirmation aggregate.

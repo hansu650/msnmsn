@@ -80,11 +80,12 @@ The original K0 terminal result remains preserved. The user's Phase F override a
 - Citation recency is frozen as follows: beyond indispensable citations for the primary baseline, evaluation protocol, metric, inherited component, or comparator provenance, use publications from **2024--2026**.
 - Related Work must be predominantly supported by **2025--2026** publications, with only a very small number of directly necessary 2024 papers.
 - Pre-2024 citations may establish historical lineage or indispensable provenance only; they must not be used as evidence for a claim of current novelty.
-- Keep manuscript sources in a dedicated directory and Tectonic build outputs
-  in the repository-level `.latex-build/` tree. Edit LaTeX/BibTeX and textual
-  tables only during drafting. Do not create manuscript figure assets,
-  figure-generation scripts, figure environments, or placeholder graphics in
-  this phase. The user will supply or finalize figures later.
+- Keep manuscript sources in the dedicated `docs/manuscripts/msn2026/`
+  directory and all Tectonic build intermediates only in the repository-level
+  `.latex-build/` tree. During drafting, edit TeX/BibTeX, prose, equations, and
+  textual tables only. Do not create figure environments, placeholder figures,
+  image assets, or image-generation scripts. The user will add the figures
+  later.
 
 ## Goal-Mode Continuous Execution and Paper Delivery
 

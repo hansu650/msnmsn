@@ -55,11 +55,12 @@ review limit recorded in `docs/MSN2026_SUBMISSION_REQUIREMENTS.md`.
   or undefined keys.
 - Result placeholders contain no fabricated or incomplete number. They will be
   replaced only from compact artifacts produced after full finalization.
-- Drafting is text-first: edit LaTeX, BibTeX, and textual tables only. Do not
-  generate plots or manuscript figures; the user will supply/finalize figures
-  later, and any eventual figure location must remain replaceable.
-- Build intermediates and provisional PDFs belong in repository-level
-  `.latex-build/`, which is gitignored.
+- This dedicated directory contains manuscript sources only. Drafting is
+  text-only: edit TeX/BibTeX, prose, equations, and textual tables. Do not
+  create figure environments, placeholder figures, image assets, or
+  image-generation scripts; the user will add the figures later.
+- All build intermediates and provisional PDFs belong only in the
+  repository-level `.latex-build/` tree, which is gitignored.
 
 ## Local Tectonic build
 
@@ -80,9 +81,8 @@ Set-Location -LiteralPath $paper
   --keep-logs --keep-intermediates --outdir $out main.tex
 ```
 
-The manuscript remains text-only in the current workflow: Codex edits prose,
-equations, BibTeX, and textual tables. No figure asset or figure-generation
-script is created; the user will supply or finalize figures later.
+The manuscript remains text-only in the current workflow; the source and build
+boundaries above remain in force until the user supplies figures.
 
 Before submission, replace or reconcile this scaffold against the user-provided
 final MSN template and re-run Tectonic, page-count, citation, numerical, and

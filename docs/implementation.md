@@ -626,6 +626,7 @@ The user-confirmed Phase F extension changes experiment coverage only. It reuses
 | `code/src/paano_k0/aggregate_benchmark.py` | `aggregate_full_benchmark(...)`, `main(argv=None)` | Produce file-, family-, track-, and overall metrics; compare the full arm to fixed paper-reported U/M values and write the terminal full-main decision. |
 | `code/src/paano_k0/report_benchmark.py` | `render_full_benchmark_report(...)`, `main(argv=None)` | Consume only compact aggregate CSV/JSON outputs, validate their registered rows and external-reference provenance, and render the English manuscript-facing numeric report with only the registered VUS-PR, AUPRC, and VUS-ROC endpoints, without reopening labels, raw scores, or datasets. AUROC may remain in internal compatibility artifacts but cannot enter the manuscript-facing report. |
 | `code/src/paano_k0/aggregate_confirmation.py` | `aggregate_confirmation(...)`, `main(argv=None)` | Conditional-only aggregation of the fixed full arm across seeds 2027/2028/2029; require exact 530-file LAST coverage per seed and emit U/M seed means and standard deviations without retuning or dropping results. |
+| `code/src/paano_k0/claim_gate.py` | `evaluate_claim_gate(...)`, `main(argv=None)` | Standard-library-only terminal claim audit over compact outputs. Recompute strict external-reference, component-attribution, and optional fixed-three-seed branches; fail closed on schema/provenance disagreement; atomically emit a separate `claim_gate.json` without reading labels, scores, datasets, or caches. |
 | `code/scripts/05_run_full_main.ps1` | PowerShell entry point | Run all 530 `PAPERNEG_NONOVERLAP` seed-2027 jobs fail-fast, resuming only already validated `_SUCCESS` runs. |
 | `code/scripts/06_run_full_ablations.ps1` | PowerShell entry point | Run `PAPERNEG` and `OFFICIAL` seed-2027 component ablations on the same 530 files. |
 | `code/scripts/07_evaluate_full.ps1` | PowerShell entry point | Evaluate exact full coverage and aggregate the manuscript-facing numeric tables. |
@@ -657,6 +658,20 @@ artifacts/paano_full/decision.json
 docs/experiments/PAANO_FULL_MAIN_RESULTS.md
 ```
 
+The terminal claim audit is a separate downstream package and is not added to
+the frozen eight-file seed-2027 result set:
+
+```text
+artifacts/paano_claim_gate/claim_gate.json
+```
+
+For a `STOP_FULL_MAIN_FAILURE` decision it is generated once after script 08
+with stage `seed-2027`. For `CONTINUE_FULL_CONFIRMATION`, no interim claim gate
+is written; it is generated only after script 10 with stage `confirmation`.
+The latter stage requires all three confirmation compact outputs and validates
+the fixed 2027/2028/2029 seed rows, means, population standard deviations,
+selection flags, and config/vendor continuity.
+
 The result report must contain the exact 350/180 coverage, all three registered
 LAST arms, U/M VUS-PR/AUPRC/VUS-ROC values, the external Table 15 comparison,
 runtime/VRAM context, the terminal decision, and the negative six-file K0 caveat.
@@ -677,6 +692,7 @@ drop a track, family, arm, or unfavorable result.
 9. After conditional confirmation, report every registered seed and the three-seed mean/standard deviation; no confirmation result may trigger another variant, seed replacement, or per-track selection.
 10. While conditional confirmation is active, invoke `monitor_full.ps1 -Mode confirmation`; this is read-only and reports progress over the exact 1,060 registered seed-2028/2029 runs.
 11. The legacy rounded K0 reference fields in `configs/k0_protocol.yaml` remain byte-frozen for active-run artifact compatibility and are not the full-benchmark gate authority. The exact full gate is independently fixed and tested as U `0.5296` and M `0.4263` in the full aggregator/report path; do not edit the active config after scores exist.
+12. Generate a terminal compact-only claim gate at exactly one point: after a seed-2027 STOP, or after completed three-seed confirmation. Strict `>` is used throughout; a component tie blocks attribution; no claim-gate output may authorize a new arm, seed, threshold, or result deletion.
 ```
 
 **Phase F design validation:** the extension changes only coverage and reporting. Model semantics, labels, hyperparameters, checkpoint endpoint, and external comparison values are fixed before full-run labels are evaluated.

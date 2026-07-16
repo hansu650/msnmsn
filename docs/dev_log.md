@@ -734,6 +734,46 @@ unchanged
 **Document sync**: manuscript readiness yes | bibliography status yes |
 implementation.md unchanged | configs unchanged
 
+### 2026-07-16 21:30 - Terminal claim-gate design freeze
+
+**Reason**: independent readiness review found that the external performance
+branch is machine-checked, while component attribution and the fixed-three-seed
+claim branches remained manual manuscript checks.
+
+**Design changes**:
+- `docs/implementation.md`: specifies a standard-library-only compact claim
+  gate, its terminal-only invocation points, and separate Git-facing artifact.
+- `docs/PAPER_CLAIM_EVIDENCE_PRE_GATE.md`: freezes strict raw-value comparisons,
+  the component tie rule, three confirmation branches, prohibited claims, and
+  the no-interim-artifact rule.
+
+**Expected effect**: after the final compact results exist, the paper claim
+boundary is reproduced mechanically without reopening labels, raw scores,
+datasets, or caches and without changing any experiment decision.
+
+**Document sync**: implementation.md yes | claim-evidence policy yes |
+idea_report.md unchanged | configs unchanged
+
+### 2026-07-16 21:43 - Terminal claim-gate implementation and validation
+
+**Implementation**:
+- Added `code/src/paano_k0/claim_gate.py`, a standard-library-only terminal
+  audit over the frozen compact seed-2027 and optional confirmation outputs.
+- Added `code/tests/test_claim_gate.py` with synthetic fixtures for every
+  registered external, component-attribution, and confirmation branch plus
+  exact schema, provenance, cross-file, finite-value, deterministic-hash, and
+  atomic-write failure checks.
+- The audit remains downstream of scripts 08--10 and does not read scores,
+  labels, datasets, caches, or authorize compute.
+
+**Validation**:
+- Focused claim-gate suite: `35 passed`.
+- Complete project suite: `96 passed in 10.65s`.
+- `py_compile`, standard-library import audit, and `git diff --check` passed.
+
+**Document sync**: implementation.md yes | claim-evidence policy yes |
+user requirements unchanged | configs unchanged
+
 ### 2026-07-16 20:45 - Provisional IEEE manuscript scaffold
 
 **Reason**: the user supplied a generic IEEE conference template and ten 2025
