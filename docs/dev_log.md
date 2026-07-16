@@ -718,6 +718,22 @@ implementation.md unchanged | configs unchanged
 **Validation**: isolated build pass | text-only source pass | active experiment
 unchanged
 
+### 2026-07-16 21:19 - Pre-G.0 format metadata reconciliation
+
+- Updated the provisional manuscript README to acknowledge the recovered
+  CFP-linked venue kit while retaining the user-supplied generic IEEE bundle as
+  a replaceable structural reference.
+- Updated the Related Work inventory status: the formatting scaffold exists,
+  but scientific drafting remains blocked on the terminal Phase F gate.
+- Added `docs/manuscripts/examples/style-notes.md`, a text-only record of the
+  ten supplied MSN 2025 papers' reusable layout conventions and the publisher
+  elements that must not enter the anonymous review source.
+- No result, score, label, model, protocol, parameter, or active process was
+  changed or inspected.
+
+**Document sync**: manuscript readiness yes | bibliography status yes |
+implementation.md unchanged | configs unchanged
+
 ### 2026-07-16 20:45 - Provisional IEEE manuscript scaffold
 
 **Reason**: the user supplied a generic IEEE conference template and ten 2025

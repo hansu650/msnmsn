@@ -2,12 +2,19 @@
 
 > Status: `PROVISIONAL_FORMAT_ONLY / PHASE_F_SCIENTIFIC_GATE_PENDING`
 
-This directory is a replaceable formatting scaffold. It is not claimed to be
-the unavailable MSN 2026 author kit, and it does not authorize a performance
-claim or a ResearchPilot Phase G transition. Scientific prose and result tables
-remain locked until the frozen Phase F benchmark gate is resolved.
+This directory is a replaceable formatting scaffold. The CFP-linked MSN 2026
+venue kit has since been recovered and recorded in
+`docs/MSN2026_SUBMISSION_REQUIREMENTS.md`; its IEEEtran class is equivalent to
+the provisional class used here after line-ending normalization. This
+scaffold still does not authorize a performance claim or a ResearchPilot Phase
+G transition. Scientific prose and result tables remain locked until the
+frozen Phase F benchmark gate is resolved.
 
 ## Temporary format authority
+
+The recovered venue kit is the format authority. The user-supplied generic
+bundle remains a structural reference for the current replaceable scaffold,
+pending the user's final template adjustment.
 
 The user supplied the generic IEEE conference bundle at:
 

@@ -1,7 +1,8 @@
 # Related Work Citation Plan
 
-> Status: frozen prewriting inventory. The manuscript and venue template are
-> not initialized until the official IEEE MSN author kit is provided.
+> Status: frozen prewriting inventory. A provisional IEEE manuscript scaffold
+> and the recovered CFP-linked venue kit are available, but scientific drafting
+> remains blocked on the terminal Phase F evidence gate.
 
 ## Frozen recency policy
 
