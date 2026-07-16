@@ -102,6 +102,28 @@ def _fixed_metrics(*_args, **_kwargs) -> dict[str, float]:
     }
 
 
+@pytest.mark.parametrize(
+    ("available", "requested", "expected"),
+    ((41.0, 4, 4), (29.0, 4, 3), (28.9, 4, 2), (23.0, 4, 1)),
+)
+def test_worker_count_preserves_twenty_gib_ram_floor(
+    monkeypatch: pytest.MonkeyPatch,
+    available: float,
+    requested: int,
+    expected: int,
+) -> None:
+    monkeypatch.setattr(module, "_available_memory_gib", lambda: available)
+    assert module._effective_worker_count(requested) == expected
+
+
+def test_worker_count_refuses_to_cross_twenty_gib_ram_floor(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(module, "_available_memory_gib", lambda: 22.99)
+    with pytest.raises(RuntimeError, match="20 GiB floor"):
+        module._effective_worker_count(4)
+
+
 @pytest.mark.parametrize("workers", (1, 2))
 def test_all_score_hashes_preflight_before_first_label_read(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, workers: int

@@ -62,6 +62,8 @@ _FILE_METRIC_FIELDS = (
 _METRIC_ROW_FIELDS = frozenset(MetricRow.__dataclass_fields__)
 _THRESHOLDS = 250
 _MAX_WORKERS = 4
+_RAM_FLOOR_GIB = 20.0
+_RAM_PER_WORKER_GIB = 3.0
 _WORKER_VENDOR: VendorSymbols | None = None
 
 
@@ -317,11 +319,13 @@ def _effective_worker_count(requested: int) -> int:
     if requested < 1 or requested > _MAX_WORKERS:
         raise ValueError(f"workers must be in [1,{_MAX_WORKERS}]")
     available = _available_memory_gib()
-    if available < 24.0:
-        return 1
-    if available < 28.0:
-        return min(requested, 2)
-    return requested
+    capacity = int((available - _RAM_FLOOR_GIB) // _RAM_PER_WORKER_GIB)
+    if capacity < 1:
+        raise RuntimeError(
+            f"available RAM {available:.2f} GiB cannot preserve the "
+            f"{_RAM_FLOOR_GIB:.0f} GiB floor"
+        )
+    return min(requested, capacity)
 
 
 def _request_digest(verified: Sequence[_VerifiedArtifact]) -> str:
@@ -332,6 +336,13 @@ def _request_digest(verified: Sequence[_VerifiedArtifact]) -> str:
             "trajectory": item.trajectory.value,
             "score_sha256": item.manifest.score_sha256,
             "data_sha256": item.spec.csv_sha256,
+            "score_manifest_sha256": sha256(
+                json.dumps(
+                    item.manifest.to_dict(),
+                    sort_keys=True,
+                    separators=(",", ":"),
+                ).encode()
+            ).hexdigest(),
         }
         for item in verified
     ]

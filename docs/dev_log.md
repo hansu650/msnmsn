@@ -832,6 +832,27 @@ because it predates the evaluator-contract sidecar.
 **Document sync**: implementation.md yes | tests yes | scripts yes |
 idea_report.md unchanged | configs unchanged | manuscript unchanged
 
+### 2026-07-16 23:08 - Iteration #15 independent-review safety correction
+
+Before live-process transition, an independent read-only review required two
+stricter execution guards.  The evaluator contract must bind each complete
+score manifest, including `sliding_window`, and worker selection must reserve
+the user's full 20 GiB RAM floor with a conservative 3 GiB budget per spawned
+worker.  Evaluation must refuse to start below 23 GiB available RAM.  The
+legacy serial directory remains ineligible for resume and will be archived
+unchanged; no legacy-adoption path is required for the clean recomputation.
+
+**Document sync**: implementation.md yes | idea_report.md unchanged |
+configs unchanged | metric definition unchanged
+
+**Correction validation**:
+- complete project suite: `114 passed in 11.08s`;
+- four-worker U/M shadow parity: 12/12 exact metric rows;
+- partial resume: 6/6 cached rows retained without rewrite and 6/6 missing
+  rows reproduced exactly;
+- current available RAM permits four workers while reserving more than the
+  configured 20 GiB floor.
+
 ### 2026-07-16 20:45 - Provisional IEEE manuscript scaffold
 
 **Reason**: the user supplied a generic IEEE conference template and ten 2025

@@ -713,12 +713,15 @@ subject to all of the following invariants:
    `compute_threshold_free_metrics(..., thresholds=250)` implementation.
 3. Windows workers use the `spawn` start method, reload the same frozen vendor
    inside the worker, and cap numerical-library threads to one.  The worker
-   count is hard-capped at four and falls back to two below 28 GiB available
-   physical RAM or to one below 24 GiB.
+   count is hard-capped at four and is additionally bounded by
+   `floor((available GiB - 20 GiB floor) / 3 GiB per worker)`.  Evaluation
+   refuses to start below 23 GiB available physical RAM.
 4. Resume is fail-closed.  A present metric JSON must have the exact
    `MetricRow` schema, expected filename/run ID, finite values, and exact
    series/family/track/seed/trajectory/LAST/data/config/vendor/score
-   provenance.  Any unexpected, corrupt, stale, or mismatched JSON aborts the
+   provenance.  The evaluator contract also hashes every complete typed score
+   manifest, including the VUS sliding window.  Any unexpected, corrupt,
+   stale, or mismatched JSON aborts the
    evaluator without deleting or overwriting evidence.  Only a missing final
    metric JSON is eligible for computation.
 5. Legacy JSONs produced by the currently live serial evaluator may be adopted
