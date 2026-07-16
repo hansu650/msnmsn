@@ -315,6 +315,7 @@ def test_renders_complete_english_report_from_seven_compact_inputs(
     assert "0.5296" in report and "0.4263" in report
     assert module.PAPER_REFERENCE_SOURCE in report
     assert "CONTINUE_FULL_CONFIRMATION" in report
+    assert "| AUROC |" not in report
     assert "Runtime and peak VRAM" in report
     assert "Six-file K0 negative caveat" in report
     assert "did not pass its matched performance gate" in report

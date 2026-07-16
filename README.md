@@ -29,7 +29,9 @@ for read-only 15-minute status checks. If finalization authorizes the already
 registered confirmation branch, `09_run_full_confirmation.ps1` runs only
 seeds 2028/2029 and `monitor_full.ps1 -Mode confirmation` reports their exact
 1,060-run progress before `10_evaluate_confirmation.ps1` aggregates all three
-registered seeds.
+registered seeds. Confirmation authorization is bound to the current frozen
+config/vendor hashes; resumed artifacts are hash/provenance validated, and
+all progress counts are enumerated from the official 530-series manifest.
 
 The score runners are label-free. Finalization first requires all 1,590 registered LAST score artifacts, performs a global hash/provenance preflight, then reads labels in the evaluator, aggregates all tracks and arms, renders the English numeric report, and runs the complete test suite.
 

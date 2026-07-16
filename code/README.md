@@ -59,7 +59,13 @@ powershell -ExecutionPolicy Bypass -File .\code\scripts\10_evaluate_confirmation
 
 Confirmation monitoring counts only the 1,060 seed-2028/2029 runs. Seed 2027
 is excluded from its progress count, while all three seeds remain required by
-the final confirmation evaluator.
+the final confirmation evaluator. The launcher binds authorization to the
+current config/vendor hashes and validates any resumed LAST artifact before
+skipping it. All monitor modes enumerate only the frozen 530-series manifest.
+
+The full-result Markdown report exposes the registered VUS-PR, AUPRC, and
+VUS-ROC endpoints. AUROC remains an internal metric-schema compatibility field
+and is not a manuscript-facing endpoint.
 
 ## Verify
 

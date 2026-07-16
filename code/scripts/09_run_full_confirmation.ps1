@@ -24,6 +24,16 @@ foreach ($required in @($Python, $Config, $Manifest, $VendorRoot, $DecisionPath)
     }
 }
 
+& $Python @(
+    '-m', 'paano_k0.confirmation_guard', 'authorize',
+    '--config', $Config,
+    '--vendor-root', $VendorRoot,
+    '--decision', $DecisionPath
+)
+if ($LASTEXITCODE -ne 0) {
+    throw 'Full confirmation authorization failed against current config/vendor state.'
+}
+
 $decision = Get-Content -LiteralPath $DecisionPath -Raw | ConvertFrom-Json
 $requiredDecisionFields = @(
     'outcome', 'main_trajectory', 'checkpoint', 'seed', 'series_count', 'metric_count'
@@ -83,19 +93,23 @@ foreach ($seed in $seeds) {
         )
         $failurePath = Join-Path $runDirectory '_FAILED.json'
         $trajectorySuccess = Join-Path $runDirectory '_SUCCESS'
-        $lastDirectory = Join-Path $runDirectory 'scores\LAST'
-        $lastSuccess = Join-Path $lastDirectory '_SUCCESS'
-        $scorePath = Join-Path $lastDirectory 'scores.npy'
-        $scoreManifestPath = Join-Path $lastDirectory 'score_manifest.json'
 
         if (Test-Path -LiteralPath $failurePath -PathType Leaf) {
             throw "Retained failure blocks a silent confirmation rerun: $failurePath"
         }
         if (Test-Path -LiteralPath $trajectorySuccess -PathType Leaf) {
-            foreach ($committed in @($lastSuccess, $scorePath, $scoreManifestPath)) {
-                if (-not (Test-Path -LiteralPath $committed -PathType Leaf)) {
-                    throw "Trajectory success has incomplete LAST artifacts: $committed"
-                }
+            & $Python @(
+                '-m', 'paano_k0.confirmation_guard', 'validate-run',
+                '--config', $Config,
+                '--manifest', $Manifest,
+                '--vendor-root', $VendorRoot,
+                '--output-root', $ResultsRoot,
+                '--series-id', $seriesId,
+                '--seed', [string]$seed,
+                '--trajectory', $trajectory
+            )
+            if ($LASTEXITCODE -ne 0) {
+                throw "Existing confirmation artifact failed resume validation: $runDirectory"
             }
             Write-Output (
                 "SKIP_VALID_FULL_CONFIRMATION {0}/{1} seed={2} track={3} series={4}" -f
@@ -126,12 +140,18 @@ foreach ($seed in $seeds) {
         if ($LASTEXITCODE -ne 0) {
             throw "Full confirmation job failed with exit code $LASTEXITCODE. Log: $logPath"
         }
-        foreach ($committed in @(
-            $trajectorySuccess, $lastSuccess, $scorePath, $scoreManifestPath
-        )) {
-            if (-not (Test-Path -LiteralPath $committed -PathType Leaf)) {
-                throw "Full confirmation runner did not commit expected artifact: $committed"
-            }
+        & $Python @(
+            '-m', 'paano_k0.confirmation_guard', 'validate-run',
+            '--config', $Config,
+            '--manifest', $Manifest,
+            '--vendor-root', $VendorRoot,
+            '--output-root', $ResultsRoot,
+            '--series-id', $seriesId,
+            '--seed', [string]$seed,
+            '--trajectory', $trajectory
+        )
+        if ($LASTEXITCODE -ne 0) {
+            throw "Fresh confirmation artifact failed commit validation: $runDirectory"
         }
     }
 }

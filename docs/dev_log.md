@@ -559,3 +559,88 @@ when its provenance cannot be replaced.
 **Expected effect**: the final English paper uses current literature for its
 research argument while preserving necessary historical citations only at the
 metric, protocol, component, or comparison-identity locations they support.
+
+### 2026-07-16 19:55 - Iteration #12: harden conditional confirmation and registered reporting
+
+**Reason**: an independent Phase F review found that a stale positive decision
+could authorize confirmation under changed config/vendor state, a resume skip
+checked only file existence, and recursive progress counting could include
+stale run directories. The same review found that the manuscript-facing report
+still displayed AUROC although the frozen full endpoints are VUS-PR, AUPRC,
+and VUS-ROC.
+
+**Changes**:
+- `confirmation_guard.py`: adds label-free decision authorization and
+  score-hash/run-provenance/summary validation for every confirmation resume
+  skip and every freshly committed confirmation run.
+- `09_run_full_confirmation.ps1`: calls the guard before any compute and before
+  accepting a completed run.
+- `monitor_full.ps1`: enumerates expected paths from the exact 350-U/180-M
+  manifest instead of recursively counting every matching directory.
+- `report_benchmark.py`: retains AUROC only in internal schema-compatible
+  artifacts and removes it from the manuscript-facing Markdown tables.
+- Added a discriminating unequal-family-size regression test proving that
+  track aggregation is file-weighted rather than equal-family macro.
+- The active seed-2027 config, vendor, model, dataset, score artifacts, labels,
+  and experiment process were not changed or reopened.
+
+**Validation**:
+- PowerShell AST parse: pass for launcher and monitor.
+- Targeted confirmation/aggregate/report tests: `16 passed`.
+- Complete suite: `54 passed`.
+- Live manifest-exact monitor: main `530/530`, confirmation `0/1060`, with no
+  stale seed-2027 result counted in confirmation.
+- Active ablation process remained healthy and continued without restart.
+- `git diff --check`: pass (line-ending notices only).
+
+**Expected effect**: an authorized confirmation can run and resume without
+silently accepting stale/corrupt artifacts, while the eventual paper report
+contains only preregistered endpoints.
+
+### 2026-07-16 20:33 - Iteration #13: distinguish runtime bytecode from vendor drift
+
+**Reason**: the active PaAno jobs generate untracked `__pycache__/*.pyc` files
+inside the SHA-frozen vendor checkout. Treating this runtime-only state as a
+source modification would incorrectly block an otherwise authorized
+confirmation run, while accepting every dirty checkout would weaken the
+config/vendor binding introduced in Iteration #12.
+
+**Changes**:
+- `confirmation_guard.py`: permits only untracked Python bytecode below an
+  `__pycache__` directory and still rejects every tracked change, untracked
+  source file, or other untracked artifact before confirmation compute.
+- `test_confirmation_guard.py`: adds positive coverage for runtime bytecode and
+  negative coverage for tracked source drift, an untracked Python module, and
+  a non-bytecode file placed under `__pycache__`.
+
+**Expected effect**: seed-2028/2029 confirmation remains bound to the exact
+PaAno source revision without being blocked by harmless caches created by the
+ongoing seed-2027 jobs.
+
+**Document sync**: implementation.md already specifies semantic vendor
+cleanliness | idea_report.md unchanged | configs unchanged
+
+### 2026-07-16 20:08 - Iteration #13 validation and timestamp correction
+
+- The preceding Iteration #13 header was entered as `20:33`; the host clock
+  shows the work was completed at `20:08`. This append-only correction retains
+  the original entry rather than silently rewriting it.
+- Temporary-Git-repository guard tests: `9 passed`; this includes ignored
+  untracked source rejection and Unicode/space bytecode-path acceptance.
+- Complete Python suite: `61 passed in 10.15s`.
+- Python compilation, PowerShell AST parsing, and `git diff --check`: pass
+  (line-ending notices only).
+- The stricter guard accepted the actual frozen vendor at
+  `d4c67116190efa4592dc6a8a157ced0def68b6af`; its only untracked files are
+  direct runtime bytecode caches.
+- Manifest-exact live monitoring continued at `662/1060`, zero failures,
+  without restarting or modifying the active seed-2027 process.
+
+### 2026-07-16 20:10 - Iteration #13 independent review
+
+- Independent read-only review: `PASS`.
+- The reviewer confirmed that tracked staged/unstaged changes, ordinary and
+  ignored untracked files, nested bytecode, and non-bytecode cache files all
+  fail closed; direct runtime bytecode with Unicode/space paths remains valid.
+- A future Windows-junction-specific regression was identified as optional and
+  non-blocking; the current real checkout contains no such path.

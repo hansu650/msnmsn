@@ -718,8 +718,8 @@ def _render_markdown(data: _ReportData, git_sha: str | None) -> str:
             "",
             "## Main results",
             "",
-            "| Arm | Track | Files | VUS-PR | AUPRC | VUS-ROC | AUROC |",
-            "|---|---|---:|---:|---:|---:|---:|",
+            "| Arm | Track | Files | VUS-PR | AUPRC | VUS-ROC |",
+            "|---|---|---:|---:|---:|---:|",
         ]
     )
     for track in _TRACKS:
@@ -727,7 +727,7 @@ def _render_markdown(data: _ReportData, git_sha: str | None) -> str:
         lines.append(
             f"| `{_display_arm(MAIN_TRAJECTORY)}` | {track} | {row['files']} | "
             f"{_metric(row, 'vus_pr')} | {_metric(row, 'auprc')} | "
-            f"{_metric(row, 'vus_roc')} | {_metric(row, 'auroc')} |"
+            f"{_metric(row, 'vus_roc')} |"
         )
 
     lines.extend(
@@ -735,8 +735,8 @@ def _render_markdown(data: _ReportData, git_sha: str | None) -> str:
             "",
             "### Complete main-arm family results",
             "",
-            "| Track | Family | Files | VUS-PR | AUPRC | VUS-ROC | AUROC |",
-            "|---|---|---:|---:|---:|---:|---:|",
+            "| Track | Family | Files | VUS-PR | AUPRC | VUS-ROC |",
+            "|---|---|---:|---:|---:|---:|",
         ]
     )
     for row in sorted(
@@ -746,7 +746,7 @@ def _render_markdown(data: _ReportData, git_sha: str | None) -> str:
         lines.append(
             f"| {row['track']} | {_markdown_text(row['family'])} | {row['files']} | "
             f"{_metric(row, 'vus_pr')} | {_metric(row, 'auprc')} | "
-            f"{_metric(row, 'vus_roc')} | {_metric(row, 'auroc')} |"
+            f"{_metric(row, 'vus_roc')} |"
         )
 
     lines.extend(
@@ -756,8 +756,8 @@ def _render_markdown(data: _ReportData, git_sha: str | None) -> str:
             "",
             "These are matched seed-2027 controls on the same files and frozen `LAST` endpoint; they are not the paper's external ablation rows.",
             "",
-            "| Registered arm | Track | Files | VUS-PR | AUPRC | VUS-ROC | AUROC |",
-            "|---|---|---:|---:|---:|---:|---:|",
+            "| Registered arm | Track | Files | VUS-PR | AUPRC | VUS-ROC |",
+            "|---|---|---:|---:|---:|---:|",
         ]
     )
     for trajectory in REGISTERED_TRAJECTORIES:
@@ -766,7 +766,7 @@ def _render_markdown(data: _ReportData, git_sha: str | None) -> str:
             lines.append(
                 f"| `{_display_arm(trajectory)}` | {track} | {row['files']} | "
                 f"{_metric(row, 'vus_pr')} | {_metric(row, 'auprc')} | "
-                f"{_metric(row, 'vus_roc')} | {_metric(row, 'auroc')} |"
+                f"{_metric(row, 'vus_roc')} |"
             )
 
     lines.extend(

@@ -10,26 +10,47 @@ $ErrorActionPreference = 'Stop'
 $RepoRoot = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 $ResultsRoot = 'D:\qintian_experiments\paano_full'
 $runsRoot = Join-Path $ResultsRoot 'runs'
+$Manifest = Join-Path $RepoRoot 'docs\TSB_AD_FULL_EVAL_MANIFEST.csv'
+if (-not (Test-Path -LiteralPath $Manifest -PathType Leaf)) {
+    throw "Frozen full-Eval manifest is missing: $Manifest"
+}
+$rows = @(Import-Csv -LiteralPath $Manifest)
+$seriesIds = @($rows | ForEach-Object {
+    [IO.Path]::GetFileNameWithoutExtension([string]$_.file)
+})
+if (
+    $rows.Count -ne 530 -or
+    @($rows | Where-Object track -eq 'U').Count -ne 350 -or
+    @($rows | Where-Object track -eq 'M').Count -ne 180 -or
+    @($seriesIds | Sort-Object -Unique).Count -ne 530
+) {
+    throw 'Frozen full-Eval manifest coverage changed.'
+}
 $process = Get-Process -Id $RunnerPid -ErrorAction SilentlyContinue
-$trajectories = switch ($Mode) {
+$trajectories = @(switch ($Mode) {
     'main' { @('PAPERNEG_NONOVERLAP') }
     'ablations' { @('PAPERNEG', 'OFFICIAL') }
     'confirmation' { @('PAPERNEG_NONOVERLAP') }
+})
+$seeds = @(if ($Mode -eq 'confirmation') { @(2028, 2029) } else { @(2027) })
+$total = $seriesIds.Count * $trajectories.Count * $seeds.Count
+$success = 0
+$failed = 0
+foreach ($seriesId in $seriesIds) {
+    foreach ($seed in $seeds) {
+        foreach ($trajectory in $trajectories) {
+            $runDirectory = Join-Path $runsRoot (
+                "$seriesId\seed_$seed\$trajectory"
+            )
+            if (Test-Path -LiteralPath (Join-Path $runDirectory '_SUCCESS') -PathType Leaf) {
+                $success++
+            }
+            if (Test-Path -LiteralPath (Join-Path $runDirectory '_FAILED.json') -PathType Leaf) {
+                $failed++
+            }
+        }
+    }
 }
-$total = if ($Mode -eq 'main') { 530 } else { 1060 }
-$seedPattern = if ($Mode -eq 'confirmation') {
-    '\\seed_(?:2028|2029)\\'
-} else {
-    '\\seed_2027\\'
-}
-$success = @(
-    Get-ChildItem -LiteralPath $runsRoot -Recurse -File -Filter '_SUCCESS' -ErrorAction SilentlyContinue |
-        Where-Object { $_.Directory.Name -in $trajectories -and $_.FullName -match $seedPattern }
-).Count
-$failed = @(
-    Get-ChildItem -LiteralPath $runsRoot -Recurse -File -Filter '_FAILED.json' -ErrorAction SilentlyContinue |
-        Where-Object { $_.Directory.Name -in $trajectories -and $_.FullName -match $seedPattern }
-).Count
 
 $launcherDirectory = if ($Mode -eq 'main') {
     Join-Path $RepoRoot 'logs\full_launcher'

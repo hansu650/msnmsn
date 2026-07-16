@@ -231,6 +231,45 @@ def test_paper_gate_is_strict_at_exact_table_15_value() -> None:
     assert decision["conditional_confirmation_seeds"] == []
 
 
+def test_track_aggregate_is_file_weighted_not_equal_family_macro(
+    tmp_path: Path,
+) -> None:
+    specs = (
+        _spec(tmp_path, "u-large-1", "large", "U"),
+        _spec(tmp_path, "u-large-2", "large", "U"),
+        _spec(tmp_path, "u-small", "small", "U"),
+    )
+    values = (1.0, 1.0, 0.0)
+    rows = tuple(
+        MetricRow(
+            run_id=make_run_id(
+                spec.series_id,
+                2027,
+                Trajectory.PAPERNEG_NONOVERLAP,
+                CheckpointKind.LAST,
+            ),
+            series_id=spec.series_id,
+            family=spec.family,
+            track=spec.track,
+            seed=2027,
+            trajectory=Trajectory.PAPERNEG_NONOVERLAP,
+            checkpoint=CheckpointKind.LAST,
+            vus_pr=value,
+            auprc=value,
+            vus_roc=value,
+            auroc=value,
+            score_sha256="8" * 64,
+            data_sha256=spec.csv_sha256,
+            config_sha256=CONFIG_SHA,
+            vendor_sha=VENDOR_SHA,
+        )
+        for spec, value in zip(specs, values, strict=True)
+    )
+    aggregate = module._track_rows(rows)[0]
+    assert aggregate["vus_pr"] == pytest.approx(2.0 / 3.0)
+    assert aggregate["vus_pr"] != pytest.approx(0.5)
+
+
 def test_incomplete_three_arm_metric_coverage_fails_before_runtime_scan(
     tmp_path: Path,
 ) -> None:
