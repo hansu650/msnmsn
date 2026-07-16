@@ -66,3 +66,14 @@ The original K0 terminal result remains preserved. The user's Phase F override a
 - Research artifacts and manuscript-facing text: English.
 - User-facing progress and decisions: concise Chinese.
 - No detailed tutorial for every paper; use evidence matrices and deep summaries only for key works.
+
+## Goal-Mode Continuous Execution and Paper Delivery
+
+- Use the installed `LMDHQ-0420/ResearchPilot-Skills` workflow as the primary process authority. Remain in Phase F until the full evidence gate is resolved, then execute G.0 through G.7 in order.
+- Keep a 15-minute heartbeat automation active whenever a long GPU experiment is running. Use GPU time for independent documentation, official-requirement verification, evidence organization, and packaging.
+- The user authorizes continuous execution through a complete IEEE MSN 2026 English manuscript. Routine stage transitions, manuscript drafting, local compilation, testing, and Git pushes do not require a new confirmation.
+- If evidence is insufficient, perform only evidence-driven, bounded Phase F iterations. Each iteration must state its diagnosis, frozen change, expected effect, evaluation boundary, and stop condition before code or experiments; preserve every negative result and never tune against Eval labels.
+- Pause only when a proposed change materially changes the task/baseline/data scope, requires substantially more compute or external coordination, or immediately precedes an external submission/publishing action.
+- Treat `C:/Users/qintian/Downloads/CODEX_NEW_PAPER_WORKFLOW.md` as an auxiliary writing and compilation checklist. Venue-official IEEE MSN requirements override its generic LNCS examples.
+- Use `C:/Users/qintian/Downloads/tectonic.exe` for isolated LaTeX builds. Keep build intermediates outside the manuscript source tree and verify logs, page count, references, numerical consistency, and rendered PDF layout.
+- Commit important experiment code, complete compact results, manuscript sources, and final checked PDF to `https://github.com/hansu650/msnmsn`; do not commit raw datasets, large checkpoints, caches, downloaded papers, or temporary build trees.

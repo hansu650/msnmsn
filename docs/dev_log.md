@@ -390,3 +390,15 @@ powershell -ExecutionPolicy Bypass -File .\code\scripts\03_aggregate_decision.ps
 **Expected effect**: the manuscript-facing report now proves exact registered membership and identifies committed code without reopening data or labels.
 
 **Document sync**: implementation.md unchanged | idea_report.md unchanged | configs unchanged
+
+### 2026-07-16 18:31 - Iteration #5: persistent goal and paper-delivery requirements
+
+**Reason**: the user enabled Codex goal mode and authorized continuous execution from the running full benchmark through evidence-gated iteration, ResearchPilot G.0--G.7 writing, Tectonic compilation, and final repository delivery.
+
+**Changes**:
+- `docs/user_requirements.md`: records the installed ResearchPilot workflow as primary, retains 15-minute GPU monitoring, defines bounded evidence-driven failure iterations, and registers the auxiliary paper workflow and Tectonic path.
+- No model, data, score, metric, experiment parameter, or current Eval artifact was changed or read.
+
+**Expected effect**: long-running experiments and later paper stages can advance without routine user gates while preserving scientific stop rules and venue-specific requirements.
+
+**Document sync**: user_requirements.md yes | idea_report.md unchanged | implementation.md unchanged | configs unchanged
