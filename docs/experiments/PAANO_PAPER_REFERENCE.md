@@ -1,13 +1,20 @@
 # PaAno ICLR 2026 Paper-Reported Reference
 
-This document records paper-only values from the local published PaAno PDF. It does not use or summarize any result from this project's full Eval run.
+This document records paper-only values from the official PaAno ICLR 2026
+OpenReview PDF. It does not use or summarize any result from this project's
+full Eval run.
 
 ## Source and integrity
 
-- Local PDF: `C:/Users/qintian/Desktop/msn/msn444_release/docs/papers/PaAno_ICLR2026_arXiv_2602.01359.pdf`
-- SHA-256: `25b51f8d48d1809ce0d6955a24fc0bca64eadaaaaf0db091fd507f255692d599`
+- Canonical record: `https://openreview.net/forum?id=NXThkM7Iym`
+- Canonical PDF: `https://openreview.net/pdf?id=NXThkM7Iym`
+- Local verified copy: `C:/Users/qintian/Downloads/PaAno_ICLR2026_OpenReview_NXThkM7Iym.pdf`
+- Size: `1,445,413` bytes
+- SHA-256: `4860AAAEEEB04114464A98588924AAF5FB97FFE42CD769A1207D0085ECC00689`
 - Title-page status: *Published as a conference paper at ICLR 2026*
 - Relevant locations: Table 1 (dataset protocol), Tables 2-3 (rounded headline results), Table 4 (core ablations), Table 12 (nearest-neighbor sensitivity), and Table 15 (exact full-Eval averages).
+- The arXiv copy is retained only as a supplementary cross-check and is not
+  the manuscript's publication authority.
 
 ## Full-Eval protocol
 

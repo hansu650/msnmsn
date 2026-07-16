@@ -676,6 +676,23 @@ scores, data, and configuration.
 **Document sync**: user_requirements.md yes | implementation.md yes | configs
 unchanged | idea_report.md unchanged
 
+### 2026-07-16 20:31 - Bibliography readiness and PaAno source sync
+
+- Independent read-only audit: 35 BibTeX entries, 35 unique keys, no duplicate
+  DOI/URL/normalized title, no missing type-required field, and a one-to-one
+  verified source-manifest match.
+- The frozen Related Work plan contains three 2026, five 2025, and two 2024
+  narrative sources; no pre-2024 work frames the novelty claim.
+- Every PaAno Table 2/3 comparator key resolves. Canonical-algorithm and
+  preprint/workshop caveats remain explicit and must be carried into table
+  notes and prose.
+- `docs/experiments/PAANO_PAPER_REFERENCE.md` now binds the Table 15 external
+  values to the official ICLR 2026 OpenReview PDF and its verified local hash;
+  the arXiv copy is supplementary only.
+- The manuscript `references.bib` remains intentionally uncreated until G.0;
+  it will contain only actually cited entries and will be checked for unused
+  and undefined keys.
+
 ### 2026-07-16 20:27 - Iteration #14 complete validation
 
 - Complete Python suite: `61 passed in 10.29s`.
