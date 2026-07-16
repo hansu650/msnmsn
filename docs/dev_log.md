@@ -423,3 +423,32 @@ powershell -ExecutionPolicy Bypass -File .\code\scripts\03_aggregate_decision.ps
 - Result: exit code 0, two TeX passes, PDF emitted (`26,118` bytes), and zero matched undefined-reference/citation, overfull, or error log lines.
 - Build directory: external `D:/qintian_experiments/latex_smoke/ieeetran-20260716-184749`; no build products were added to Git.
 - Non-blocking environment warning: Fontconfig reported no default configuration after the PDF was successfully written. Final visual QA must verify that this does not affect manuscript fonts.
+
+### 2026-07-16 18:54 - Iteration #7: pre-G.0 claim--evidence freeze
+
+**Reason**: paper infrastructure can be prepared during the GPU run, but manuscript claims must remain bounded by the completed six-file K0 and must not anticipate unfinished full-Eval metrics.
+
+**Changes**:
+- `docs/PAPER_CLAIM_EVIDENCE_PRE_GATE.md`: separates K0-supported observations, claims blocked on full results, hypotheses ruled out by K0, and claims that the current full design cannot establish.
+- Explicitly prevents the legacy K0 M value `0.431` from entering the manuscript; the corrected external Table 15 value is `0.4263`.
+- No incomplete full-Eval metric, raw score, or label was opened.
+
+**Expected effect**: G.0 starts from a conservative evidence map, and a negative full result triggers a bounded Phase F diagnosis instead of post-hoc claim rewriting.
+
+**Document sync**: idea_report.md unchanged | implementation.md unchanged | configs unchanged
+
+### 2026-07-16 18:57 - Iteration #7 cross-review corrections
+
+- Clarified that only cross-seed means/variance/stability remain blocked; the complete seed-2027 file-weighted mean is a valid endpoint.
+- Restricted frozen full endpoints to VUS-PR, AUPRC, and VUS-ROC.
+- Added the TimesURL/SoftCLT, PAI, and DADA novelty boundaries and recorded that triplet division by 10 is a paper-defined setting, not a bug.
+- Tightened the STOP transition: diagnosis precedes any new iteration, which requires independent evidence, no material scope expansion, preregistration, and no Eval-label tuning.
+
+### 2026-07-16 18:58 - Iteration #8: isolate manuscript build products
+
+**Changes**:
+- `.gitignore`: excludes only the repository-level `.latex-build/` tree while leaving manuscript sources and explicitly checked release PDFs trackable.
+
+**Expected effect**: Tectonic intermediates cannot pollute result or manuscript commits.
+
+**Document sync**: `MSN2026_SUBMISSION_REQUIREMENTS.md` already specifies the isolated build contract.
