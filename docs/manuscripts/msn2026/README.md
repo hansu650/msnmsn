@@ -54,6 +54,29 @@ review limit recorded in `docs/MSN2026_SUBMISSION_REQUIREMENTS.md`.
 - Build intermediates and provisional PDFs belong in repository-level
   `.latex-build/`, which is gitignored.
 
+## Local Tectonic build
+
+The verified Tectonic 0.16.9 binary is isolated from both Downloads and the
+Git repository at:
+
+`D:/qintian_tools/tectonic/0.16.9/tectonic.exe`
+
+Run builds from the manuscript source directory and direct every generated
+file to the repository-level build tree:
+
+```powershell
+$paper = 'C:/Users/qintian/Desktop/msn/msnmsn/docs/manuscripts/msn2026'
+$out = 'C:/Users/qintian/Desktop/msn/msnmsn/.latex-build/msn2026'
+New-Item -ItemType Directory -Force -Path $out | Out-Null
+Set-Location -LiteralPath $paper
+& 'D:/qintian_tools/tectonic/0.16.9/tectonic.exe' `
+  --keep-logs --keep-intermediates --outdir $out main.tex
+```
+
+The manuscript remains text-only in the current workflow: Codex edits prose,
+equations, BibTeX, and textual tables. No figure asset or figure-generation
+script is created; the user will supply or finalize figures later.
+
 Before submission, replace or reconcile this scaffold against the user-provided
 final MSN template and re-run Tectonic, page-count, citation, numerical, and
 rendered-page checks.

@@ -78,7 +78,7 @@ before external submission; a changed official kit takes precedence.
 
 | Asset | Version | SHA-256 |
 |---|---|---|
-| `C:/Users/qintian/Downloads/tectonic.exe` | 0.16.9 | `A0A9A5EAF1A940D9A615AD78D35225CA59420C7984576C6402FFFB3E9FB05CEB` |
+| `D:/qintian_tools/tectonic/0.16.9/tectonic.exe` | 0.16.9 | `A0A9A5EAF1A940D9A615AD78D35225CA59420C7984576C6402FFFB3E9FB05CEB` |
 | `C:/Users/qintian/Downloads/CODEX_NEW_PAPER_WORKFLOW.md` | auxiliary workflow | `2C5BA7A400CFA6C9EB0980668C89E6F07793280BCE8BF654BE4EBAA8E9FFE12E` |
 
 Build intermediates must be written below the repository-level

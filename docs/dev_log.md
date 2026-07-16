@@ -676,6 +676,48 @@ scores, data, and configuration.
 **Document sync**: user_requirements.md yes | implementation.md yes | configs
 unchanged | idea_report.md unchanged
 
+### 2026-07-16 21:09 - Manuscript tool isolation and text-only boundary
+
+- Moved the verified Tectonic 0.16.9 executable from the Downloads folder to
+  `D:/qintian_tools/tectonic/0.16.9/tectonic.exe`; SHA-256 remains
+  `A0A9A5EAF1A940D9A615AD78D35225CA59420C7984576C6402FFFB3E9FB05CEB`.
+- Updated the manuscript and venue documentation to use the isolated tool and
+  repository-level `.latex-build/` output directory.
+- Reconfirmed the user-owned figure boundary: Codex will write manuscript
+  prose, equations, BibTeX, and textual tables only; no figure assets or
+  figure-generation scripts will be created in this workflow.
+- The active PaAno ablation runner, its model, data, protocol, and parameters
+  were not modified.
+
+**Document sync**: user_requirements.md yes | manuscript README yes |
+submission requirements yes | implementation.md unchanged | configs unchanged
+
+### 2026-07-16 21:11 - Text-only LaTeX source enforcement
+
+- Removed the unused `graphicx` dependency from the provisional manuscript.
+- Tightened the drafting boundary: no figure asset, figure-generation script,
+  figure environment, or placeholder graphic is created before the user
+  supplies the final figures.
+- No experiment code, score, model, data, protocol, or active process changed.
+
+**Document sync**: user_requirements.md yes | manuscript source yes |
+implementation.md unchanged | configs unchanged
+
+### 2026-07-16 21:13 - Isolated Tectonic build validation
+
+- Compiled `docs/manuscripts/msn2026/main.tex` with the relocated verified
+  binary and wrote all generated files to `.latex-build/msn2026/`.
+- Build exit: 0; BibTeX and required TeX reruns completed; output is one
+  612-by-792-point US-Letter page.
+- Log scan: zero undefined citations/references, missing files, overfull boxes,
+  or LaTeX fatal errors. The existing underfull bibliography warning from long
+  URLs remains non-blocking.
+- Source scan: no figure environment, image include, graphic path, or figure
+  reference exists in `main.tex` or `sections/*.tex`.
+
+**Validation**: isolated build pass | text-only source pass | active experiment
+unchanged
+
 ### 2026-07-16 20:45 - Provisional IEEE manuscript scaffold
 
 **Reason**: the user supplied a generic IEEE conference template and ten 2025

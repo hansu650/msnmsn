@@ -82,9 +82,9 @@ The original K0 terminal result remains preserved. The user's Phase F override a
 - Pre-2024 citations may establish historical lineage or indispensable provenance only; they must not be used as evidence for a claim of current novelty.
 - Keep manuscript sources in a dedicated directory and Tectonic build outputs
   in the repository-level `.latex-build/` tree. Edit LaTeX/BibTeX and textual
-  tables only during drafting. Do not generate manuscript figures in this
-  phase; the user will supply or finalize figures later, so use replaceable
-  figure placeholders only when the final narrative requires them.
+  tables only during drafting. Do not create manuscript figure assets,
+  figure-generation scripts, figure environments, or placeholder graphics in
+  this phase. The user will supply or finalize figures later.
 
 ## Goal-Mode Continuous Execution and Paper Delivery
 
@@ -94,5 +94,5 @@ The original K0 terminal result remains preserved. The user's Phase F override a
 - If evidence is insufficient, perform only evidence-driven, bounded Phase F iterations. Each iteration must state its diagnosis, frozen change, expected effect, evaluation boundary, and stop condition before code or experiments; preserve every negative result and never tune against Eval labels.
 - Pause only when a proposed change materially changes the task/baseline/data scope, requires substantially more compute or external coordination, or immediately precedes an external submission/publishing action.
 - Treat `C:/Users/qintian/Downloads/CODEX_NEW_PAPER_WORKFLOW.md` as an auxiliary writing and compilation checklist. Venue-official IEEE MSN requirements override its generic LNCS examples.
-- Use `C:/Users/qintian/Downloads/tectonic.exe` for isolated LaTeX builds. Keep build intermediates outside the manuscript source tree and verify logs, page count, references, numerical consistency, and rendered PDF layout.
+- Use `D:/qintian_tools/tectonic/0.16.9/tectonic.exe` for isolated LaTeX builds. This verified binary lives in a dedicated, non-repository tool directory. Keep build intermediates outside the manuscript source tree and verify logs, page count, references, numerical consistency, and rendered PDF layout.
 - Commit important experiment code, complete compact results, manuscript sources, and final checked PDF to `https://github.com/hansu650/msnmsn`; do not commit raw datasets, large checkpoints, caches, downloaded papers, or temporary build trees.
