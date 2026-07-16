@@ -608,3 +608,59 @@ IMPLEMENTATION_PLAN_VALIDATED
 READY_FOR_PHASE_E_CODING
 METHOD_NOT_FROZEN
 ```
+
+## 12 Phase F Full-Benchmark Extension
+
+### 12.1 Scope
+
+The user-confirmed Phase F extension changes experiment coverage only. It reuses the frozen protocol, `run_job`, transactional score artifacts, evaluator-only label boundary, and vendor metrics. It must not modify the PaAno model, objective implementations, memory, scorer, or six-file K0 artifacts.
+
+### 12.2 Additional files and functions
+
+| File | Public surface | Responsibility |
+|---|---|---|
+| `code/src/paano_k0/benchmark_manifest.py` | `load_benchmark_manifest(path, expected_tracks)`, `build_manifest_from_eval_lists(...)` | Build and strictly verify the complete 350/180 manifest from fixed Eval filename lists and local official CSV roots; hash every file without reading labels into model code. |
+| `code/src/paano_k0/run_benchmark_series.py` | `main(argv=None)` | Resolve exactly one manifest series, construct a registered `RunJob`, and call the already tested label-free `run_job`. |
+| `code/src/paano_k0/evaluate_benchmark.py` | `evaluate_registered_benchmark(...)`, `main(argv=None)` | Verify every LAST score commit before evaluator-only label loading; require exact series/arm coverage. |
+| `code/src/paano_k0/aggregate_benchmark.py` | `aggregate_full_benchmark(...)`, `main(argv=None)` | Produce file-, family-, track-, and overall metrics; compare the full arm to fixed paper-reported U/M values and write the terminal full-main decision. |
+| `code/scripts/05_run_full_main.ps1` | PowerShell entry point | Run all 530 `PAPERNEG_NONOVERLAP` seed-2027 jobs fail-fast, resuming only already validated `_SUCCESS` runs. |
+| `code/scripts/06_run_full_ablations.ps1` | PowerShell entry point | Run `PAPERNEG` and `OFFICIAL` seed-2027 component ablations on the same 530 files. |
+| `code/scripts/07_evaluate_full.ps1` | PowerShell entry point | Evaluate exact full coverage and aggregate the manuscript-facing numeric tables. |
+| `code/scripts/monitor_full.ps1` | read-only monitor | Report runner state, exact completion/failure count, current file/arm, GPU, disk, and log freshness at 15-minute intervals. |
+
+### 12.3 Data and split provenance
+
+The canonical Eval filename lists contain exactly 350 U and 180 M files. Only the filename columns are used; scores stored in external benchmark CSVs are ignored. U files resolve under the verified TSB-AD-U extraction. M files resolve under a fresh extraction of the SHA-256-verified `TSB-AD-M.zip`. The generated manifest records family, track, filename, SHA-256, byte count, row count, channel count, and filename-derived `train_end`.
+
+Any missing, duplicate, shape-invalid, hash-mismatched, or short-prefix file is a hard failure. No backup series is allowed.
+
+### 12.4 Coverage and outputs
+
+Primary main coverage is exactly `530 x 1 trajectory x 1 seed = 530` jobs. The existing runner may commit BEST and LAST, but evaluation consumes only LAST. Ablation coverage is exactly `530 x 2 trajectories x 1 seed = 1060` jobs. Large results live under `D:/qintian_experiments/paano_full/`; compact tables and decisions are copied to `artifacts/paano_full/`.
+
+Required compact outputs are:
+
+```text
+artifacts/paano_full/main_file_metrics.csv
+artifacts/paano_full/main_family_metrics.csv
+artifacts/paano_full/main_track_metrics.csv
+artifacts/paano_full/ablation_track_metrics.csv
+artifacts/paano_full/paper_reference_comparison.csv
+artifacts/paano_full/runtime_summary.csv
+artifacts/paano_full/decision.json
+docs/experiments/PAANO_FULL_MAIN_RESULTS.md
+```
+
+### 12.5 Implementation and execution order
+
+```text
+1. Verify/extract official data and build 350/180 hash manifest.
+2. Implement generic benchmark manifest/runner while leaving K0 loaders unchanged.
+3. Add tests for 530-file coverage, duplicate/missing rejection, LAST-only evaluation, and label ordering.
+4. Run the full method on U as soon as its manifest is ready; M may extract in parallel.
+5. Continue the full method on M, then run the two ablation arms.
+6. Evaluate only after score hashes are committed; aggregate against fixed paper references.
+7. If both tracks exceed, run main-only seeds 2028/2029; otherwise stop and retain failure evidence.
+```
+
+**Phase F design validation:** the extension changes only coverage and reporting. Model semantics, labels, hyperparameters, checkpoint endpoint, and external comparison values are fixed before full-run labels are evaluated.

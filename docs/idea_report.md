@@ -465,3 +465,43 @@ No new rescue arm may be added after a failed gate.
 `PHASE_C_COMPLETE / PROCEED_PHASE_D`
 
 The dataset, arm structure, instrumentation, gates, and stop outcomes are frozen. The user's standing authorization satisfies the phase-transition confirmation; implementation design may proceed immediately.
+
+## Part 3 Phase F Amendment: User-Directed Full Main Experiment
+
+### F-1 diagnostic conclusion
+
+The six-file K0 completed without data, implementation, leakage, or convergence failures. It established objective inactivity and early checkpointing, but the registered execution changes did not improve the matched six-file controls. The user explicitly chose not to use that paired gate as the manuscript headline and confirmed a change in experiment design: run the project's code on the complete paper-compatible Eval lists and compare only with PaAno's paper-reported headline values.
+
+This amendment does not erase the K0 outcome and does not introduce a new method. It expands evaluation coverage for the already registered arm.
+
+### F-2 confirmed backtrack scope
+
+```text
+Change experiment design only.
+No new architecture, loss, selector, calibration, threshold, or hyperparameter.
+```
+
+### Full main experiment
+
+| Role | Fixed arm | Checkpoint | Seed | Coverage |
+|---|---|---|---:|---:|
+| Proposed full arm | PAPERNEG_NONOVERLAP | LAST | 2027 | 350 U + 180 M |
+| Ablation: remove non-overlap positives | PAPERNEG | LAST | 2027 | 350 U + 180 M |
+| Ablation: remove both execution changes | OFFICIAL | LAST | 2027 | 350 U + 180 M |
+
+All arms use the same PaAno encoder, official hyperparameters, memory builder, top-3 scorer, metric code, and paper-compatible Eval lists. BEST artifacts may be generated transactionally by the existing runner but cannot replace the frozen LAST endpoint in the main table.
+
+### Main comparison and conditional replication
+
+The external comparison is PaAno's paper-reported VUS-PR: `0.530` for U and `0.431` for M. Primary success requires the full method's file-weighted VUS-PR to exceed both values on the complete 350/180 lists. If and only if both tracks exceed their references, repeat the full method on seeds 2028 and 2029 and report mean and standard deviation. The ablation table remains seed 2027 and reports VUS-PR, AUPRC, and VUS-ROC for U and M.
+
+The paper must label PaAno as `paper-reported`; it must not describe the external values as a local reproduction. The six-file K0 negative result remains a disclosed limitation of the causal interpretation.
+
+### Phase F outcome boundary
+
+```text
+both full tracks exceed paper references -> CONTINUE_FULL_CONFIRMATION
+either full track does not exceed its reference -> STOP_FULL_MAIN_FAILURE
+```
+
+No post-failure variant, family-specific rule, file removal, or metric substitution is permitted.

@@ -260,3 +260,54 @@ powershell -ExecutionPolicy Bypass -File .\code\scripts\03_aggregate_decision.ps
 - **Performance evidence**: LAST-vs-BEST macro VUS-PR is `+0.009059` but macro AUPRC is `-0.008610` and worst-family VUS-PR is `-0.259217`; PAPERNEG and NONOVERLAP have negative macro deltas.
 - **Decision**: do not run confirmation seeds, do not freeze a method, and do not add a rescue module. Preserve the result as a mechanism-only failure record.
 - **Artifacts**: copied the exact aggregate decision, file/family metrics, and paired contrasts into `artifacts/paano_k0/`; added the full English result record at `docs/experiments/PAANO_K0_RESULTS.md`.
+
+### 2026-07-16 14:10 - Iteration #1: full paper-reference benchmark authorized
+
+**Reason**: the six-file K0 established the mechanism but failed its matched performance gate. The user explicitly confirmed a Phase F experiment-design change: evaluate the already registered project arm over the complete paper-compatible U/M Eval lists, compare against paper-reported PaAno values, and run only component ablations.
+
+**Changes**:
+- `docs/user_requirements.md`: records the user-confirmed full-benchmark override, paper-reported comparison policy, conditional seeds, and minimum ablation scope.
+- `docs/idea_report.md`: adds the Phase F diagnostic, experiment-design backtrack, frozen full arm, ablations, and terminal outcome boundary.
+- `docs/implementation.md`: specifies the generic full-manifest, runner, evaluator, aggregator, scripts, tests, outputs, and execution order.
+
+**Expected effect**: produce manuscript-scale U/M numbers without reproducing the paper's full baseline suite, while keeping the score-before-label boundary and a fixed LAST endpoint.
+
+**Document sync**: idea_report.md yes | implementation.md yes | configs no (existing scientific protocol reused unchanged)
+
+### 2026-07-16 14:18 - Iteration #1: generic full manifest and label-free series runner
+
+**Reason**: the K0 loader is intentionally restricted to six unique families and cannot safely be reused for the complete 350/180 benchmark.
+
+**Changes**:
+- `code/src/paano_k0/benchmark_manifest.py`: adds fixed Eval-list ingestion, path traversal and duplicate checks, filename-derived family/train split parsing, per-file shape/byte/SHA verification, full 530-row loading, and efficient one-series verification for worker processes.
+- `code/src/paano_k0/run_benchmark_series.py`: adds a label-free full-benchmark CLI restricted to the three registered trained trajectories and seeds 2027-2029; it delegates unchanged model execution to the tested `run_job`.
+
+**Expected effect**: enable immediate full U/M execution without weakening the six-file K0 contract or adding labels to the runner surface.
+
+**Document sync**: idea_report.md yes | implementation.md yes | configs no
+
+### 2026-07-16 14:30 - Iteration #1: full-manifest and runner contract tests
+
+**Reason**: protect the two full-benchmark extensions that differ structurally from K0: repeated families in a 530-row manifest and a separate label-free worker CLI.
+
+**Changes**:
+- `code/src/paano_k0/benchmark_manifest.py`: derives the unique-series coverage assertion from the frozen track-count mapping, enabling compact synthetic contract tests without changing production counts.
+- `code/tests/test_benchmark_manifest.py`: tests repeated-family support, one-series lazy verification, and duplicate-series rejection.
+- `code/tests/test_run_benchmark_series.py`: tests that the worker has no label surface and rejects the diagnostic RAND_BN arm.
+
+**Expected effect**: prevent full-run coverage drift and accidental label/arm expansion before long execution.
+
+**Document sync**: idea_report.md yes | implementation.md yes | configs no
+
+### 2026-07-16 14:25 - Iteration #1: main launcher and 15-minute monitor
+
+**Reason**: start the full method on GPU as soon as the canonical 350/180 manifest is available, while evaluator and ablation packaging continue independently.
+
+**Changes**:
+- `code/scripts/05_run_full_main.ps1`: adds exact 530-job seed-2027 `PAPERNEG_NONOVERLAP` execution with U-first ordering, fail-fast retained errors, and safe resume of committed trajectories.
+- `code/scripts/monitor_full.ps1`: adds read-only main-arm coverage, current-series, GPU, and disk monitoring.
+- `docs/TSB_AD_FULL_EVAL_MANIFEST.csv`: generated from the fixed 350/180 Eval filename lists; every local file records byte count, shape, train boundary, and SHA-256.
+
+**Expected effect**: keep the RTX 4090 occupied on the frozen full method while remaining Phase F implementation work proceeds.
+
+**Document sync**: idea_report.md yes | implementation.md yes | configs no

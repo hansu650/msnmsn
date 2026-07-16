@@ -1,5 +1,5 @@
 # User Requirements - MSN 2026 PaAno Route
-> Updated: 2026-07-16 | Workflow: ResearchPilot | Status: PHASE_E_CODING - GO_K0_MECHANISM_ONLY
+> Updated: 2026-07-16 | Workflow: ResearchPilot | Status: PHASE_F_FULL_BENCHMARK_OVERRIDE
 
 ## Research Direction Constraints
 
@@ -20,7 +20,7 @@
 - **RQ2 (mechanism):** Do the negative-selection execution mismatch, scheduled-loss checkpoint rule, and extreme raw overlap suppress useful triplet activity or bias the learned representation?
 - **RQ3 (boundary):** Under which anomaly families and temporal regimes does restoring meaningful objective activity improve detection without losing useful local-shift invariance or PaAno's efficiency?
 
-No method name or intervention is frozen. A failed K0 closes the route rather than triggering an unregistered rescue module.
+The original K0 terminal result remains preserved. The user's Phase F override authorizes one full-benchmark evaluation of the already registered `PAPERNEG_NONOVERLAP-LAST` arm plus component-removal ablations; it does not authorize a new rescue module.
 
 ## Evidence and Execution Rules
 
@@ -29,7 +29,7 @@ No method name or intervention is frozen. A failed K0 closes the route rather th
 - Move quickly and minimize nonessential audits. Routine download, environment, implementation, and technically equivalent retry decisions are autonomous.
 - First K0 uses six deterministic real telemetry files spanning both tracks: NAB-U, IOPS-U, Exathlon-M, SMD-M, SMAP-M, and SWaT-M.
 - No online algorithm/scorer may consume test labels. Labels are evaluator-only after scores are written.
-- Do not reproduce the baseline's full benchmark. Use PaAno paper-reported headline values as external comparison; run official PaAno only on the small identical inputs needed for same-code causal controls.
+- Do not reproduce the paper's complete baseline suite. Use PaAno paper-reported headline values as the main external comparison. `OFFICIAL-LAST` may run only as a component-removal ablation of the project's full arm, not as a separately tuned headline reproduction.
 - Primary threshold-free metrics: VUS-PR and AUPRC. Preserve all negative outcomes in route decisions.
 - When a long GPU job starts, create a 15-minute monitoring automation and use runtime for independent literature, analysis, documentation, and packaging.
 
@@ -49,6 +49,17 @@ No method name or intervention is frozen. A failed K0 closes the route rather th
 - Auto-run strategy: Codex runs fast tests, smoke, long primary K0, evaluation, and aggregation automatically. The user does not need to confirm routine transitions; pause only under the standing scientific-failure/material-scope rules above.
 - Git: use the whole compact project at `https://github.com/hansu650/msnmsn`; include important code, frozen configuration, compact result tables, and research-facing documents only.
 - README: keep the repository-level `README.md` as the primary entry point and a code-level run guide under `code/README.md` when useful.
+
+## Phase F User-Confirmed Full-Benchmark Override
+
+- The user explicitly confirmed that the manuscript-facing comparison should use PaAno's paper-reported VUS-PR values (`U=0.530`, `M=0.431`) rather than a separately reproduced baseline table.
+- Run only the project's registered full arm, `PAPERNEG_NONOVERLAP-LAST`, on the complete official Eval lists: 350 TSB-AD-U series and 180 TSB-AD-M series.
+- Run the minimum component ablations needed for a paper table: `PAPERNEG-LAST` (remove non-overlap positives) and `OFFICIAL-LAST` (remove both registered execution changes). No additional baseline models are run.
+- The six-file K0 same-code negative contrasts remain disclosed as pilot evidence but no longer block this user-directed full benchmark.
+- The primary full benchmark uses seed 2027. Seeds 2028/2029 are conditional on the full method exceeding both paper-reported track values; ablations remain seed 2027 unless manuscript review later demonstrates a specific uncertainty requirement.
+- Full-run labels remain evaluator-only after score commits. Eval labels cannot choose arm, checkpoint, family, file, or hyperparameters.
+- Main tables may compare directly with paper-reported values only when the complete 350/180 lists, PaAno VUS-PR implementation, and paper-compatible file-weighted aggregation are used. The runtime environment is reported separately and does not substitute for protocol alignment.
+- Produce numeric CSV/JSON tables first. Figures are deferred until manuscript writing.
 
 ## Document Preferences
 
