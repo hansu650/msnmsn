@@ -53,7 +53,7 @@ RAND_BN is a diagnostic matched-update control, not a proposed method and not a 
 
 ## External paper-number reference
 
-The PaAno paper reports VUS-PR `0.530` on TSB-AD-U and `0.431` on TSB-AD-M. The selected-file K0 OFFICIAL BEST values are `0.559711` (two U files) and `0.550274` (four M files). These numbers are included only as an external headline reference: the K0 uses six fixed mechanism-probing files rather than the paper's complete benchmark, so the difference is not a matched reproduction and cannot support a claim that the K0 arm beats PaAno.
+PaAno Table 15 reports exact full-Eval VUS-PR `0.5296` on TSB-AD-U and `0.4263` on TSB-AD-M (rounded to `0.53/0.43` in Tables 2/3). The selected-file K0 OFFICIAL BEST values are `0.559711` (two U files) and `0.550274` (four M files). These numbers are included only as an external headline reference: the K0 uses six fixed mechanism-probing files rather than the paper's complete benchmark, so the difference is not a matched reproduction and cannot support a claim that the K0 arm beats PaAno.
 
 ## Runtime and memory
 

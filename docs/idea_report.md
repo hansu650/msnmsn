@@ -157,7 +157,7 @@ No More Shortcuts demonstrates that temporal pretexts can saturate through low-l
 
 ### 1 Introduction
 
-Compact representation learners are an attractive basis for anomaly monitoring in networks, servers, IoT devices, and industrial sensing systems. PaAno demonstrates that a roughly 0.3-million-parameter patch encoder and a compressed normal memory can be competitive on the broad TSB-AD benchmark [1,3]. Its reported VUS-PR of 0.53 on TSB-AD-U and 0.431 on TSB-AD-M therefore provides a timely 2026 baseline for studying how much self-supervised training actually contributes to lightweight telemetry detection.
+Compact representation learners are an attractive basis for anomaly monitoring in networks, servers, IoT devices, and industrial sensing systems. PaAno demonstrates that a roughly 0.3-million-parameter patch encoder and a compressed normal memory can be competitive on the broad TSB-AD benchmark [1,3]. Its exact paper-reported full-Eval VUS-PR of 0.5296 on TSB-AD-U and 0.4263 on TSB-AD-M (rounded headlines 0.53/0.43) therefore provides a timely 2026 baseline for studying how much self-supervised training actually contributes to lightweight telemetry detection.
 
 The open issue is not whether PaAno's design works on average; its published ablations establish useful performance and specifically favor farthest-negative sampling [1]. The issue is whether the released code executes the paper's intended negative geometry and checkpoint semantics, and whether the resulting objective remains informative throughout optimization. The paper chooses a negative from minibatch anchors in encoder space, but the code uses other anchors' positive views in projection space. The paper returns the final encoder, but the code selects one post-update minibatch checkpoint using a loss whose pretext weight changes and then vanishes. Positives also share 97.92-98.96% of their input samples [1,9]. Existing work already shows that time-series pair construction and soft temporal similarity matter [6,7], while temporal self-supervision can exploit local shortcuts in another domain [8]. None establishes which exact PaAno execution choice affects anomaly ranking.
 
@@ -259,7 +259,7 @@ For an offline diagnostic pair bank with several temporal offsets, we compute Sp
 
 > `PAPERNEG_NONOVERLAP` is a causal probe, not a candidate method. A gain from `PAPERNEG` or `LAST` alone contracts the route to a simple implementation correction. A non-overlap gain authorizes method design only after ruling out generic TimesURL/SoftCLT collisions.
 
-All variants reuse the same seed, patch architecture, test patches, memory fraction, clustering seed, top-k, point aggregation, and metric implementation. The baseline paper's full benchmark is not rerun; official and control variants are run only on identical K0 files, while the published 0.53 U and 0.431 M VUS-PR values remain clearly marked external references [1].
+All variants reuse the same seed, patch architecture, test patches, memory fraction, clustering seed, top-k, point aggregation, and metric implementation. The baseline paper's full benchmark is not rerun; official and control variants are run only on identical K0 files, while the exact published 0.5296 U and 0.4263 M VUS-PR values (rounded 0.53/0.43) remain clearly marked external references [1].
 
 #### 3.5 Mechanism-to-performance chain
 
@@ -284,7 +284,7 @@ The exact thresholds and deterministic file manifest are frozen in Phase C. A ga
 
 #### 3.7 Baseline reference and evaluation metrics
 
-The primary baseline is PaAno at official commit `d4c67116190efa4592dc6a8a157ced0def68b6af` [9]. The external headline references are PaAno's reported TSB-AD-U VUS-PR 0.53 and TSB-AD-M VUS-PR 0.431 [1]. PAI's PaAno-enhanced U result is retained as a recent external score-level comparator, not as a same-code causal baseline [2].
+The primary baseline is PaAno at official commit `d4c67116190efa4592dc6a8a157ced0def68b6af` [9]. The exact external full-Eval references are PaAno's reported TSB-AD-U VUS-PR 0.5296 and TSB-AD-M VUS-PR 0.4263 (rounded headlines 0.53/0.43) [1]. PAI's PaAno-enhanced U result is retained as a recent external score-level comparator, not as a same-code causal baseline [2].
 
 Primary K0 metrics are VUS-PR and AUPRC, with per-family paired deltas. Mechanism metrics are active-hinge fraction, hinge-margin quantiles, positive/negative distance distributions, absolute encoder-gradient norms, gradient cosine, and overlap-similarity correlation. Runtime, peak VRAM, parameter count, and score-artifact hashes are mandatory system and reproducibility outputs [1,3].
 
@@ -316,8 +316,8 @@ The technical framework and pipeline are sufficiently specified to enter Researc
 
 | Dataset | Scale | Split strategy | Notes |
 |---|---:|---|---|
-| TSB-AD-U | 350 Eval, 48 Tuning series | Official TSB split | Paper headline VUS-PR 0.530 |
-| TSB-AD-M | 180 Eval, 20 Tuning series | Official TSB split | Paper headline VUS-PR 0.431 |
+| TSB-AD-U | 350 Eval, 48 Tuning series | Official TSB split | Exact paper VUS-PR 0.5296 (rounded 0.53) |
+| TSB-AD-M | 180 Eval, 20 Tuning series | Official TSB split | Exact paper VUS-PR 0.4263 (rounded 0.43) |
 
 | Experiment | Purpose | Comparison models | Metrics |
 |---|---|---|---|
@@ -493,7 +493,7 @@ All arms use the same PaAno encoder, official hyperparameters, memory builder, t
 
 ### Main comparison and conditional replication
 
-The external comparison is PaAno's paper-reported VUS-PR: `0.530` for U and `0.431` for M. Primary success requires the full method's file-weighted VUS-PR to exceed both values on the complete 350/180 lists. If and only if both tracks exceed their references, repeat the full method on seeds 2028 and 2029 and report mean and standard deviation. The ablation table remains seed 2027 and reports VUS-PR, AUPRC, and VUS-ROC for U and M.
+The external comparison is PaAno's exact paper-reported full-Eval VUS-PR: `0.5296` for U and `0.4263` for M (rounded headlines `0.53/0.43`). Primary success requires the full method's file-weighted VUS-PR to exceed both values on the complete 350/180 lists. If and only if both tracks exceed their references, repeat the full method on seeds 2028 and 2029 and report mean and standard deviation. The ablation table remains seed 2027 and reports VUS-PR, AUPRC, and VUS-ROC for U and M.
 
 The paper must label PaAno as `paper-reported`; it must not describe the external values as a local reproduction. The six-file K0 negative result remains a disclosed limitation of the causal interpretation.
 

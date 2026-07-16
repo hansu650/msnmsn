@@ -1,6 +1,7 @@
 [CmdletBinding()]
 param(
-    [Parameter(Mandatory = $true)][int]$RunnerPid
+    [Parameter(Mandatory = $true)][int]$RunnerPid,
+    [ValidateSet('main', 'ablations')][string]$Mode = 'main'
 )
 
 Set-StrictMode -Version Latest
@@ -10,21 +11,37 @@ $RepoRoot = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 $ResultsRoot = 'D:\qintian_experiments\paano_full'
 $runsRoot = Join-Path $ResultsRoot 'runs'
 $process = Get-Process -Id $RunnerPid -ErrorAction SilentlyContinue
+$trajectories = if ($Mode -eq 'main') {
+    @('PAPERNEG_NONOVERLAP')
+} else {
+    @('PAPERNEG', 'OFFICIAL')
+}
+$total = if ($Mode -eq 'main') { 530 } else { 1060 }
 $success = @(
     Get-ChildItem -LiteralPath $runsRoot -Recurse -File -Filter '_SUCCESS' -ErrorAction SilentlyContinue |
-        Where-Object { $_.Directory.Name -eq 'PAPERNEG_NONOVERLAP' }
+        Where-Object { $_.Directory.Name -in $trajectories }
 ).Count
 $failed = @(
     Get-ChildItem -LiteralPath $runsRoot -Recurse -File -Filter '_FAILED.json' -ErrorAction SilentlyContinue |
-        Where-Object { $_.Directory.Name -eq 'PAPERNEG_NONOVERLAP' }
+        Where-Object { $_.Directory.Name -in $trajectories }
 ).Count
 
-$launcherLog = Get-ChildItem -LiteralPath (Join-Path $RepoRoot 'logs\full_launcher') -File -Filter '*.stdout.log' -ErrorAction SilentlyContinue |
+$launcherDirectory = if ($Mode -eq 'main') {
+    Join-Path $RepoRoot 'logs\full_launcher'
+} else {
+    Join-Path $RepoRoot 'logs\full_ablation_launcher'
+}
+$launcherLog = Get-ChildItem -LiteralPath $launcherDirectory -File -Filter '*.stdout.log' -ErrorAction SilentlyContinue |
     Sort-Object LastWriteTime -Descending | Select-Object -First 1
 $current = 'none'
 if ($null -ne $launcherLog) {
+    $statusPattern = if ($Mode -eq 'main') {
+        '^(RUN_MAIN|SKIP_VALID_MAIN) '
+    } else {
+        '^(RUN_ABLATION|SKIP_VALID_ABLATION) '
+    }
     $line = Get-Content -LiteralPath $launcherLog.FullName -Tail 30 |
-        Where-Object { $_ -match '^(RUN_MAIN|SKIP_VALID_MAIN) ' } |
+        Where-Object { $_ -match $statusPattern } |
         Select-Object -Last 1
     if ($null -ne $line) { $current = [string]$line }
 }
@@ -33,8 +50,8 @@ $gpu = (& nvidia-smi --query-gpu=utilization.gpu,memory.used,memory.total,temper
 $c = Get-PSDrive -Name C
 $d = Get-PSDrive -Name D
 Write-Output (
-    'runner_alive={0} pid={1} completed={2}/530 failed={3} current="{4}" gpu_util_pct={5} vram_mib={6}/{7} temp_c={8} c_free_gib={9:N2} d_free_gib={10:N2}' -f
-    ($null -ne $process), $RunnerPid, $success, $failed, $current,
+    'runner_alive={0} pid={1} completed={2}/{3} failed={4} current="{5}" gpu_util_pct={6} vram_mib={7}/{8} temp_c={9} c_free_gib={10:N2} d_free_gib={11:N2} mode={12}' -f
+    ($null -ne $process), $RunnerPid, $success, $total, $failed, $current,
     $gpu[0].Trim(), $gpu[1].Trim(), $gpu[2].Trim(), $gpu[3].Trim(),
-    ($c.Free / 1GB), ($d.Free / 1GB)
+    ($c.Free / 1GB), ($d.Free / 1GB), $Mode
 )

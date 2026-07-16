@@ -52,7 +52,7 @@ The original K0 terminal result remains preserved. The user's Phase F override a
 
 ## Phase F User-Confirmed Full-Benchmark Override
 
-- The user explicitly confirmed that the manuscript-facing comparison should use PaAno's paper-reported VUS-PR values (`U=0.530`, `M=0.431`) rather than a separately reproduced baseline table.
+- The user explicitly confirmed that the manuscript-facing comparison should use PaAno's exact paper-reported full-Eval VUS-PR values (`U=0.5296`, `M=0.4263`; rounded headlines `0.53/0.43`) rather than a separately reproduced baseline table.
 - Run only the project's registered full arm, `PAPERNEG_NONOVERLAP-LAST`, on the complete official Eval lists: 350 TSB-AD-U series and 180 TSB-AD-M series.
 - Run the minimum component ablations needed for a paper table: `PAPERNEG-LAST` (remove non-overlap positives) and `OFFICIAL-LAST` (remove both registered execution changes). No additional baseline models are run.
 - The six-file K0 same-code negative contrasts remain disclosed as pilot evidence but no longer block this user-directed full benchmark.

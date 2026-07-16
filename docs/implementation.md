@@ -18,7 +18,7 @@
 | Required Git SHA | `d4c67116190efa4592dc6a8a157ced0def68b6af` |
 | Framework | PyTorch 2.7.1, Python 3.11 |
 | Reused behavior | `PatchEncoder`, RevIN, patch layout, optimizer/schedule, memory construction, cosine top-k scoring, TSB VUS implementation |
-| Paper headline references | TSB-AD-U VUS-PR 0.530; TSB-AD-M VUS-PR 0.431; external references only |
+| Paper headline references | Exact full-Eval VUS-PR: TSB-AD-U 0.5296; TSB-AD-M 0.4263 (rounded headlines 0.53/0.43); external references only |
 
 > The vendor repository is read-only. The project adds an overlay package that imports the frozen encoder and metric implementation after checking the Git SHA. It does not edit, copy over, or commit vendor files. This keeps the causal controls traceable to the accepted baseline while allowing instrumentation that the official training function does not expose.
 

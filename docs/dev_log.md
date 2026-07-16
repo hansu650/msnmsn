@@ -311,3 +311,30 @@ powershell -ExecutionPolicy Bypass -File .\code\scripts\03_aggregate_decision.ps
 **Expected effect**: keep the RTX 4090 occupied on the frozen full method while remaining Phase F implementation work proceeds.
 
 **Document sync**: idea_report.md yes | implementation.md yes | configs no
+### 2026-07-16 15:02 - Iteration #1: full ablation and evaluation launch surfaces
+
+**Reason**: complete the frozen Phase F full-benchmark execution surface while the main `PAPERNEG_NONOVERLAP` jobs run, without changing model, objective, endpoint, data, or comparison semantics.
+**Changes**:
+- `code/scripts/06_run_full_ablations.ps1`: adds fail-fast, resumable seed-2027 execution for exactly 530 `PAPERNEG` and 530 `OFFICIAL` trajectories.
+- `code/scripts/07_evaluate_full.ps1`: requires exact 1,590-trajectory/LAST-score coverage, then invokes the planned evaluator-only and compact aggregation CLIs and validates all registered manuscript outputs.
+- `code/scripts/monitor_full.ps1`: adds backward-compatible `-Mode main|ablations` counting and current-job reporting while preserving `main` as the default.
+**Expected effect**: make the approved component ablations and exact LAST-only 530-file evaluation executable immediately after main coverage completes, with retained failures and no silent file removal.
+**Document sync**: idea_report.md yes | implementation.md yes | configs/ no
+
+### 2026-07-16 15:08 - Iteration #1: full benchmark evaluator and aggregator
+
+**Reason**: complete the label-isolated reporting path for the registered 530-series, three-arm, seed-2027 full benchmark without adding trajectories or changing runner/model behavior.
+
+**Changes**:
+- `code/src/paano_k0/evaluate_benchmark.py`: requires requested registered trajectories at LAST, verifies every expected committed score hash and provenance before the first label read, reuses each series label across arms, and writes per-file metrics.
+- `code/src/paano_k0/aggregate_benchmark.py`: requires exact three-arm metric coverage, writes file/family/track/overall and runtime tables, and gates the main `PAPERNEG_NONOVERLAP-LAST` file means against the external paper-reported Table 15 default full-Eval values U=`0.5296`, M=`0.4263` using strict `>` comparisons.
+- `code/tests/test_benchmark_evaluator.py`: covers global hash preflight, one label read per series, registered-arm enforcement, and LAST-only enforcement.
+- `code/tests/test_benchmark_aggregate.py`: covers complete aggregation outputs, exact external reference values, strict gate boundaries, and incomplete-coverage failure before runtime scanning.
+
+**Tests**:
+- `D:\Anaconda\envs\paano_msn\python.exe -m pytest -q tests\test_benchmark_evaluator.py tests\test_benchmark_aggregate.py` -> `7 passed in 1.98s`.
+- `D:\Anaconda\envs\paano_msn\python.exe -m pytest -q` -> `39 passed in 7.69s`.
+
+**Expected effect**: the long-running label-free score artifacts can be evaluated only after complete hash preflight, and manuscript tables cannot silently use the Table 12 k=1 M=`0.431` value as the default-paper comparator.
+
+**Document sync**: Phase F implementation contract already present; paper-reference prose correction coordinated separately | configs unchanged
