@@ -623,9 +623,14 @@ The user-confirmed Phase F extension changes experiment coverage only. It reuses
 | `code/src/paano_k0/run_benchmark_series.py` | `main(argv=None)` | Resolve exactly one manifest series, construct a registered `RunJob`, and call the already tested label-free `run_job`. |
 | `code/src/paano_k0/evaluate_benchmark.py` | `evaluate_registered_benchmark(...)`, `main(argv=None)` | Verify every LAST score commit before evaluator-only label loading; require exact series/arm coverage. |
 | `code/src/paano_k0/aggregate_benchmark.py` | `aggregate_full_benchmark(...)`, `main(argv=None)` | Produce file-, family-, track-, and overall metrics; compare the full arm to fixed paper-reported U/M values and write the terminal full-main decision. |
+| `code/src/paano_k0/report_benchmark.py` | `render_full_benchmark_report(...)`, `main(argv=None)` | Consume only compact aggregate CSV/JSON outputs, validate their registered rows and external-reference provenance, and render the English manuscript-facing numeric report without reopening labels, raw scores, or datasets. |
+| `code/src/paano_k0/aggregate_confirmation.py` | `aggregate_confirmation(...)`, `main(argv=None)` | Conditional-only aggregation of the fixed full arm across seeds 2027/2028/2029; require exact 530-file LAST coverage per seed and emit U/M seed means and standard deviations without retuning or dropping results. |
 | `code/scripts/05_run_full_main.ps1` | PowerShell entry point | Run all 530 `PAPERNEG_NONOVERLAP` seed-2027 jobs fail-fast, resuming only already validated `_SUCCESS` runs. |
 | `code/scripts/06_run_full_ablations.ps1` | PowerShell entry point | Run `PAPERNEG` and `OFFICIAL` seed-2027 component ablations on the same 530 files. |
 | `code/scripts/07_evaluate_full.ps1` | PowerShell entry point | Evaluate exact full coverage and aggregate the manuscript-facing numeric tables. |
+| `code/scripts/08_finalize_full.ps1` | PowerShell entry point | Run the registered full evaluator/aggregator, render the numeric Markdown report, execute the complete unit suite, and verify the compact Git-facing result set; it performs no automatic method change or hidden result filtering. |
+| `code/scripts/09_run_full_confirmation.ps1` | Conditional PowerShell entry point | Only when the frozen seed-2027 decision is `CONTINUE_FULL_CONFIRMATION`, run the same `PAPERNEG_NONOVERLAP-LAST` arm on all 530 files for seeds 2028 and 2029 with fail-fast/resume semantics. |
+| `code/scripts/10_evaluate_confirmation.ps1` | Conditional PowerShell entry point | Require complete main-arm LAST coverage for all three registered seeds, evaluate seeds 2028/2029 after global score preflight, and aggregate the fixed three-seed U/M mean and standard deviation. |
 | `code/scripts/monitor_full.ps1` | read-only monitor | Report runner state, exact completion/failure count, current file/arm, GPU, disk, and log freshness at 15-minute intervals. |
 
 ### 12.3 Data and split provenance
@@ -651,6 +656,12 @@ artifacts/paano_full/decision.json
 docs/experiments/PAANO_FULL_MAIN_RESULTS.md
 ```
 
+The result report must contain the exact 350/180 coverage, all three registered
+LAST arms, U/M VUS-PR/AUPRC/VUS-ROC values, the external Table 15 comparison,
+runtime/VRAM context, the terminal decision, and the negative six-file K0 caveat.
+It is generated only from the compact aggregate outputs and is not permitted to
+drop a track, family, arm, or unfavorable result.
+
 ### 12.5 Implementation and execution order
 
 ```text
@@ -660,7 +671,9 @@ docs/experiments/PAANO_FULL_MAIN_RESULTS.md
 4. Run the full method on U as soon as its manifest is ready; M may extract in parallel.
 5. Continue the full method on M, then run the two ablation arms.
 6. Evaluate only after score hashes are committed; aggregate against fixed paper references.
-7. If both tracks exceed, run main-only seeds 2028/2029; otherwise stop and retain failure evidence.
+7. Render the compact English numeric report, run the full unit suite, and verify the Git-facing outputs before committing them.
+8. If both tracks exceed, run main-only seeds 2028/2029; otherwise stop and retain failure evidence.
+9. After conditional confirmation, report every registered seed and the three-seed mean/standard deviation; no confirmation result may trigger another variant, seed replacement, or per-track selection.
 ```
 
 **Phase F design validation:** the extension changes only coverage and reporting. Model semantics, labels, hyperparameters, checkpoint endpoint, and external comparison values are fixed before full-run labels are evaluated.

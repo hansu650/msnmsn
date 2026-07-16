@@ -356,3 +356,37 @@ powershell -ExecutionPolicy Bypass -File .\code\scripts\03_aggregate_decision.ps
 **Expected effect**: allow the valid final-candidate draw to be materialized without changing the experiment arm, seed, optimizer, data, model, or any completed score artifact.
 
 **Document sync**: implementation.md yes | idea_report.md no semantic change | configs unchanged
+
+### 2026-07-16 17:19 - Iteration #3: full-result finalization and conditional confirmation pipeline
+
+**Reason**: use the running GPU ablation window to complete the already authorized, non-GPU manuscript-data closure path so evaluation, reporting, tests, and conditional seeds can start without an implementation gap.
+
+**Changes**:
+- `docs/implementation.md`: specifies the compact-only report renderer, finalization script, and the previously frozen conditional seeds 2028/2029 aggregation before their code was written.
+- `code/src/paano_k0/report_benchmark.py` and `code/tests/test_benchmark_report.py`: strictly validate the seven compact aggregate inputs and atomically render the complete English numeric report without dataset, label, raw-score, or evaluator imports.
+- `code/scripts/08_finalize_full.ps1`: chains exact full evaluation, compact validation, report rendering, the complete test suite, and Git-facing output checks without committing or filtering results.
+- `code/src/paano_k0/aggregate_confirmation.py` and `code/tests/test_confirmation_aggregate.py`: preserve all 530 files for each registered seed and report fixed three-seed U/M means and population standard deviations without a new success gate.
+- `code/scripts/09_run_full_confirmation.ps1` and `code/scripts/10_evaluate_confirmation.ps1`: refuse execution unless seed 2027 returns `CONTINUE_FULL_CONFIRMATION`, then run/evaluate only the frozen main arm for seeds 2028/2029 and reuse the complete seed-2027 metrics.
+- `README.md` and `code/README.md`: update the reproducible full-benchmark and finalization commands while retaining the negative K0 status.
+
+**Validation**:
+- Complete Python suite: `50 passed in 7.63s` while GPU ablations continued independently.
+- PowerShell 5.1 AST parse: scripts 08/09/10 all passed (`947`, `788`, and `1116` tokens; zero errors).
+- No current Eval label or partial metric was read by this iteration.
+
+**Expected effect**: when all 1,590 seed-2027 LAST scores are complete, the task can immediately produce all numeric paper tables and a transparent stop/confirmation decision; confirmation runs remain impossible unless both fixed paper comparisons pass.
+
+**Document sync**: implementation.md yes | idea_report.md unchanged (conditional seeds already frozen) | configs unchanged
+
+### 2026-07-16 17:34 - Iteration #4: packaging cross-review provenance hardening
+
+**Reason**: an independent static cross-review found that the compact renderer did not independently bind its 530 rows to the canonical Eval membership, the Git SHA could be attached to dirty core code, and the import-boundary regression test checked only relative imports.
+
+**Changes**:
+- `report_benchmark.py`: validates a frozen SHA-256 over canonical `track/family/series_id/data_sha256` membership while remaining compact-only.
+- `08_finalize_full.ps1`: refuses to render unless the scoring/evaluation/report code, frozen config, and full manifest match the reported Git `HEAD`.
+- `test_benchmark_report.py`: adds a noncanonical-membership rejection test and checks relative, absolute project, and third-party imports against an explicit standard-library allowlist.
+
+**Expected effect**: the manuscript-facing report now proves exact registered membership and identifies committed code without reopening data or labels.
+
+**Document sync**: implementation.md unchanged | idea_report.md unchanged | configs unchanged
