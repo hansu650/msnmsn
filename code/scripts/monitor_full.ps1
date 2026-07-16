@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)][int]$RunnerPid,
-    [ValidateSet('main', 'ablations')][string]$Mode = 'main'
+    [ValidateSet('main', 'ablations', 'confirmation')][string]$Mode = 'main'
 )
 
 Set-StrictMode -Version Latest
@@ -11,25 +11,32 @@ $RepoRoot = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 $ResultsRoot = 'D:\qintian_experiments\paano_full'
 $runsRoot = Join-Path $ResultsRoot 'runs'
 $process = Get-Process -Id $RunnerPid -ErrorAction SilentlyContinue
-$trajectories = if ($Mode -eq 'main') {
-    @('PAPERNEG_NONOVERLAP')
-} else {
-    @('PAPERNEG', 'OFFICIAL')
+$trajectories = switch ($Mode) {
+    'main' { @('PAPERNEG_NONOVERLAP') }
+    'ablations' { @('PAPERNEG', 'OFFICIAL') }
+    'confirmation' { @('PAPERNEG_NONOVERLAP') }
 }
 $total = if ($Mode -eq 'main') { 530 } else { 1060 }
+$seedPattern = if ($Mode -eq 'confirmation') {
+    '\\seed_(?:2028|2029)\\'
+} else {
+    '\\seed_2027\\'
+}
 $success = @(
     Get-ChildItem -LiteralPath $runsRoot -Recurse -File -Filter '_SUCCESS' -ErrorAction SilentlyContinue |
-        Where-Object { $_.Directory.Name -in $trajectories }
+        Where-Object { $_.Directory.Name -in $trajectories -and $_.FullName -match $seedPattern }
 ).Count
 $failed = @(
     Get-ChildItem -LiteralPath $runsRoot -Recurse -File -Filter '_FAILED.json' -ErrorAction SilentlyContinue |
-        Where-Object { $_.Directory.Name -in $trajectories }
+        Where-Object { $_.Directory.Name -in $trajectories -and $_.FullName -match $seedPattern }
 ).Count
 
 $launcherDirectory = if ($Mode -eq 'main') {
     Join-Path $RepoRoot 'logs\full_launcher'
-} else {
+} elseif ($Mode -eq 'ablations') {
     Join-Path $RepoRoot 'logs\full_ablation_launcher'
+} else {
+    Join-Path $RepoRoot 'logs\full_confirmation'
 }
 $launcherLog = Get-ChildItem -LiteralPath $launcherDirectory -File -Filter '*.stdout.log' -ErrorAction SilentlyContinue |
     Sort-Object LastWriteTime -Descending | Select-Object -First 1
@@ -37,8 +44,10 @@ $current = 'none'
 if ($null -ne $launcherLog) {
     $statusPattern = if ($Mode -eq 'main') {
         '^(RUN_MAIN|SKIP_VALID_MAIN) '
-    } else {
+    } elseif ($Mode -eq 'ablations') {
         '^(RUN_ABLATION|SKIP_VALID_ABLATION) '
+    } else {
+        '^(RUN_FULL_CONFIRMATION|SKIP_VALID_FULL_CONFIRMATION) '
     }
     $line = Get-Content -LiteralPath $launcherLog.FullName -Tail 30 |
         Where-Object { $_ -match $statusPattern } |

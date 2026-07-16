@@ -24,6 +24,13 @@ powershell -ExecutionPolicy Bypass -File .\code\scripts\06_run_full_ablations.ps
 powershell -ExecutionPolicy Bypass -File .\code\scripts\08_finalize_full.ps1
 ```
 
+Use `code/scripts/monitor_full.ps1` with `-Mode main` or `-Mode ablations`
+for read-only 15-minute status checks. If finalization authorizes the already
+registered confirmation branch, `09_run_full_confirmation.ps1` runs only
+seeds 2028/2029 and `monitor_full.ps1 -Mode confirmation` reports their exact
+1,060-run progress before `10_evaluate_confirmation.ps1` aggregates all three
+registered seeds.
+
 The score runners are label-free. Finalization first requires all 1,590 registered LAST score artifacts, performs a global hash/provenance preflight, then reads labels in the evaluator, aggregates all tracks and arms, renders the English numeric report, and runs the complete test suite.
 
 Compact results are in [`docs/experiments/PAANO_K0_RESULTS.md`](docs/experiments/PAANO_K0_RESULTS.md) and `artifacts/paano_k0/`.

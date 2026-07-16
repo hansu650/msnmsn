@@ -66,6 +66,9 @@ The original K0 terminal result remains preserved. The user's Phase F override a
 - Research artifacts and manuscript-facing text: English.
 - User-facing progress and decisions: concise Chinese.
 - No detailed tutorial for every paper; use evidence matrices and deep summaries only for key works.
+- Citation recency is frozen as follows: beyond indispensable citations for the primary baseline, evaluation protocol, metric, inherited component, or comparator provenance, use publications from **2024--2026**.
+- Related Work must be predominantly supported by **2025--2026** publications, with only a very small number of directly necessary 2024 papers.
+- Pre-2024 citations may establish historical lineage or indispensable provenance only; they must not be used as evidence for a claim of current novelty.
 
 ## Goal-Mode Continuous Execution and Paper Delivery
 

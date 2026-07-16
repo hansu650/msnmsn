@@ -631,7 +631,7 @@ The user-confirmed Phase F extension changes experiment coverage only. It reuses
 | `code/scripts/08_finalize_full.ps1` | PowerShell entry point | Run the registered full evaluator/aggregator, render the numeric Markdown report, execute the complete unit suite, and verify the compact Git-facing result set; it performs no automatic method change or hidden result filtering. |
 | `code/scripts/09_run_full_confirmation.ps1` | Conditional PowerShell entry point | Only when the frozen seed-2027 decision is `CONTINUE_FULL_CONFIRMATION`, run the same `PAPERNEG_NONOVERLAP-LAST` arm on all 530 files for seeds 2028 and 2029 with fail-fast/resume semantics. |
 | `code/scripts/10_evaluate_confirmation.ps1` | Conditional PowerShell entry point | Require complete main-arm LAST coverage for all three registered seeds, evaluate seeds 2028/2029 after global score preflight, and aggregate the fixed three-seed U/M mean and standard deviation. |
-| `code/scripts/monitor_full.ps1` | read-only monitor | Report runner state, exact completion/failure count, current file/arm, GPU, disk, and log freshness at 15-minute intervals. |
+| `code/scripts/monitor_full.ps1` | read-only monitor | Report runner state, exact completion/failure count, current file/arm, GPU, disk, and log freshness at 15-minute intervals for the main arm, ablations, or conditional confirmation seeds. Confirmation mode counts only seeds 2028/2029 and therefore cannot mix the already completed seed-2027 artifacts into progress. |
 
 ### 12.3 Data and split provenance
 
@@ -674,6 +674,7 @@ drop a track, family, arm, or unfavorable result.
 7. Render the compact English numeric report, run the full unit suite, and verify the Git-facing outputs before committing them.
 8. If both tracks exceed, run main-only seeds 2028/2029; otherwise stop and retain failure evidence.
 9. After conditional confirmation, report every registered seed and the three-seed mean/standard deviation; no confirmation result may trigger another variant, seed replacement, or per-track selection.
+10. While conditional confirmation is active, invoke `monitor_full.ps1 -Mode confirmation`; this is read-only and reports progress over the exact 1,060 registered seed-2028/2029 runs.
 ```
 
 **Phase F design validation:** the extension changes only coverage and reporting. Model semantics, labels, hyperparameters, checkpoint endpoint, and external comparison values are fixed before full-run labels are evaluated.

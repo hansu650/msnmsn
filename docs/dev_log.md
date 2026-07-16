@@ -497,3 +497,65 @@ older comparator provenance.
 
 **Document sync**: bibliography staging yes | manuscript not initialized |
 idea_report.md unchanged | experiment artifacts unread
+
+### 2026-07-16 19:55 - Iteration #10: conditional-confirmation monitoring coverage
+
+**Reason**: the registered full benchmark can conditionally launch seeds 2028
+and 2029, but the existing read-only monitor distinguished only the seed-2027
+main and ablation stages. A 15-minute confirmation automation therefore needed
+an exact progress mode before the result gate could authorize that branch.
+
+**Changes**:
+- `code/scripts/monitor_full.ps1`: adds a read-only `confirmation` mode that
+  counts only `PAPERNEG_NONOVERLAP` runs under seeds 2028/2029, reads the
+  dedicated confirmation launcher log, and reports progress over exactly 1,060
+  registered runs.
+- `docs/implementation.md`, `code/README.md`, and `README.md`: document the
+  conditional launch/evaluation sequence and the three monitor modes.
+- No model, checkpoint, dataset, label, score, metric, hyperparameter, seed
+  gate, or unfinished full-Eval artifact was changed or inspected.
+
+**Expected effect**: if the frozen seed-2027 gate passes, the required
+15-minute automation can monitor confirmation without contaminating progress
+with already completed seed-2027 artifacts.
+
+**Document sync**: implementation.md yes | README files yes |
+user_requirements.md citation policy independently updated | configs unchanged
+
+**Validation**:
+- PowerShell AST parse: pass.
+- Backward-compatible live ablation monitor: `537/1060`, zero failures,
+  current launcher event resolved, runner alive.
+- Confirmation isolation check before launch: `0/1060`, zero failures, no
+  seed-2027 artifact counted.
+- Complete Python suite: `51 passed`.
+- `git diff --check`: pass (line-ending notices only).
+
+### 2026-07-16 20:02 - Iteration #11: freeze recent-first citation balance
+
+**Reason**: the user requires the paper's substantive Related Work to be led
+by 2025--2026 research, with very few 2024 papers and older work retained only
+when its provenance cannot be replaced.
+
+**Changes**:
+- `docs/user_requirements.md`: records the 2024--2026 citation boundary and
+  prohibits pre-2024 work from supporting current-novelty claims.
+- `docs/bibliography/RELATED_WORK_CITATION_PLAN.md`: freezes ten narrative
+  citations: eight from 2025--2026 and two indispensable 2024 pair-semantics
+  precedents. TSB-AD and rigorous-evaluation sources remain protocol evidence
+  outside Related Work.
+- Bibliography metadata and PaAno Table 2/3 identity mappings were reconciled
+  against primary sources; external values remain explicitly paper-reported.
+
+**Validation**:
+- Narrative balance: 8/10 (80%) from 2025--2026, 2/10 (20%) from 2024, and
+  zero pre-2024 narrative keys.
+- All ten narrative keys resolve in the 35-entry BibTeX database and primary
+  source manifest.
+- BibTeX/Tectonic syntax smoke: pass; exact BibTeX/manifest coverage: 35/35;
+  PaAno table map: 22 rows and 21 distinct resolved keys.
+- No unfinished experiment result, score, or label was opened.
+
+**Expected effect**: the final English paper uses current literature for its
+research argument while preserving necessary historical citations only at the
+metric, protocol, component, or comparison-identity locations they support.

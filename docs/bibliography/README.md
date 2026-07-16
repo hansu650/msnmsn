@@ -24,11 +24,26 @@ arXiv source.
 
 ## Recency policy
 
-The narrative Related Work will be led by 2025--2026 publications, with only a
-small number of essential 2024 papers. Older works are retained only when they
-are irreplaceable provenance: the original source behind a PaAno comparison
-row, the VUS metric, the inherited RevIN module, or a foundational evaluation
-protocol. Older table-identity citations do not determine the narrative balance.
+The narrative Related Work is frozen to the 10 keys listed in
+`RELATED_WORK_CITATION_PLAN.md`: eight verified 2025--2026 papers and two
+indispensable 2024 papers. Thus, 2025--2026 supplies 80% of the narrative set.
+Seven of the eight recent papers
+are peer reviewed, while PAI is retained with an explicit preprint qualifier.
+
+The two 2024 exceptions are limited to the closest pair-semantics precedents.
+The 2024 benchmark/evaluation authorities are cited only in the experimental
+protocol, metric, or evidence-policy text and do not enter Related Work.
+Any later 2024 narrative addition requires a written indispensability reason
+and must preserve at least the 4:1 recent-to-2024 ratio. Papers from 2023 or
+earlier cannot be used for narrative novelty
+framing. They are retained only for irreplaceable provenance: an original
+comparison method, the VUS metric, the inherited RevIN module, or a strict
+evaluation rule. Such provenance citations and older table identities do not
+count toward the narrative balance.
+
+`dave2024nomore` is staged only as optional cross-domain mechanism provenance;
+it is not part of the frozen Related Work narrative and must not be described
+as TSAD prior art.
 
 ## Result-attribution rule
 
