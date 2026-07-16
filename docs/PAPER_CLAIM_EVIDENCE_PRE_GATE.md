@@ -43,6 +43,28 @@ Even if both tracks exceed the external values, the safe wording is:
 It is not permissible to call that comparison a local baseline reproduction,
 a paired improvement, or a statistically significant win over PaAno.
 
+If exactly one track exceeds its fixed external mean, that track result is
+descriptive only. A one-track pass cannot support an overall improvement,
+method-success, or cross-domain generality claim.
+
+## Component-Attribution Gate
+
+The external two-track performance gate and the same-code component evidence
+answer different questions. Passing the external gate does not by itself
+validate either registered execution change.
+
+- If the complete arm is descriptively higher than both removal arms on both
+  tracks, the manuscript may report cautious seed-2027 component evidence. It
+  still cannot call the component effect statistically significant.
+- If `PAPERNEG-LAST` or `OFFICIAL-LAST` matches or exceeds the complete arm on
+  either track, the result is mixed or dominated. The manuscript must not
+  attribute an external-score difference to non-overlap positives or
+  paper-negative execution, and it must not present the registered arm as a
+  validated method solely because it exceeds both external paper means.
+- Mixed/dominated ablations require a Phase F diagnosis or a negative-audit
+  framing. Eval labels may explain the completed result but cannot select a
+  new arm, component, family, or threshold.
+
 ## Claims Ruled Out by K0
 
 - Switching from BEST to LAST is a reliable repair.
@@ -101,3 +123,20 @@ After full finalization:
   must be preregistered before code or experiment changes and must not tune
   against Eval labels. Otherwise, stop this route rather than manufacture a
   rescue variant.
+
+After the fixed seeds 2028/2029 complete, apply a claim-only gate; it must not
+alter the method or choose results:
+
+1. **Stable external exceedance**: all three registered seeds exceed both
+   fixed external track means and the fixed three-seed mean exceeds both. The
+   manuscript may state that the registered arm exceeded the paper-reported
+   means across the three fixed seeds, subject to the component-attribution
+   gate. It still cannot claim a paired or statistically significant win over
+   PaAno.
+2. **Mean pass with seed instability**: the fixed mean exceeds both references
+   but at least one registered seed does not. Report every seed, the fixed
+   mean/dispersion, and the instability. Wording is limited to a descriptive
+   fixed-three-seed mean; do not claim stable improvement.
+3. **Mean failure**: either fixed three-seed track mean does not exceed its
+   external reference. Return to Phase F/stop and do not advance a positive
+   method claim.

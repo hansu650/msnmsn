@@ -1,0 +1,59 @@
+# Provisional IEEE MSN 2026 Manuscript Scaffold
+
+> Status: `PROVISIONAL_FORMAT_ONLY / PHASE_F_SCIENTIFIC_GATE_PENDING`
+
+This directory is a replaceable formatting scaffold. It is not claimed to be
+the unavailable MSN 2026 author kit, and it does not authorize a performance
+claim or a ResearchPilot Phase G transition. Scientific prose and result tables
+remain locked until the frozen Phase F benchmark gate is resolved.
+
+## Temporary format authority
+
+The user supplied the generic IEEE conference bundle at:
+
+`C:/Users/qintian/Downloads/conference-latex-template_10-17-19/Conference-LaTeX-template_10-17-19`
+
+| Asset | SHA-256 | Use |
+|---|---|---|
+| `conference_101719.tex` | `F701ED9D7BD928FC4A744B3453D1031F89AFED17460F97181819859847A87D8B` | structural reference only |
+| `IEEEtran.cls` | `C972ACA108FDA004C3514D63658E02816DA2E54D9A1451E870B9BD970E003F55` | exact, unmodified provisional class |
+| `IEEEtran.bst` | `314F0ECE704568FAF827011BAC498650691B2B5EE06320720830E782416D5A5F` | exact CTAN IEEEtran bibliography style |
+
+The class identifies itself as IEEEtran V1.8b (2015-08-26) and uses
+`\documentclass[conference]{IEEEtran}`: US Letter, 10-point, two-column
+conference layout. The sample prose, sample figure, rendered PDF, HOWTO, and
+`.DS_Store` are not copied into this project. The class is retained unmodified
+under its LPPL 1.3 notice. The user-supplied 2019 bundle has no `.bst`, so the
+bibliography style is copied from the independently verified local
+`IEEEtran-ctan.zip` archive.
+
+## Previous-year visual reference
+
+Ten 2025 MSN papers under `C:/Users/qintian/Downloads/bulk-download (4)` were
+used only as visual references. All are US Letter and use standard IEEE
+two-column typography; nine are eight pages and one is nine pages. Published
+conference headers, DOI/copyright strips, page numbers, and IEEE Xplore
+download watermarks are production elements and must not be inserted into the
+anonymous review source. These papers do not override the 2026 eight-page
+review limit recorded in `docs/MSN2026_SUBMISSION_REQUIREMENTS.md`.
+
+## Current source contract
+
+- `main.tex` is anonymous and contains no publisher header, DOI, copyright,
+  funding footnote, or author-identifying information.
+- `sections/` separates the eventual ResearchPilot G.1--G.6 outputs.
+- `references.bib` initially contains only indispensable, already cited
+  baseline/benchmark/metric provenance. G.0/G.5 will copy additional used
+  entries from `docs/bibliography/candidate_references.bib` and reject unused
+  or undefined keys.
+- Result placeholders contain no fabricated or incomplete number. They will be
+  replaced only from compact artifacts produced after full finalization.
+- Drafting is text-first: edit LaTeX, BibTeX, and textual tables only. Do not
+  generate plots or manuscript figures; the user will supply/finalize figures
+  later, and any eventual figure location must remain replaceable.
+- Build intermediates and provisional PDFs belong in repository-level
+  `.latex-build/`, which is gitignored.
+
+Before submission, replace or reconcile this scaffold against the user-provided
+final MSN template and re-run Tectonic, page-count, citation, numerical, and
+rendered-page checks.

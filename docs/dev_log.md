@@ -676,6 +676,56 @@ scores, data, and configuration.
 **Document sync**: user_requirements.md yes | implementation.md yes | configs
 unchanged | idea_report.md unchanged
 
+### 2026-07-16 20:45 - Provisional IEEE manuscript scaffold
+
+**Reason**: the user supplied a generic IEEE conference template and ten 2025
+MSN papers as a temporary formatting reference while the frozen Phase F
+benchmark continues. The 2026 official template remains unavailable to the
+user, so formatting provenance must stay explicit and replaceable.
+
+**Changes**:
+- `docs/manuscripts/msn2026/README.md`: records the generic-template hashes,
+  last-year visual conventions, production-only elements, and replacement
+  rules.
+- `docs/manuscripts/msn2026/main.tex` and `sections/*.tex`: add an anonymous,
+  claim-safe IEEE conference skeleton aligned with future ResearchPilot
+  G.1--G.6 outputs.
+- `docs/manuscripts/msn2026/references.bib`: includes only the three
+  indispensable citations already rendered by the scaffold.
+
+**Expected effect**: formatting and citation compilation can be verified now,
+while incomplete scores and unsupported contribution wording remain excluded.
+This preparation does not move the project out of Phase F.
+
+**Document sync**: manuscript scaffold yes | implementation.md unchanged |
+idea_report.md unchanged | configs unchanged
+
+- Exact template assets added without modification: `IEEEtran.cls` SHA-256
+  `C972ACA108FDA004C3514D63658E02816DA2E54D9A1451E870B9BD970E003F55`;
+  CTAN `IEEEtran.bst` SHA-256
+  `314F0ECE704568FAF827011BAC498650691B2B5EE06320720830E782416D5A5F`.
+
+### 2026-07-16 20:50 - Provisional format and claim-gate validation
+
+- Tectonic 0.16.9 compiled the provisional IEEE source, ran BibTeX, and
+  resolved all three citations: exit 0, one US-Letter page, zero overfull box,
+  zero missing file, and no undefined citation/reference. The only content
+  warning is an underfull bibliography line caused by long provenance URLs;
+  IEEEtran/Tectonic also substitutes unavailable TU Times font shapes.
+- Rendered-page inspection: anonymous two-column title/abstract/keywords,
+  Roman-numeral section hierarchy, numbered references, and US-Letter margins
+  are visually intact; no clipping, overlap, black square, publisher header,
+  DOI, copyright strip, or download watermark appears.
+- Independent pre-gate review identified and closed three claim gaps in
+  `PAPER_CLAIM_EVIDENCE_PRE_GATE.md`: one-track-pass wording, component
+  attribution under mixed/dominated ablations, and fixed-three-seed stability
+  branches. None of these gates changes the running experiment or permits
+  Eval-label selection.
+- User formatting boundary: manuscript source stays under
+  `docs/manuscripts/msn2026/`, Tectonic output stays under `.latex-build/`, and
+  Codex drafts text/BibTeX/textual tables only. Manuscript figures are deferred
+  to the user and will not be generated during the current workflow.
+
 ### 2026-07-16 20:31 - Bibliography readiness and PaAno source sync
 
 - Independent read-only audit: 35 BibTeX entries, 35 unique keys, no duplicate
