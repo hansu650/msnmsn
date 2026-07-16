@@ -32,6 +32,12 @@ The original K0 terminal result remains preserved. The user's Phase F override a
 - Do not reproduce the paper's complete baseline suite. Use PaAno paper-reported headline values as the main external comparison. `OFFICIAL-LAST` may run only as a component-removal ablation of the project's full arm, not as a separately tuned headline reproduction.
 - Primary threshold-free metrics: VUS-PR and AUPRC. Preserve all negative outcomes in route decisions.
 - When a long GPU job starts, create a 15-minute monitoring automation and use runtime for independent literature, analysis, documentation, and packaging.
+- Treat `20 GiB` free on the C drive as a hard operational floor during long
+  experiments. Below that floor, stop nonessential new writes and move or
+  clean only clearly identified inactive temporary caches or hash-verified
+  cold archives. Never delete or relocate active PaAno runs, scores,
+  checkpoints, manifests, logs, the route environment, TSB-AD data, or any
+  unverified file.
 
 ## Compute and Repository
 

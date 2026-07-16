@@ -644,3 +644,14 @@ cleanliness | idea_report.md unchanged | configs unchanged
   fail closed; direct runtime bytecode with Unicode/space paths remains valid.
 - A future Windows-junction-specific regression was identified as optional and
   non-blocking; the current real checkout contains no such path.
+
+### 2026-07-16 20:14 - Operational disk-space floor
+
+- `docs/user_requirements.md`: records the user-specified C-drive hard floor of
+  `20 GiB` and the protected active-experiment paths.
+- Updated the existing 15-minute heartbeat automation to trigger safe cleanup
+  or migration below the floor; it must notify rather than delete when no
+  clearly safe candidate exists.
+- Current read-only status: C `77.86 GiB`, D `828.84 GiB`, ablations
+  `676/1060`, zero failures; no cleanup was necessary and no experiment file
+  was touched.
