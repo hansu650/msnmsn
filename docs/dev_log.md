@@ -402,3 +402,24 @@ powershell -ExecutionPolicy Bypass -File .\code\scripts\03_aggregate_decision.ps
 **Expected effect**: long-running experiments and later paper stages can advance without routine user gates while preserving scientific stop rules and venue-specific requirements.
 
 **Document sync**: user_requirements.md yes | idea_report.md unchanged | implementation.md unchanged | configs unchanged
+
+### 2026-07-16 18:49 - Iteration #6: freeze MSN paper-format authority
+
+**Reason**: the auxiliary paper workflow contains LNCS examples, whereas the target venue requires IEEE Computer Society conference formatting. The paper infrastructure needs a verified venue-specific authority before G.0 begins.
+
+**Changes**:
+- `docs/MSN2026_SUBMISSION_REQUIREMENTS.md`: records the official eight-page inclusive double-blind IEEE format, Big Data and AI track, dates, EasyChair entry, IEEEtran contract, and local build-tool hashes.
+- The venue-hosted 2024 template link was recorded as temporarily returning HTTP 404; the official CTAN IEEEtran package was downloaded and hash-verified as a fallback, with a mandatory pre-submission author-kit retry.
+- No manuscript claim, model, experiment, score, label, or current full-benchmark result was changed or read.
+
+**Expected effect**: G.0 can initialize an independent IEEE manuscript without inheriting the generic workflow's incompatible LNCS template.
+
+**Document sync**: user_requirements.md unchanged | idea_report.md unchanged | implementation.md unchanged | configs unchanged
+
+### 2026-07-16 18:50 - Iteration #6 validation: IEEEtran/Tectonic smoke build
+
+- Source: CTAN `bare_conf.tex` using `\documentclass[conference]{IEEEtran}`.
+- Compiler: Tectonic 0.16.9 at the frozen local path.
+- Result: exit code 0, two TeX passes, PDF emitted (`26,118` bytes), and zero matched undefined-reference/citation, overfull, or error log lines.
+- Build directory: external `D:/qintian_experiments/latex_smoke/ieeetran-20260716-184749`; no build products were added to Git.
+- Non-blocking environment warning: Fontconfig reported no default configuration after the PDF was successfully written. Final visual QA must verify that this does not affect manuscript fonts.
