@@ -338,3 +338,21 @@ powershell -ExecutionPolicy Bypass -File .\code\scripts\03_aggregate_decision.ps
 **Expected effect**: the long-running label-free score artifacts can be evaluated only after complete hash preflight, and manuscript tables cannot silently use the Table 12 k=1 M=`0.431` value as the default-paper comparator.
 
 **Document sync**: Phase F implementation contract already present; paper-reference prose correction coordinated separately | configs unchanged
+
+### 2026-07-16 14:36 - Iteration #2: replay float32 open-endpoint correction
+
+**Reason**: the 60th full-main series retained a fail-fast record when one valid NumPy float64 uniform (`0.9999999801825278`) rounded to the closed endpoint `1.0` during float32 storage, violating the registered `[0,1)` replay invariant before training began.
+
+**Changes**:
+- `docs/implementation.md`: freezes the representation-only endpoint canonicalization before code modification.
+- `code/src/paano_k0/replay.py`: preserves the original float64 RNG calls and stream, then maps only float32 values rounded to `1.0` to `nextafter(float32(1), float32(0))`.
+- `code/tests/test_replay.py`: adds a direct endpoint regression and the exact failed MITDB replay-seed regression.
+
+**Validation**:
+- Focused replay tests: `8 passed`.
+- Full suite: `41 passed`.
+- Exact old/new replay comparison on the failed seed found one and only one representation difference: iteration 94, unadjacent draw `[385,0]`, `1.0 -> 0.9999999403953552`; all other stored draws and RNG ordering were unchanged.
+
+**Expected effect**: allow the valid final-candidate draw to be materialized without changing the experiment arm, seed, optimizer, data, model, or any completed score artifact.
+
+**Document sync**: implementation.md yes | idea_report.md no semantic change | configs unchanged

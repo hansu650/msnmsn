@@ -108,6 +108,23 @@ def _plan_payload_sha256(
     return digest.hexdigest()
 
 
+_FLOAT32_BELOW_ONE = np.nextafter(np.float32(1.0), np.float32(0.0))
+
+
+def _store_unit_uniforms(draws: NDArray[np.float64]) -> NDArray[np.float32]:
+    """Store float64 draws in float32 without closing the [0, 1) interval.
+
+    A valid float64 draw in the upper half-ULP below one can round to exactly
+    ``1.0`` when cast to float32.  Canonicalizing only that representation to
+    the greatest float32 below one preserves the original RNG stream and the
+    intended final candidate ordinal.
+    """
+
+    stored = np.ascontiguousarray(draws, dtype=np.float32)
+    np.minimum(stored, _FLOAT32_BELOW_ONE, out=stored)
+    return stored
+
+
 def build_replay_plan(
     n_patches: int,
     batch_size: int,
@@ -133,9 +150,9 @@ def build_replay_plan(
                 # A singleton minibatch cannot reproduce PaAno's non-self pretext task.
                 # Merge it into a fresh epoch rather than inventing a self-negative.
                 continue
-            positive = np.ascontiguousarray(rng.random(anchors.size), dtype=np.float32)
-            unadjacent = np.ascontiguousarray(
-                rng.random((anchors.size, num_unadjacent)), dtype=np.float32
+            positive = _store_unit_uniforms(rng.random(anchors.size))
+            unadjacent = _store_unit_uniforms(
+                rng.random((anchors.size, num_unadjacent))
             )
             records.append(IterationReplay(anchors, positive, unadjacent))
     frozen = tuple(records)
