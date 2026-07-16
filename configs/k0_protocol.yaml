@@ -1,0 +1,119 @@
+project: paano_execution_activity_k0
+status: frozen_for_implementation
+date: 2026-07-16
+
+baseline:
+  name: PaAno
+  venue: ICLR_2026
+  git_url: https://github.com/jinnnju/PaAno
+  git_sha: d4c67116190efa4592dc6a8a157ced0def68b6af
+  paper_vus_pr_u: 0.530
+  paper_vus_pr_m: 0.431
+  comparison_note: external_paper_reference_not_same_file_paired
+
+official_hyperparameters:
+  patch_size: 96
+  stride: 1
+  iterations: 100
+  batch_size: 512
+  learning_rate: 0.0001
+  optimizer: AdamW
+  weight_decay: 0.0001
+  margin: 0.1
+  triplet_divisor: 10
+  positive_radius: 2
+  pretext_step: 96
+  pretext_nonzero_iterations: 19
+  memory_request_fraction: 0.10
+  memory_minimum_exemplars: 500
+  score_top_k: 3
+  use_revin: true
+
+seeds:
+  primary: [2027]
+  conditional_confirmation: [2027, 2028, 2029]
+
+trajectories:
+  - id: OFFICIAL
+    negative_pool: positive_views
+    negative_selection_space: projection
+    positive_offsets: [-2, -1, 1, 2]
+    save_checkpoints: [BEST, LAST]
+  - id: PAPERNEG
+    negative_pool: anchor_views
+    negative_selection_space: encoder
+    positive_offsets: [-2, -1, 1, 2]
+    save_checkpoints: [BEST, LAST]
+  - id: PAPERNEG_NONOVERLAP
+    negative_pool: anchor_views
+    negative_selection_space: encoder
+    positive_offsets: [-96, 96]
+    save_checkpoints: [BEST, LAST]
+  - id: RAND_BN
+    optimizer_updates: false
+    batchnorm_forward_replay_batches: 100
+    save_checkpoints: [BN_CALIBRATED]
+
+instrumentation:
+  per_iteration:
+    - lambda_pretext
+    - positive_offset
+    - raw_overlap_ratio
+    - positive_distance_quantiles
+    - negative_distance_quantiles
+    - hinge_margin_quantiles
+    - active_hinge_fraction
+    - triplet_loss_before_divisor
+    - triplet_loss_after_divisor
+    - pretext_loss
+    - pretext_accuracy
+    - encoder_triplet_grad_norm
+    - encoder_pretext_grad_norm
+    - encoder_gradient_cosine
+    - selected_negative_temporal_gap
+    - selected_negative_index_collision_rate
+    - best_checkpoint_iteration
+  per_score_artifact:
+    - vus_pr
+    - auprc
+    - vus_roc
+    - runtime_seconds
+    - peak_vram_mib
+    - requested_memory_fraction
+    - effective_memory_fraction
+    - score_sha256
+
+label_policy:
+  runner_accepts_labels: false
+  score_written_before_evaluation: true
+  evaluator_only_metrics: [vus_pr, auprc, vus_roc]
+  forbidden_selection_metrics: [point_f1, best_f1, range_f1]
+
+gates:
+  low_activity:
+    post_pretext_iteration_range: [20, 100]
+    median_active_hinge_fraction_lte: 0.10
+    minimum_families: 4
+  early_checkpoint:
+    best_iteration_lte: 30
+    minimum_families: 4
+  performance:
+    macro_vus_pr_delta_gte: 0.010
+    minimum_positive_families: 3
+    worst_family_delta_gte: -0.010
+    macro_auprc_delta_gt: 0.0
+  outcomes:
+    last_only_passes: SIMPLE_CHECKPOINT_FIX
+    paperneg_only_passes: SIMPLE_PAPER_PARITY_FIX
+    nonoverlap_unique_passes_with_low_activity: GO_METHOD_DESIGN
+    activity_not_low_and_no_execution_gain: STOP_NO_ACTIVITY_FAILURE
+    activity_low_but_no_performance_gain: STOP_NO_PERFORMANCE_HEADROOM
+
+forbidden:
+  - learned_selector
+  - family_specific_parameters
+  - eval_label_tuning
+  - score_calibration_novelty
+  - attention_or_large_backbone
+  - post_failure_rescue_module
+

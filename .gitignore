@@ -1,0 +1,35 @@
+# Data, environments, and generated artifacts
+data/
+datasets/
+*.zip
+*.7z
+*.tar
+*.tar.gz
+*.pth
+*.pt
+*.ckpt
+.conda/
+.venv/
+env/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+
+# Downloaded literature and temporary PDF renders
+docs/papers/*.pdf
+tmp/
+
+# Large experiment outputs
+artifacts/**/cache/
+artifacts/**/raw/
+outputs/
+logs/
+results/
+code/results/
+code/logs/
+*.npy
+*.npz
+
+# Local vendor repositories
+vendor/
