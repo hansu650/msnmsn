@@ -252,3 +252,11 @@ powershell -ExecutionPolicy Bypass -File .\code\scripts\03_aggregate_decision.ps
 
 - **What happens**: runs the frozen 24 primary jobs, commits 42 label-free score artifacts, evaluates them only after score-hash verification, then applies the preregistered decision gates.
 - **Output**: raw runs under `results/k0` (ignored by Git), compact aggregate tables and the terminal decision are exported for the final research record.
+
+### 2026-07-16 13:44 - Primary K0 completed and stopped at the frozen performance gate
+
+- **Completed**: all 24/24 primary jobs and 42/42 score evaluations completed with zero failures. The preregistered aggregator returned `STOP_NO_PERFORMANCE_HEADROOM`.
+- **Mechanism evidence**: all six families have post-pretext median active-hinge fraction `0.0`, and every OFFICIAL run selects BEST at iteration 20.
+- **Performance evidence**: LAST-vs-BEST macro VUS-PR is `+0.009059` but macro AUPRC is `-0.008610` and worst-family VUS-PR is `-0.259217`; PAPERNEG and NONOVERLAP have negative macro deltas.
+- **Decision**: do not run confirmation seeds, do not freeze a method, and do not add a rescue module. Preserve the result as a mechanism-only failure record.
+- **Artifacts**: copied the exact aggregate decision, file/family metrics, and paired contrasts into `artifacts/paano_k0/`; added the full English result record at `docs/experiments/PAANO_K0_RESULTS.md`.

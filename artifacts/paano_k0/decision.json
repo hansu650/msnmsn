@@ -1,0 +1,95 @@
+{
+  "config_sha256": "8414885694d7a346ca9b70251213b017791ade6611d04fb9e7f39ef6d238e824",
+  "gates": {
+    "checkpoint": {
+      "family_delta_vus_pr": {
+        "Exathlon": -0.01833542463153237,
+        "IOPS": 0.0,
+        "NAB": 0.05607802533963324,
+        "SMAP": 0.24525978617771427,
+        "SMD": -0.25921684423018687,
+        "SWaT": 0.030569483015448595
+      },
+      "macro_delta_auprc": -0.00860982555795938,
+      "macro_delta_vus_pr": 0.009059170945179476,
+      "passed": false,
+      "positive_families": 3,
+      "worst_family_delta_vus_pr": -0.25921684423018687
+    },
+    "early_checkpoint": {
+      "best_iteration": {
+        "Exathlon": 20,
+        "IOPS": 20,
+        "NAB": 20,
+        "SMAP": 20,
+        "SMD": 20,
+        "SWaT": 20
+      },
+      "count": 6,
+      "family_early": {
+        "Exathlon": true,
+        "IOPS": true,
+        "NAB": true,
+        "SMAP": true,
+        "SMD": true,
+        "SWaT": true
+      },
+      "passed": true
+    },
+    "low_activity": {
+      "count": 6,
+      "family_low_activity": {
+        "Exathlon": true,
+        "IOPS": true,
+        "NAB": true,
+        "SMAP": true,
+        "SMD": true,
+        "SWaT": true
+      },
+      "family_medians": {
+        "Exathlon": 0.0,
+        "IOPS": 0.0,
+        "NAB": 0.0,
+        "SMAP": 0.0,
+        "SMD": 0.0,
+        "SWaT": 0.0
+      },
+      "passed": true
+    },
+    "overlap": {
+      "family_delta_vus_pr": {
+        "Exathlon": -0.00867931192618332,
+        "IOPS": 0.0,
+        "NAB": -0.0020274252749861166,
+        "SMAP": -0.049759185421172136,
+        "SMD": -0.011451092684555242,
+        "SWaT": 0.0002715278562999135
+      },
+      "macro_delta_auprc": -0.012545107208064205,
+      "macro_delta_vus_pr": -0.011940914575099484,
+      "passed": false,
+      "positive_families": 1,
+      "worst_family_delta_vus_pr": -0.049759185421172136
+    },
+    "paper_negative": {
+      "family_delta_vus_pr": {
+        "Exathlon": -0.007739610381685913,
+        "IOPS": 0.0,
+        "NAB": 0.0016958726129652213,
+        "SMAP": -0.31607106014026937,
+        "SMD": -0.006004043236515877,
+        "SWaT": 0.001364567637538061
+      },
+      "macro_delta_auprc": -0.05018902113965107,
+      "macro_delta_vus_pr": -0.05445904558466131,
+      "passed": false,
+      "positive_families": 2,
+      "worst_family_delta_vus_pr": -0.31607106014026937
+    }
+  },
+  "method_frozen": false,
+  "missing_count": 0,
+  "outcome": "STOP_NO_PERFORMANCE_HEADROOM",
+  "schema_version": "paano-k0-decision-v1",
+  "winning_trajectory": null
+}

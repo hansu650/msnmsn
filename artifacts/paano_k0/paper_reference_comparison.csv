@@ -1,0 +1,13 @@
+result_source,arm,track,series_count,vus_pr,comparison_semantics
+PaAno paper reported,PaAno headline,U,full paper benchmark,0.530,external paper reference not matched-file paired
+PaAno paper reported,PaAno headline,M,full paper benchmark,0.431,external paper reference not matched-file paired
+This K0,OFFICIAL_BEST,U,2,0.559711,selected K0 files only
+This K0,OFFICIAL_BEST,M,4,0.550274,selected K0 files only
+This K0,OFFICIAL_LAST,U,2,0.587750,selected K0 files only
+This K0,OFFICIAL_LAST,M,4,0.549844,selected K0 files only
+This K0,PAPERNEG_LAST,U,2,0.588598,selected K0 files only
+This K0,PAPERNEG_LAST,M,4,0.467731,selected K0 files only
+This K0,PAPERNEG_NONOVERLAP_LAST,U,2,0.587585,selected K0 files only
+This K0,PAPERNEG_NONOVERLAP_LAST,M,4,0.450327,selected K0 files only
+This K0,RAND_BN,U,2,0.560809,diagnostic control on selected K0 files only
+This K0,RAND_BN,M,4,0.597614,diagnostic control on selected K0 files only
