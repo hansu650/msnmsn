@@ -1176,6 +1176,36 @@ Validation completed before production retry:
 The partial 663-row v2 directory therefore cannot be resumed and will be
 archived intact before the clean production retry.
 
+### 2026-07-17 09:50 - Iteration #18 full seed-2027 terminal result
+
+The clean endpoint-normalized contract completed all 1,590 registered LAST
+metrics (530 series x three trajectories), aggregation, report rendering, and
+the complete `167 passed` test suite.  No score, metric, or series is missing.
+
+`PAPERNEG_NONOVERLAP-LAST` achieved file-weighted VUS-PR `0.5191913274` on
+TSB-AD-U and `0.4102135999` on TSB-AD-M.  The fixed external PaAno Table 15
+references are `0.5296` and `0.4263`, respectively, so the deltas are
+`-0.0104086726` and `-0.0160864001`.  Same-code controls were:
+
+- `OFFICIAL-LAST`: U `0.5271471244`, M `0.4091209875`;
+- `PAPERNEG-LAST`: U `0.5261755316`, M `0.4064006463`.
+
+Thus non-overlap positives modestly improve M relative to both controls but
+materially reduce U, and the full arm does not exceed the external reference
+on either track.  The frozen outcome is `STOP_FULL_MAIN_FAILURE`; seeds 2028
+and 2029 are not launched.  The result is preserved in full, not selectively
+filtered by family or metric.
+
+One bounded, already motivated diagnostic remains: evaluate the previously
+committed `BEST` score artifacts for all three arms, without GPU reruns,
+per-track selection, or any method change.  This tests the existing checkpoint
+rule RQ.  `PAPERNEG_NONOVERLAP-BEST` must independently exceed both fixed paper
+references and both same-checkpoint controls on both tracks to reopen a method
+claim; otherwise the PaAno execution-repair method route closes.
+
+**Document sync**: compact results/report yes | idea_report pending G.0 update |
+configs unchanged | manuscript claims still gated
+
 ### 2026-07-17 09:18 - Iteration #16 independent-review closeout
 
 Independent read-only review returned `PASS` after the universal contract

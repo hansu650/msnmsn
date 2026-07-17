@@ -1,0 +1,3 @@
+track,files,ours_method,ours_vus_pr,paper_method,paper_vus_pr,paper_reference_source,delta_vus_pr,exceeds_paper_reported,comparison_type
+U,350,PAPERNEG_NONOVERLAP_LAST,0.5191913274451146,PaAno (paper-reported),0.5296,PaAno Table 15 default full-Eval (k=3),-0.010408672554885312,False,external_paper_reported
+M,180,PAPERNEG_NONOVERLAP_LAST,0.41021359992065903,PaAno (paper-reported),0.4263,PaAno Table 15 default full-Eval (k=3),-0.01608640007934098,False,external_paper_reported
