@@ -1,77 +1,77 @@
-# PaAno K0 Implementation
+# Index-Consistent Harmonic Projection (IHP)
 
-This overlay keeps the PaAno encoder and scorer semantics fixed while running matched execution-fidelity, checkpoint, objective-activity, and overlap controls. It does not define a final method.
+This package contains the final parameter-free projection correction for the
+frozen VLM4TS/ViT4TS screening stage. IHP interprets released multiscale masks
+as literal zero-based base-cell indices and applies a validity-normalized
+harmonic projection. It uses no labels, learned weights, thresholds, or extra
+backbone passes.
+
+The paper-facing evidence covers 492 series and all 11 Table-1 subdatasets.
+The external ViT4TS values are copied from the AAAI 2026 paper and are always
+marked paper-reported; `REL_U` is the same-cache component-removal control.
 
 ## Environment
 
-PyTorch is installed separately because the CUDA wheel is platform-specific:
+CUDA PyTorch is installed separately so that the requirements file never
+silently replaces it with a CPU wheel.
 
 ```powershell
-D:\Anaconda\envs\paano_msn\python.exe -m pip install torch==2.7.1 --index-url https://download.pytorch.org/whl/cu128
-D:\Anaconda\envs\paano_msn\python.exe -m pip install -r C:\Users\qintian\Desktop\msn\msnmsn\code\requirements.txt
-D:\Anaconda\envs\paano_msn\python.exe -m pip install -e C:\Users\qintian\Desktop\msn\msnmsn\code
+python -m pip install -r .\code\requirements.txt
+python -m pip install --no-deps TSB_AD==1.5
+python -m pip install -e .\code
 ```
 
-The CUDA smoke was repeated from independent output directories with identical initialization, replay, BEST/LAST checkpoint, memory-bank, and score hashes. The primary K0 uses the frozen six-series manifest and seed 2027.
+## Minimal API
 
-## Run the frozen K0
+```python
+from measure_vit4ts.ihp import index_consistent_harmonic_projection
+
+score_map = index_consistent_harmonic_projection(
+    large_scores,
+    mid_scores,
+    patch_scores,
+    large_zero_based_mask,
+    mid_zero_based_mask,
+)
+```
+
+The module accepts only frozen token costs and zero-based pooling masks. It
+does not accept anomaly labels.
+
+Apply the same method to a frozen ViT4TS token cache and emit base-grid maps
+plus the 224-column window scores used by the unchanged timestamp stitcher:
 
 ```powershell
-Set-Location C:\Users\qintian\Desktop\msn\msnmsn
-powershell -ExecutionPolicy Bypass -File .\code\scripts\01_run_primary_k0.ps1
-powershell -ExecutionPolicy Bypass -File .\code\scripts\02_evaluate_primary_k0.ps1
-powershell -ExecutionPolicy Bypass -File .\code\scripts\03_aggregate_decision.ps1
+python .\code\scripts\ihp_score_cache.py `
+  --token-cache <clip_tokens.npz> `
+  --output <ihp_scores.npz> `
+  --device cuda
 ```
 
-The runner never reads labels. The evaluator first verifies committed score hashes, then loads labels to compute metrics. PaAno paper values are external headline references; they are not represented as matched-file reproductions.
-
-## Run the frozen full benchmark
+Run the public unit tests:
 
 ```powershell
-Set-Location C:\Users\qintian\Desktop\msn\msnmsn
-powershell -ExecutionPolicy Bypass -File .\code\scripts\05_run_full_main.ps1
-powershell -ExecutionPolicy Bypass -File .\code\scripts\06_run_full_ablations.ps1
-powershell -ExecutionPolicy Bypass -File .\code\scripts\08_finalize_full.ps1
+python -m pytest `
+  .\code\tests\test_ihp.py -q
 ```
 
-Monitor the active stage without changing any scientific state:
+Recreate the label-free structural certificate from any frozen ViT4TS token
+cache:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\code\scripts\monitor_full.ps1 -RunnerPid <PID> -Mode main
-powershell -ExecutionPolicy Bypass -File .\code\scripts\monitor_full.ps1 -RunnerPid <PID> -Mode ablations
+python .\code\scripts\ihp_structure_audit.py `
+  --token-cache <clip_tokens.npz> `
+  --output .\artifacts\ihp\ihp_structure_certificate.json
 ```
 
-Finalization calls `07_evaluate_full.ps1`, which requires all 1,590 registered
-trajectory and LAST-score commits before evaluator-only label loading. It then
-requires the seven compact aggregate artifacts, renders
-`docs/experiments/PAANO_FULL_MAIN_RESULTS.md`, runs the complete pytest suite,
-and verifies that all eight result files are nonempty and not ignored by Git.
-The script does not commit or push changes.
-
-If and only if finalization emits `CONTINUE_FULL_CONFIRMATION`, run the same
-frozen main arm for seeds 2028 and 2029 and then aggregate all three seeds:
+Generate the final figures from the frozen compact result package:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\code\scripts\09_run_full_confirmation.ps1
-powershell -ExecutionPolicy Bypass -File .\code\scripts\monitor_full.ps1 -RunnerPid <PID> -Mode confirmation
-powershell -ExecutionPolicy Bypass -File .\code\scripts\10_evaluate_confirmation.ps1
+python .\code\scripts\ihp_make_figures.py `
+  --artifacts .\artifacts\ihp `
+  --output .\docs\manuscripts\msn2026\figures
 ```
 
-Confirmation monitoring counts only the 1,060 seed-2028/2029 runs. Seed 2027
-is excluded from its progress count, while all three seeds remain required by
-the final confirmation evaluator. The launcher binds authorization to the
-current config/vendor hashes and validates any resumed LAST artifact before
-skipping it. All monitor modes enumerate only the frozen 530-series manifest.
-
-The full-result Markdown report exposes the registered VUS-PR, AUPRC, and
-VUS-ROC endpoints. AUROC remains an internal metric-schema compatibility field
-and is not a manuscript-facing endpoint.
-
-## Verify
-
-```powershell
-Set-Location C:\Users\qintian\Desktop\msn\msnmsn\code
-D:\Anaconda\envs\paano_msn\python.exe -m pytest -q
-```
-
-Expected implementation result: the complete suite passes with no failures.
+Large tokens, anomaly maps, scores, datasets, checkpoints, and logs remain
+local. Only compact source, evidence tables, manuscript files, and checked
+figures belong in Git.

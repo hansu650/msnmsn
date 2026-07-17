@@ -1,0 +1,66 @@
+{
+  "claim_limits": [
+    "same-cache F1 confidence interval crosses zero",
+    "external paper-reported comparison is descriptive, not paired",
+    "Coordinate Envelope failed its frozen component gate",
+    "IHP changes projection only and does not add VLM verification"
+  ],
+  "coverage": {
+    "series": 492,
+    "subdatasets": 11,
+    "tracks": [
+      "NAB",
+      "NASA",
+      "Yahoo"
+    ]
+  },
+  "external_paper_reported": {
+    "comparison_type": "descriptive_external_not_paired",
+    "delta": 0.050141580228357796,
+    "doi": "10.1609/aaai.v40i26.39319",
+    "ihp_equal11_f1_max": 0.6621415802283578,
+    "paper": "Harnessing Vision Language Models for Time Series Anomaly Detection",
+    "subdataset_wins": 9,
+    "subdatasets": 11,
+    "table": "Table 1",
+    "venue": "AAAI 2026",
+    "vit4ts_equal11_f1_max": 0.612
+  },
+  "frozen_config_sha256": "72773BC1A40DBD7BEA3E4766A03C7E205C99E1FE10329EC31FA3A7D3CC293E6A",
+  "method": "Index-Consistent Harmonic Projection",
+  "same_cache": {
+    "auprc": {
+      "ci_lower": 0.006206594367241494,
+      "ci_upper": 0.039805845122848835,
+      "control": 0.29740142920981977,
+      "delta": 0.021810908093821746,
+      "ihp": 0.3192123373036415,
+      "paired_significant_positive": true,
+      "positive_subdatasets": 9
+    },
+    "f1_max": {
+      "ci_lower": -0.002288513135771623,
+      "ci_upper": 0.06812804052589595,
+      "control": 0.6354087742196343,
+      "delta": 0.02673280600872352,
+      "ihp": 0.6621415802283578,
+      "paired_significant_positive": false,
+      "positive_subdatasets": 6
+    },
+    "vus_pr": {
+      "ci_lower": 0.002064247116263874,
+      "ci_upper": 0.01969328826745504,
+      "control": 0.6872943317067485,
+      "delta": 0.010200224845696049,
+      "ihp": 0.6974945565524445,
+      "paired_significant_positive": true,
+      "positive_subdatasets": 7
+    }
+  },
+  "same_cache_control": "REL_U",
+  "score_arm": "IDX_U",
+  "selection_provenance": "post_gate_simplification_of_preregistered_ablation",
+  "short_name": "IHP",
+  "source_file_metrics_sha256": "D370AA505F38D10BD2F1269FB77C89DA90D276F45582DE9B160670386113AF4E",
+  "status": "PAPER_EVIDENCE_READY_WITH_LIMITED_F1_CLAIM"
+}

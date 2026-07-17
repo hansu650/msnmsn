@@ -1,0 +1,4 @@
+candidate,control,metric,delta,ci_lower,ci_upper,n_boot,seed,resampling_unit
+IDX_U,REL_U,f1_max,0.02673280600872342,-0.002288513135771623,0.06812804052589595,10000,2027,11_subdatasets_then_paired_files
+IDX_U,REL_U,auprc,0.02181090809382172,0.006206594367241494,0.039805845122848835,10000,2027,11_subdatasets_then_paired_files
+IDX_U,REL_U,vus_pr,0.010200224845696005,0.002064247116263874,0.01969328826745504,10000,2027,11_subdatasets_then_paired_files

@@ -1,0 +1,19 @@
+{
+  "base_grid": "14x14",
+  "label_free": true,
+  "large_scale": {
+    "literal_supported_cells": 196,
+    "output_cells": 196,
+    "shifted_row_boundary_aliases": 13,
+    "shifted_supported_cells": 195,
+    "shifted_terminal_holes": 1
+  },
+  "mid_scale": {
+    "literal_supported_cells": 196,
+    "output_cells": 196,
+    "shifted_row_boundary_aliases": 13,
+    "shifted_supported_cells": 195,
+    "shifted_terminal_holes": 1
+  },
+  "status": "STRUCTURE_CERTIFIED"
+}

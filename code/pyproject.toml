@@ -3,10 +3,10 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "paano-k0"
+name = "measure-vit4ts"
 version = "0.1.0"
-description = "PaAno execution-fidelity and objective-activity K0"
-requires-python = ">=3.11"
+description = "Index-consistent harmonic projection for frozen ViT4TS"
+requires-python = ">=3.10"
 
 [tool.setuptools.packages.find]
 where = ["src"]
@@ -15,3 +15,6 @@ where = ["src"]
 testpaths = ["tests"]
 addopts = "-ra"
 pythonpath = ["src"]
+markers = [
+  "cuda: requires a CUDA device and the frozen CLIP checkpoint",
+]
