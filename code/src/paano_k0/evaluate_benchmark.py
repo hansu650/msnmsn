@@ -22,7 +22,9 @@ import numpy as np
 from .artifacts import atomic_write_json, sha256_file, verify_committed_score
 from .benchmark_manifest import load_benchmark_manifest
 from .config import load_protocol
-from .evaluate_scores import compute_threshold_free_metrics
+from .fast_vus import (
+    compute_threshold_free_metrics_exact_vus as compute_threshold_free_metrics,
+)
 from .label_data import read_labels, validate_score_alignment
 from .schemas import (
     CheckpointKind,
@@ -365,7 +367,7 @@ def _evaluator_contract(
         name: sha256_file(package_root / name)
         for name in (
             "evaluate_benchmark.py",
-            "evaluate_scores.py",
+            "fast_vus.py",
             "label_data.py",
             "artifacts.py",
             "schemas.py",
@@ -375,7 +377,8 @@ def _evaluator_contract(
     vendor_metric = vendor.fingerprint.root / "utils" / "basic_metrics.py"
     sources["vendor/utils/basic_metrics.py"] = sha256_file(vendor_metric)
     return {
-        "schema_version": "paano-evaluator-contract-v1",
+        "schema_version": "paano-evaluator-contract-v2-exact-vus",
+        "vus_engine": "activation-sufficient-statistics-v1",
         "python": platform.python_version(),
         "numpy": np.__version__,
         "scikit_learn": importlib.metadata.version("scikit-learn"),
@@ -649,9 +652,20 @@ def evaluate_registered_benchmark(
     if any(len(items) != len(selected) for items in by_series.values()):
         raise RuntimeError("benchmark preflight did not cover every requested arm")
 
+    if not hasattr(vendor, "fingerprint"):
+        raise TypeError("benchmark evaluation requires a frozen vendor fingerprint")
+    contract = _evaluator_contract(
+        tuple(verified),
+        vendor,
+        selected,
+        seed=seed,
+        checkpoint=checkpoint_value,
+        expected_config_sha256=expected_config_sha256,
+        expected_vendor_sha=expected_vendor_sha,
+    )
+    _validate_contract(output_dir, contract)
+
     if resume_existing or workers > 1:
-        if not hasattr(vendor, "fingerprint"):
-            raise TypeError("resumable evaluation requires a frozen vendor fingerprint")
         return _evaluate_resumable(
             specs,
             tuple(verified),

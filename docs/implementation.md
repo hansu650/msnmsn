@@ -748,3 +748,55 @@ same frozen scores and registered coverage.  They may use `--workers 4
 --resume-existing`, but they cannot change the model, checkpoint, labels,
 metric implementation, threshold count, aggregation, gate, or external paper
 references.
+
+### 12.7 Exact sufficient-statistics VUS acceleration
+
+The frozen vendor `RangeAUC_volume_opt` is semantically retained, but its
+literal implementation performs a full-length prediction, label copy, and
+segment scan for every one of 250 thresholds at every admissible window.  On
+the registered 900,000-point UCR series with window 125, this implies roughly
+28.35 billion point-threshold-window visits per arm and blocks the otherwise
+parallel evaluator.  A second execution-only implementation may replace this
+literal loop only after the following fail-closed equivalence gate passes.
+
+For the same non-increasing vendor thresholds, each point is assigned the
+first threshold index at which `score >= threshold` becomes true.  Cumulative
+histograms then reproduce, for every threshold, the predicted count, the
+original-anomaly contribution, and the weighted extended-range contribution.
+For each merged extended segment, the minimum activation index reproduces the
+vendor existence indicator.  These sufficient statistics reconstruct the
+same TPR, FPR, precision, range-AUC, and range-AP arrays without repeating a
+full series scan inside the threshold loop.  Vendor sequencing, range
+conversion, endpoint conventions, duplicate thresholds, `>=` comparisons,
+250 threshold locations, window enumeration, final `(1,1)` ROC point, and PR
+integration order remain unchanged.
+
+The accelerated path is eligible only when labels are finite binary values,
+scores are finite and shape-matched, at least one anomaly segment exists, the
+threshold count is exactly 250, and all reconstructed denominators have the
+same validity as the vendor path.  Any unsupported input fails closed; it does
+not silently switch scientific semantics.  The integration surface returns
+the same curve tuple consumed by `compute_threshold_free_metrics`; AUPRC and
+AUROC continue to use the unchanged vendor metricor methods.
+
+Adoption requires all of the following before the active evaluator is stopped:
+
+1. exhaustive synthetic parity over boundary anomalies, merged and fragmented
+   ranges, duplicate scores/thresholds, window zero, dense labels, and random
+   seeds, comparing every curve element and both final VUS values;
+2. direct short-real-series parity against the frozen vendor curve and a
+   completed-cache shadow over U/M, diverse lengths/windows, and all three
+   registered arms, with absolute error no greater than `5e-12` and no
+   non-finite result;
+3. at least a tenfold wall-time improvement on a registered long or
+   highly-fragmented series while retaining the 20 GiB physical-RAM floor;
+4. the complete project test suite, Python compilation, PowerShell parsing,
+   and an independent code review;
+5. a new evaluator-contract schema/hash.  No metric JSON from the literal-loop
+   contract is mixed with the accelerated contract.  The incomplete literal
+   evaluation directory is archived intact, and all 1,590 rows are cleanly
+   recomputed under one accelerated contract.
+
+This acceleration changes neither a score nor an experimental endpoint.  A
+parity, provenance, memory, or performance-gate failure abandons it and leaves
+the currently running literal evaluator untouched.

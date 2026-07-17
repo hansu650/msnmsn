@@ -102,6 +102,82 @@ def _fixed_metrics(*_args, **_kwargs) -> dict[str, float]:
     }
 
 
+def test_evaluator_contract_binds_exact_vus_engine(tmp_path: Path) -> None:
+    spec = _spec(tmp_path, "series-a")
+    trajectory = Trajectory.OFFICIAL
+    manifest = _manifest(spec, trajectory)
+    vendor = _vendor(tmp_path)
+    item = module._VerifiedArtifact(spec, trajectory, tmp_path / "score", manifest)
+
+    contract = module._evaluator_contract(
+        (item,),
+        vendor,
+        (trajectory,),
+        seed=2027,
+        checkpoint=CheckpointKind.LAST,
+        expected_config_sha256=CONFIG_SHA,
+        expected_vendor_sha=VENDOR_SHA,
+    )
+
+    assert contract["schema_version"] == "paano-evaluator-contract-v2-exact-vus"
+    assert contract["vus_engine"] == "activation-sufficient-statistics-v1"
+    sources = contract["source_sha256"]
+    assert "fast_vus.py" in sources
+    assert "evaluate_scores.py" not in sources
+
+
+def test_evaluator_contract_rejects_literal_loop_cache(tmp_path: Path) -> None:
+    output = tmp_path / "evaluation"
+    output.mkdir()
+    (output / "evaluator_contract.json").write_text(
+        json.dumps({"schema_version": "paano-evaluator-contract-v1"}),
+        encoding="utf-8",
+    )
+    with pytest.raises(ValueError, match="does not match"):
+        module._validate_contract(
+            output,
+            {
+                "schema_version": "paano-evaluator-contract-v2-exact-vus",
+                "vus_engine": "activation-sufficient-statistics-v1",
+            },
+        )
+
+
+def test_default_serial_path_rejects_literal_loop_contract_before_labels(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    spec = _spec(tmp_path, "series-a")
+    by_id = {spec.series_id: spec}
+    output = tmp_path / "evaluation"
+    output.mkdir()
+    (output / "evaluator_contract.json").write_text(
+        json.dumps({"schema_version": "paano-evaluator-contract-v1"}),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(
+        module,
+        "verify_committed_score",
+        lambda directory: _artifact_from_path(directory, by_id),
+    )
+    monkeypatch.setattr(
+        module,
+        "read_labels",
+        lambda _spec: pytest.fail("contract mismatch must fail before label I/O"),
+    )
+
+    with pytest.raises(ValueError, match="does not match"):
+        module.evaluate_registered_benchmark(
+            (spec,),
+            tmp_path / "results",
+            output,
+            _vendor(tmp_path),
+            (Trajectory.OFFICIAL,),
+            seed=2027,
+            expected_config_sha256=CONFIG_SHA,
+            expected_vendor_sha=VENDOR_SHA,
+        )
+
+
 @pytest.mark.parametrize(
     ("available", "requested", "expected"),
     ((41.0, 4, 4), (29.0, 4, 3), (28.9, 4, 2), (23.0, 4, 1)),
@@ -342,7 +418,7 @@ def test_one_label_read_is_reused_across_all_registered_arms(
         (spec,),
         tmp_path / "results",
         tmp_path / "evaluation",
-        object(),
+        _vendor(tmp_path),
         module.REGISTERED_BENCHMARK_TRAJECTORIES,
         seed=2027,
         expected_config_sha256=CONFIG_SHA,
@@ -357,6 +433,13 @@ def test_one_label_read_is_reused_across_all_registered_arms(
     assert verification_calls == 6  # global preflight plus immutable recheck
     assert label_calls == 1
     assert len(tuple((tmp_path / "evaluation" / "metrics").glob("*.json"))) == 3
+    contract = json.loads(
+        (tmp_path / "evaluation" / "evaluator_contract.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert contract["schema_version"] == "paano-evaluator-contract-v2-exact-vus"
+    assert contract["vus_engine"] == "activation-sufficient-statistics-v1"
     with (tmp_path / "evaluation" / "file_metrics.csv").open(
         encoding="utf-8", newline=""
     ) as handle:

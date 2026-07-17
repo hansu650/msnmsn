@@ -964,3 +964,172 @@ without changing the active experiment.
 
 **Document sync**: user_requirements.md yes | implementation.md yes | configs
 unchanged | idea_report.md unchanged
+
+### 2026-07-17 00:16 - Iteration #16 design freeze: exact VUS sufficient statistics
+
+**Reason**: the four-worker literal vendor evaluator reached 654/1,590 rows
+and then spent more than 30 minutes on the same four FIFO series while every
+worker remained CPU-active.  The in-flight set includes a 900,000-point series
+with VUS window 125, whose literal loop requires approximately 28.35 billion
+point-threshold-window visits per arm, and a short but highly fragmented
+series.  This is an evaluator-complexity bottleneck, not a model or score
+failure.
+
+**Confirmed scope**: execution-only metric acceleration under the user's
+standing authorization for technically equivalent retries.  No model,
+checkpoint, score, label, threshold location/count, sliding window,
+aggregation, external reference, gate, or manuscript claim may change.
+
+**Frozen change before code**:
+- implement the same vendor range-AUC/range-AP curve through activation-index
+  sufficient statistics rather than repeated full-array scans;
+- retain a separate D-drive Git worktree so the active evaluator and clean
+  main worktree remain untouched during implementation;
+- require synthetic full-curve parity, real U/M/all-arm shadow parity within
+  `5e-12`, a >=10x benchmark, the full tests, and an independent review;
+- if and only if every gate passes, archive the literal evaluation directory,
+  commit the new evaluator contract, and cleanly recompute all 1,590 rows;
+- on any mismatch or unsafe resource condition, abandon the acceleration and
+  continue the preserved literal evaluator.
+
+**Expected effect**: remove the registered long-series CPU bottleneck without
+changing any scientific result or admitting mixed-provenance metric caches.
+
+**Document sync**: implementation.md yes | idea_report.md unchanged | configs
+unchanged | manuscript unchanged
+
+### 2026-07-17 09:11 - Iteration #16 independent-review contract correction
+
+**Reason**: independent read-only review found that the production four-worker
+path was contract-bound, but the public default one-worker path could still
+write metric JSON and terminal CSV/JSON outputs without creating or validating
+the exact-VUS evaluator contract.  This was a provenance gap even though the
+registered script requests four resumable workers.
+
+**Changes**:
+- `code/src/paano_k0/evaluate_benchmark.py`: creates and validates the frozen
+  vendor/source/request contract after the complete score preflight on every
+  evaluation path, before the first label read; the resumable path retains its
+  own fail-closed revalidation.
+- `code/tests/test_benchmark_evaluator.py`: requires the default serial path to
+  reject a v1 literal-loop contract before label I/O and verifies that a clean
+  serial evaluation emits the v2 exact-VUS contract.
+
+**Expected effect**: no public evaluator path can produce aggregatable metrics
+without the same exact-VUS provenance binding used by the registered full run.
+
+**Document sync**: implementation.md already requires one evaluator contract
+for all rows | idea_report.md unchanged | configs unchanged | manuscript
+unchanged
+
+### 2026-07-17 00:44 - Iteration #16 exact-parity and contract tests
+
+**Reason**: adoption requires full-curve parity across vendor edge semantics,
+fail-closed unsupported inputs, and a contract that rejects literal-loop
+caches.
+
+**Changes**:
+- `code/tests/test_fast_vus.py`: adds handcrafted boundary, merged-range,
+  fragmented, duplicate-score, window-zero, dense-label, randomized full-curve
+  parity, metric-wrapper parity, and unsupported-input tests against the
+  frozen vendor.
+- `code/tests/test_benchmark_evaluator.py`: verifies the exact-VUS engine and
+  source hash are contract-bound and that a v1 literal-loop contract is
+  rejected.
+
+**Expected effect**: numerical or provenance drift fails before the
+accelerated evaluator can be adopted.
+
+**Document sync**: implementation.md yes | idea_report.md unchanged | configs
+unchanged | manuscript unchanged
+
+### 2026-07-17 00:40 - Iteration #16 benchmark-evaluator integration
+
+**Reason**: the exact VUS module must remain evaluator-only and must not admit
+literal-loop metric caches under mixed provenance.
+
+**Changes**:
+- `code/src/paano_k0/evaluate_benchmark.py`: routes only the full-benchmark
+  evaluator through the exact VUS wrapper, binds `fast_vus.py` into source
+  provenance, and advances the evaluator contract to
+  `paano-evaluator-contract-v2-exact-vus` with an explicit engine identifier.
+
+**Expected effect**: all 1,590 recomputed rows use one fail-closed accelerated
+contract; the K0 evaluator and frozen vendor remain unchanged.
+
+**Document sync**: implementation.md yes | idea_report.md unchanged | configs
+unchanged | manuscript unchanged
+
+### 2026-07-17 00:38 - Iteration #16 exact VUS module implementation
+
+**Reason**: the literal frozen VUS loop is the confirmed CPU bottleneck on
+long full-Eval series; Section 12.7 freezes a semantics-preserving
+sufficient-statistics replacement.
+
+**Changes**:
+- `code/src/paano_k0/fast_vus.py`: adds fail-closed input eligibility,
+  duplicate-safe first-activation indexing, threshold-wise cumulative
+  sufficient statistics, vendor-native range sequencing/merging, exact curve
+  tuple reconstruction, and an evaluator metric wrapper that leaves point
+  AUPRC/AUROC on the frozen vendor implementation.
+
+**Expected effect**: replace 250 full point scans per window with one weighted
+activation histogram per window while preserving thresholds, windows, range
+weights, endpoint conventions, integration order, and all score artifacts.
+
+**Document sync**: implementation.md yes | idea_report.md unchanged | configs
+unchanged | manuscript unchanged
+
+### 2026-07-17 09:16 - Iteration #16 exact-VUS validation results
+
+The isolated worktree initially held a CRLF checkout of
+`configs/k0_protocol.yaml` with raw SHA-256 `57c2b326...`, while every frozen
+score manifest binds the Git-blob/LF hash
+`8414885694d7a346ca9b70251213b017791ade6611d04fb9e7f39ef6d238e824`.
+No provenance check was weakened: the clean file was rechecked out from `HEAD`
+with LF bytes, its raw hash now equals all 1,590 score manifests, and it has no
+Git content diff.
+
+**Parity and performance gates**:
+- focused synthetic, wrapper, fail-closed, and evaluator-contract suite:
+  `65 passed in 7.88s`;
+- real full-curve shadow: one registered U and one registered M series across
+  `PAPERNEG_NONOVERLAP`, `PAPERNEG`, and `OFFICIAL`, six of six rows passed;
+  all eight curve elements were finite and the global maximum absolute error
+  against frozen vendor `generate_curve(..., "opt", 250)` was
+  `4.440892098500626e-16`, below the frozen `5e-12` tolerance;
+- registered long-series timing on
+  `264_IOPS_id_5_WebService_tr_11665_1st_11765` (60,000 points, window 9,
+  `OFFICIAL-LAST`): three-repeat literal median `0.0955181 s`, exact median
+  `0.0044906 s`, median speedup `21.2707x`, and full-curve maximum absolute
+  error `2.220446049250313e-16`;
+- complete project suite: `157 passed in 26.51s`;
+- in-memory Python compilation: 44 files passed; PowerShell AST parsing: 13
+  scripts passed; `git diff --check`: passed.
+
+The shadow/timing processes ran at below-normal priority with numerical
+libraries restricted to one thread.  Available physical RAM remained about
+`42.7 GiB`, above the 20 GiB floor.  The active literal evaluator and its 654
+v1 cached metrics were not stopped, restarted, archived, rewritten, or mixed
+with this validation.
+
+**Conclusion**: exact numerical parity, real U/M/all-arm coverage, the tenfold
+performance threshold, resource safety, universal evaluator-contract binding,
+and the complete local validation gate all pass.  This validates the isolated
+branch only; live evaluator transition remains a separate main-worktree
+operation.
+
+**Document sync**: implementation.md yes | tests yes | idea_report.md
+unchanged | configs scientific content unchanged | manuscript unchanged
+
+### 2026-07-17 09:18 - Iteration #16 independent-review closeout
+
+Independent read-only review returned `PASS` after the universal contract
+correction.  It verified the order complete score preflight -> coverage check
+-> frozen-vendor fingerprint and v2 contract validation -> first label read;
+confirmed that default serial evaluation rejects v1 before label I/O and emits
+v2 on an empty output; and found the resumable path's second contract check
+redundant but semantically safe.  Contract/preflight selection reported
+`6 passed`; the complete evaluator test module reported
+`25 passed in 4.10s`; `git diff --check` passed.  The reviewer changed no file
+and identified no remaining blocker.
