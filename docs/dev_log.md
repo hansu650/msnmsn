@@ -1122,6 +1122,24 @@ operation.
 **Document sync**: implementation.md yes | tests yes | idea_report.md
 unchanged | configs scientific content unchanged | manuscript unchanged
 
+### 2026-07-17 09:22 - Iteration #17 Windows evaluator process fallback
+
+The first clean v2 full evaluation failed before producing a metric.  All four
+spawned Windows workers terminated while importing PyTorch DLLs with
+`WinError 1455` (insufficient page-file commit); the parent then raised
+`BrokenProcessPool`.  The 1,590 committed LAST scores, empty v2 metric cache,
+model, checkpoint, labels, thresholds, and aggregation were unaffected.
+
+The production script is restricted to one evaluator process.  This is a
+scientifically equivalent execution fallback: exact-VUS, score and contract
+preflights, label isolation, all metric formulas, the frozen manifest, and the
+decision gate remain unchanged.  It also prevents redundant PyTorch DLL loads
+on a host shared with active Mia/Ollama processes.  The run will resume from
+the same empty v2 contract and regenerate all 1,590 rows.
+
+**Document sync**: implementation.md yes | scripts yes | configs unchanged |
+manuscript unchanged
+
 ### 2026-07-17 09:18 - Iteration #16 independent-review closeout
 
 Independent read-only review returned `PASS` after the universal contract

@@ -800,3 +800,20 @@ Adoption requires all of the following before the active evaluator is stopped:
 This acceleration changes neither a score nor an experimental endpoint.  A
 parity, provenance, memory, or performance-gate failure abandons it and leaves
 the currently running literal evaluator untouched.
+
+### 12.8 Windows single-process production fallback
+
+The registered Windows host may reject a four-process evaluator before any
+metric is computed because every spawned interpreter imports the artifact
+module and therefore loads the full PyTorch DLL set.  Windows reports this
+resource failure as `WinError 1455` (insufficient page-file commit), even when
+physical RAM remains above the frozen 20 GiB floor.  This is an execution
+failure, not a score or metric failure.
+
+For this host, the production full-benchmark script uses one evaluator process
+with `--resume-existing`.  The exact-VUS implementation, frozen score preflight,
+v2 evaluator contract, label boundary, 250 thresholds, metric implementation,
+manifest order, aggregation, and decision gates are unchanged.  Only process
+parallelism is reduced.  This avoids four redundant PyTorch DLL loads while
+retaining the already validated exact-VUS acceleration and deterministic
+per-run atomic cache.

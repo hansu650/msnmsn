@@ -72,7 +72,11 @@ $evaluateLog = Join-Path $LogRoot "evaluate_$stamp.log"
     '--seed', [string]$seed,
     '--trajectories', 'PAPERNEG_NONOVERLAP', 'PAPERNEG', 'OFFICIAL',
     '--checkpoint', 'LAST',
-    '--workers', '4',
+    # Windows process spawning reloads the artifact module and the full
+    # PyTorch DLL set in every worker.  On this registered host that exhausts
+    # page-file commit before metric computation (WinError 1455).  Exact-VUS
+    # makes serial evaluation fast while preserving every scientific input.
+    '--workers', '1',
     '--resume-existing'
 ) 2>&1 | Tee-Object -FilePath $evaluateLog
 if ($LASTEXITCODE -ne 0) {
