@@ -13,6 +13,7 @@ from typing import Any
 
 import numpy as np
 
+from .schemas import canonicalize_unit_interval_metric
 from .vendor import VendorSymbols
 
 
@@ -282,12 +283,13 @@ def compute_threshold_free_metrics_exact_vus(
     )
     if len(curve) != 8:
         raise RuntimeError("exact VUS curve return surface changed")
-    values = {
+    raw_values = {
         "vus_pr": float(curve[-1]),
         "auprc": auprc,
         "vus_roc": float(curve[-2]),
         "auroc": auroc,
     }
-    if any(not np.isfinite(value) or value < 0 or value > 1 for value in values.values()):
-        raise ValueError(f"exact evaluator returned invalid threshold-free metric: {values}")
-    return values
+    return {
+        name: canonicalize_unit_interval_metric(name, value)
+        for name, value in raw_values.items()
+    }

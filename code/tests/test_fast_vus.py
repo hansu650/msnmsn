@@ -10,6 +10,7 @@ from paano_k0.fast_vus import (
     compute_threshold_free_metrics_exact_vus,
     generate_curve_exact,
 )
+from paano_k0.schemas import canonicalize_unit_interval_metric
 from paano_k0.vendor import load_vendor_symbols
 
 
@@ -173,3 +174,28 @@ def test_metric_wrapper_retains_positive_window_contract(vendor) -> None:
             0,
             vendor,
         )
+
+
+@pytest.mark.parametrize(
+    ("value", "expected"),
+    (
+        (-np.finfo(np.float64).eps, 0.0),
+        (0.0, 0.0),
+        (0.5, 0.5),
+        (1.0, 1.0),
+        (1.0 + np.finfo(np.float64).eps, 1.0),
+    ),
+)
+def test_unit_interval_metric_canonicalizes_machine_epsilon_endpoints(
+    value: float,
+    expected: float,
+) -> None:
+    assert canonicalize_unit_interval_metric("test_metric", value) == expected
+
+
+@pytest.mark.parametrize("value", (-1e-8, 1.0 + 1e-8, np.nan, np.inf, -np.inf))
+def test_unit_interval_metric_rejects_material_or_nonfinite_excursions(
+    value: float,
+) -> None:
+    with pytest.raises(ValueError, match="numeric tolerance"):
+        canonicalize_unit_interval_metric("test_metric", value)

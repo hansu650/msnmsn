@@ -1140,6 +1140,42 @@ the same empty v2 contract and regenerate all 1,590 rows.
 **Document sync**: implementation.md yes | scripts yes | configs unchanged |
 manuscript unchanged
 
+### 2026-07-17 09:37 - Iteration #18 metric endpoint normalization
+
+The serial exact-VUS run reached the first mathematically perfect point metric
+and stopped because PaAno returned AUPRC `1.0000000000000002`.  The frozen
+literal wrapper has the same strict `value > 1` guard, explaining why its
+earlier cache stopped at the same region.  This is a floating-point endpoint
+representation issue, not a model, score, or VUS discrepancy.
+
+The frozen change is a shared unit-interval canonicalizer: finite values no
+farther than the already registered `5e-12` parity tolerance outside `[0,1]`
+are clipped to the endpoint; larger excursions and non-finite values remain
+errors.  Literal and exact wrappers plus `MetricRow` use the same rule.  Tests
+must cover both endpoint acceptance and fail-closed rejection.  The stop
+condition is exact completion of all 1,590 metrics under one new contract;
+earlier partial v2 metrics are archived intact and never resumed after the
+source-hash change.
+
+**Document sync**: implementation.md yes | tests planned | configs unchanged |
+manuscript unchanged
+
+Validation completed before production retry:
+
+- endpoint/fail-closed and evaluator tests: `75 passed in 6.29s`;
+- complete project suite: `167 passed in 15.73s`;
+- all PowerShell scripts parsed successfully and `git diff --check` passed;
+- independent read-only review: `PASS`, including a runtime monkeypatch that
+  canonicalized `1.0000000000000002` identically in the literal wrapper,
+  exact wrapper, and `MetricRow`; its expanded targeted selection reported
+  `79 passed`;
+- the evaluator contract fingerprints both modified `fast_vus.py` and
+  `schemas.py`, and an independently mutated-source check confirmed that the
+  previous contract is rejected.
+
+The partial 663-row v2 directory therefore cannot be resumed and will be
+archived intact before the clean production retry.
+
 ### 2026-07-17 09:18 - Iteration #16 independent-review closeout
 
 Independent read-only review returned `PASS` after the universal contract

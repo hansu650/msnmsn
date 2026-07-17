@@ -11,7 +11,15 @@ import numpy as np
 from .artifacts import atomic_write_json, verify_committed_score
 from .config import expand_primary_jobs, load_protocol, load_series_manifest
 from .label_data import read_labels, validate_score_alignment
-from .schemas import CheckpointKind, MetricRow, RunJob, SeriesSpec, make_run_id, scored_checkpoints
+from .schemas import (
+    CheckpointKind,
+    MetricRow,
+    RunJob,
+    SeriesSpec,
+    canonicalize_unit_interval_metric,
+    make_run_id,
+    scored_checkpoints,
+)
 from .vendor import VendorSymbols, load_vendor_symbols
 
 
@@ -42,10 +50,11 @@ def compute_threshold_free_metrics(
         raise RuntimeError("vendor generate_curve return surface changed")
     vus_roc = float(curve[-2])
     vus_pr = float(curve[-1])
-    values = {"vus_pr": vus_pr, "auprc": auprc, "vus_roc": vus_roc, "auroc": auroc}
-    if any(not np.isfinite(value) or value < 0 or value > 1 for value in values.values()):
-        raise ValueError(f"vendor returned invalid threshold-free metric: {values}")
-    return values
+    raw_values = {"vus_pr": vus_pr, "auprc": auprc, "vus_roc": vus_roc, "auroc": auroc}
+    return {
+        name: canonicalize_unit_interval_metric(name, value)
+        for name, value in raw_values.items()
+    }
 
 
 def evaluate_score_artifact(

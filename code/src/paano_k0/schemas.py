@@ -9,6 +9,22 @@ import re
 from typing import Any, Literal, Mapping
 
 import numpy as np
+
+
+UNIT_INTERVAL_TOLERANCE = 5e-12
+
+
+def canonicalize_unit_interval_metric(name: str, value: float) -> float:
+    """Return a mathematically bounded metric with numeric endpoint tolerance."""
+
+    metric = float(value)
+    if (
+        not np.isfinite(metric)
+        or metric < -UNIT_INTERVAL_TOLERANCE
+        or metric > 1.0 + UNIT_INTERVAL_TOLERANCE
+    ):
+        raise ValueError(f"{name} must be finite and in [0,1] within numeric tolerance")
+    return float(np.clip(metric, 0.0, 1.0))
 from numpy.typing import NDArray
 
 
@@ -305,9 +321,8 @@ class MetricRow:
         if self.track not in ("U", "M"):
             raise ValueError("track must be U or M")
         for name in ("vus_pr", "auprc", "vus_roc", "auroc"):
-            value = float(getattr(self, name))
-            if not np.isfinite(value) or not 0 <= value <= 1:
-                raise ValueError(f"{name} must be finite and in [0,1]")
+            value = canonicalize_unit_interval_metric(name, getattr(self, name))
+            object.__setattr__(self, name, value)
 
     @property
     def arm(self) -> str:
@@ -347,4 +362,3 @@ def make_run_id(
     if not safe_series:
         raise ValueError("series_id has no filesystem-safe characters")
     return f"{safe_series}__seed_{seed}__{trajectory.value}__{checkpoint.value}"
-

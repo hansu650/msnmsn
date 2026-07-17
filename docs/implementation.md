@@ -817,3 +817,20 @@ manifest order, aggregation, and decision gates are unchanged.  Only process
 parallelism is reduced.  This avoids four redundant PyTorch DLL loads while
 retaining the already validated exact-VUS acceleration and deterministic
 per-run atomic cache.
+
+### 12.9 Unit-interval floating-point canonicalization
+
+PaAno's frozen point-metric implementation can return a value a few machine
+epsilons outside its mathematical unit interval (observed AUPRC
+`1.0000000000000002`).  Both the literal and exact wrappers previously
+rejected that representational overshoot, even though the underlying metric is
+exactly the upper endpoint.
+
+All four threshold-free metrics are therefore canonicalized through one shared
+schema helper.  A finite value within `5e-12` of `[0,1]` is clipped to the
+nearest endpoint; a non-finite value or any excursion beyond that tolerance
+still fails closed.  The same helper is used by the frozen-vendor wrapper, the
+exact-VUS wrapper, and `MetricRow`, so cache serialization and validation have
+one boundary rule.  Because this changes evaluator source hashes, every metric
+created under the earlier v2 contract is archived and all 1,590 rows are
+recomputed under a new clean contract.
