@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import torch
+import torch.nn.functional as F
 import numpy as np
 
 from measure_vit4ts.ihp import (
@@ -96,3 +97,13 @@ def test_cache_scoring_is_label_free_and_finite(tmp_path) -> None:
     assert columns.shape == (2, 224)
     assert np.isfinite(maps).all()
     assert np.isfinite(columns).all()
+    raster = F.interpolate(
+        torch.from_numpy(maps).unsqueeze(1),
+        size=(224, 224),
+        mode="bilinear",
+        align_corners=False,
+    ).squeeze(1)
+    expected = torch.topk(
+        raster, k=56, dim=-2, largest=True, sorted=False
+    ).values.mean(dim=-2)
+    np.testing.assert_array_equal(columns, expected.numpy())

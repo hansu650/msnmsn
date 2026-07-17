@@ -1,9 +1,11 @@
 {
   "claim_limits": [
     "same-cache F1 confidence interval crosses zero",
+    "bootstrap intervals are unadjusted for component-arm selection",
     "external paper-reported comparison is descriptive, not paired",
     "Coordinate Envelope failed its frozen component gate",
-    "IHP changes projection only and does not add VLM verification"
+    "IHP changes projection only and does not add VLM verification",
+    "released preprocessing and all-window memory are offline and transductive"
   ],
   "coverage": {
     "series": 492,
@@ -35,7 +37,7 @@
       "control": 0.29740142920981977,
       "delta": 0.021810908093821746,
       "ihp": 0.3192123373036415,
-      "paired_significant_positive": true,
+      "unadjusted_interval_excludes_zero": true,
       "positive_subdatasets": 9
     },
     "f1_max": {
@@ -44,7 +46,7 @@
       "control": 0.6354087742196343,
       "delta": 0.02673280600872352,
       "ihp": 0.6621415802283578,
-      "paired_significant_positive": false,
+      "unadjusted_interval_excludes_zero": false,
       "positive_subdatasets": 6
     },
     "vus_pr": {
@@ -53,7 +55,7 @@
       "control": 0.6872943317067485,
       "delta": 0.010200224845696049,
       "ihp": 0.6974945565524445,
-      "paired_significant_positive": true,
+      "unadjusted_interval_excludes_zero": true,
       "positive_subdatasets": 7
     }
   },
@@ -62,5 +64,5 @@
   "selection_provenance": "post_gate_simplification_of_preregistered_ablation",
   "short_name": "IHP",
   "source_file_metrics_sha256": "D370AA505F38D10BD2F1269FB77C89DA90D276F45582DE9B160670386113AF4E",
-  "status": "PAPER_EVIDENCE_READY_WITH_LIMITED_F1_CLAIM"
+  "status": "PAPER_EVIDENCE_READY_WITH_POST_SELECTION_DISCLOSURE"
 }

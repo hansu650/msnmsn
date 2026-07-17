@@ -1,5 +1,68 @@
 \section{Related Work}
 
-PaAno is the frozen 2026 patch-representation baseline~\cite{park2026paano}.
-The final recent-first synthesis will be written from the verified citation
-plan rather than copied from an older draft.
+\subsection{Numerical and Pretrained Time-Series Anomaly Detection}
+Recent time-series anomaly detection (TSAD) methods improve the detector itself
+through patch representations, calibrated normal spaces, or richer temporal
+interactions.  PaAno learns efficient patch-level representations, DoKnowAD
+refines normal representations with domain knowledge, and IGAD introduces a
+parameter-free idempotent reconstruction rule~\cite{park2026paano,xing2026doknowad,sun2025igad}.
+CrossAD and ScatterAD model cross-scale, cross-window, or temporal--topological
+structure~\cite{li2025crossad,yin2025scatterad}, whereas DADA and CATCH pursue
+generalization through pretrained bottlenecks or frequency-aware channel
+modeling~\cite{shentu2025dada,wu2025catch}.  A recent analysis further shows
+that temporal understanding and precise localization remain difficult for
+large language models~\cite{park2025llmtsad}.  These advances change learned
+representations, reconstruction objectives, or detector semantics.  IHP
+instead addresses the inverse interface after a frozen visual detector has
+already produced multiscale token costs.
+
+\subsection{Visual and Multimodal TSAD}
+Visual encodings provide a second route to transferable TSAD.  Recent systems
+evaluate multimodal language models on rendered time series, learn visual
+conversions for anomaly recognition, or align visual evidence with temporal
+locations~\cite{xu2026visualtimeanomaly,wang2026vits,yang2026vetime}.  The
+closest system is VLM4TS, whose ViT4TS screening stage renders windows, extracts
+frozen visual features, matches them to a visual memory, and projects
+multiscale token costs to a dense field before reducing that field to a time
+series~\cite{he2026vlm4ts}.  Its optional second stage uses a vision--language
+model to refine candidate intervals.  Our evaluated scope is deliberately
+narrower: we retain the released renderer, frozen encoder, memory, matching,
+fusion, and stitching, and repair only the multiscale screen's mask-to-grid
+projection.  VETime is a concurrent preprint that inverts a periodic visual
+layout with learned alignment~\cite{yang2026vetime}; IHP instead uses the
+literal incidence already supplied by the frozen projector and adds no learned
+alignment.
+
+\subsection{Training-Free Localization and Grid Consistency}
+Training-free visual anomaly detectors demonstrate that strong frozen features
+can support dense localization through carefully chosen geometric operators.
+UniVAD matches component-aware patch features, LogSAD combines vision--language
+evidence, and SubspaceAD models a normal feature subspace without training a new
+backbone~\cite{gu2025univad,zhang2025logsad,lendering2026subspacead}.
+UniFormaly additionally studies background masking and top-ratio aggregation
+for task-agnostic visual anomaly detection~\cite{lee2026uniformaly}.  These
+methods operate on spatial images and do not define how a time-series renderer's
+pooled memberships must be pulled back to the base token grid.
+
+Grid geometry is not innocuous.  Alias-Free ViT and shift-equivariant ViT
+identify tokenization, patch merging, attention, and positional encoding as
+sources of sensitivity to translations~\cite{michaeli2025aliasfreevit,rojasgomez2024shiftvit}.
+They redesign the visual architecture to control input shifts; IHP leaves the
+backbone unchanged and enforces a different property---literal incidence
+between already-computed pooled tokens and output cells.  Thus, the relevant
+gap is not another feature encoder or anomaly reducer, but an explicit and
+complete coordinate contract for the inverse multiscale projection.
+
+\subsection{Telemetry Monitoring and Evaluation}
+Reliable telemetry anomaly detection requires both heterogeneous benchmarks
+and deployment-aware evaluation.  TSB-AD consolidates diverse anomaly families,
+while VUS supplies range-aware, threshold-independent metrics~\cite{liu2024elephant,paparrizos2022vus}.
+Recent MSN work studies behavior-level network-service anomalies and unlabeled
+distribution drift~\cite{dong2025blade,tan2025generative}, underscoring the
+importance of stable screening across evolving sensing and networking data.
+These works motivate our telemetry setting but are not quantitative comparators.
+Taken together, the literature develops stronger representations, multimodal
+reasoning, and dense visual localization.  Our narrower gap lies in the
+released ViT4TS mask-to-grid interface: IHP makes its supplied multiscale
+support graph explicit and restores complete base-grid support before the
+unchanged harmonic aggregation.

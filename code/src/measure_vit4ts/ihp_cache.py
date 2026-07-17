@@ -59,7 +59,16 @@ def score_token_cache(
         mode="bilinear",
         align_corners=False,
     ).squeeze(1)
-    window_columns = raster.mean(dim=-2)
+    # Preserve the released ViT4TS reducer used by the frozen full experiment:
+    # average the largest quarter of raster values in every image column.
+    top_rows = max(1, int(np.ceil(raster.shape[-2] * 0.25)))
+    window_columns = torch.topk(
+        raster,
+        k=top_rows,
+        dim=-2,
+        largest=True,
+        sorted=False,
+    ).values.mean(dim=-2)
     return (
         np.ascontiguousarray(maps.detach().cpu().numpy(), dtype=np.float64),
         np.ascontiguousarray(

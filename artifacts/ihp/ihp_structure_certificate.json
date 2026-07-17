@@ -1,5 +1,6 @@
 {
   "base_grid": "14x14",
+  "cache_files_verified": 492,
   "label_free": true,
   "large_scale": {
     "literal_supported_cells": 196,
@@ -8,6 +9,11 @@
     "shifted_supported_cells": 195,
     "shifted_terminal_holes": 1
   },
+  "mask_hash_definition": "SHA256 over C-contiguous int64 array bytes",
+  "mask_sha256": {
+    "large": "EF7BFF799B85871233960133363BE35FC11528CF5FD67DCDD86AD2BC7E117CB6",
+    "mid": "0EB4056708F66B9241C0FF1E67D534ED603C1CCB987663E27581B57EDA9C022F"
+  },
   "mid_scale": {
     "literal_supported_cells": 196,
     "output_cells": 196,
@@ -15,5 +21,13 @@
     "shifted_supported_cells": 195,
     "shifted_terminal_holes": 1
   },
-  "status": "STRUCTURE_CERTIFIED"
+  "status": "STRUCTURE_CERTIFIED",
+  "vendor": {
+    "commit": "8ab8c16414eb2c1a861dfc3e76f458180035a879",
+    "mask_generation": {
+      "large": "src/models/clip_vision.py:33 (kernel_size=48)",
+      "mid": "src/models/clip_vision.py:34 (kernel_size=32)"
+    },
+    "shifted_query": "src/models/model_utils.py:34"
+  }
 }

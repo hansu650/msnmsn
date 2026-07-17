@@ -26,7 +26,9 @@ def _save(fig: plt.Figure, output: Path, stem: str) -> None:
     for suffix in ("pdf", "svg", "png"):
         fig.savefig(
             output / f"{stem}.{suffix}",
-            dpi=300,
+            # PDF/SVG are the manuscript-facing vector assets.  Keep a
+            # 600-dpi PNG fallback for IEEE line-art/combination workflows.
+            dpi=600,
             bbox_inches="tight",
             facecolor="white",
         )
@@ -40,8 +42,8 @@ def mechanism_figure(output: Path) -> None:
     ax.axis("off")
     boxes = [
         (0.02, 0.26, 0.16, 0.48, "Frozen ViT4TS\nmultiscale costs", LIGHT),
-        (0.23, 0.26, 0.17, 0.48, "Literal zero-based\nincidence  $A_s$", "#E8F3FA"),
-        (0.45, 0.26, 0.18, 0.48, "Validity-normalized\nharmonic projection", "#E8F6F1"),
+        (0.23, 0.26, 0.17, 0.48, "Literal incidence\nrepair  $A_s$", "#E8F3FA"),
+        (0.45, 0.26, 0.18, 0.48, "Inherited harmonic\nprojection", "#E8F6F1"),
         (0.68, 0.26, 0.13, 0.48, "Equal-scale\nfusion", "#FFF1E8"),
         (0.86, 0.26, 0.12, 0.48, "Timestamp\nscores", LIGHT),
     ]
@@ -81,14 +83,14 @@ def mechanism_figure(output: Path) -> None:
     ax.text(
         0.50,
         0.91,
-        "Index-Consistent Harmonic Projection (IHP)",
+        "IHP: Coordinate-Contract Repair",
         ha="center",
         va="center",
         fontsize=11,
         weight="bold",
     )
-    ax.text(0.315, 0.79, "Stage 1", ha="center", va="center", fontsize=7.5, color=BLUE, weight="bold")
-    ax.text(0.54, 0.79, "Stage 2", ha="center", va="center", fontsize=7.5, color=GREEN, weight="bold")
+    ax.text(0.315, 0.79, "Changed", ha="center", va="center", fontsize=7.5, color=BLUE, weight="bold")
+    ax.text(0.54, 0.79, "Unchanged", ha="center", va="center", fontsize=7.5, color=GREEN, weight="bold")
     _save(fig, output, "ihp_method")
 
 
@@ -105,31 +107,40 @@ def evidence_figure(artifacts: Path, output: Path) -> None:
     fig, (left, right) = plt.subplots(
         1, 2, figsize=(7.2, 2.8), gridspec_kw={"width_ratios": [2.15, 1.0]}
     )
-    left.plot(
-        x,
+    left.scatter(
+        x - 0.18,
         comparison["paper_vit4ts_f1_max"],
-        "o--",
+        marker="D",
         color=GRAY,
-        linewidth=1.2,
-        markersize=4.5,
+        s=22,
         label="ViT4TS (paper-reported)",
+        zorder=3,
     )
-    left.plot(
+    left.scatter(
         x,
+        comparison["control_f1_max"],
+        marker="s",
+        color=ORANGE,
+        s=23,
+        label="REL-U (same cache)",
+        zorder=3,
+    )
+    left.scatter(
+        x + 0.18,
         comparison["ihp_f1_max"],
-        "o-",
+        marker="o",
         color=BLUE,
-        linewidth=1.5,
-        markersize=4.8,
-        label="IHP (ours)",
+        s=25,
+        label="IHP (same cache)",
+        zorder=3,
     )
     left.set_xticks(x, short, rotation=45, ha="right")
     left.set_ylabel("F1-max")
     left.set_ylim(0.35, 0.94)
     left.grid(axis="y", color="#D1D5DB", linewidth=0.6, alpha=0.8)
     left.spines[["top", "right"]].set_visible(False)
-    left.legend(frameon=False, fontsize=7.5, loc="lower center", ncol=1)
-    left.set_title("(a) External Table-1 comparison", fontsize=9.5)
+    left.legend(frameon=False, fontsize=7.1, loc="lower center", ncol=1)
+    left.set_title("(a) External context and same-cache control", fontsize=9.5)
     left.axvline(4.5, color="#CBD5E1", linewidth=0.8)
     left.axvline(6.5, color="#CBD5E1", linewidth=0.8)
     left.text(2.0, 0.925, "NAB", ha="center", fontsize=7.5, color="#4B5563")

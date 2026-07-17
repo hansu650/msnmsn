@@ -1,6 +1,84 @@
 \section{Experimental Protocol}
+\label{sec:experiments}
 
-The experiment uses the fixed TSB-AD evaluation lists~\cite{liu2024elephant}
-and threshold-free VUS-PR as its primary endpoint~\cite{paparrizos2022vus}.
-ResearchPilot G.2 will insert the exact frozen arms, environment, aggregation,
-and failure disclosures from compact artifacts only.
+\subsection{Questions and Benchmark}
+
+The experiments answer three questions. First, when frozen visual evidence is
+held fixed, does index-consistent projection improve anomaly detection?
+Second, does label-free inspection confirm the predicted support-graph
+failure? Third, how does the repaired screen compare descriptively with the
+closest 2026 visual screen under its published benchmark taxonomy?
+
+We evaluate all 492 univariate series used by the eleven subdatasets in
+VLM4TS Table~1~\cite{he2026vlm4ts}. The suite contains five NAB groups
+(Artificial, AWS, AdExchange, Traffic, and Tweets), two NASA spacecraft
+groups (MSL and SMAP), and four Yahoo S5 groups (A1--A4). Their respective
+series counts are 6, 17, 5, 7, 10, 27, 53, 67, 100, 100, and 100. These
+sources span synthetic events, cloud and application telemetry, spacecraft
+sensor channels, and Web-service time series. Each metric is first averaged
+over series within a subdataset and then equally over the eleven subdatasets,
+preventing the four 100-series Yahoo groups from dominating the aggregate.
+
+\subsection{Comparison Boundary and Selection Provenance}
+
+The causal comparison uses two score arms produced from identical frozen
+token caches. \textsc{REL-U} applies the released shifted-membership
+projection. \textsc{IHP} is the prespecified \textsc{IDX-U} component arm and
+replaces only that projection with Eqs.~\eqref{eq:literal_incidence} and
+\eqref{eq:harmonic_pullback}. Both arms share rendered windows, CLIP tokens,
+multiscale pooling, visual memory, token matching, scale fusion, timestamp
+stitching, and the evaluator. F1-max selects its maximizing operating point
+separately for each arm; AUPRC and VUS-PR are threshold-free. Their paired
+difference therefore isolates score changes caused by the token-to-grid
+projection, not a representation or capacity change.
+
+IHP was selected after the registered composite Coordinate Envelope failed
+its gate on the same 492 series. It was not created or retuned after that
+failure, but this promotion is still a post-selection step. Consequently, the
+hierarchical bootstrap intervals below quantify sampling variability and are
+not adjusted for arm selection; we do not interpret them as confirmatory
+post-selection inference.
+
+The external reference is the ViT4TS screening row reported in VLM4TS
+Table~1. We transcribe its eleven F1-max values and reported
+equal-subdataset mean; we neither call them a local reproduction nor use them
+for paired inference. Full VLM4TS reports 0.659 F1-max, but it includes a
+separate language-model verification stage and is therefore only external
+system context for the locally evaluated screen.
+
+\subsection{Metrics and Uncertainty}
+
+We report F1-max for compatibility with VLM4TS Table~1. The primary
+same-cache evidence uses area under the precision--recall curve (AUPRC) and
+the range-aware volume under the precision--recall surface (VUS-PR)
+\cite{paparrizos2022vus}, which do not depend on a selected anomaly threshold.
+Higher values are better for all three metrics.
+
+We use 10,000 hierarchical paired bootstrap replicates. Each replicate first
+samples the eleven subdatasets with replacement and then samples paired series
+within every selected subdataset. Percentile 95\% intervals are reported for
+the IHP-minus-\textsc{REL-U} difference with seed 2027. As noted above, these
+intervals are unadjusted for the component-arm selection step.
+
+\subsection{Implementation, Offline Protocol, and Label Isolation}
+
+The frozen vendor repository is fixed at commit
+\path{8ab8c16414eb2c1a861dfc3e76f458180035a879}. The screen uses CLIP
+ViT-B/16 with $224\times224$ images and a $14\times14$ base-token grid.
+Windows have length 240 and step 60. The released preprocessing detrends each
+complete series and applies full-series min--max scaling; visual memory is the
+token-wise median over all windows of the evaluated series. The score
+evaluator retains the released exponentially weighted moving average span
+$\max(1,\lfloor0.01T\rfloor)$ and alpha grid
+$\{0.1,0.01,0.001\}$, and VUS uses maximum range window 100. Yahoo S5 is
+drawn from the verified mirror revision
+\path{ea89753da2b451928436adb333c7a2e892461c7d}.
+
+Embedding extraction ran with Python~3.10, PyTorch~2.9.1+cu128, and one
+NVIDIA RTX~4090 with 24~GB of memory. IHP itself is deterministic and has no
+hyperparameter, training epoch, or dataset-specific choice. It operates on
+already computed token costs and requires zero additional encoder passes.
+Because preprocessing and memory use the complete evaluated series, the
+protocol is label-free but offline and transductive, not streaming. Labels are
+loaded only after complete score files have been written; neither cache
+construction nor either projection arm can access them.

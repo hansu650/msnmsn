@@ -1,34 +1,277 @@
-% Indispensable baseline, benchmark, and metric provenance only.
-% Additional actually cited entries will be copied during ResearchPilot G.0/G.5.
+% [Core contribution] Introduces the two-stage ViT4TS/VLM4TS visual time-series anomaly detector.
+% [Reason for citation] Primary baseline and source of the frozen renderer, multiscale screen, visual memory, and anomaly-map pipeline.
+@article{he2026vlm4ts,
+  author  = {He, Zelin and Alnegheimish, Sarah and Reimherr, Matthew},
+  title   = {Harnessing Vision-Language Models for Time Series Anomaly Detection},
+  journal = {Proceedings of the AAAI Conference on Artificial Intelligence},
+  year    = {2026},
+  volume  = {40},
+  number  = {26},
+  pages   = {21690--21698},
+  doi     = {10.1609/aaai.v40i26.39319}
+}
 
+% [Core contribution] Evaluates multimodal LLMs for point-, range-, and variate-wise time-series anomaly detection.
+% [Reason for citation] Recent visual/multimodal TSAD context that bounds any broad novelty claim for image-based detection.
+@inproceedings{xu2026visualtimeanomaly,
+  author    = {Xu, Xiongxiao and Wang, Haoran and Liang, Yueqing and Yu, Philip S. and Zhao, Yue and Shu, Kai},
+  title     = {Can Multimodal {LLM}s Perform Time Series Anomaly Detection?},
+  booktitle = {Proceedings of the ACM Web Conference 2026},
+  year      = {2026},
+  pages     = {5392--5403},
+  doi       = {10.1145/3774904.3792376}
+}
+
+% [Core contribution] Learns visual conversions and a vision-language model for curve-based anomaly recognition.
+% [Reason for citation] Contrasts learned visual TSAD with IHP's parameter-free correction of a frozen projector.
+@inproceedings{wang2026vits,
+  author    = {Wang, Zexin and Pei, Changhua and Liu, Yang and Jiang, Hengyue and Zhou, Quan and Si, Haotian and Cui, Hang and Li, Jianhui and Xie, Gaogang and Li, Jingjing and Pei, Dan},
+  title     = {{ViTs}: Teaching Machines to See Time Series Anomalies Like Human Experts},
+  booktitle = {Proceedings of the ACM Web Conference 2026},
+  year      = {2026},
+  pages     = {5286--5297},
+  doi       = {10.1145/3774904.3792323}
+}
+
+% [Core contribution] Aligns visual features with temporal coordinates for zero-shot TSAD using a periodic image layout.
+% [Reason for citation] Closest coordinate-mapping precedent; explicitly treated as a concurrent preprint rather than a peer-reviewed comparator.
+@misc{yang2026vetime,
+  author        = {Yang, Yingyuan and Lan, Tian and Gao, Yifei and Lu, Yimeng and He, Wenjun and Wang, Meng and Liu, Chenghao and Zhang, Chen},
+  title         = {{VETime}: Vision Enhanced Zero-Shot Time Series Anomaly Detection},
+  year          = {2026},
+  eprint        = {2602.16681},
+  archiveprefix = {arXiv},
+  primaryclass  = {cs.CV},
+  doi           = {10.48550/arXiv.2602.16681},
+  url           = {https://arxiv.org/abs/2602.16681},
+  note          = {arXiv preprint}
+}
+
+% [Core contribution] Learns efficient patch-based representations for time-series anomaly detection.
+% [Reason for citation] Recent numerical TSAD contrast to IHP's untrained visual patch-geometry correction.
 @inproceedings{park2026paano,
-  title     = {{PaAno}: Patch-Based Representation Learning for Time-Series Anomaly Detection},
   author    = {Park, Jinju and Kang, Seokho},
+  title     = {{PaAno}: Patch-Based Representation Learning for Time-Series Anomaly Detection},
   booktitle = {The Fourteenth International Conference on Learning Representations},
   year      = {2026},
   url       = {https://openreview.net/forum?id=NXThkM7Iym}
 }
 
-@inproceedings{liu2024elephant,
-  title     = {The Elephant in the Room: Towards A Reliable Time-Series Anomaly Detection Benchmark},
-  author    = {Liu, Qinghua and Paparrizos, John},
-  booktitle = {Advances in Neural Information Processing Systems},
-  volume    = {37},
-  pages     = {108231--108261},
-  year      = {2024},
-  publisher = {Curran Associates, Inc.},
-  doi       = {10.52202/079017-3437},
-  url       = {https://proceedings.neurips.cc/paper_files/paper/2024/hash/c3f3c690b7a99fba16d0efd35cb83b2c-Abstract-Datasets_and_Benchmarks_Track.html}
+% [Core contribution] Calibrates normal representations with refined domain knowledge for TSAD.
+% [Reason for citation] Represents learned normal-space calibration, distinct from IHP's fixed inverse-coordinate repair.
+@article{xing2026doknowad,
+  author  = {Xing, Shiwang and Niu, Jianwei and Ren, Tao},
+  title   = {{DoKnowAD}: Calibrating Normal Representations with Refined Domain Knowledge to Enhance Time Series Anomaly Detection},
+  journal = {Proceedings of the AAAI Conference on Artificial Intelligence},
+  year    = {2026},
+  volume  = {40},
+  number  = {32},
+  pages   = {27126--27134},
+  doi     = {10.1609/aaai.v40i32.39927}
 }
 
+% [Core contribution] Adds a parameter-free idempotent reconstruction rule to multivariate TSAD.
+% [Reason for citation] Supports the design principle that a bounded inference operator can improve a detector without new trainable parameters.
+@inproceedings{sun2025igad,
+  author    = {Sun, Xin and Zhou, Heng and Li, Chao},
+  title     = {Multivariate Time Series Anomaly Detection with Idempotent Reconstruction},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year      = {2025},
+  volume    = {38},
+  pages     = {160900--160958},
+  publisher = {Curran Associates, Inc.}
+}
+
+% [Core contribution] Models cross-scale associations and cross-window dependencies for TSAD.
+% [Reason for citation] Recent multiscale TSAD context; IHP instead projects already-computed cross-scale evidence correctly.
+@inproceedings{li2025crossad,
+  author    = {Li, Beibu and Shentu, Qichao and Shu, Yang and Zhang, Hui and Li, Ming and Jin, Ning and Yang, Bin and Guo, Chenjuan},
+  title     = {{CrossAD}: Time Series Anomaly Detection with Cross-scale Associations and Cross-window Modeling},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year      = {2025},
+  volume    = {38},
+  pages     = {137959--137985},
+  publisher = {Curran Associates, Inc.}
+}
+
+% [Core contribution] Couples temporal and topological scattering for industrial multivariate TSAD.
+% [Reason for citation] Grounds recent temporal-topological modeling and the industrial telemetry setting.
+@inproceedings{yin2025scatterad,
+  author    = {Yin, Tao and Fu, Shaochen and Zhang, Zhibin and Huang, Li and Zhang, Xiaohong and Yang, Yiyuan and Yang, Kaixiang and Yan, Meng},
+  title     = {{ScatterAD}: Temporal-Topological Scattering Mechanism for Time Series Anomaly Detection},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year      = {2025},
+  volume    = {38},
+  pages     = {52266--52297},
+  publisher = {Curran Associates, Inc.}
+}
+
+% [Core contribution] Pretrains a general TSAD model with adaptive bottlenecks and dual adversarial decoders.
+% [Reason for citation] Contrasts a learned general numerical detector with IHP's frozen-system intervention.
+@inproceedings{shentu2025dada,
+  author    = {Shentu, Qichao and Li, Beibu and Zhao, Kai and Shu, Yang and Rao, Zhongwen and Pan, Lujia and Yang, Bin and Guo, Chenjuan},
+  title     = {Towards a General Time Series Anomaly Detector with Adaptive Bottlenecks and Dual Adversarial Decoders},
+  booktitle = {The Thirteenth International Conference on Learning Representations},
+  year      = {2025},
+  url       = {https://proceedings.iclr.cc/paper_files/paper/2025/hash/ca7998666c2e53cc1e882b7268414d8a-Abstract-Conference.html}
+}
+
+% [Core contribution] Introduces channel-aware multivariate anomaly detection through frequency patching.
+% [Reason for citation] Recent frequency/channel modeling contrast to IHP's untrained visual-grid projection.
+@inproceedings{wu2025catch,
+  author    = {Wu, Xingjian and Qiu, Xiangfei and Li, Zhengyu and Wang, Yihang and Hu, Jilin and Guo, Chenjuan and Xiong, Hui and Yang, Bin},
+  title     = {{CATCH}: Channel-Aware Multivariate Time Series Anomaly Detection via Frequency Patching},
+  booktitle = {The Thirteenth International Conference on Learning Representations},
+  year      = {2025},
+  url       = {https://proceedings.iclr.cc/paper_files/paper/2025/hash/2b25c39788e5cf11d3541de433ebf4c0-Abstract-Conference.html}
+}
+
+% [Core contribution] Diagnoses temporal-understanding and localization limitations of LLM-based TSAD and proposes simple corrections.
+% [Reason for citation] Motivates coordinate-aware interfaces rather than assuming stronger prompting solves localization.
+@inproceedings{park2025llmtsad,
+  author    = {Park, Jun Woo and Jung, Kyudan and Lee, Dohyun and Lee, Hyuck and Gwak, Daehoon and Park, ChaeHun and Choo, Jaegul and Cho, Jaewoong},
+  title     = {Delving into Large Language Models for Effective Time-Series Anomaly Detection},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year      = {2025},
+  volume    = {38},
+  pages     = {103013--103060},
+  publisher = {Curran Associates, Inc.}
+}
+
+% [Core contribution] Curates a reliable 1,070-series TSAD benchmark and evaluation protocol.
+% [Reason for citation] Experimental provenance for the heterogeneous benchmark families and reliability-oriented reporting.
+@inproceedings{liu2024elephant,
+  author    = {Liu, Qinghua and Paparrizos, John},
+  title     = {The Elephant in the Room: Towards A Reliable Time-Series Anomaly Detection Benchmark},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year      = {2024},
+  volume    = {37},
+  pages     = {108231--108261},
+  publisher = {Curran Associates, Inc.},
+  doi       = {10.52202/079017-3437}
+}
+
+% [Core contribution] Defines threshold-independent, range-aware volume-under-the-surface metrics.
+% [Reason for citation] Metric provenance for VUS-PR and VUS-ROC in our evaluation.
 @article{paparrizos2022vus,
-  title   = {Volume Under the Surface: A New Accuracy Evaluation Measure for Time-Series Anomaly Detection},
   author  = {Paparrizos, John and Boniol, Paul and Palpanas, Themis and Tsay, Ruey S. and Elmore, Aaron J. and Franklin, Michael J.},
+  title   = {Volume Under the Surface: A New Accuracy Evaluation Measure for Time-Series Anomaly Detection},
   journal = {Proceedings of the VLDB Endowment},
+  year    = {2022},
   volume  = {15},
   number  = {11},
   pages   = {2774--2787},
-  year    = {2022},
-  doi     = {10.14778/3551793.3551830},
-  url     = {https://www.vldb.org/pvldb/vol15/p2774-paparrizos.pdf}
+  doi     = {10.14778/3551793.3551830}
+}
+
+% [Core contribution] Introduces contrastive language-image pretraining for transferable visual representations.
+% [Reason for citation] Backbone provenance for the frozen CLIP-compatible visual encoder used by ViT4TS.
+@inproceedings{radford2021clip,
+  author    = {Radford, Alec and Kim, Jong Wook and Hallacy, Chris and Ramesh, Aditya and Goh, Gabriel and Agarwal, Sandhini and Sastry, Girish and Askell, Amanda and Mishkin, Pamela and Clark, Jack and Krueger, Gretchen and Sutskever, Ilya},
+  title     = {Learning Transferable Visual Models From Natural Language Supervision},
+  booktitle = {Proceedings of the 38th International Conference on Machine Learning},
+  series    = {Proceedings of Machine Learning Research},
+  volume    = {139},
+  pages     = {8748--8763},
+  year      = {2021},
+  publisher = {PMLR},
+  url       = {https://proceedings.mlr.press/v139/radford21a.html}
+}
+
+% [Core contribution] Introduces the Vision Transformer patch-token architecture.
+% [Reason for citation] Architecture provenance for the base token grid whose multiscale memberships IHP projects.
+@inproceedings{dosovitskiy2021vit,
+  author    = {Dosovitskiy, Alexey and Beyer, Lucas and Kolesnikov, Alexander and Weissenborn, Dirk and Zhai, Xiaohua and Unterthiner, Thomas and Dehghani, Mostafa and Minderer, Matthias and Heigold, Georg and Gelly, Sylvain and Uszkoreit, Jakob and Houlsby, Neil},
+  title     = {An Image Is Worth 16x16 Words: Transformers for Image Recognition at Scale},
+  booktitle = {International Conference on Learning Representations},
+  year      = {2021},
+  url       = {https://openreview.net/forum?id=YicbFdNTTy}
+}
+
+% [Core contribution] Matches component-aware foundation-model features for training-free unified visual anomaly detection.
+% [Reason for citation] Related training-free dense-localization design using inferred semantic components rather than literal renderer incidence.
+@inproceedings{gu2025univad,
+  author    = {Gu, Zhaopeng and Zhu, Bingke and Zhu, Guibo and Chen, Yingying and Tang, Ming and Wang, Jinqiao},
+  title     = {{UniVAD}: A Training-free Unified Model for Few-shot Visual Anomaly Detection},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  year      = {2025},
+  pages     = {15194--15203}
+}
+
+% [Core contribution] Unifies visual anomaly tasks through masking and top-ratio patch aggregation.
+% [Reason for citation] Prevents an overbroad claim that support-aware dense anomaly reduction is itself new.
+@article{lee2026uniformaly,
+  author  = {Lee, Yujin and Lim, Harin and Jang, Seoyoon and Yoon, Hyunsoo},
+  title   = {{UniFormaly}: Towards Task-Agnostic Unified Framework for Visual Anomaly Detection},
+  journal = {Pattern Recognition},
+  year    = {2026},
+  volume  = {169},
+  pages   = {111820},
+  doi     = {10.1016/j.patcog.2025.111820}
+}
+
+% [Core contribution] Makes ViTs fractionally shift-invariant through alias-free design and linear attention.
+% [Reason for citation] Recent evidence that patch-based visual grids are sensitive to translation and aliasing.
+@inproceedings{michaeli2025aliasfreevit,
+  author    = {Michaeli, Hagay and Soudry, Daniel},
+  title     = {Alias-Free {ViT}: Fractional Shift Invariance via Linear Attention},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year      = {2025},
+  volume    = {38},
+  pages     = {1473--1499},
+  publisher = {Curran Associates, Inc.}
+}
+
+% [Core contribution] Identifies and repairs shift nonequivariance across tokenization, attention, patch merging, and positional encoding.
+% [Reason for citation] Older grid-sensitivity provenance that motivates auditing index geometry while distinguishing IHP from backbone redesign.
+@inproceedings{rojasgomez2024shiftvit,
+  author    = {Rojas-Gomez, Renan A. and Lim, Teck-Yian and Do, Minh N. and Yeh, Raymond A.},
+  title     = {Making Vision Transformers Truly Shift-Equivariant},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  year      = {2024},
+  pages     = {5568--5577}
+}
+
+% [Core contribution] Uses vision and language foundation models for training-free visual anomaly detection.
+% [Reason for citation] Positions IHP among simple frozen-model interventions rather than newly trained adapters.
+@inproceedings{zhang2025logsad,
+  author    = {Zhang, Jinjin and Wang, Guodong and Jin, Yizhou and Huang, Di},
+  title     = {Towards Training-Free Anomaly Detection with Vision and Language Foundation Models},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  year      = {2025},
+  pages     = {15204--15213}
+}
+
+% [Core contribution] Performs training-free few-shot visual anomaly detection through normal-feature subspace modeling.
+% [Reason for citation] Shows that a simple geometric operator over frozen patch features can support dense localization.
+@inproceedings{lendering2026subspacead,
+  author    = {Lendering, Camile and Akdag, Erkut and Bondarau, Egor},
+  title     = {{SubspaceAD}: Training-Free Few-Shot Anomaly Detection via Subspace Modeling},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  year      = {2026},
+  pages     = {28557--28566}
+}
+
+% [Core contribution] Detects flow- and behavior-level Web-service anomalies from multi-flow network telemetry.
+% [Reason for citation] Recent IEEE MSN precedent connecting IHP's heterogeneous telemetry setting to network-service monitoring.
+@inproceedings{dong2025blade,
+  author    = {Dong, Zhibo and Huang, Yong and Sun, Shubao and Cui, Wentao and Wang, Zhihua},
+  title     = {{BLADE}: Behavior-Level Anomaly Detection Using Network Traffic in Web Services},
+  booktitle = {2025 21st International Conference on Mobility, Sensing and Networking (MSN)},
+  pages     = {221--228},
+  year      = {2025},
+  publisher = {IEEE},
+  doi       = {10.1109/MSN69125.2025.00037}
+}
+
+% [Core contribution] Detects concept drift without labels through generative distribution alignment.
+% [Reason for citation] IEEE MSN evidence that label-free distribution change matters in evolving telemetry streams; not used as a comparator.
+@inproceedings{tan2025generative,
+  author    = {Tan, Haowen and Tan, Shuaishuai and Chen, Jiaxiong},
+  title     = {Unsupervised Concept Drift Detection via Generative Distribution Alignment},
+  booktitle = {2025 21st International Conference on Mobility, Sensing and Networking (MSN)},
+  pages     = {367--374},
+  year      = {2025},
+  publisher = {IEEE},
+  doi       = {10.1109/MSN69125.2025.00055}
 }

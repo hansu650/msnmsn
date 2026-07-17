@@ -1,6 +1,70 @@
 \section{Introduction}
 
-Telemetry anomaly detection must distinguish rare operational incidents from
-normal temporal variation without allowing test labels to shape the detector.
-This provisional section reserves the publication structure; ResearchPilot
-G.4 will replace it after the Phase F evidence boundary is frozen.
+Training-free anomaly screening is attractive for heterogeneous telemetry,
+provided that detected evidence can be localized to the measurements that
+generated it. Cloud services, networked applications, spacecraft, and sensor
+systems produce signals with different normal regimes and failure patterns;
+maintaining a separately trained detector for every source is costly. Recent
+work therefore explores both reliable cross-domain benchmarks
+\cite{liu2024elephant} and telemetry-specific unsupervised detectors
+\cite{dong2025blade}. Yet deployment requires more than a strong anomaly
+score: an operator must return that score to the correct timestamp for alert
+ranking and diagnosis.
+
+Frozen vision representations provide a promising alternative to
+dataset-specific training. VLM4TS converts a time-series window to a line
+image, uses its ViT4TS stage to screen candidate anomalies with frozen CLIP
+features, and can then invoke a vision--language model for verification
+\cite{he2026vlm4ts,radford2021clip}. The screening stage builds multiscale
+visual tokens, compares them with a visual memory, projects the resulting
+token costs to a common image grid, and finally maps image columns back to
+time. This design makes the token-to-grid projector a semantic interface:
+even perfectly informative frozen tokens cannot localize an anomaly if their
+inverse coordinate map assigns evidence to a different cell.
+
+We find that this coordinate contract is inconsistent in the released
+projector. The supplied pooling memberships contain zero-based flattened
+base-cell indices, but the projector queries whether each set contains
+$i+1$. At each pooled scale on the $14\times14$ grid, 195 output queries find
+support, yet every one is displaced by one flattened cell. Thirteen of these
+queries wrap across row boundaries, and the terminal query has no support. A
+finite-value fallback then turns that structural hole into a zero anomaly
+contribution. The issue is therefore not the syntactic size of an index
+change: the shifted graph assigns multiscale evidence to incorrect cells and
+makes the projection incomplete for every rendered window.
+
+We address this interface with Index-Consistent Harmonic Projection (IHP), a
+minimal coordinate-contract repair. IHP reconstructs the literal
+token-to-cell graph specified by the zero-based memberships and then applies
+the unchanged ViT4TS harmonic projector on that corrected support. The
+harmonic mean itself is not presented as new; the contribution is a complete
+projection defined on the coordinate convention that generated the masks.
+The renderer, encoder, all-window visual memory, token matching, scale fusion,
+and timestamp stitching remain frozen, so IHP adds neither learned capacity
+nor another backbone pass.
+
+This narrow intervention enables two complementary evaluations. A label-free
+certificate tests whether the predicted displacement, row wraps, and hole
+exist and whether
+literal incidence restores complete coverage. A same-cache comparison then
+holds every visual token and downstream operation fixed while replacing only
+the projection. Across 492 series and all eleven NAB, NASA, and Yahoo
+subdatasets, IHP increases equal-subdataset F1-max, AUPRC, and VUS-PR over the
+released-coordinate control by 0.0267, 0.0218, and 0.0102. Unadjusted
+hierarchical intervals exclude zero for AUPRC and VUS-PR, whereas the F1-max
+interval crosses zero. As external context, IHP obtains 0.662 F1-max versus
+the paper-reported ViT4TS value of 0.612 and is higher on 9/11 subdatasets;
+this external comparison is descriptive, not paired.
+
+The contributions are:
+\begin{itemize}
+  \item We formalize index consistency at the multiscale mask-to-grid
+  interface and certify that all 195 valid pooled-scale queries are shifted,
+  including 13 row wraps, while the terminal query is unsupported.
+  \item We derive and implement a complete index-consistent repair for the
+  ViT4TS mask-to-grid interface, without changing the inherited harmonic
+  reducer or any learned component.
+  \item We evaluate the intervention on 492 series from eleven telemetry
+  subdatasets, separating an explicitly paper-reported external comparison
+  from a same-cache causal control with hierarchical uncertainty estimates.
+\end{itemize}

@@ -1,5 +1,26 @@
-\section{Conclusion}
+\section{Limitations and Conclusion}
 
-The conclusion will be written only after the terminal claim gate determines
-whether the evidence supports a method result, a bounded heterogeneous result,
-or a negative audit.
+This work audited whether a frozen visual anomaly screen returns multiscale
+evidence to the base-grid cells that generated it. The released ViT4TS
+projector shifts every valid pooled-scale query by one flattened cell and
+leaves the terminal query unsupported. IHP provides the minimal repair: it
+uses the supplied zero-based memberships literally and then applies the
+unchanged harmonic projector on the corrected support. In the 492-series
+same-cache comparison, IHP improves equal-subdataset F1-max, AUPRC, and VUS-PR
+by 0.0267, 0.0218, and 0.0102. Unadjusted intervals exclude zero for AUPRC
+and VUS-PR but not F1-max. The paper-reported ViT4TS value of 0.612 and IHP's
+0.662 provide secondary external context, not a paired method effect.
+
+The evidence is bounded to the univariate ViT4TS screening stage, its released
+$14\times14$ grid and pooling masks, and three benchmark families. IHP was a
+prespecified component promoted after a composite candidate failed on the same
+evaluation, so its intervals are not selection-adjusted. Moreover, released
+full-series preprocessing and all-window median memory make the evaluated
+screen offline and transductive; IHP does not remove this deployment
+limitation. We do not evaluate downstream VLM verification, multivariate
+renderers, online drift, or other visual backbones. Future work should make
+coordinate contracts executable across other renderers and test them on an
+independent, streaming-compatible protocol. Within the present boundary, the
+exact 196/196 coverage certificate and paired ranking gains show that auditing
+an inverse-coordinate interface can improve a frozen screen without training,
+labels, learned parameters, or another encoder pass.

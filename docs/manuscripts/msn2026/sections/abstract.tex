@@ -1,3 +1,19 @@
-This provisional source verifies the anonymous IEEE conference layout only.
-The final abstract, numerical results, and contribution claims are intentionally
-withheld until the frozen Phase F benchmark and claim--evidence gate complete.
+Frozen visual foundation models offer a training-free screen for telemetry
+anomalies, but multiscale token evidence must be returned to the base grid
+that generated it. We audit the released ViT4TS projector and find that, at
+each pooled scale, all 195 valid support queries are displaced by one
+flattened cell: 13 wrap across rows, while the terminal query is unsupported.
+We implement Index-Consistent Harmonic Projection (IHP), a minimal
+coordinate-contract repair that interprets supplied memberships literally
+before applying the unchanged ViT4TS harmonic projector. The renderer,
+frozen encoder, all-window visual memory, matching, scale fusion, and temporal
+stitcher remain fixed. On 492 series from eleven NAB, NASA, and Yahoo
+subdatasets, IHP improves same-cache equal-subdataset F1-max, AUPRC, and
+VUS-PR by 0.0267, 0.0218, and 0.0102 over the released-coordinate control.
+Unadjusted hierarchical bootstrap intervals exclude zero for AUPRC and
+VUS-PR but not F1-max; they quantify sampling variability rather than
+post-selection inference. As secondary external context, IHP obtains F1-max
+0.662 versus the paper-reported ViT4TS value 0.612 and is numerically higher
+on 9/11 subdatasets. The repair uses no training, labels, learned parameters,
+or additional encoder pass, showing that coordinate auditing can improve a
+frozen visual anomaly screen without increasing model capacity.

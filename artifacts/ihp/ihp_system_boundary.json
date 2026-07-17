@@ -1,0 +1,34 @@
+{
+  "status": "SYSTEM_BOUNDARY_VERIFIED",
+  "series": 492,
+  "same_cache_identity": {
+    "manifest_pairs_checked": 492,
+    "mismatched_pairs": 0,
+    "fields": [
+      "released_cache_key",
+      "released_token_sha256",
+      "released_manifest_sha256",
+      "clip_forward_calls"
+    ],
+    "incremental_frozen_encoder_calls": 0,
+    "incremental_token_cache_bytes": 0
+  },
+  "persisted_storage": {
+    "shared_token_cache_files": 984,
+    "shared_token_cache_bytes": 36509291576,
+    "rel_u_score_bytes": 12398432,
+    "ihp_score_bytes": 12398432
+  },
+  "measurement_limits": [
+    "runtime was recorded jointly for REL_U, IDX_U, and the failed envelope arm",
+    "peak allocated VRAM was recorded jointly rather than per arm",
+    "host RAM was not recorded",
+    "no arm-isolated latency, VRAM, or host-RAM claim is made"
+  ],
+  "source": {
+    "run_root": "coordinate_envelope_full paired score manifests",
+    "cache_persistence": "code/src/measure_vit4ts/cache.py:410-435",
+    "projection_execution": "code/src/measure_vit4ts/coordinate_envelope_runner.py:307-324",
+    "score_persistence": "code/src/measure_vit4ts/coordinate_envelope_runner.py:342-364"
+  }
+}
