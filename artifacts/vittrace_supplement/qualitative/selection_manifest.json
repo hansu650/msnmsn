@@ -1,0 +1,93 @@
+{
+  "cases": [
+    {
+      "case_order": 0,
+      "case_role": "representative_positive",
+      "delta_vus_pr": 0.028161892748824413,
+      "family": "Yahoo",
+      "full_vus_pr": 0.982054245609326,
+      "n_points": 1680,
+      "n_positive": 15,
+      "oracle_visualization_only": true,
+      "rel_vus_pr": 0.9538923528605016,
+      "selection_distance": 0.0010130124121904838,
+      "selection_rule": "closest_to_median_positive_full_minus_rel_vus_pr",
+      "selection_target": 0.029174905161014897,
+      "series_id": "YAHOOA4__A4Benchmark-TS92",
+      "subgroup": "Yahoo-A4",
+      "uses_evaluator_labels": true
+    },
+    {
+      "case_order": 1,
+      "case_role": "representative_failure",
+      "delta_vus_pr": -0.015442060586563389,
+      "family": "Yahoo",
+      "full_vus_pr": 0.9383829035323868,
+      "n_points": 1432,
+      "n_positive": 11,
+      "oracle_visualization_only": true,
+      "rel_vus_pr": 0.9538249641189502,
+      "selection_distance": 2.8716884890589434e-05,
+      "selection_rule": "closest_to_median_nonpositive_full_minus_rel_vus_pr",
+      "selection_target": -0.0154133437016728,
+      "series_id": "YAHOOA1__real_52",
+      "subgroup": "Yahoo-A1",
+      "uses_evaluator_labels": true
+    }
+  ],
+  "common_valid_series": 488,
+  "config_path": "C:\\Users\\qintian\\Desktop\\msn\\msnmsn\\configs\\vittrace_ablation_full_v3.yaml",
+  "config_sha256": "E2F2CA3B85CF3DE96CF335A1F4E7F30C68022C2D7F8537BE4F923D5AB3086D24",
+  "contrast": "IHP1_NCTP1-IHP0_NCTP0",
+  "evaluation": {
+    "config_sha256": "E2F2CA3B85CF3DE96CF335A1F4E7F30C68022C2D7F8537BE4F923D5AB3086D24",
+    "manifest_sha256": "4B3EB83D1CD9EF09F9C88D6D159EA6BEE81F8F69BAC4EA2FCAB06D76FF2EF8EF",
+    "marker_path": "D:\\qintian_experiments\\ViTTrace_ablation_full_v3_20260718_193834\\results\\paper_matched_evaluation\\_COMBINED_EVALUATION_COMPLETE.json",
+    "marker_sha256": "AE8B06FB02487D90E30F1A83098BC8098E24A83D58D33F1FDDD9C6B437182CFF",
+    "metrics_path": "D:\\qintian_experiments\\ViTTrace_ablation_full_v3_20260718_193834\\results\\paper_matched_evaluation\\per_series_metrics.csv",
+    "metrics_sha256": "624C9BCC20C3B11BA688E8BA337C972C737FD4819989A3F5542434EBF9406DA0",
+    "provenance_path": "D:\\qintian_experiments\\ViTTrace_ablation_full_v3_20260718_193834\\results\\paper_matched_evaluation\\evaluation_provenance.json",
+    "provenance_sha256": "26CFEF51B90462029B030789979D330800DE906A25D9B9D3B5AC9FFE7103008B",
+    "valid_mask_file_sha256": "FA80DD6E21C1DCBB1BBB6A66278BFF0B01EC3DA796E5E63B9AB0D4D4B5347F40",
+    "valid_mask_path": "D:\\qintian_experiments\\ViTTrace_ablation_full_v3_20260718_193834\\results\\paper_matched_evaluation\\valid_series_mask.csv",
+    "valid_mask_sha256": "A4DB6A33860F1208385A997A06CEDE0D80A2F9E928678929CA21E56AC08FE5A4"
+  },
+  "factorial_arms": [
+    {
+      "arm": "IHP0_NCTP0",
+      "panel": "rel"
+    },
+    {
+      "arm": "IHP1_NCTP0",
+      "panel": "ihp"
+    },
+    {
+      "arm": "IHP0_NCTP1",
+      "panel": "rel_nctp"
+    },
+    {
+      "arm": "IHP1_NCTP1",
+      "panel": "full"
+    }
+  ],
+  "failure_rule": "closest_to_median_nonpositive_else_global_minimum_then_series_id",
+  "manifest_path": "C:\\Users\\qintian\\Desktop\\msn\\msnmsn\\configs\\vlm4ts_11group_manifest.json",
+  "manifest_sha256": "4B3EB83D1CD9EF09F9C88D6D159EA6BEE81F8F69BAC4EA2FCAB06D76FF2EF8EF",
+  "metric": "vus_pr",
+  "minimum_length": 480,
+  "oracle_visualization_only": true,
+  "output_sha256": {
+    "candidate_ranking.csv": "70BB2CFDFF673E49F3E737C94079EFA727D96E36BAAD4D192B8C01E40AC09867",
+    "case_tidy.csv": "CF4BDD51880C402B590D086D6AD4A75C864E6A7A8AFB636E61A5390EDBAF11C9",
+    "ground_truth_intervals.csv": "7DAC82E2983837F700F8694B64D66C5FF75EAB98A12B09648F8D8E0575020FAF",
+    "prediction_intervals.csv": "B192305BFD843DC84B57EAD350B7EEA0E371A1CDDD0CD71637AF6195986457FB",
+    "score_index.csv": "7031FA985D6C013FBF3C86A750321CF85FFBCD70BC7BFB2D701910A12AE86B2E",
+    "selected_cases.csv": "DAF863F0C1C45F7C904472E35A7E4BB37AE2B15E34BED7CA8EA65F57654C13DE"
+  },
+  "positive_rule": "closest_to_median_positive_full_minus_rel_vus_pr_then_series_id",
+  "schema_version": 2,
+  "score_index_rows": 1952,
+  "score_root": "D:\\qintian_experiments\\ViTTrace_ablation_full_v3_20260718_193834\\runs\\cache_only_b16_w240_s60",
+  "status": "COMPLETE",
+  "uses_evaluator_labels": true
+}

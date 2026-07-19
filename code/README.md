@@ -75,3 +75,26 @@ python .\code\scripts\ihp_make_figures.py `
 Large tokens, anomaly maps, scores, datasets, checkpoints, and logs remain
 local. Only compact source, evidence tables, manuscript files, and checked
 figures belong in Git.
+
+## Full v3 experiment code
+
+Download and verify the frozen external backbone (no project-trained weights
+exist):
+
+```powershell
+python .\code\scripts\fetch_vittrace_model.py
+```
+
+The registered full experiment uses `configs/vittrace_ablation_full_v3.yaml`,
+`configs/vlm4ts_11group_manifest.json`, and the frozen registry/plan/parity
+records under `artifacts/vittrace_release`. Paths in the YAML intentionally
+record the original run and must be changed to local dataset, vendor, cache,
+and output roots before a new run. The vendor is
+`https://github.com/ZLHe0/VLM4TS.git` at commit
+`8ab8c16414eb2c1a861dfc3e76f458180035a879`.
+
+Run the complete public v3 regression without downloading data:
+
+```powershell
+python -m pytest .\code\tests\test_vittrace_v3*.py -q
+```

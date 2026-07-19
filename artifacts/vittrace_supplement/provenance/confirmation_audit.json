@@ -1,0 +1,12 @@
+{
+  "audit_is_read_only": true,
+  "created_split": false,
+  "evidence": {},
+  "reason": "pre-existing regular cohort marker is absent; pre-existing arm-selection record is absent",
+  "reasons": [
+    "pre-existing regular cohort marker is absent",
+    "pre-existing arm-selection record is absent"
+  ],
+  "schema_version": 1,
+  "status": "CONFIRMATION_BLOCKED"
+}

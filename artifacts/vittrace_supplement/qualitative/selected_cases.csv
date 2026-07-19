@@ -1,0 +1,3 @@
+case_order,case_role,series_id,family,subgroup,n_points,n_positive,rel_vus_pr,full_vus_pr,delta_vus_pr,selection_target,selection_distance,selection_rule,uses_evaluator_labels,oracle_visualization_only
+0,representative_positive,YAHOOA4__A4Benchmark-TS92,Yahoo,Yahoo-A4,1680,15,0.9538923528605016,0.982054245609326,0.028161892748824413,0.029174905161014897,0.0010130124121904838,closest_to_median_positive_full_minus_rel_vus_pr,True,True
+1,representative_failure,YAHOOA1__real_52,Yahoo,Yahoo-A1,1432,11,0.9538249641189502,0.9383829035323868,-0.015442060586563389,-0.0154133437016728,2.8716884890589434e-05,closest_to_median_nonpositive_full_minus_rel_vus_pr,True,True

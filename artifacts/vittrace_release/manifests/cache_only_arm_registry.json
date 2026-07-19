@@ -1,0 +1,455 @@
+{
+  "arms": [
+    {
+      "fp_threshold": 0.0,
+      "id": "LEGACY_DEFAULT",
+      "order": 0,
+      "role": "control"
+    },
+    {
+      "fp_threshold": 0.0,
+      "id": "FINAL_DEFAULT",
+      "order": 1,
+      "role": "method"
+    },
+    {
+      "fp_threshold": 0.0,
+      "id": "MATCH_LEGACY_POSITION",
+      "order": 2,
+      "role": "ablation"
+    },
+    {
+      "fp_threshold": 0.0,
+      "id": "MATCH_LEGACY_ROW",
+      "order": 3,
+      "role": "ablation"
+    },
+    {
+      "fp_threshold": 0.0,
+      "id": "MATCH_LEGACY_COLUMN",
+      "order": 4,
+      "role": "ablation"
+    },
+    {
+      "fp_threshold": 0.0,
+      "id": "MATCH_LEGACY_GLOBAL",
+      "order": 5,
+      "role": "ablation"
+    },
+    {
+      "fp_threshold": 0.0,
+      "id": "MATCH_FINAL_POSITION",
+      "order": 6,
+      "role": "ablation"
+    },
+    {
+      "fp_threshold": 0.0,
+      "id": "MATCH_FINAL_ROW",
+      "order": 7,
+      "role": "ablation"
+    },
+    {
+      "fp_threshold": 0.0,
+      "id": "MATCH_FINAL_COLUMN",
+      "order": 8,
+      "role": "ablation"
+    },
+    {
+      "fp_threshold": 0.0,
+      "id": "MATCH_FINAL_GLOBAL",
+      "order": 9,
+      "role": "ablation"
+    },
+    {
+      "fp_threshold": 0.0,
+      "id": "SCALE_P",
+      "order": 10,
+      "role": "ablation"
+    },
+    {
+      "fp_threshold": 0.0,
+      "id": "SCALE_M",
+      "order": 11,
+      "role": "ablation"
+    },
+    {
+      "fp_threshold": 0.0,
+      "id": "SCALE_L",
+      "order": 12,
+      "role": "ablation"
+    },
+    {
+      "fp_threshold": 0.0,
+      "id": "SCALE_PM",
+      "order": 13,
+      "role": "ablation"
+    },
+    {
+      "fp_threshold": 0.0,
+      "id": "SCALE_PL",
+      "order": 14,
+      "role": "ablation"
+    },
+    {
+      "fp_threshold": 0.0,
+      "id": "SCALE_ML",
+      "order": 15,
+      "role": "ablation"
+    },
+    {
+      "fp_threshold": 0.0,
+      "id": "SCALE_PML",
+      "order": 16,
+      "role": "ablation"
+    },
+    {
+      "fp_threshold": 0.0,
+      "id": "SCALE_LEGACY_P",
+      "order": 17,
+      "role": "ablation"
+    },
+    {
+      "fp_threshold": 0.0,
+      "id": "SCALE_LEGACY_PML",
+      "order": 18,
+      "role": "ablation"
+    },
+    {
+      "fp_threshold": 0.0,
+      "id": "MEMORY_MEDIAN",
+      "order": 19,
+      "role": "ablation"
+    },
+    {
+      "fp_threshold": 0.0,
+      "id": "MEMORY_ALLPAIRS",
+      "order": 20,
+      "role": "ablation"
+    },
+    {
+      "fp_threshold": 0.0,
+      "id": "REDUCER_Q10",
+      "order": 21,
+      "role": "ablation"
+    },
+    {
+      "fp_threshold": 0.0,
+      "id": "REDUCER_Q25",
+      "order": 22,
+      "role": "ablation"
+    },
+    {
+      "fp_threshold": 0.0,
+      "id": "REDUCER_Q50",
+      "order": 23,
+      "role": "ablation"
+    },
+    {
+      "fp_threshold": 0.0,
+      "id": "REDUCER_TOP10",
+      "order": 24,
+      "role": "ablation"
+    },
+    {
+      "fp_threshold": 0.0,
+      "id": "REDUCER_TOP25",
+      "order": 25,
+      "role": "ablation"
+    },
+    {
+      "fp_threshold": 0.0,
+      "id": "REDUCER_TOP50",
+      "order": 26,
+      "role": "ablation"
+    },
+    {
+      "fp_threshold": 0.0,
+      "id": "IHP0_NCTP0",
+      "order": 27,
+      "role": "ablation"
+    },
+    {
+      "fp_threshold": 0.0,
+      "id": "IHP1_NCTP0",
+      "order": 28,
+      "role": "ablation"
+    },
+    {
+      "fp_threshold": 0.0,
+      "id": "IHP0_NCTP1",
+      "order": 29,
+      "role": "ablation"
+    },
+    {
+      "fp_threshold": 0.0,
+      "id": "IHP1_NCTP1",
+      "order": 30,
+      "role": "ablation"
+    },
+    {
+      "fp_threshold": 0.0,
+      "id": "TEMP_NCTP_LINEAR",
+      "order": 31,
+      "role": "ablation"
+    },
+    {
+      "fp_threshold": 0.0,
+      "id": "TEMP_NCTP_NEAREST",
+      "order": 32,
+      "role": "ablation"
+    },
+    {
+      "fp_threshold": 0.0,
+      "id": "TEMP_TRACE_SOFT",
+      "order": 33,
+      "role": "ablation"
+    },
+    {
+      "fp_threshold": 0.0,
+      "id": "TEMP_TRACE_HARD",
+      "order": 34,
+      "role": "ablation"
+    },
+    {
+      "fp_threshold": 0.0,
+      "id": "TEMP_LEGACY",
+      "order": 35,
+      "role": "ablation"
+    }
+  ],
+  "bootstrap": {
+    "hierarchy": [
+      "subgroup",
+      "series"
+    ],
+    "n_resamples": 10000,
+    "seed": 2027,
+    "shared_indices": true
+  },
+  "contrasts": [
+    {
+      "candidate": "FINAL_DEFAULT",
+      "control": "LEGACY_DEFAULT",
+      "family": "PRIMARY",
+      "id": "FINAL_VS_LEGACY"
+    },
+    {
+      "candidate": "MATCH_LEGACY_POSITION",
+      "control": "FINAL_DEFAULT",
+      "family": "MATCHING_LEGACY",
+      "id": "MATCH_LEGACY_POSITION_VS_FINAL"
+    },
+    {
+      "candidate": "MATCH_LEGACY_ROW",
+      "control": "FINAL_DEFAULT",
+      "family": "MATCHING_LEGACY",
+      "id": "MATCH_LEGACY_ROW_VS_FINAL"
+    },
+    {
+      "candidate": "MATCH_LEGACY_COLUMN",
+      "control": "FINAL_DEFAULT",
+      "family": "MATCHING_LEGACY",
+      "id": "MATCH_LEGACY_COLUMN_VS_FINAL"
+    },
+    {
+      "candidate": "MATCH_LEGACY_GLOBAL",
+      "control": "FINAL_DEFAULT",
+      "family": "MATCHING_LEGACY",
+      "id": "MATCH_LEGACY_GLOBAL_VS_FINAL"
+    },
+    {
+      "candidate": "MATCH_FINAL_POSITION",
+      "control": "FINAL_DEFAULT",
+      "family": "MATCHING_FINAL",
+      "id": "MATCH_FINAL_POSITION_VS_FINAL"
+    },
+    {
+      "candidate": "MATCH_FINAL_ROW",
+      "control": "FINAL_DEFAULT",
+      "family": "MATCHING_FINAL",
+      "id": "MATCH_FINAL_ROW_VS_FINAL"
+    },
+    {
+      "candidate": "MATCH_FINAL_COLUMN",
+      "control": "FINAL_DEFAULT",
+      "family": "MATCHING_FINAL",
+      "id": "MATCH_FINAL_COLUMN_VS_FINAL"
+    },
+    {
+      "candidate": "MATCH_FINAL_GLOBAL",
+      "control": "FINAL_DEFAULT",
+      "family": "MATCHING_FINAL",
+      "id": "MATCH_FINAL_GLOBAL_VS_FINAL"
+    },
+    {
+      "candidate": "SCALE_P",
+      "control": "FINAL_DEFAULT",
+      "family": "SCALE_SUBSET",
+      "id": "SCALE_P_VS_FINAL"
+    },
+    {
+      "candidate": "SCALE_M",
+      "control": "FINAL_DEFAULT",
+      "family": "SCALE_SUBSET",
+      "id": "SCALE_M_VS_FINAL"
+    },
+    {
+      "candidate": "SCALE_L",
+      "control": "FINAL_DEFAULT",
+      "family": "SCALE_SUBSET",
+      "id": "SCALE_L_VS_FINAL"
+    },
+    {
+      "candidate": "SCALE_PM",
+      "control": "FINAL_DEFAULT",
+      "family": "SCALE_SUBSET",
+      "id": "SCALE_PM_VS_FINAL"
+    },
+    {
+      "candidate": "SCALE_PL",
+      "control": "FINAL_DEFAULT",
+      "family": "SCALE_SUBSET",
+      "id": "SCALE_PL_VS_FINAL"
+    },
+    {
+      "candidate": "SCALE_ML",
+      "control": "FINAL_DEFAULT",
+      "family": "SCALE_SUBSET",
+      "id": "SCALE_ML_VS_FINAL"
+    },
+    {
+      "candidate": "SCALE_PML",
+      "control": "FINAL_DEFAULT",
+      "family": "SCALE_SUBSET",
+      "id": "SCALE_PML_VS_FINAL"
+    },
+    {
+      "candidate": "SCALE_LEGACY_P",
+      "control": "FINAL_DEFAULT",
+      "family": "SCALE_SUBSET_LEGACY",
+      "id": "SCALE_LEGACY_P_VS_FINAL"
+    },
+    {
+      "candidate": "SCALE_LEGACY_PML",
+      "control": "FINAL_DEFAULT",
+      "family": "SCALE_SUBSET_LEGACY",
+      "id": "SCALE_LEGACY_PML_VS_FINAL"
+    },
+    {
+      "candidate": "MEMORY_MEDIAN",
+      "control": "FINAL_DEFAULT",
+      "family": "MEMORY",
+      "id": "MEMORY_MEDIAN_VS_FINAL"
+    },
+    {
+      "candidate": "MEMORY_ALLPAIRS",
+      "control": "FINAL_DEFAULT",
+      "family": "MEMORY",
+      "id": "MEMORY_ALLPAIRS_VS_FINAL"
+    },
+    {
+      "candidate": "REDUCER_Q10",
+      "control": "FINAL_DEFAULT",
+      "family": "REDUCER_QUANTILE",
+      "id": "REDUCER_Q10_VS_FINAL"
+    },
+    {
+      "candidate": "REDUCER_Q25",
+      "control": "FINAL_DEFAULT",
+      "family": "REDUCER_QUANTILE",
+      "id": "REDUCER_Q25_VS_FINAL"
+    },
+    {
+      "candidate": "REDUCER_Q50",
+      "control": "FINAL_DEFAULT",
+      "family": "REDUCER_QUANTILE",
+      "id": "REDUCER_Q50_VS_FINAL"
+    },
+    {
+      "candidate": "REDUCER_TOP10",
+      "control": "FINAL_DEFAULT",
+      "family": "REDUCER_TOP_FRACTION",
+      "id": "REDUCER_TOP10_VS_FINAL"
+    },
+    {
+      "candidate": "REDUCER_TOP25",
+      "control": "FINAL_DEFAULT",
+      "family": "REDUCER_TOP_FRACTION",
+      "id": "REDUCER_TOP25_VS_FINAL"
+    },
+    {
+      "candidate": "REDUCER_TOP50",
+      "control": "FINAL_DEFAULT",
+      "family": "REDUCER_TOP_FRACTION",
+      "id": "REDUCER_TOP50_VS_FINAL"
+    },
+    {
+      "candidate": "IHP0_NCTP0",
+      "control": "FINAL_DEFAULT",
+      "family": "IHP_X_NCTP",
+      "id": "IHP0_NCTP0_VS_FINAL"
+    },
+    {
+      "candidate": "IHP1_NCTP0",
+      "control": "FINAL_DEFAULT",
+      "family": "IHP_X_NCTP",
+      "id": "IHP1_NCTP0_VS_FINAL"
+    },
+    {
+      "candidate": "IHP0_NCTP1",
+      "control": "FINAL_DEFAULT",
+      "family": "IHP_X_NCTP",
+      "id": "IHP0_NCTP1_VS_FINAL"
+    },
+    {
+      "candidate": "IHP1_NCTP1",
+      "control": "FINAL_DEFAULT",
+      "family": "IHP_X_NCTP",
+      "id": "IHP1_NCTP1_VS_FINAL"
+    },
+    {
+      "candidate": "TEMP_NCTP_LINEAR",
+      "control": "FINAL_DEFAULT",
+      "family": "TEMPORAL",
+      "id": "TEMP_NCTP_LINEAR_VS_FINAL"
+    },
+    {
+      "candidate": "TEMP_NCTP_NEAREST",
+      "control": "FINAL_DEFAULT",
+      "family": "TEMPORAL",
+      "id": "TEMP_NCTP_NEAREST_VS_FINAL"
+    },
+    {
+      "candidate": "TEMP_TRACE_SOFT",
+      "control": "FINAL_DEFAULT",
+      "family": "TEMPORAL",
+      "id": "TEMP_TRACE_SOFT_VS_FINAL"
+    },
+    {
+      "candidate": "TEMP_TRACE_HARD",
+      "control": "FINAL_DEFAULT",
+      "family": "TEMPORAL",
+      "id": "TEMP_TRACE_HARD_VS_FINAL"
+    },
+    {
+      "candidate": "TEMP_LEGACY",
+      "control": "FINAL_DEFAULT",
+      "family": "TEMPORAL",
+      "id": "TEMP_LEGACY_VS_FINAL"
+    }
+  ],
+  "control_arm": "LEGACY_DEFAULT",
+  "groups": {
+    "expected_families": 3,
+    "expected_subgroups": 11
+  },
+  "primary_arm": "FINAL_DEFAULT",
+  "registry_id": "VITTRACE_V3_CACHE_ONLY_B16_W240_S60",
+  "schema_version": 3,
+  "validity_policy": {
+    "anomaly_free_fp": "no_positive",
+    "auprc": "both_classes",
+    "f1_max": "all_series",
+    "vus_pr": "both_classes"
+  }
+}

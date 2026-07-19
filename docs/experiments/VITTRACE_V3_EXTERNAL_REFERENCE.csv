@@ -1,0 +1,40 @@
+paper,page,table_or_figure,arm,group,metric,value,value_status,notes
+VLM4TS_AAAI2026,7,Table 3,w/o patch-level embedding,NAB,F1-max,0.519,exact_paper_reported,ViT4TS-style inherited control
+VLM4TS_AAAI2026,7,Table 3,w/o patch-level embedding,NASA,F1-max,0.578,exact_paper_reported,ViT4TS-style inherited control
+VLM4TS_AAAI2026,7,Table 3,w/o patch-level embedding,YAHOO,F1-max,0.541,exact_paper_reported,ViT4TS-style inherited control
+VLM4TS_AAAI2026,7,Table 3,w/o cross-patch comparison,NAB,F1-max,0.504,exact_paper_reported,ViT4TS-style inherited control
+VLM4TS_AAAI2026,7,Table 3,w/o cross-patch comparison,NASA,F1-max,0.613,exact_paper_reported,ViT4TS-style inherited control
+VLM4TS_AAAI2026,7,Table 3,w/o cross-patch comparison,YAHOO,F1-max,0.514,exact_paper_reported,ViT4TS-style inherited control
+VLM4TS_AAAI2026,7,Table 3,w/o column-wise comparison,NAB,F1-max,0.523,exact_paper_reported,ViT4TS-style inherited control
+VLM4TS_AAAI2026,7,Table 3,w/o column-wise comparison,NASA,F1-max,0.624,exact_paper_reported,ViT4TS-style inherited control
+VLM4TS_AAAI2026,7,Table 3,w/o column-wise comparison,YAHOO,F1-max,0.565,exact_paper_reported,ViT4TS-style inherited control
+VLM4TS_AAAI2026,7,Table 3,w/o multi-scale embedding,NAB,F1-max,0.534,exact_paper_reported,ViT4TS-style inherited control
+VLM4TS_AAAI2026,7,Table 3,w/o multi-scale embedding,NASA,F1-max,0.582,exact_paper_reported,ViT4TS-style inherited control
+VLM4TS_AAAI2026,7,Table 3,w/o multi-scale embedding,YAHOO,F1-max,0.677,exact_paper_reported,ViT4TS-style inherited control
+VLM4TS_AAAI2026,7,Table 3,ViT4TS (ours),NAB,F1-max,0.555,exact_paper_reported,Published inherited scorer
+VLM4TS_AAAI2026,7,Table 3,ViT4TS (ours),NASA,F1-max,0.635,exact_paper_reported,Published inherited scorer
+VLM4TS_AAAI2026,7,Table 3,ViT4TS (ours),YAHOO,F1-max,0.671,exact_paper_reported,Published inherited scorer
+VLM4TS_AAAI2026,6,Table 1,ViT4TS,Art,F1-max,0.545,exact_paper_reported,External descriptive reference only
+VLM4TS_AAAI2026,6,Table 1,ViT4TS,AWS,F1-max,0.400,exact_paper_reported,External descriptive reference only
+VLM4TS_AAAI2026,6,Table 1,ViT4TS,AdEx,F1-max,0.615,exact_paper_reported,External descriptive reference only
+VLM4TS_AAAI2026,6,Table 1,ViT4TS,Traf,F1-max,0.615,exact_paper_reported,External descriptive reference only
+VLM4TS_AAAI2026,6,Table 1,ViT4TS,Tweets,F1-max,0.597,exact_paper_reported,External descriptive reference only
+VLM4TS_AAAI2026,6,Table 1,ViT4TS,MSL,F1-max,0.543,exact_paper_reported,External descriptive reference only
+VLM4TS_AAAI2026,6,Table 1,ViT4TS,SMAP,F1-max,0.726,exact_paper_reported,External descriptive reference only
+VLM4TS_AAAI2026,6,Table 1,ViT4TS,A1,F1-max,0.614,exact_paper_reported,External descriptive reference only
+VLM4TS_AAAI2026,6,Table 1,ViT4TS,A2,F1-max,0.892,exact_paper_reported,External descriptive reference only
+VLM4TS_AAAI2026,6,Table 1,ViT4TS,A3,F1-max,0.614,exact_paper_reported,External descriptive reference only
+VLM4TS_AAAI2026,6,Table 1,ViT4TS,A4,F1-max,0.565,exact_paper_reported,External descriptive reference only
+VLM4TS_AAAI2026,6,Table 1,ViT4TS,equal-11,F1-max,0.612,exact_paper_reported,External descriptive reference only
+VLM4TS_AAAI2026,7,Figure 4,ViT-B-32,NAB,F1-max,0.505,digitized_approximate,Approximate visual digitization; never used for statistical comparison
+VLM4TS_AAAI2026,7,Figure 4,ViT-B-16,NAB,F1-max,0.555,digitized_approximate,Approximate visual digitization; never used for statistical comparison
+VLM4TS_AAAI2026,7,Figure 4,ViT-L-14,NAB,F1-max,0.605,digitized_approximate,Approximate visual digitization; never used for statistical comparison
+VLM4TS_AAAI2026,7,Figure 4,ViT-H-14,NAB,F1-max,0.605,digitized_approximate,Approximate visual digitization; never used for statistical comparison
+VLM4TS_AAAI2026,7,Figure 4,ViT-B-32,NASA,F1-max,0.627,digitized_approximate,Approximate visual digitization; never used for statistical comparison
+VLM4TS_AAAI2026,7,Figure 4,ViT-B-16,NASA,F1-max,0.635,digitized_approximate,Approximate visual digitization; never used for statistical comparison
+VLM4TS_AAAI2026,7,Figure 4,ViT-L-14,NASA,F1-max,0.639,digitized_approximate,Approximate visual digitization; never used for statistical comparison
+VLM4TS_AAAI2026,7,Figure 4,ViT-H-14,NASA,F1-max,0.642,digitized_approximate,Approximate visual digitization; never used for statistical comparison
+VLM4TS_AAAI2026,7,Figure 4,ViT-B-32,YAHOO,F1-max,0.570,digitized_approximate,Approximate visual digitization; never used for statistical comparison
+VLM4TS_AAAI2026,7,Figure 4,ViT-B-16,YAHOO,F1-max,0.672,digitized_approximate,Approximate visual digitization; never used for statistical comparison
+VLM4TS_AAAI2026,7,Figure 4,ViT-L-14,YAHOO,F1-max,0.690,digitized_approximate,Approximate visual digitization; never used for statistical comparison
+VLM4TS_AAAI2026,7,Figure 4,ViT-H-14,YAHOO,F1-max,0.718,digitized_approximate,Approximate visual digitization; never used for statistical comparison

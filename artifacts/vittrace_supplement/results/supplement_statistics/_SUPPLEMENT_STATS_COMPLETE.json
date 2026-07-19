@@ -1,0 +1,20 @@
+{
+  "arm_count": 4,
+  "bootstrap_replicates": 10000,
+  "bootstrap_seed": 2027,
+  "contrast_count": 6,
+  "contrast_rows": 18,
+  "factorial_rows": 12,
+  "input_arm_metadata_sha256": "614884CAC1BAE8D323596DBD93E38C573ADD88F448EE1A848D5BACBF85C10FB2",
+  "input_metrics_sha256": "624C9BCC20C3B11BA688E8BA337C972C737FD4819989A3F5542434EBF9406DA0",
+  "metric_count": 3,
+  "per_series_delta_rows": 8784,
+  "schema_version": 1,
+  "series_count": 492,
+  "shared_plan_sha256": "F9064102C7BC0FB40D4129B54068783A55A1451C200088EB541727BE27D5913E",
+  "status": "COMPLETE",
+  "supplement_contrasts_sha256": "4B9CF0CCDF10B83F8CB6905C33C4E602C152B8521AB84DAC91E5F8D3119D4996",
+  "supplement_factorial_summary_sha256": "36F1502E04E4A0CB3299AD1B5D49A96126688068BD2B142982EF270E72513E2E",
+  "supplement_per_series_deltas_sha256": "086D22CDBA0B0B34F7A9A5B7E93D0BF90BAD507EB488814CD4B178D1AB05B448",
+  "valid_series_count": 488
+}

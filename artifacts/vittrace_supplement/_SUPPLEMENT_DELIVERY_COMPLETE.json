@@ -1,0 +1,46 @@
+{
+  "common_valid_series": 488,
+  "created_at_utc": "2026-07-19T02:11:38.892844Z",
+  "failure_count": 0,
+  "figures_emitted": 0,
+  "key_outputs": {
+    "bootstrap_ci_complete": {
+      "relative_path": "results/bootstrap_ci_complete.csv",
+      "sha256": "B9142EC81D679F9FAFFE10FDEB818A436DFAAF4F5F4DF22BB4ADBE90BA0C2B25"
+    },
+    "factorial_2x2_summary": {
+      "relative_path": "results/factorial_2x2_summary.csv",
+      "sha256": "12A8476EF376EA7CBF07F8ECED6809B430DE1A9F9AFA8AB18AF3CE150AA84004"
+    },
+    "factorial_interaction": {
+      "relative_path": "results/factorial_interaction.csv",
+      "sha256": "3994DAD0FDFA7E9F7F0200FA37CBE79A390AE097C9D8213AF8CDEDE0C2A8AAEC"
+    },
+    "failure_manifest": {
+      "relative_path": "failures/failure_manifest.csv",
+      "sha256": "F6B382B1746C61E6E3DA5FC4D5985C98245ADBB4664DF8EB06A61D30633A560E"
+    },
+    "protocol": {
+      "relative_path": "protocol.json",
+      "sha256": "B1C4C4D9551D62DB749D51CECAB4BAF4C40A52A7B50361AE2CCD221D1708FF8E"
+    },
+    "qualitative_complete": {
+      "relative_path": "qualitative/_SUPPLEMENT_QUALITATIVE_COMPLETE.json",
+      "sha256": "ACB53641B9FFE6D34C2768515C1E8B8F5A336C037ED01D63A02478658C19AF0E"
+    },
+    "runtime_postcache": {
+      "relative_path": "runtime/runtime_postcache.csv",
+      "sha256": "1701C998613B8C7056FB7E6C831699476910D1C292E14BD653F53F1441BF5AB2"
+    },
+    "table3_ours_row": {
+      "relative_path": "tables/table3_ours_row.csv",
+      "sha256": "65CBE59A68D44BEABCA6A5878159F68F8A244C57C904ABB2988BBE11D3D81516"
+    }
+  },
+  "model_or_encoder_runs": 0,
+  "runtime_rows": 1952,
+  "runtime_summary_rows": 4,
+  "schema_version": "vittrace-supplement-data-only/1",
+  "series_count": 492,
+  "status": "COMPLETE"
+}

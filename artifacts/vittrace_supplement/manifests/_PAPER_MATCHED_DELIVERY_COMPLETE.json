@@ -1,0 +1,11 @@
+{
+  "arm_count": 11,
+  "external_comparison_status": "DESCRIPTIVE_ONLY_NO_PAIRED_CI",
+  "factorial_row_count": 4,
+  "protocol_sha256": "42161E8CE56A5472A6EA7916176D5A8E3E8650480906B79A053FEB5ACAF9CF82",
+  "schema_version": 1,
+  "series_count": 492,
+  "status": "COMPLETE",
+  "table3_row_count": 5,
+  "valid_series_count": 488
+}

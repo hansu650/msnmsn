@@ -1,0 +1,11 @@
+{
+  "arm_count": 11,
+  "bootstrap_replicates": 10000,
+  "bootstrap_seed": 2027,
+  "comparison_policy": "external paper values are descriptive only and receive no paired CI",
+  "protocol_id": "VITTRACE_PAPER_MATCHED_ABLATIONS_V1",
+  "protocol_sha256": "42161E8CE56A5472A6EA7916176D5A8E3E8650480906B79A053FEB5ACAF9CF82",
+  "schema_version": 1,
+  "series_count": 492,
+  "valid_series_count": 488
+}

@@ -36,3 +36,7 @@ vendor/
 
 # Isolated LaTeX build products (paper sources and checked release PDFs remain tracked)
 .latex-build/
+
+# Local test and interrupted-patch debris
+.pytest-*/
+*.orig

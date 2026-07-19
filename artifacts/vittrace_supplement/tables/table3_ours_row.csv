@@ -1,0 +1,2 @@
+method,metric,NAB,NASA,YAHOO,aggregation,paired_ci_available,is_final
+ViTTrace / IHP-240 (ours),F1-max,0.6822994723530438,0.7206143142954192,0.6793475995246707,macro mean of 5/2/4 subdataset F1-max values,True,True

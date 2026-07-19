@@ -1,0 +1,14 @@
+{
+  "coverage": 488,
+  "created_at_utc": "2026-07-19T02:11:38.813614Z",
+  "cuda_available_at_packaging": true,
+  "encoder_calls": 0,
+  "historical_measurement_note": "timings were read from immutable cache-only runtime transactions",
+  "logical_cpu_count": 32,
+  "physical_cpu_count": 24,
+  "platform": "Windows-10-10.0.26200-SP0",
+  "processor": "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel",
+  "python": "3.10.20",
+  "scope": "post-cache projection/scoring overhead",
+  "torch": "2.9.1+cu128"
+}

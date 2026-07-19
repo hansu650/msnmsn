@@ -1,10 +1,11 @@
 numpy
 pandas
-scikit-learn
 scipy
-statsmodels
+scikit-learn
 matplotlib
-tqdm
+Pillow
+open_clip_torch==3.2.0
 PyYAML
 psutil
+tqdm
 pytest

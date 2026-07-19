@@ -61,3 +61,17 @@ python code\scripts\ihp_make_figures.py `
 See [`code/README.md`](code/README.md) for the minimal API and structural-audit
 command. Raw datasets, checkpoints, token caches, per-series arrays, failed
 routes, and temporary logs are intentionally excluded.
+
+## ViTTrace v3 release
+
+The complete runnable experiment/evaluation namespace is available under
+`code/src/measure_vit4ts_v3`. The verified data-only supplement is browsable
+under `artifacts/vittrace_supplement`; it contains the 492-series metrics,
+IHP x NCTP factorial statistics, deterministic qualitative CSV data, runtime
+records, provenance, and checksums.
+
+ViTTrace has no learned project checkpoint. It uses the frozen external
+OpenCLIP `ViT-B-16` / `openai` backbone. See `models/README.md` and run
+`code/scripts/fetch_vittrace_model.py` to download and verify the exact model
+state. The 570.79 MiB upstream weight, raw data, and token caches are not
+stored in Git.

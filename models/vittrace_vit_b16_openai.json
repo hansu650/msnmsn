@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "role": "frozen_external_backbone",
+  "architecture": "ViT-B-16",
+  "pretrained": "openai",
+  "open_clip_package": "open_clip_torch",
+  "open_clip_version_used": "3.2.0",
+  "huggingface_repository": "timm/vit_base_patch16_clip_224.openai",
+  "huggingface_revision": "977e3dd0ec55ab8da155f2fbeb6b5f54948b6e3d",
+  "checkpoint_bytes": 598516980,
+  "checkpoint_sha256": "4B8699299B1E8997753C64B052BA32031449D5D853F55A039148560EE02B820F",
+  "canonical_model_state_sha256": "CAAD38C6AB955B9329739541FE1BA110E261936445528FA3B94D0B73E96672CD",
+  "trainable_parameters_added_by_vittrace": 0,
+  "redistributed_in_repository": false,
+  "license_note": "The external checkpoint is not redistributed. Obtain it from the upstream model repository and follow its model-card/license terms."
+}

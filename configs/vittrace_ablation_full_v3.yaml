@@ -1,0 +1,124 @@
+project: vittrace_ablation_full_v3
+stage: vittrace_ablation_full_v3
+seed: 2027
+created_at: "2026-07-18T19:40:49+08:00"
+
+frozen_inputs:
+  result_package: C:/Users/qintian/Desktop/msn/ViTTrace_results_20260718_113945
+  result_package_zip: C:/Users/qintian/Desktop/msn/ViTTrace_results_20260718_113945.zip
+  result_package_zip_sha256: 27BC2392F0401750A8A0956893935A7B57145F40D9808A5C005DC7DFEB8ADC30
+  coordinate_cache_root: D:/qintian_experiments/coordinate_envelope/cache
+  coordinate_run_root: D:/qintian_experiments/coordinate_envelope/runs
+  vittrace_run_root: D:/qintian_experiments/vittrace/runs
+  vittrace_metric_file: D:/qintian_experiments/vittrace/metrics/vittrace_full/file_metrics.csv
+
+manifest:
+  path: C:/Users/qintian/Desktop/msn/msnmsn/configs/vlm4ts_11group_manifest.json
+  sha256: 4B3EB83D1CD9EF09F9C88D6D159EA6BEE81F8F69BAC4EA2FCAB06D76FF2EF8EF
+  expected_series: 492
+  expected_subgroups: 11
+
+vendor:
+  root: C:/Users/qintian/Desktop/msn/vendor/VLM4TS
+  commit: 8ab8c16414eb2c1a861dfc3e76f458180035a879
+  default_model_name: ViT-B-16
+  default_pretrained: openai
+  default_model_sha256: CAAD38C6AB955B9329739541FE1BA110E261936445528FA3B94D0B73E96672CD
+
+data:
+  root: D:/qintian_datasets/VLM4TS_AAAI2026/data
+  anomalies_csv: D:/qintian_datasets/VLM4TS_AAAI2026/data/anomalies.csv
+  timestamp_column: timestamp
+  value_column: value
+
+defaults:
+  representation: line
+  model_name: ViT-B-16
+  pretrained: openai
+  image_size: [224, 224]
+  patch_size: 16
+  window: 240
+  stride: 60
+  matching: global
+  scales: [P, M, L]
+  memory: median_reference
+  incidence: literal
+  temporal: nctp_linear
+
+grid:
+  windows: [120, 180, 240, 360, 480]
+  window_stride_fraction: 0.25
+  strides_w240: [30, 60, 120]
+  matching_scopes: [position, row, column, global]
+  scale_subsets: [P, M, L, PM, PL, ML, PML]
+  memories: [median_reference, all_pairs]
+  reducer_quantiles: [0.10, 0.25, 0.50]
+  reducer_top_fractions: [0.10, 0.25, 0.50]
+  representations: [line, spectrogram]
+  backbones:
+    - key: B32
+      model_name: ViT-B-32
+      pretrained: openai
+      patch_size: 32
+    - key: B16
+      model_name: ViT-B-16
+      pretrained: openai
+      patch_size: 16
+    - key: L14
+      model_name: ViT-L-14
+      pretrained: openai
+      patch_size: 14
+    - key: H14
+      model_name: ViT-H-14
+      pretrained: laion2b_s32b_b79k
+      patch_size: 14
+
+spectrogram:
+  nperseg: 64
+  noverlap: 48
+  nfft: 128
+  window: hann
+  scaling: spectrum
+  frequency_axis: linear
+
+statistics:
+  primary_view: corrected_primary
+  legacy_view: legacy_reproduction
+  metrics: [f1_max, auprc, vus_pr]
+  bootstrap_replicates: 10000
+  bootstrap_seed: 2027
+  vus_max_window: 100
+  undefined_secondary: null
+  primary_aggregation: equal11
+
+contracts:
+  parity_arms: [REL_U, IHP_LEGACY, FULL_COLUMN_240]
+  parity_atol: 1.0e-12
+  parity_rtol: 1.0e-10
+  parity_window: 240
+  parity_stride: 60
+  runtime_warmup: 5
+  runtime_repeats: 30
+  no_positive_policy: exclude_secondary_report_fp_burden
+
+paths:
+  output_root: D:/qintian_experiments/ViTTrace_ablation_full_v3_20260718_193834
+  cache_root: D:/qintian_experiments/ViTTrace_ablation_full_v3_20260718_193834/caches
+  run_root: D:/qintian_experiments/ViTTrace_ablation_full_v3_20260718_193834/runs
+  result_root: D:/qintian_experiments/ViTTrace_ablation_full_v3_20260718_193834/results
+  failure_root: D:/qintian_experiments/ViTTrace_ablation_full_v3_20260718_193834/failures
+  log_root: D:/qintian_experiments/ViTTrace_ablation_full_v3_20260718_193834/logs
+  compact_root: C:/Users/qintian/Desktop/msn/msnmsn/artifacts/vittrace_ablation_full_v3
+
+runtime:
+  device: cuda:0
+  batch_size: 64
+  c_drive_floor_gib: 20
+  d_drive_floor_gib: 60
+  available_ram_floor_gib: 20
+  process_series_chunk: 8
+
+paper_reference:
+  pdf: C:/Users/qintian/Desktop/msn/msnmsn/docs/papers/VLM4TS_AAAI2026_official.pdf
+  provenance: external_paper_reported
+  exclude_vlm4ts_rows: true

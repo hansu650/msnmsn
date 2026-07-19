@@ -1,0 +1,49 @@
+{
+  "arms": {
+    "FULL_COLUMN_240": {
+      "comparator_arm": "FULL_COLUMN_240",
+      "comparator_root": "D:\\qintian_experiments\\vittrace\\runs",
+      "comparator_stage": "vittrace_full",
+      "max_abs_error": 1.5543122344752192e-15,
+      "max_rel_error": 3.9603582673028364e-14,
+      "passed": true,
+      "score_pattern": "<comparator_root>/vittrace_full/<series_id>/FULL_COLUMN_240/score.npy",
+      "series_evaluated": 492
+    },
+    "IHP_LEGACY": {
+      "comparator_arm": "IDX_U",
+      "comparator_root": "D:\\qintian_experiments\\coordinate_envelope\\runs",
+      "comparator_stage": "coordinate_envelope_full",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "passed": true,
+      "score_pattern": "<comparator_root>/coordinate_envelope_full/<series_id>/IDX_U/score.npy",
+      "series_evaluated": 492
+    },
+    "REL_U": {
+      "comparator_arm": "REL_U",
+      "comparator_root": "D:\\qintian_experiments\\coordinate_envelope\\runs",
+      "comparator_stage": "coordinate_envelope_full",
+      "max_abs_error": 0.0,
+      "max_rel_error": 0.0,
+      "passed": true,
+      "score_pattern": "<comparator_root>/coordinate_envelope_full/<series_id>/REL_U/score.npy",
+      "series_evaluated": 492
+    }
+  },
+  "atol": 1e-12,
+  "completed_series": 492,
+  "config_sha256": "E2F2CA3B85CF3DE96CF335A1F4E7F30C68022C2D7F8537BE4F923D5AB3086D24",
+  "core_sha256": "AF90E2DEBE1EFE9F995B28DFAD78D1DD85EA7527D749CD918CF10067832D098F",
+  "created_at": "2026-07-18T12:39:54.179706+00:00",
+  "decision": "PASS",
+  "error_series": 0,
+  "expected_series": 492,
+  "failed_series": 0,
+  "manifest_sha256": "4B3EB83D1CD9EF09F9C88D6D159EA6BEE81F8F69BAC4EA2FCAB06D76FF2EF8EF",
+  "not_run_series": 0,
+  "parity_source_sha256": "73AA24E6F15E8C64CC6E47A22A1E1A018D91639F1304F6EDB86954F683D75571",
+  "passed": true,
+  "rtol": 1e-10,
+  "schema_version": 1
+}

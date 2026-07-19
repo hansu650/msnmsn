@@ -1,0 +1,1774 @@
+{
+  "arms": [
+    {
+      "canonical_arm": "LEGACY_DEFAULT",
+      "family": "DEFAULT",
+      "id": "LEGACY_DEFAULT",
+      "is_alias": false,
+      "parameter_sha256": "14458050FD28DBA070CDF42C197C2E3D765E8FB66A7C22F8883627ACB38F72F5",
+      "parameters": {
+        "fusion": "legacy_intersection",
+        "incidence": "released",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": "top_fraction",
+        "reducer_value": 0.25,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "legacy",
+        "window": 240
+      },
+      "role": "control"
+    },
+    {
+      "canonical_arm": "FINAL_DEFAULT",
+      "family": "DEFAULT",
+      "id": "FINAL_DEFAULT",
+      "is_alias": false,
+      "parameter_sha256": "1FC95BA4F5589DB956043502B2F5A6377556EED663664F8886B9C5C9F88B04FE",
+      "parameters": {
+        "fusion": "active_valid",
+        "incidence": "literal",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": null,
+        "reducer_value": null,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "nctp_linear",
+        "window": 240
+      },
+      "role": "method"
+    },
+    {
+      "canonical_arm": "MATCH_LEGACY_POSITION",
+      "family": "MATCHING_LEGACY",
+      "id": "MATCH_LEGACY_POSITION",
+      "is_alias": false,
+      "parameter_sha256": "BDF323867FF5D747022D9E03639468B160D977202E0C8B85BDE86D763B009E9D",
+      "parameters": {
+        "fusion": "legacy_intersection",
+        "incidence": "released",
+        "matching_scope": "position",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": "top_fraction",
+        "reducer_value": 0.25,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "legacy",
+        "window": 240
+      },
+      "role": "ablation"
+    },
+    {
+      "canonical_arm": "MATCH_LEGACY_ROW",
+      "family": "MATCHING_LEGACY",
+      "id": "MATCH_LEGACY_ROW",
+      "is_alias": false,
+      "parameter_sha256": "D3BC39D971866780016C3571BAC7CD3FAABCFDCEC19512C2A0E44A11578937C8",
+      "parameters": {
+        "fusion": "legacy_intersection",
+        "incidence": "released",
+        "matching_scope": "row",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": "top_fraction",
+        "reducer_value": 0.25,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "legacy",
+        "window": 240
+      },
+      "role": "ablation"
+    },
+    {
+      "canonical_arm": "MATCH_LEGACY_COLUMN",
+      "family": "MATCHING_LEGACY",
+      "id": "MATCH_LEGACY_COLUMN",
+      "is_alias": false,
+      "parameter_sha256": "E06B2FDBC7168BBEA149FF49AB4628AF7E63BEC8CE728E8AF368C91B8B3F7A07",
+      "parameters": {
+        "fusion": "legacy_intersection",
+        "incidence": "released",
+        "matching_scope": "column",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": "top_fraction",
+        "reducer_value": 0.25,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "legacy",
+        "window": 240
+      },
+      "role": "ablation"
+    },
+    {
+      "canonical_arm": "LEGACY_DEFAULT",
+      "family": "MATCHING_LEGACY",
+      "id": "MATCH_LEGACY_GLOBAL",
+      "is_alias": true,
+      "parameter_sha256": "14458050FD28DBA070CDF42C197C2E3D765E8FB66A7C22F8883627ACB38F72F5",
+      "parameters": {
+        "fusion": "legacy_intersection",
+        "incidence": "released",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": "top_fraction",
+        "reducer_value": 0.25,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "legacy",
+        "window": 240
+      },
+      "role": "ablation"
+    },
+    {
+      "canonical_arm": "MATCH_FINAL_POSITION",
+      "family": "MATCHING_FINAL",
+      "id": "MATCH_FINAL_POSITION",
+      "is_alias": false,
+      "parameter_sha256": "6C9D1F89221E3B75FB76FCF2F95C3824FFCF90D1F849EC9E0E5E61A91D2C1F54",
+      "parameters": {
+        "fusion": "active_valid",
+        "incidence": "literal",
+        "matching_scope": "position",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": null,
+        "reducer_value": null,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "nctp_linear",
+        "window": 240
+      },
+      "role": "ablation"
+    },
+    {
+      "canonical_arm": "MATCH_FINAL_ROW",
+      "family": "MATCHING_FINAL",
+      "id": "MATCH_FINAL_ROW",
+      "is_alias": false,
+      "parameter_sha256": "459F226E88A565B7D820DB4708D949396429B22FBD43D0E8B29110F16AC276E7",
+      "parameters": {
+        "fusion": "active_valid",
+        "incidence": "literal",
+        "matching_scope": "row",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": null,
+        "reducer_value": null,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "nctp_linear",
+        "window": 240
+      },
+      "role": "ablation"
+    },
+    {
+      "canonical_arm": "MATCH_FINAL_COLUMN",
+      "family": "MATCHING_FINAL",
+      "id": "MATCH_FINAL_COLUMN",
+      "is_alias": false,
+      "parameter_sha256": "43CEC586D48EA25DC9A73679B1FD744F216161BA762950426F77E67E7433DAEB",
+      "parameters": {
+        "fusion": "active_valid",
+        "incidence": "literal",
+        "matching_scope": "column",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": null,
+        "reducer_value": null,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "nctp_linear",
+        "window": 240
+      },
+      "role": "ablation"
+    },
+    {
+      "canonical_arm": "FINAL_DEFAULT",
+      "family": "MATCHING_FINAL",
+      "id": "MATCH_FINAL_GLOBAL",
+      "is_alias": true,
+      "parameter_sha256": "1FC95BA4F5589DB956043502B2F5A6377556EED663664F8886B9C5C9F88B04FE",
+      "parameters": {
+        "fusion": "active_valid",
+        "incidence": "literal",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": null,
+        "reducer_value": null,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "nctp_linear",
+        "window": 240
+      },
+      "role": "ablation"
+    },
+    {
+      "canonical_arm": "SCALE_P",
+      "family": "SCALE_SUBSET",
+      "id": "SCALE_P",
+      "is_alias": false,
+      "parameter_sha256": "1B62BF8F7FE1F4D22A33DA8F99C13840EA15B54FC31953278A2780B7B5E7C3E8",
+      "parameters": {
+        "fusion": "active_valid",
+        "incidence": "literal",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": null,
+        "reducer_value": null,
+        "scales": [
+          "P"
+        ],
+        "stride": 60,
+        "temporal": "nctp_linear",
+        "window": 240
+      },
+      "role": "ablation"
+    },
+    {
+      "canonical_arm": "SCALE_M",
+      "family": "SCALE_SUBSET",
+      "id": "SCALE_M",
+      "is_alias": false,
+      "parameter_sha256": "EB65E3B95AFF43A4F1A42D87AF142F531DDB4D46017FFF92A3E02F5E179A48ED",
+      "parameters": {
+        "fusion": "active_valid",
+        "incidence": "literal",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": null,
+        "reducer_value": null,
+        "scales": [
+          "M"
+        ],
+        "stride": 60,
+        "temporal": "nctp_linear",
+        "window": 240
+      },
+      "role": "ablation"
+    },
+    {
+      "canonical_arm": "SCALE_L",
+      "family": "SCALE_SUBSET",
+      "id": "SCALE_L",
+      "is_alias": false,
+      "parameter_sha256": "B7089B6858B3BC1108D5A77B907EDACDA1B88B2F07BDDFE1E3D0F8BDA665BC24",
+      "parameters": {
+        "fusion": "active_valid",
+        "incidence": "literal",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": null,
+        "reducer_value": null,
+        "scales": [
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "nctp_linear",
+        "window": 240
+      },
+      "role": "ablation"
+    },
+    {
+      "canonical_arm": "SCALE_PM",
+      "family": "SCALE_SUBSET",
+      "id": "SCALE_PM",
+      "is_alias": false,
+      "parameter_sha256": "7D26B7F30CDCD858F639090C5301D2BF43C1D29BB0D28A02006E0EE8245D2707",
+      "parameters": {
+        "fusion": "active_valid",
+        "incidence": "literal",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": null,
+        "reducer_value": null,
+        "scales": [
+          "P",
+          "M"
+        ],
+        "stride": 60,
+        "temporal": "nctp_linear",
+        "window": 240
+      },
+      "role": "ablation"
+    },
+    {
+      "canonical_arm": "SCALE_PL",
+      "family": "SCALE_SUBSET",
+      "id": "SCALE_PL",
+      "is_alias": false,
+      "parameter_sha256": "7ECFB80E6E34A04E6F07B93E16E324B66D69EE9159FCCE47DE477CAFC75F1B13",
+      "parameters": {
+        "fusion": "active_valid",
+        "incidence": "literal",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": null,
+        "reducer_value": null,
+        "scales": [
+          "P",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "nctp_linear",
+        "window": 240
+      },
+      "role": "ablation"
+    },
+    {
+      "canonical_arm": "SCALE_ML",
+      "family": "SCALE_SUBSET",
+      "id": "SCALE_ML",
+      "is_alias": false,
+      "parameter_sha256": "3E9C80BFE67EAF6F1F61786945772648E1BAC5AD33BDF3238006C6519B42167B",
+      "parameters": {
+        "fusion": "active_valid",
+        "incidence": "literal",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": null,
+        "reducer_value": null,
+        "scales": [
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "nctp_linear",
+        "window": 240
+      },
+      "role": "ablation"
+    },
+    {
+      "canonical_arm": "FINAL_DEFAULT",
+      "family": "SCALE_SUBSET",
+      "id": "SCALE_PML",
+      "is_alias": true,
+      "parameter_sha256": "1FC95BA4F5589DB956043502B2F5A6377556EED663664F8886B9C5C9F88B04FE",
+      "parameters": {
+        "fusion": "active_valid",
+        "incidence": "literal",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": null,
+        "reducer_value": null,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "nctp_linear",
+        "window": 240
+      },
+      "role": "ablation"
+    },
+    {
+      "canonical_arm": "SCALE_LEGACY_P",
+      "family": "SCALE_SUBSET_LEGACY",
+      "id": "SCALE_LEGACY_P",
+      "is_alias": false,
+      "parameter_sha256": "8303CD9D2549EAF4D3BE2AC3CE4D146E352A9DE695F0839CAB94DDE66A595ACC",
+      "parameters": {
+        "fusion": "legacy_intersection",
+        "incidence": "released",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": "top_fraction",
+        "reducer_value": 0.25,
+        "scales": [
+          "P"
+        ],
+        "stride": 60,
+        "temporal": "legacy",
+        "window": 240
+      },
+      "role": "ablation"
+    },
+    {
+      "canonical_arm": "LEGACY_DEFAULT",
+      "family": "SCALE_SUBSET_LEGACY",
+      "id": "SCALE_LEGACY_PML",
+      "is_alias": true,
+      "parameter_sha256": "14458050FD28DBA070CDF42C197C2E3D765E8FB66A7C22F8883627ACB38F72F5",
+      "parameters": {
+        "fusion": "legacy_intersection",
+        "incidence": "released",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": "top_fraction",
+        "reducer_value": 0.25,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "legacy",
+        "window": 240
+      },
+      "role": "ablation"
+    },
+    {
+      "canonical_arm": "FINAL_DEFAULT",
+      "family": "MEMORY",
+      "id": "MEMORY_MEDIAN",
+      "is_alias": true,
+      "parameter_sha256": "1FC95BA4F5589DB956043502B2F5A6377556EED663664F8886B9C5C9F88B04FE",
+      "parameters": {
+        "fusion": "active_valid",
+        "incidence": "literal",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": null,
+        "reducer_value": null,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "nctp_linear",
+        "window": 240
+      },
+      "role": "ablation"
+    },
+    {
+      "canonical_arm": "MEMORY_ALLPAIRS",
+      "family": "MEMORY",
+      "id": "MEMORY_ALLPAIRS",
+      "is_alias": false,
+      "parameter_sha256": "A4F4D787D4F75B7CA76FE355A09825EA1F911F12C94F9716E85DFE3AD6ABCCF2",
+      "parameters": {
+        "fusion": "active_valid",
+        "incidence": "literal",
+        "matching_scope": "global",
+        "memory": "all_pairs",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": null,
+        "reducer_value": null,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "nctp_linear",
+        "window": 240
+      },
+      "role": "ablation"
+    },
+    {
+      "canonical_arm": "REDUCER_Q10",
+      "family": "REDUCER_QUANTILE",
+      "id": "REDUCER_Q10",
+      "is_alias": false,
+      "parameter_sha256": "0ACB6E45DA2D9F39666DB8F062899EA84DEF3815967F2290B355B8E217AE34FA",
+      "parameters": {
+        "fusion": "legacy_intersection",
+        "incidence": "released",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": "quantile",
+        "reducer_value": 0.1,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "legacy",
+        "window": 240
+      },
+      "role": "ablation"
+    },
+    {
+      "canonical_arm": "REDUCER_Q25",
+      "family": "REDUCER_QUANTILE",
+      "id": "REDUCER_Q25",
+      "is_alias": false,
+      "parameter_sha256": "9E65D6DC6B66B20DC46CA4D83443569DDF5B9D15FF94F844888842460CA48816",
+      "parameters": {
+        "fusion": "legacy_intersection",
+        "incidence": "released",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": "quantile",
+        "reducer_value": 0.25,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "legacy",
+        "window": 240
+      },
+      "role": "ablation"
+    },
+    {
+      "canonical_arm": "REDUCER_Q50",
+      "family": "REDUCER_QUANTILE",
+      "id": "REDUCER_Q50",
+      "is_alias": false,
+      "parameter_sha256": "3DE5DB87841A56C218ABBF88E531232B093119F86073241D20FEBA69D78D761A",
+      "parameters": {
+        "fusion": "legacy_intersection",
+        "incidence": "released",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": "quantile",
+        "reducer_value": 0.5,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "legacy",
+        "window": 240
+      },
+      "role": "ablation"
+    },
+    {
+      "canonical_arm": "REDUCER_TOP10",
+      "family": "REDUCER_TOP_FRACTION",
+      "id": "REDUCER_TOP10",
+      "is_alias": false,
+      "parameter_sha256": "00843B762B1FA642F5F99126FC21E83430D1BA5120840D121667801161FEFD32",
+      "parameters": {
+        "fusion": "legacy_intersection",
+        "incidence": "released",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": "top_fraction",
+        "reducer_value": 0.1,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "legacy",
+        "window": 240
+      },
+      "role": "ablation"
+    },
+    {
+      "canonical_arm": "LEGACY_DEFAULT",
+      "family": "REDUCER_TOP_FRACTION",
+      "id": "REDUCER_TOP25",
+      "is_alias": true,
+      "parameter_sha256": "14458050FD28DBA070CDF42C197C2E3D765E8FB66A7C22F8883627ACB38F72F5",
+      "parameters": {
+        "fusion": "legacy_intersection",
+        "incidence": "released",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": "top_fraction",
+        "reducer_value": 0.25,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "legacy",
+        "window": 240
+      },
+      "role": "ablation"
+    },
+    {
+      "canonical_arm": "REDUCER_TOP50",
+      "family": "REDUCER_TOP_FRACTION",
+      "id": "REDUCER_TOP50",
+      "is_alias": false,
+      "parameter_sha256": "6DDFCA7D2355F4BE96DDFFA77B488FD546423DC157112B73C404CDD497E774B0",
+      "parameters": {
+        "fusion": "legacy_intersection",
+        "incidence": "released",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": "top_fraction",
+        "reducer_value": 0.5,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "legacy",
+        "window": 240
+      },
+      "role": "ablation"
+    },
+    {
+      "canonical_arm": "LEGACY_DEFAULT",
+      "family": "IHP_X_NCTP",
+      "id": "IHP0_NCTP0",
+      "is_alias": true,
+      "parameter_sha256": "14458050FD28DBA070CDF42C197C2E3D765E8FB66A7C22F8883627ACB38F72F5",
+      "parameters": {
+        "fusion": "legacy_intersection",
+        "incidence": "released",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": "top_fraction",
+        "reducer_value": 0.25,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "legacy",
+        "window": 240
+      },
+      "role": "ablation"
+    },
+    {
+      "canonical_arm": "IHP1_NCTP0",
+      "family": "IHP_X_NCTP",
+      "id": "IHP1_NCTP0",
+      "is_alias": false,
+      "parameter_sha256": "A0B051554EF1ABE0D6D169BE66684873DC9422FC622BBD20C32FCAD919898306",
+      "parameters": {
+        "fusion": "active_valid",
+        "incidence": "literal",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": "top_fraction",
+        "reducer_value": 0.25,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "legacy",
+        "window": 240
+      },
+      "role": "ablation"
+    },
+    {
+      "canonical_arm": "IHP0_NCTP1",
+      "family": "IHP_X_NCTP",
+      "id": "IHP0_NCTP1",
+      "is_alias": false,
+      "parameter_sha256": "F7AA70D69433E365471725B5F972EC6283559AFB153031544605CF9B9430D444",
+      "parameters": {
+        "fusion": "legacy_intersection",
+        "incidence": "released",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": null,
+        "reducer_value": null,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "nctp_linear",
+        "window": 240
+      },
+      "role": "ablation"
+    },
+    {
+      "canonical_arm": "FINAL_DEFAULT",
+      "family": "IHP_X_NCTP",
+      "id": "IHP1_NCTP1",
+      "is_alias": true,
+      "parameter_sha256": "1FC95BA4F5589DB956043502B2F5A6377556EED663664F8886B9C5C9F88B04FE",
+      "parameters": {
+        "fusion": "active_valid",
+        "incidence": "literal",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": null,
+        "reducer_value": null,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "nctp_linear",
+        "window": 240
+      },
+      "role": "ablation"
+    },
+    {
+      "canonical_arm": "FINAL_DEFAULT",
+      "family": "TEMPORAL",
+      "id": "TEMP_NCTP_LINEAR",
+      "is_alias": true,
+      "parameter_sha256": "1FC95BA4F5589DB956043502B2F5A6377556EED663664F8886B9C5C9F88B04FE",
+      "parameters": {
+        "fusion": "active_valid",
+        "incidence": "literal",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": null,
+        "reducer_value": null,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "nctp_linear",
+        "window": 240
+      },
+      "role": "ablation"
+    },
+    {
+      "canonical_arm": "TEMP_NCTP_NEAREST",
+      "family": "TEMPORAL",
+      "id": "TEMP_NCTP_NEAREST",
+      "is_alias": false,
+      "parameter_sha256": "3D2031AD9EA32B2077A0C1CD0AA64478F36F03966ED290BEC89A9A76CE878E33",
+      "parameters": {
+        "fusion": "active_valid",
+        "incidence": "literal",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": null,
+        "reducer_value": null,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "nctp_nearest",
+        "window": 240
+      },
+      "role": "ablation"
+    },
+    {
+      "canonical_arm": "TEMP_TRACE_SOFT",
+      "family": "TEMPORAL",
+      "id": "TEMP_TRACE_SOFT",
+      "is_alias": false,
+      "parameter_sha256": "843F0F56D2FBEDE51E3F9A3535009CF630BAFFF85AF35A8E0B88841B848BB28D",
+      "parameters": {
+        "fusion": "active_valid",
+        "incidence": "literal",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": null,
+        "reducer_value": null,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "trace_soft",
+        "window": 240
+      },
+      "role": "ablation"
+    },
+    {
+      "canonical_arm": "TEMP_TRACE_HARD",
+      "family": "TEMPORAL",
+      "id": "TEMP_TRACE_HARD",
+      "is_alias": false,
+      "parameter_sha256": "0E97FE325229FF56CA39789249C226AB051C93B1799EFBDE090C9F64202A0DC6",
+      "parameters": {
+        "fusion": "active_valid",
+        "incidence": "literal",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": null,
+        "reducer_value": null,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "trace_hard",
+        "window": 240
+      },
+      "role": "ablation"
+    },
+    {
+      "canonical_arm": "IHP1_NCTP0",
+      "family": "TEMPORAL",
+      "id": "TEMP_LEGACY",
+      "is_alias": true,
+      "parameter_sha256": "A0B051554EF1ABE0D6D169BE66684873DC9422FC622BBD20C32FCAD919898306",
+      "parameters": {
+        "fusion": "active_valid",
+        "incidence": "literal",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": "top_fraction",
+        "reducer_value": 0.25,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "legacy",
+        "window": 240
+      },
+      "role": "ablation"
+    }
+  ],
+  "config_path": "C:\\Users\\qintian\\Desktop\\msn\\msnmsn\\configs\\vittrace_ablation_full_v3.yaml",
+  "config_sha256": "E2F2CA3B85CF3DE96CF335A1F4E7F30C68022C2D7F8537BE4F923D5AB3086D24",
+  "encoder_calls": 0,
+  "logical_arm_count": 36,
+  "manifest_sha256": "4B3EB83D1CD9EF09F9C88D6D159EA6BEE81F8F69BAC4EA2FCAB06D76FF2EF8EF",
+  "registry_id": "VITTRACE_V3_CACHE_ONLY_B16_W240_S60",
+  "schema_version": 1,
+  "unique_computation_count": 26,
+  "unique_computations": [
+    {
+      "aliases": [
+        "LEGACY_DEFAULT",
+        "MATCH_LEGACY_GLOBAL",
+        "SCALE_LEGACY_PML",
+        "REDUCER_TOP25",
+        "IHP0_NCTP0"
+      ],
+      "canonical_arm": "LEGACY_DEFAULT",
+      "parameter_sha256": "14458050FD28DBA070CDF42C197C2E3D765E8FB66A7C22F8883627ACB38F72F5",
+      "parameters": {
+        "fusion": "legacy_intersection",
+        "incidence": "released",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": "top_fraction",
+        "reducer_value": 0.25,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "legacy",
+        "window": 240
+      }
+    },
+    {
+      "aliases": [
+        "FINAL_DEFAULT",
+        "MATCH_FINAL_GLOBAL",
+        "SCALE_PML",
+        "MEMORY_MEDIAN",
+        "IHP1_NCTP1",
+        "TEMP_NCTP_LINEAR"
+      ],
+      "canonical_arm": "FINAL_DEFAULT",
+      "parameter_sha256": "1FC95BA4F5589DB956043502B2F5A6377556EED663664F8886B9C5C9F88B04FE",
+      "parameters": {
+        "fusion": "active_valid",
+        "incidence": "literal",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": null,
+        "reducer_value": null,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "nctp_linear",
+        "window": 240
+      }
+    },
+    {
+      "aliases": [
+        "MATCH_LEGACY_POSITION"
+      ],
+      "canonical_arm": "MATCH_LEGACY_POSITION",
+      "parameter_sha256": "BDF323867FF5D747022D9E03639468B160D977202E0C8B85BDE86D763B009E9D",
+      "parameters": {
+        "fusion": "legacy_intersection",
+        "incidence": "released",
+        "matching_scope": "position",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": "top_fraction",
+        "reducer_value": 0.25,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "legacy",
+        "window": 240
+      }
+    },
+    {
+      "aliases": [
+        "MATCH_LEGACY_ROW"
+      ],
+      "canonical_arm": "MATCH_LEGACY_ROW",
+      "parameter_sha256": "D3BC39D971866780016C3571BAC7CD3FAABCFDCEC19512C2A0E44A11578937C8",
+      "parameters": {
+        "fusion": "legacy_intersection",
+        "incidence": "released",
+        "matching_scope": "row",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": "top_fraction",
+        "reducer_value": 0.25,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "legacy",
+        "window": 240
+      }
+    },
+    {
+      "aliases": [
+        "MATCH_LEGACY_COLUMN"
+      ],
+      "canonical_arm": "MATCH_LEGACY_COLUMN",
+      "parameter_sha256": "E06B2FDBC7168BBEA149FF49AB4628AF7E63BEC8CE728E8AF368C91B8B3F7A07",
+      "parameters": {
+        "fusion": "legacy_intersection",
+        "incidence": "released",
+        "matching_scope": "column",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": "top_fraction",
+        "reducer_value": 0.25,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "legacy",
+        "window": 240
+      }
+    },
+    {
+      "aliases": [
+        "MATCH_FINAL_POSITION"
+      ],
+      "canonical_arm": "MATCH_FINAL_POSITION",
+      "parameter_sha256": "6C9D1F89221E3B75FB76FCF2F95C3824FFCF90D1F849EC9E0E5E61A91D2C1F54",
+      "parameters": {
+        "fusion": "active_valid",
+        "incidence": "literal",
+        "matching_scope": "position",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": null,
+        "reducer_value": null,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "nctp_linear",
+        "window": 240
+      }
+    },
+    {
+      "aliases": [
+        "MATCH_FINAL_ROW"
+      ],
+      "canonical_arm": "MATCH_FINAL_ROW",
+      "parameter_sha256": "459F226E88A565B7D820DB4708D949396429B22FBD43D0E8B29110F16AC276E7",
+      "parameters": {
+        "fusion": "active_valid",
+        "incidence": "literal",
+        "matching_scope": "row",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": null,
+        "reducer_value": null,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "nctp_linear",
+        "window": 240
+      }
+    },
+    {
+      "aliases": [
+        "MATCH_FINAL_COLUMN"
+      ],
+      "canonical_arm": "MATCH_FINAL_COLUMN",
+      "parameter_sha256": "43CEC586D48EA25DC9A73679B1FD744F216161BA762950426F77E67E7433DAEB",
+      "parameters": {
+        "fusion": "active_valid",
+        "incidence": "literal",
+        "matching_scope": "column",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": null,
+        "reducer_value": null,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "nctp_linear",
+        "window": 240
+      }
+    },
+    {
+      "aliases": [
+        "SCALE_P"
+      ],
+      "canonical_arm": "SCALE_P",
+      "parameter_sha256": "1B62BF8F7FE1F4D22A33DA8F99C13840EA15B54FC31953278A2780B7B5E7C3E8",
+      "parameters": {
+        "fusion": "active_valid",
+        "incidence": "literal",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": null,
+        "reducer_value": null,
+        "scales": [
+          "P"
+        ],
+        "stride": 60,
+        "temporal": "nctp_linear",
+        "window": 240
+      }
+    },
+    {
+      "aliases": [
+        "SCALE_M"
+      ],
+      "canonical_arm": "SCALE_M",
+      "parameter_sha256": "EB65E3B95AFF43A4F1A42D87AF142F531DDB4D46017FFF92A3E02F5E179A48ED",
+      "parameters": {
+        "fusion": "active_valid",
+        "incidence": "literal",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": null,
+        "reducer_value": null,
+        "scales": [
+          "M"
+        ],
+        "stride": 60,
+        "temporal": "nctp_linear",
+        "window": 240
+      }
+    },
+    {
+      "aliases": [
+        "SCALE_L"
+      ],
+      "canonical_arm": "SCALE_L",
+      "parameter_sha256": "B7089B6858B3BC1108D5A77B907EDACDA1B88B2F07BDDFE1E3D0F8BDA665BC24",
+      "parameters": {
+        "fusion": "active_valid",
+        "incidence": "literal",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": null,
+        "reducer_value": null,
+        "scales": [
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "nctp_linear",
+        "window": 240
+      }
+    },
+    {
+      "aliases": [
+        "SCALE_PM"
+      ],
+      "canonical_arm": "SCALE_PM",
+      "parameter_sha256": "7D26B7F30CDCD858F639090C5301D2BF43C1D29BB0D28A02006E0EE8245D2707",
+      "parameters": {
+        "fusion": "active_valid",
+        "incidence": "literal",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": null,
+        "reducer_value": null,
+        "scales": [
+          "P",
+          "M"
+        ],
+        "stride": 60,
+        "temporal": "nctp_linear",
+        "window": 240
+      }
+    },
+    {
+      "aliases": [
+        "SCALE_PL"
+      ],
+      "canonical_arm": "SCALE_PL",
+      "parameter_sha256": "7ECFB80E6E34A04E6F07B93E16E324B66D69EE9159FCCE47DE477CAFC75F1B13",
+      "parameters": {
+        "fusion": "active_valid",
+        "incidence": "literal",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": null,
+        "reducer_value": null,
+        "scales": [
+          "P",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "nctp_linear",
+        "window": 240
+      }
+    },
+    {
+      "aliases": [
+        "SCALE_ML"
+      ],
+      "canonical_arm": "SCALE_ML",
+      "parameter_sha256": "3E9C80BFE67EAF6F1F61786945772648E1BAC5AD33BDF3238006C6519B42167B",
+      "parameters": {
+        "fusion": "active_valid",
+        "incidence": "literal",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": null,
+        "reducer_value": null,
+        "scales": [
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "nctp_linear",
+        "window": 240
+      }
+    },
+    {
+      "aliases": [
+        "SCALE_LEGACY_P"
+      ],
+      "canonical_arm": "SCALE_LEGACY_P",
+      "parameter_sha256": "8303CD9D2549EAF4D3BE2AC3CE4D146E352A9DE695F0839CAB94DDE66A595ACC",
+      "parameters": {
+        "fusion": "legacy_intersection",
+        "incidence": "released",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": "top_fraction",
+        "reducer_value": 0.25,
+        "scales": [
+          "P"
+        ],
+        "stride": 60,
+        "temporal": "legacy",
+        "window": 240
+      }
+    },
+    {
+      "aliases": [
+        "MEMORY_ALLPAIRS"
+      ],
+      "canonical_arm": "MEMORY_ALLPAIRS",
+      "parameter_sha256": "A4F4D787D4F75B7CA76FE355A09825EA1F911F12C94F9716E85DFE3AD6ABCCF2",
+      "parameters": {
+        "fusion": "active_valid",
+        "incidence": "literal",
+        "matching_scope": "global",
+        "memory": "all_pairs",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": null,
+        "reducer_value": null,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "nctp_linear",
+        "window": 240
+      }
+    },
+    {
+      "aliases": [
+        "REDUCER_Q10"
+      ],
+      "canonical_arm": "REDUCER_Q10",
+      "parameter_sha256": "0ACB6E45DA2D9F39666DB8F062899EA84DEF3815967F2290B355B8E217AE34FA",
+      "parameters": {
+        "fusion": "legacy_intersection",
+        "incidence": "released",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": "quantile",
+        "reducer_value": 0.1,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "legacy",
+        "window": 240
+      }
+    },
+    {
+      "aliases": [
+        "REDUCER_Q25"
+      ],
+      "canonical_arm": "REDUCER_Q25",
+      "parameter_sha256": "9E65D6DC6B66B20DC46CA4D83443569DDF5B9D15FF94F844888842460CA48816",
+      "parameters": {
+        "fusion": "legacy_intersection",
+        "incidence": "released",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": "quantile",
+        "reducer_value": 0.25,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "legacy",
+        "window": 240
+      }
+    },
+    {
+      "aliases": [
+        "REDUCER_Q50"
+      ],
+      "canonical_arm": "REDUCER_Q50",
+      "parameter_sha256": "3DE5DB87841A56C218ABBF88E531232B093119F86073241D20FEBA69D78D761A",
+      "parameters": {
+        "fusion": "legacy_intersection",
+        "incidence": "released",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": "quantile",
+        "reducer_value": 0.5,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "legacy",
+        "window": 240
+      }
+    },
+    {
+      "aliases": [
+        "REDUCER_TOP10"
+      ],
+      "canonical_arm": "REDUCER_TOP10",
+      "parameter_sha256": "00843B762B1FA642F5F99126FC21E83430D1BA5120840D121667801161FEFD32",
+      "parameters": {
+        "fusion": "legacy_intersection",
+        "incidence": "released",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": "top_fraction",
+        "reducer_value": 0.1,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "legacy",
+        "window": 240
+      }
+    },
+    {
+      "aliases": [
+        "REDUCER_TOP50"
+      ],
+      "canonical_arm": "REDUCER_TOP50",
+      "parameter_sha256": "6DDFCA7D2355F4BE96DDFFA77B488FD546423DC157112B73C404CDD497E774B0",
+      "parameters": {
+        "fusion": "legacy_intersection",
+        "incidence": "released",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": "top_fraction",
+        "reducer_value": 0.5,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "legacy",
+        "window": 240
+      }
+    },
+    {
+      "aliases": [
+        "IHP1_NCTP0",
+        "TEMP_LEGACY"
+      ],
+      "canonical_arm": "IHP1_NCTP0",
+      "parameter_sha256": "A0B051554EF1ABE0D6D169BE66684873DC9422FC622BBD20C32FCAD919898306",
+      "parameters": {
+        "fusion": "active_valid",
+        "incidence": "literal",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": "top_fraction",
+        "reducer_value": 0.25,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "legacy",
+        "window": 240
+      }
+    },
+    {
+      "aliases": [
+        "IHP0_NCTP1"
+      ],
+      "canonical_arm": "IHP0_NCTP1",
+      "parameter_sha256": "F7AA70D69433E365471725B5F972EC6283559AFB153031544605CF9B9430D444",
+      "parameters": {
+        "fusion": "legacy_intersection",
+        "incidence": "released",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": null,
+        "reducer_value": null,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "nctp_linear",
+        "window": 240
+      }
+    },
+    {
+      "aliases": [
+        "TEMP_NCTP_NEAREST"
+      ],
+      "canonical_arm": "TEMP_NCTP_NEAREST",
+      "parameter_sha256": "3D2031AD9EA32B2077A0C1CD0AA64478F36F03966ED290BEC89A9A76CE878E33",
+      "parameters": {
+        "fusion": "active_valid",
+        "incidence": "literal",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": null,
+        "reducer_value": null,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "nctp_nearest",
+        "window": 240
+      }
+    },
+    {
+      "aliases": [
+        "TEMP_TRACE_SOFT"
+      ],
+      "canonical_arm": "TEMP_TRACE_SOFT",
+      "parameter_sha256": "843F0F56D2FBEDE51E3F9A3535009CF630BAFFF85AF35A8E0B88841B848BB28D",
+      "parameters": {
+        "fusion": "active_valid",
+        "incidence": "literal",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": null,
+        "reducer_value": null,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "trace_soft",
+        "window": 240
+      }
+    },
+    {
+      "aliases": [
+        "TEMP_TRACE_HARD"
+      ],
+      "canonical_arm": "TEMP_TRACE_HARD",
+      "parameter_sha256": "0E97FE325229FF56CA39789249C226AB051C93B1799EFBDE090C9F64202A0DC6",
+      "parameters": {
+        "fusion": "active_valid",
+        "incidence": "literal",
+        "matching_scope": "global",
+        "memory": "median_reference",
+        "model_name": "ViT-B-16",
+        "patch_grid": [
+          14,
+          14
+        ],
+        "reducer_kind": null,
+        "reducer_value": null,
+        "scales": [
+          "P",
+          "M",
+          "L"
+        ],
+        "stride": 60,
+        "temporal": "trace_hard",
+        "window": 240
+      }
+    }
+  ]
+}

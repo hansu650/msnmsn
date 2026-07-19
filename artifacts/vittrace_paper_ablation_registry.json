@@ -1,0 +1,430 @@
+{
+    "bootstrap":  {
+                      "hierarchy":  [
+                                        "subgroup",
+                                        "series"
+                                    ],
+                      "n_resamples":  10000,
+                      "seed":  2027,
+                      "shared_indices":  true
+                  },
+    "config_path":  "C:\\Users\\qintian\\Desktop\\msn\\msnmsn\\configs\\vittrace_ablation_full_v3.yaml",
+    "config_sha256":  "E2F2CA3B85CF3DE96CF335A1F4E7F30C68022C2D7F8537BE4F923D5AB3086D24",
+    "contrasts":  [
+                      {
+                          "id":  "IHP_ONLY_VS_REL",
+                          "family":  "IHP_X_NCTP",
+                          "control":  "IHP0_NCTP0",
+                          "candidate":  "IHP1_NCTP0"
+                      },
+                      {
+                          "id":  "NCTP_ONLY_VS_REL",
+                          "family":  "IHP_X_NCTP",
+                          "control":  "IHP0_NCTP0",
+                          "candidate":  "IHP0_NCTP1"
+                      },
+                      {
+                          "id":  "FULL_VS_REL",
+                          "family":  "IHP_X_NCTP",
+                          "control":  "IHP0_NCTP0",
+                          "candidate":  "IHP1_NCTP1"
+                      },
+                      {
+                          "id":  "FULL_VS_IHP_ONLY",
+                          "family":  "IHP_X_NCTP",
+                          "control":  "IHP1_NCTP0",
+                          "candidate":  "IHP1_NCTP1"
+                      }
+                  ],
+    "expected_series":  492,
+    "expected_valid_series":  488,
+    "manifest_path":  "C:\\Users\\qintian\\Desktop\\msn\\msnmsn\\configs\\vlm4ts_11group_manifest.json",
+    "manifest_sha256":  "4B3EB83D1CD9EF09F9C88D6D159EA6BEE81F8F69BAC4EA2FCAB06D76FF2EF8EF",
+    "protocol_id":  "VITTRACE_PAPER_MATCHED_ABLATIONS_V1",
+    "schema_version":  1,
+    "stages":  [
+                   {
+                       "arms":  [
+                                    {
+                                        "arm":  "FINAL_DEFAULT",
+                                        "changed_factor":  "DEFAULT",
+                                        "experiment_group":  "DEFAULT",
+                                        "fixed_factors":  {
+                                                              "metrics_mask":  "COMMON_488",
+                                                              "protocol":  "VLM4TS_492"
+                                                          },
+                                        "fp_threshold":  0.0,
+                                        "metadata":  {
+                                                         "display_name":  "FINAL_DEFAULT",
+                                                         "fusion":  "active_valid",
+                                                         "incidence":  "literal",
+                                                         "is_final":  true,
+                                                         "matching_scope":  "global",
+                                                         "memory":  "median_reference",
+                                                         "model_name":  "ViT-B-16",
+                                                         "patch_grid":  [
+                                                                            14,
+                                                                            14
+                                                                        ],
+                                                         "reducer_kind":  null,
+                                                         "reducer_value":  null,
+                                                         "scales":  [
+                                                                        "P",
+                                                                        "M",
+                                                                        "L"
+                                                                    ],
+                                                         "stride":  60,
+                                                         "temporal":  "nctp_linear",
+                                                         "window":  240
+                                                     },
+                                        "order":  0,
+                                        "role":  "method",
+                                        "source_arm":  "FINAL_DEFAULT"
+                                    },
+                                    {
+                                        "arm":  "MATCH_FINAL_POSITION",
+                                        "changed_factor":  "MATCHING_FINAL",
+                                        "experiment_group":  "MATCHING_FINAL",
+                                        "fixed_factors":  {
+                                                              "metrics_mask":  "COMMON_488",
+                                                              "protocol":  "VLM4TS_492"
+                                                          },
+                                        "fp_threshold":  0.0,
+                                        "metadata":  {
+                                                         "display_name":  "MATCH_FINAL_POSITION",
+                                                         "fusion":  "active_valid",
+                                                         "incidence":  "literal",
+                                                         "is_final":  false,
+                                                         "matching_scope":  "position",
+                                                         "memory":  "median_reference",
+                                                         "model_name":  "ViT-B-16",
+                                                         "patch_grid":  [
+                                                                            14,
+                                                                            14
+                                                                        ],
+                                                         "reducer_kind":  null,
+                                                         "reducer_value":  null,
+                                                         "scales":  [
+                                                                        "P",
+                                                                        "M",
+                                                                        "L"
+                                                                    ],
+                                                         "stride":  60,
+                                                         "temporal":  "nctp_linear",
+                                                         "window":  240
+                                                     },
+                                        "order":  1,
+                                        "role":  "ablation",
+                                        "source_arm":  "MATCH_FINAL_POSITION"
+                                    },
+                                    {
+                                        "arm":  "MATCH_FINAL_ROW",
+                                        "changed_factor":  "MATCHING_FINAL",
+                                        "experiment_group":  "MATCHING_FINAL",
+                                        "fixed_factors":  {
+                                                              "metrics_mask":  "COMMON_488",
+                                                              "protocol":  "VLM4TS_492"
+                                                          },
+                                        "fp_threshold":  0.0,
+                                        "metadata":  {
+                                                         "display_name":  "MATCH_FINAL_ROW",
+                                                         "fusion":  "active_valid",
+                                                         "incidence":  "literal",
+                                                         "is_final":  false,
+                                                         "matching_scope":  "row",
+                                                         "memory":  "median_reference",
+                                                         "model_name":  "ViT-B-16",
+                                                         "patch_grid":  [
+                                                                            14,
+                                                                            14
+                                                                        ],
+                                                         "reducer_kind":  null,
+                                                         "reducer_value":  null,
+                                                         "scales":  [
+                                                                        "P",
+                                                                        "M",
+                                                                        "L"
+                                                                    ],
+                                                         "stride":  60,
+                                                         "temporal":  "nctp_linear",
+                                                         "window":  240
+                                                     },
+                                        "order":  2,
+                                        "role":  "ablation",
+                                        "source_arm":  "MATCH_FINAL_ROW"
+                                    },
+                                    {
+                                        "arm":  "SCALE_P",
+                                        "changed_factor":  "SCALE_SUBSET",
+                                        "experiment_group":  "SCALE_SUBSET",
+                                        "fixed_factors":  {
+                                                              "metrics_mask":  "COMMON_488",
+                                                              "protocol":  "VLM4TS_492"
+                                                          },
+                                        "fp_threshold":  0.0,
+                                        "metadata":  {
+                                                         "display_name":  "SCALE_P",
+                                                         "fusion":  "active_valid",
+                                                         "incidence":  "literal",
+                                                         "is_final":  false,
+                                                         "matching_scope":  "global",
+                                                         "memory":  "median_reference",
+                                                         "model_name":  "ViT-B-16",
+                                                         "patch_grid":  [
+                                                                            14,
+                                                                            14
+                                                                        ],
+                                                         "reducer_kind":  null,
+                                                         "reducer_value":  null,
+                                                         "scales":  [
+                                                                        "P"
+                                                                    ],
+                                                         "stride":  60,
+                                                         "temporal":  "nctp_linear",
+                                                         "window":  240
+                                                     },
+                                        "order":  3,
+                                        "role":  "ablation",
+                                        "source_arm":  "SCALE_P"
+                                    },
+                                    {
+                                        "arm":  "IHP0_NCTP0",
+                                        "changed_factor":  "IHP_X_NCTP",
+                                        "experiment_group":  "IHP_X_NCTP",
+                                        "fixed_factors":  {
+                                                              "metrics_mask":  "COMMON_488",
+                                                              "protocol":  "VLM4TS_492"
+                                                          },
+                                        "fp_threshold":  0.0,
+                                        "metadata":  {
+                                                         "display_name":  "IHP0_NCTP0",
+                                                         "fusion":  "legacy_intersection",
+                                                         "incidence":  "released",
+                                                         "is_final":  false,
+                                                         "matching_scope":  "global",
+                                                         "memory":  "median_reference",
+                                                         "model_name":  "ViT-B-16",
+                                                         "patch_grid":  [
+                                                                            14,
+                                                                            14
+                                                                        ],
+                                                         "reducer_kind":  "top_fraction",
+                                                         "reducer_value":  0.25,
+                                                         "scales":  [
+                                                                        "P",
+                                                                        "M",
+                                                                        "L"
+                                                                    ],
+                                                         "stride":  60,
+                                                         "temporal":  "legacy",
+                                                         "window":  240
+                                                     },
+                                        "order":  4,
+                                        "role":  "ablation",
+                                        "source_arm":  "IHP0_NCTP0"
+                                    },
+                                    {
+                                        "arm":  "IHP1_NCTP0",
+                                        "changed_factor":  "IHP_X_NCTP",
+                                        "experiment_group":  "IHP_X_NCTP",
+                                        "fixed_factors":  {
+                                                              "metrics_mask":  "COMMON_488",
+                                                              "protocol":  "VLM4TS_492"
+                                                          },
+                                        "fp_threshold":  0.0,
+                                        "metadata":  {
+                                                         "display_name":  "IHP1_NCTP0",
+                                                         "fusion":  "active_valid",
+                                                         "incidence":  "literal",
+                                                         "is_final":  false,
+                                                         "matching_scope":  "global",
+                                                         "memory":  "median_reference",
+                                                         "model_name":  "ViT-B-16",
+                                                         "patch_grid":  [
+                                                                            14,
+                                                                            14
+                                                                        ],
+                                                         "reducer_kind":  "top_fraction",
+                                                         "reducer_value":  0.25,
+                                                         "scales":  [
+                                                                        "P",
+                                                                        "M",
+                                                                        "L"
+                                                                    ],
+                                                         "stride":  60,
+                                                         "temporal":  "legacy",
+                                                         "window":  240
+                                                     },
+                                        "order":  5,
+                                        "role":  "ablation",
+                                        "source_arm":  "IHP1_NCTP0"
+                                    },
+                                    {
+                                        "arm":  "IHP0_NCTP1",
+                                        "changed_factor":  "IHP_X_NCTP",
+                                        "experiment_group":  "IHP_X_NCTP",
+                                        "fixed_factors":  {
+                                                              "metrics_mask":  "COMMON_488",
+                                                              "protocol":  "VLM4TS_492"
+                                                          },
+                                        "fp_threshold":  0.0,
+                                        "metadata":  {
+                                                         "display_name":  "IHP0_NCTP1",
+                                                         "fusion":  "legacy_intersection",
+                                                         "incidence":  "released",
+                                                         "is_final":  false,
+                                                         "matching_scope":  "global",
+                                                         "memory":  "median_reference",
+                                                         "model_name":  "ViT-B-16",
+                                                         "patch_grid":  [
+                                                                            14,
+                                                                            14
+                                                                        ],
+                                                         "reducer_kind":  null,
+                                                         "reducer_value":  null,
+                                                         "scales":  [
+                                                                        "P",
+                                                                        "M",
+                                                                        "L"
+                                                                    ],
+                                                         "stride":  60,
+                                                         "temporal":  "nctp_linear",
+                                                         "window":  240
+                                                     },
+                                        "order":  6,
+                                        "role":  "ablation",
+                                        "source_arm":  "IHP0_NCTP1"
+                                    },
+                                    {
+                                        "arm":  "IHP1_NCTP1",
+                                        "changed_factor":  "IHP_X_NCTP",
+                                        "experiment_group":  "IHP_X_NCTP",
+                                        "fixed_factors":  {
+                                                              "metrics_mask":  "COMMON_488",
+                                                              "protocol":  "VLM4TS_492"
+                                                          },
+                                        "fp_threshold":  0.0,
+                                        "metadata":  {
+                                                         "display_name":  "IHP1_NCTP1",
+                                                         "fusion":  "active_valid",
+                                                         "incidence":  "literal",
+                                                         "is_final":  false,
+                                                         "matching_scope":  "global",
+                                                         "memory":  "median_reference",
+                                                         "model_name":  "ViT-B-16",
+                                                         "patch_grid":  [
+                                                                            14,
+                                                                            14
+                                                                        ],
+                                                         "reducer_kind":  null,
+                                                         "reducer_value":  null,
+                                                         "scales":  [
+                                                                        "P",
+                                                                        "M",
+                                                                        "L"
+                                                                    ],
+                                                         "stride":  60,
+                                                         "temporal":  "nctp_linear",
+                                                         "window":  240
+                                                     },
+                                        "order":  7,
+                                        "role":  "ablation",
+                                        "source_arm":  "IHP1_NCTP1"
+                                    }
+                                ],
+                       "configuration_id":  "CACHE_B16_W240_S60",
+                       "expected_series":  492,
+                       "root":  "D:\\qintian_experiments\\ViTTrace_ablation_full_v3_20260718_193834\\runs\\cache_only_b16_w240_s60",
+                       "stage_group":  "cache_only_controls",
+                       "stage_id":  "CACHE_ONLY_B16_W240_S60",
+                       "stage_kind":  "cache_only",
+                       "status_path":  null
+                   },
+                   {
+                       "arms":  [
+                                    {
+                                        "arm":  "CTRL_CLS_LEGACY",
+                                        "changed_factor":  "PATCH_EMBEDDING",
+                                        "experiment_group":  "PATCH_EMBEDDING",
+                                        "fixed_factors":  {
+                                                              "metrics_mask":  "COMMON_488",
+                                                              "protocol":  "VLM4TS_492"
+                                                          },
+                                        "fp_threshold":  0.0,
+                                        "metadata":  {
+                                                         "display_name":  "CTRL_CLS_LEGACY",
+                                                         "embedding":  "true_global",
+                                                         "encoder_calls":  0,
+                                                         "ihp":  "bypassed",
+                                                         "is_final":  false,
+                                                         "model_key":  "B16",
+                                                         "nctp":  "bypassed",
+                                                         "representation":  "line",
+                                                         "stride":  60,
+                                                         "window":  240
+                                                     },
+                                        "order":  8,
+                                        "role":  "inherited_control",
+                                        "source_arm":  "CTRL_CLS_LEGACY"
+                                    },
+                                    {
+                                        "arm":  "CTRL_CLS_NATIVE_W240",
+                                        "changed_factor":  "PATCH_EMBEDDING",
+                                        "experiment_group":  "PATCH_EMBEDDING",
+                                        "fixed_factors":  {
+                                                              "metrics_mask":  "COMMON_488",
+                                                              "protocol":  "VLM4TS_492"
+                                                          },
+                                        "fp_threshold":  0.0,
+                                        "metadata":  {
+                                                         "display_name":  "CTRL_CLS_NATIVE_W240",
+                                                         "embedding":  "true_global",
+                                                         "encoder_calls":  0,
+                                                         "ihp":  "bypassed",
+                                                         "is_final":  false,
+                                                         "model_key":  "B16",
+                                                         "nctp":  "bypassed",
+                                                         "representation":  "line",
+                                                         "stride":  60,
+                                                         "window":  240
+                                                     },
+                                        "order":  9,
+                                        "role":  "inherited_control",
+                                        "source_arm":  "CTRL_CLS_NATIVE_W240"
+                                    },
+                                    {
+                                        "arm":  "CTRL_PATCH_MEAN_NATIVE_W240",
+                                        "changed_factor":  "PATCH_EMBEDDING",
+                                        "experiment_group":  "PATCH_EMBEDDING",
+                                        "fixed_factors":  {
+                                                              "metrics_mask":  "COMMON_488",
+                                                              "protocol":  "VLM4TS_492"
+                                                          },
+                                        "fp_threshold":  0.0,
+                                        "metadata":  {
+                                                         "display_name":  "CTRL_PATCH_MEAN_NATIVE_W240",
+                                                         "embedding":  "patch_mean",
+                                                         "encoder_calls":  0,
+                                                         "ihp":  "bypassed",
+                                                         "is_final":  false,
+                                                         "model_key":  "B16",
+                                                         "nctp":  "bypassed",
+                                                         "representation":  "line",
+                                                         "stride":  60,
+                                                         "window":  240
+                                                     },
+                                        "order":  10,
+                                        "role":  "inherited_control",
+                                        "source_arm":  "CTRL_PATCH_MEAN_NATIVE_W240"
+                                    }
+                                ],
+                       "configuration_id":  "ENCODER_B16_W240_S60",
+                       "expected_series":  492,
+                       "root":  "D:\\qintian_experiments\\ViTTrace_ablation_full_v3_20260718_193834\\encoder_stage\\line_B16_W240_S60_B64__45FC91727681",
+                       "stage_group":  "encoder_controls",
+                       "stage_id":  "ENCODER_CONTROLS_B16_W240_S60",
+                       "stage_kind":  "encoder_controls",
+                       "status_path":  "D:\\qintian_experiments\\ViTTrace_ablation_full_v3_20260718_193834\\encoder_stage\\line_B16_W240_S60_B64__45FC91727681\\encoder_controls_status.json"
+                   }
+               ]
+}

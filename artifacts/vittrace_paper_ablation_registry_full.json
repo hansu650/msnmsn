@@ -1,0 +1,1633 @@
+{
+  "bootstrap": {
+    "hierarchy": [
+      "subgroup",
+      "series"
+    ],
+    "n_resamples": 10000,
+    "seed": 2027,
+    "shared_indices": true
+  },
+  "config_path": "C:\\Users\\qintian\\Desktop\\msn\\msnmsn\\configs\\vittrace_ablation_full_v3.yaml",
+  "config_sha256": "E2F2CA3B85CF3DE96CF335A1F4E7F30C68022C2D7F8537BE4F923D5AB3086D24",
+  "contrasts": [
+    {
+      "candidate": "FINAL_DEFAULT",
+      "control": "LEGACY_DEFAULT",
+      "family": "PRIMARY",
+      "id": "FINAL_VS_LEGACY"
+    },
+    {
+      "candidate": "MATCH_LEGACY_POSITION",
+      "control": "FINAL_DEFAULT",
+      "family": "MATCHING_LEGACY",
+      "id": "MATCH_LEGACY_POSITION_VS_FINAL"
+    },
+    {
+      "candidate": "MATCH_LEGACY_ROW",
+      "control": "FINAL_DEFAULT",
+      "family": "MATCHING_LEGACY",
+      "id": "MATCH_LEGACY_ROW_VS_FINAL"
+    },
+    {
+      "candidate": "MATCH_LEGACY_COLUMN",
+      "control": "FINAL_DEFAULT",
+      "family": "MATCHING_LEGACY",
+      "id": "MATCH_LEGACY_COLUMN_VS_FINAL"
+    },
+    {
+      "candidate": "MATCH_LEGACY_GLOBAL",
+      "control": "FINAL_DEFAULT",
+      "family": "MATCHING_LEGACY",
+      "id": "MATCH_LEGACY_GLOBAL_VS_FINAL"
+    },
+    {
+      "candidate": "MATCH_FINAL_POSITION",
+      "control": "FINAL_DEFAULT",
+      "family": "MATCHING_FINAL",
+      "id": "MATCH_FINAL_POSITION_VS_FINAL"
+    },
+    {
+      "candidate": "MATCH_FINAL_ROW",
+      "control": "FINAL_DEFAULT",
+      "family": "MATCHING_FINAL",
+      "id": "MATCH_FINAL_ROW_VS_FINAL"
+    },
+    {
+      "candidate": "MATCH_FINAL_COLUMN",
+      "control": "FINAL_DEFAULT",
+      "family": "MATCHING_FINAL",
+      "id": "MATCH_FINAL_COLUMN_VS_FINAL"
+    },
+    {
+      "candidate": "MATCH_FINAL_GLOBAL",
+      "control": "FINAL_DEFAULT",
+      "family": "MATCHING_FINAL",
+      "id": "MATCH_FINAL_GLOBAL_VS_FINAL"
+    },
+    {
+      "candidate": "SCALE_P",
+      "control": "FINAL_DEFAULT",
+      "family": "SCALE_SUBSET",
+      "id": "SCALE_P_VS_FINAL"
+    },
+    {
+      "candidate": "SCALE_M",
+      "control": "FINAL_DEFAULT",
+      "family": "SCALE_SUBSET",
+      "id": "SCALE_M_VS_FINAL"
+    },
+    {
+      "candidate": "SCALE_L",
+      "control": "FINAL_DEFAULT",
+      "family": "SCALE_SUBSET",
+      "id": "SCALE_L_VS_FINAL"
+    },
+    {
+      "candidate": "SCALE_PM",
+      "control": "FINAL_DEFAULT",
+      "family": "SCALE_SUBSET",
+      "id": "SCALE_PM_VS_FINAL"
+    },
+    {
+      "candidate": "SCALE_PL",
+      "control": "FINAL_DEFAULT",
+      "family": "SCALE_SUBSET",
+      "id": "SCALE_PL_VS_FINAL"
+    },
+    {
+      "candidate": "SCALE_ML",
+      "control": "FINAL_DEFAULT",
+      "family": "SCALE_SUBSET",
+      "id": "SCALE_ML_VS_FINAL"
+    },
+    {
+      "candidate": "SCALE_PML",
+      "control": "FINAL_DEFAULT",
+      "family": "SCALE_SUBSET",
+      "id": "SCALE_PML_VS_FINAL"
+    },
+    {
+      "candidate": "SCALE_LEGACY_P",
+      "control": "FINAL_DEFAULT",
+      "family": "SCALE_SUBSET_LEGACY",
+      "id": "SCALE_LEGACY_P_VS_FINAL"
+    },
+    {
+      "candidate": "SCALE_LEGACY_PML",
+      "control": "FINAL_DEFAULT",
+      "family": "SCALE_SUBSET_LEGACY",
+      "id": "SCALE_LEGACY_PML_VS_FINAL"
+    },
+    {
+      "candidate": "MEMORY_MEDIAN",
+      "control": "FINAL_DEFAULT",
+      "family": "MEMORY",
+      "id": "MEMORY_MEDIAN_VS_FINAL"
+    },
+    {
+      "candidate": "MEMORY_ALLPAIRS",
+      "control": "FINAL_DEFAULT",
+      "family": "MEMORY",
+      "id": "MEMORY_ALLPAIRS_VS_FINAL"
+    },
+    {
+      "candidate": "REDUCER_Q10",
+      "control": "FINAL_DEFAULT",
+      "family": "REDUCER_QUANTILE",
+      "id": "REDUCER_Q10_VS_FINAL"
+    },
+    {
+      "candidate": "REDUCER_Q25",
+      "control": "FINAL_DEFAULT",
+      "family": "REDUCER_QUANTILE",
+      "id": "REDUCER_Q25_VS_FINAL"
+    },
+    {
+      "candidate": "REDUCER_Q50",
+      "control": "FINAL_DEFAULT",
+      "family": "REDUCER_QUANTILE",
+      "id": "REDUCER_Q50_VS_FINAL"
+    },
+    {
+      "candidate": "REDUCER_TOP10",
+      "control": "FINAL_DEFAULT",
+      "family": "REDUCER_TOP_FRACTION",
+      "id": "REDUCER_TOP10_VS_FINAL"
+    },
+    {
+      "candidate": "REDUCER_TOP25",
+      "control": "FINAL_DEFAULT",
+      "family": "REDUCER_TOP_FRACTION",
+      "id": "REDUCER_TOP25_VS_FINAL"
+    },
+    {
+      "candidate": "REDUCER_TOP50",
+      "control": "FINAL_DEFAULT",
+      "family": "REDUCER_TOP_FRACTION",
+      "id": "REDUCER_TOP50_VS_FINAL"
+    },
+    {
+      "candidate": "IHP0_NCTP0",
+      "control": "FINAL_DEFAULT",
+      "family": "IHP_X_NCTP",
+      "id": "IHP0_NCTP0_VS_FINAL"
+    },
+    {
+      "candidate": "IHP1_NCTP0",
+      "control": "FINAL_DEFAULT",
+      "family": "IHP_X_NCTP",
+      "id": "IHP1_NCTP0_VS_FINAL"
+    },
+    {
+      "candidate": "IHP0_NCTP1",
+      "control": "FINAL_DEFAULT",
+      "family": "IHP_X_NCTP",
+      "id": "IHP0_NCTP1_VS_FINAL"
+    },
+    {
+      "candidate": "IHP1_NCTP1",
+      "control": "FINAL_DEFAULT",
+      "family": "IHP_X_NCTP",
+      "id": "IHP1_NCTP1_VS_FINAL"
+    },
+    {
+      "candidate": "TEMP_NCTP_LINEAR",
+      "control": "FINAL_DEFAULT",
+      "family": "TEMPORAL",
+      "id": "TEMP_NCTP_LINEAR_VS_FINAL"
+    },
+    {
+      "candidate": "TEMP_NCTP_NEAREST",
+      "control": "FINAL_DEFAULT",
+      "family": "TEMPORAL",
+      "id": "TEMP_NCTP_NEAREST_VS_FINAL"
+    },
+    {
+      "candidate": "TEMP_TRACE_SOFT",
+      "control": "FINAL_DEFAULT",
+      "family": "TEMPORAL",
+      "id": "TEMP_TRACE_SOFT_VS_FINAL"
+    },
+    {
+      "candidate": "TEMP_TRACE_HARD",
+      "control": "FINAL_DEFAULT",
+      "family": "TEMPORAL",
+      "id": "TEMP_TRACE_HARD_VS_FINAL"
+    },
+    {
+      "candidate": "TEMP_LEGACY",
+      "control": "FINAL_DEFAULT",
+      "family": "TEMPORAL",
+      "id": "TEMP_LEGACY_VS_FINAL"
+    },
+    {
+      "candidate": "CTRL_CLS_LEGACY",
+      "control": "LEGACY_DEFAULT",
+      "family": "PATCH_EMBEDDING",
+      "id": "CTRL_CLS_LEGACY_VS_LEGACY"
+    },
+    {
+      "candidate": "CTRL_CLS_NATIVE_W240",
+      "control": "LEGACY_DEFAULT",
+      "family": "PATCH_EMBEDDING",
+      "id": "CTRL_CLS_NATIVE_W240_VS_LEGACY"
+    },
+    {
+      "candidate": "CTRL_PATCH_MEAN_NATIVE_W240",
+      "control": "LEGACY_DEFAULT",
+      "family": "PATCH_EMBEDDING",
+      "id": "CTRL_PATCH_MEAN_NATIVE_W240_VS_LEGACY"
+    }
+  ],
+  "expected_series": 492,
+  "expected_valid_series": 488,
+  "manifest_path": "C:\\Users\\qintian\\Desktop\\msn\\msnmsn\\configs\\vlm4ts_11group_manifest.json",
+  "manifest_sha256": "4B3EB83D1CD9EF09F9C88D6D159EA6BEE81F8F69BAC4EA2FCAB06D76FF2EF8EF",
+  "protocol_id": "VITTRACE_V3_COMBINED_492",
+  "schema_version": 1,
+  "stages": [
+    {
+      "arms": [
+        {
+          "arm": "LEGACY_DEFAULT",
+          "changed_factor": "DEFAULT",
+          "experiment_group": "DEFAULT",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "LEGACY_DEFAULT",
+            "fusion": "legacy_intersection",
+            "incidence": "released",
+            "is_final": false,
+            "matching_scope": "global",
+            "memory": "median_reference",
+            "model_name": "ViT-B-16",
+            "patch_grid": [
+              14,
+              14
+            ],
+            "reducer_kind": "top_fraction",
+            "reducer_value": 0.25,
+            "scales": [
+              "P",
+              "M",
+              "L"
+            ],
+            "stride": 60,
+            "temporal": "legacy",
+            "window": 240
+          },
+          "order": 0,
+          "role": "control",
+          "source_arm": "LEGACY_DEFAULT"
+        },
+        {
+          "arm": "FINAL_DEFAULT",
+          "changed_factor": "DEFAULT",
+          "experiment_group": "DEFAULT",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "FINAL_DEFAULT",
+            "fusion": "active_valid",
+            "incidence": "literal",
+            "is_final": true,
+            "matching_scope": "global",
+            "memory": "median_reference",
+            "model_name": "ViT-B-16",
+            "patch_grid": [
+              14,
+              14
+            ],
+            "reducer_kind": null,
+            "reducer_value": null,
+            "scales": [
+              "P",
+              "M",
+              "L"
+            ],
+            "stride": 60,
+            "temporal": "nctp_linear",
+            "window": 240
+          },
+          "order": 1,
+          "role": "method",
+          "source_arm": "FINAL_DEFAULT"
+        },
+        {
+          "arm": "MATCH_LEGACY_POSITION",
+          "changed_factor": "MATCHING_LEGACY",
+          "experiment_group": "MATCHING_LEGACY",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "MATCH_LEGACY_POSITION",
+            "fusion": "legacy_intersection",
+            "incidence": "released",
+            "is_final": false,
+            "matching_scope": "position",
+            "memory": "median_reference",
+            "model_name": "ViT-B-16",
+            "patch_grid": [
+              14,
+              14
+            ],
+            "reducer_kind": "top_fraction",
+            "reducer_value": 0.25,
+            "scales": [
+              "P",
+              "M",
+              "L"
+            ],
+            "stride": 60,
+            "temporal": "legacy",
+            "window": 240
+          },
+          "order": 2,
+          "role": "ablation",
+          "source_arm": "MATCH_LEGACY_POSITION"
+        },
+        {
+          "arm": "MATCH_LEGACY_ROW",
+          "changed_factor": "MATCHING_LEGACY",
+          "experiment_group": "MATCHING_LEGACY",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "MATCH_LEGACY_ROW",
+            "fusion": "legacy_intersection",
+            "incidence": "released",
+            "is_final": false,
+            "matching_scope": "row",
+            "memory": "median_reference",
+            "model_name": "ViT-B-16",
+            "patch_grid": [
+              14,
+              14
+            ],
+            "reducer_kind": "top_fraction",
+            "reducer_value": 0.25,
+            "scales": [
+              "P",
+              "M",
+              "L"
+            ],
+            "stride": 60,
+            "temporal": "legacy",
+            "window": 240
+          },
+          "order": 3,
+          "role": "ablation",
+          "source_arm": "MATCH_LEGACY_ROW"
+        },
+        {
+          "arm": "MATCH_LEGACY_COLUMN",
+          "changed_factor": "MATCHING_LEGACY",
+          "experiment_group": "MATCHING_LEGACY",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "MATCH_LEGACY_COLUMN",
+            "fusion": "legacy_intersection",
+            "incidence": "released",
+            "is_final": false,
+            "matching_scope": "column",
+            "memory": "median_reference",
+            "model_name": "ViT-B-16",
+            "patch_grid": [
+              14,
+              14
+            ],
+            "reducer_kind": "top_fraction",
+            "reducer_value": 0.25,
+            "scales": [
+              "P",
+              "M",
+              "L"
+            ],
+            "stride": 60,
+            "temporal": "legacy",
+            "window": 240
+          },
+          "order": 4,
+          "role": "ablation",
+          "source_arm": "MATCH_LEGACY_COLUMN"
+        },
+        {
+          "arm": "MATCH_LEGACY_GLOBAL",
+          "changed_factor": "MATCHING_LEGACY",
+          "experiment_group": "MATCHING_LEGACY",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "MATCH_LEGACY_GLOBAL",
+            "fusion": "legacy_intersection",
+            "incidence": "released",
+            "is_final": false,
+            "matching_scope": "global",
+            "memory": "median_reference",
+            "model_name": "ViT-B-16",
+            "patch_grid": [
+              14,
+              14
+            ],
+            "reducer_kind": "top_fraction",
+            "reducer_value": 0.25,
+            "scales": [
+              "P",
+              "M",
+              "L"
+            ],
+            "stride": 60,
+            "temporal": "legacy",
+            "window": 240
+          },
+          "order": 5,
+          "role": "ablation",
+          "source_arm": "MATCH_LEGACY_GLOBAL"
+        },
+        {
+          "arm": "MATCH_FINAL_POSITION",
+          "changed_factor": "MATCHING_FINAL",
+          "experiment_group": "MATCHING_FINAL",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "MATCH_FINAL_POSITION",
+            "fusion": "active_valid",
+            "incidence": "literal",
+            "is_final": false,
+            "matching_scope": "position",
+            "memory": "median_reference",
+            "model_name": "ViT-B-16",
+            "patch_grid": [
+              14,
+              14
+            ],
+            "reducer_kind": null,
+            "reducer_value": null,
+            "scales": [
+              "P",
+              "M",
+              "L"
+            ],
+            "stride": 60,
+            "temporal": "nctp_linear",
+            "window": 240
+          },
+          "order": 6,
+          "role": "ablation",
+          "source_arm": "MATCH_FINAL_POSITION"
+        },
+        {
+          "arm": "MATCH_FINAL_ROW",
+          "changed_factor": "MATCHING_FINAL",
+          "experiment_group": "MATCHING_FINAL",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "MATCH_FINAL_ROW",
+            "fusion": "active_valid",
+            "incidence": "literal",
+            "is_final": false,
+            "matching_scope": "row",
+            "memory": "median_reference",
+            "model_name": "ViT-B-16",
+            "patch_grid": [
+              14,
+              14
+            ],
+            "reducer_kind": null,
+            "reducer_value": null,
+            "scales": [
+              "P",
+              "M",
+              "L"
+            ],
+            "stride": 60,
+            "temporal": "nctp_linear",
+            "window": 240
+          },
+          "order": 7,
+          "role": "ablation",
+          "source_arm": "MATCH_FINAL_ROW"
+        },
+        {
+          "arm": "MATCH_FINAL_COLUMN",
+          "changed_factor": "MATCHING_FINAL",
+          "experiment_group": "MATCHING_FINAL",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "MATCH_FINAL_COLUMN",
+            "fusion": "active_valid",
+            "incidence": "literal",
+            "is_final": false,
+            "matching_scope": "column",
+            "memory": "median_reference",
+            "model_name": "ViT-B-16",
+            "patch_grid": [
+              14,
+              14
+            ],
+            "reducer_kind": null,
+            "reducer_value": null,
+            "scales": [
+              "P",
+              "M",
+              "L"
+            ],
+            "stride": 60,
+            "temporal": "nctp_linear",
+            "window": 240
+          },
+          "order": 8,
+          "role": "ablation",
+          "source_arm": "MATCH_FINAL_COLUMN"
+        },
+        {
+          "arm": "MATCH_FINAL_GLOBAL",
+          "changed_factor": "MATCHING_FINAL",
+          "experiment_group": "MATCHING_FINAL",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "MATCH_FINAL_GLOBAL",
+            "fusion": "active_valid",
+            "incidence": "literal",
+            "is_final": false,
+            "matching_scope": "global",
+            "memory": "median_reference",
+            "model_name": "ViT-B-16",
+            "patch_grid": [
+              14,
+              14
+            ],
+            "reducer_kind": null,
+            "reducer_value": null,
+            "scales": [
+              "P",
+              "M",
+              "L"
+            ],
+            "stride": 60,
+            "temporal": "nctp_linear",
+            "window": 240
+          },
+          "order": 9,
+          "role": "ablation",
+          "source_arm": "MATCH_FINAL_GLOBAL"
+        },
+        {
+          "arm": "SCALE_P",
+          "changed_factor": "SCALE_SUBSET",
+          "experiment_group": "SCALE_SUBSET",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "SCALE_P",
+            "fusion": "active_valid",
+            "incidence": "literal",
+            "is_final": false,
+            "matching_scope": "global",
+            "memory": "median_reference",
+            "model_name": "ViT-B-16",
+            "patch_grid": [
+              14,
+              14
+            ],
+            "reducer_kind": null,
+            "reducer_value": null,
+            "scales": [
+              "P"
+            ],
+            "stride": 60,
+            "temporal": "nctp_linear",
+            "window": 240
+          },
+          "order": 10,
+          "role": "ablation",
+          "source_arm": "SCALE_P"
+        },
+        {
+          "arm": "SCALE_M",
+          "changed_factor": "SCALE_SUBSET",
+          "experiment_group": "SCALE_SUBSET",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "SCALE_M",
+            "fusion": "active_valid",
+            "incidence": "literal",
+            "is_final": false,
+            "matching_scope": "global",
+            "memory": "median_reference",
+            "model_name": "ViT-B-16",
+            "patch_grid": [
+              14,
+              14
+            ],
+            "reducer_kind": null,
+            "reducer_value": null,
+            "scales": [
+              "M"
+            ],
+            "stride": 60,
+            "temporal": "nctp_linear",
+            "window": 240
+          },
+          "order": 11,
+          "role": "ablation",
+          "source_arm": "SCALE_M"
+        },
+        {
+          "arm": "SCALE_L",
+          "changed_factor": "SCALE_SUBSET",
+          "experiment_group": "SCALE_SUBSET",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "SCALE_L",
+            "fusion": "active_valid",
+            "incidence": "literal",
+            "is_final": false,
+            "matching_scope": "global",
+            "memory": "median_reference",
+            "model_name": "ViT-B-16",
+            "patch_grid": [
+              14,
+              14
+            ],
+            "reducer_kind": null,
+            "reducer_value": null,
+            "scales": [
+              "L"
+            ],
+            "stride": 60,
+            "temporal": "nctp_linear",
+            "window": 240
+          },
+          "order": 12,
+          "role": "ablation",
+          "source_arm": "SCALE_L"
+        },
+        {
+          "arm": "SCALE_PM",
+          "changed_factor": "SCALE_SUBSET",
+          "experiment_group": "SCALE_SUBSET",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "SCALE_PM",
+            "fusion": "active_valid",
+            "incidence": "literal",
+            "is_final": false,
+            "matching_scope": "global",
+            "memory": "median_reference",
+            "model_name": "ViT-B-16",
+            "patch_grid": [
+              14,
+              14
+            ],
+            "reducer_kind": null,
+            "reducer_value": null,
+            "scales": [
+              "P",
+              "M"
+            ],
+            "stride": 60,
+            "temporal": "nctp_linear",
+            "window": 240
+          },
+          "order": 13,
+          "role": "ablation",
+          "source_arm": "SCALE_PM"
+        },
+        {
+          "arm": "SCALE_PL",
+          "changed_factor": "SCALE_SUBSET",
+          "experiment_group": "SCALE_SUBSET",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "SCALE_PL",
+            "fusion": "active_valid",
+            "incidence": "literal",
+            "is_final": false,
+            "matching_scope": "global",
+            "memory": "median_reference",
+            "model_name": "ViT-B-16",
+            "patch_grid": [
+              14,
+              14
+            ],
+            "reducer_kind": null,
+            "reducer_value": null,
+            "scales": [
+              "P",
+              "L"
+            ],
+            "stride": 60,
+            "temporal": "nctp_linear",
+            "window": 240
+          },
+          "order": 14,
+          "role": "ablation",
+          "source_arm": "SCALE_PL"
+        },
+        {
+          "arm": "SCALE_ML",
+          "changed_factor": "SCALE_SUBSET",
+          "experiment_group": "SCALE_SUBSET",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "SCALE_ML",
+            "fusion": "active_valid",
+            "incidence": "literal",
+            "is_final": false,
+            "matching_scope": "global",
+            "memory": "median_reference",
+            "model_name": "ViT-B-16",
+            "patch_grid": [
+              14,
+              14
+            ],
+            "reducer_kind": null,
+            "reducer_value": null,
+            "scales": [
+              "M",
+              "L"
+            ],
+            "stride": 60,
+            "temporal": "nctp_linear",
+            "window": 240
+          },
+          "order": 15,
+          "role": "ablation",
+          "source_arm": "SCALE_ML"
+        },
+        {
+          "arm": "SCALE_PML",
+          "changed_factor": "SCALE_SUBSET",
+          "experiment_group": "SCALE_SUBSET",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "SCALE_PML",
+            "fusion": "active_valid",
+            "incidence": "literal",
+            "is_final": false,
+            "matching_scope": "global",
+            "memory": "median_reference",
+            "model_name": "ViT-B-16",
+            "patch_grid": [
+              14,
+              14
+            ],
+            "reducer_kind": null,
+            "reducer_value": null,
+            "scales": [
+              "P",
+              "M",
+              "L"
+            ],
+            "stride": 60,
+            "temporal": "nctp_linear",
+            "window": 240
+          },
+          "order": 16,
+          "role": "ablation",
+          "source_arm": "SCALE_PML"
+        },
+        {
+          "arm": "SCALE_LEGACY_P",
+          "changed_factor": "SCALE_SUBSET_LEGACY",
+          "experiment_group": "SCALE_SUBSET_LEGACY",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "SCALE_LEGACY_P",
+            "fusion": "legacy_intersection",
+            "incidence": "released",
+            "is_final": false,
+            "matching_scope": "global",
+            "memory": "median_reference",
+            "model_name": "ViT-B-16",
+            "patch_grid": [
+              14,
+              14
+            ],
+            "reducer_kind": "top_fraction",
+            "reducer_value": 0.25,
+            "scales": [
+              "P"
+            ],
+            "stride": 60,
+            "temporal": "legacy",
+            "window": 240
+          },
+          "order": 17,
+          "role": "ablation",
+          "source_arm": "SCALE_LEGACY_P"
+        },
+        {
+          "arm": "SCALE_LEGACY_PML",
+          "changed_factor": "SCALE_SUBSET_LEGACY",
+          "experiment_group": "SCALE_SUBSET_LEGACY",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "SCALE_LEGACY_PML",
+            "fusion": "legacy_intersection",
+            "incidence": "released",
+            "is_final": false,
+            "matching_scope": "global",
+            "memory": "median_reference",
+            "model_name": "ViT-B-16",
+            "patch_grid": [
+              14,
+              14
+            ],
+            "reducer_kind": "top_fraction",
+            "reducer_value": 0.25,
+            "scales": [
+              "P",
+              "M",
+              "L"
+            ],
+            "stride": 60,
+            "temporal": "legacy",
+            "window": 240
+          },
+          "order": 18,
+          "role": "ablation",
+          "source_arm": "SCALE_LEGACY_PML"
+        },
+        {
+          "arm": "MEMORY_MEDIAN",
+          "changed_factor": "MEMORY",
+          "experiment_group": "MEMORY",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "MEMORY_MEDIAN",
+            "fusion": "active_valid",
+            "incidence": "literal",
+            "is_final": false,
+            "matching_scope": "global",
+            "memory": "median_reference",
+            "model_name": "ViT-B-16",
+            "patch_grid": [
+              14,
+              14
+            ],
+            "reducer_kind": null,
+            "reducer_value": null,
+            "scales": [
+              "P",
+              "M",
+              "L"
+            ],
+            "stride": 60,
+            "temporal": "nctp_linear",
+            "window": 240
+          },
+          "order": 19,
+          "role": "ablation",
+          "source_arm": "MEMORY_MEDIAN"
+        },
+        {
+          "arm": "MEMORY_ALLPAIRS",
+          "changed_factor": "MEMORY",
+          "experiment_group": "MEMORY",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "MEMORY_ALLPAIRS",
+            "fusion": "active_valid",
+            "incidence": "literal",
+            "is_final": false,
+            "matching_scope": "global",
+            "memory": "all_pairs",
+            "model_name": "ViT-B-16",
+            "patch_grid": [
+              14,
+              14
+            ],
+            "reducer_kind": null,
+            "reducer_value": null,
+            "scales": [
+              "P",
+              "M",
+              "L"
+            ],
+            "stride": 60,
+            "temporal": "nctp_linear",
+            "window": 240
+          },
+          "order": 20,
+          "role": "ablation",
+          "source_arm": "MEMORY_ALLPAIRS"
+        },
+        {
+          "arm": "REDUCER_Q10",
+          "changed_factor": "REDUCER_QUANTILE",
+          "experiment_group": "REDUCER_QUANTILE",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "REDUCER_Q10",
+            "fusion": "legacy_intersection",
+            "incidence": "released",
+            "is_final": false,
+            "matching_scope": "global",
+            "memory": "median_reference",
+            "model_name": "ViT-B-16",
+            "patch_grid": [
+              14,
+              14
+            ],
+            "reducer_kind": "quantile",
+            "reducer_value": 0.1,
+            "scales": [
+              "P",
+              "M",
+              "L"
+            ],
+            "stride": 60,
+            "temporal": "legacy",
+            "window": 240
+          },
+          "order": 21,
+          "role": "ablation",
+          "source_arm": "REDUCER_Q10"
+        },
+        {
+          "arm": "REDUCER_Q25",
+          "changed_factor": "REDUCER_QUANTILE",
+          "experiment_group": "REDUCER_QUANTILE",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "REDUCER_Q25",
+            "fusion": "legacy_intersection",
+            "incidence": "released",
+            "is_final": false,
+            "matching_scope": "global",
+            "memory": "median_reference",
+            "model_name": "ViT-B-16",
+            "patch_grid": [
+              14,
+              14
+            ],
+            "reducer_kind": "quantile",
+            "reducer_value": 0.25,
+            "scales": [
+              "P",
+              "M",
+              "L"
+            ],
+            "stride": 60,
+            "temporal": "legacy",
+            "window": 240
+          },
+          "order": 22,
+          "role": "ablation",
+          "source_arm": "REDUCER_Q25"
+        },
+        {
+          "arm": "REDUCER_Q50",
+          "changed_factor": "REDUCER_QUANTILE",
+          "experiment_group": "REDUCER_QUANTILE",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "REDUCER_Q50",
+            "fusion": "legacy_intersection",
+            "incidence": "released",
+            "is_final": false,
+            "matching_scope": "global",
+            "memory": "median_reference",
+            "model_name": "ViT-B-16",
+            "patch_grid": [
+              14,
+              14
+            ],
+            "reducer_kind": "quantile",
+            "reducer_value": 0.5,
+            "scales": [
+              "P",
+              "M",
+              "L"
+            ],
+            "stride": 60,
+            "temporal": "legacy",
+            "window": 240
+          },
+          "order": 23,
+          "role": "ablation",
+          "source_arm": "REDUCER_Q50"
+        },
+        {
+          "arm": "REDUCER_TOP10",
+          "changed_factor": "REDUCER_TOP_FRACTION",
+          "experiment_group": "REDUCER_TOP_FRACTION",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "REDUCER_TOP10",
+            "fusion": "legacy_intersection",
+            "incidence": "released",
+            "is_final": false,
+            "matching_scope": "global",
+            "memory": "median_reference",
+            "model_name": "ViT-B-16",
+            "patch_grid": [
+              14,
+              14
+            ],
+            "reducer_kind": "top_fraction",
+            "reducer_value": 0.1,
+            "scales": [
+              "P",
+              "M",
+              "L"
+            ],
+            "stride": 60,
+            "temporal": "legacy",
+            "window": 240
+          },
+          "order": 24,
+          "role": "ablation",
+          "source_arm": "REDUCER_TOP10"
+        },
+        {
+          "arm": "REDUCER_TOP25",
+          "changed_factor": "REDUCER_TOP_FRACTION",
+          "experiment_group": "REDUCER_TOP_FRACTION",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "REDUCER_TOP25",
+            "fusion": "legacy_intersection",
+            "incidence": "released",
+            "is_final": false,
+            "matching_scope": "global",
+            "memory": "median_reference",
+            "model_name": "ViT-B-16",
+            "patch_grid": [
+              14,
+              14
+            ],
+            "reducer_kind": "top_fraction",
+            "reducer_value": 0.25,
+            "scales": [
+              "P",
+              "M",
+              "L"
+            ],
+            "stride": 60,
+            "temporal": "legacy",
+            "window": 240
+          },
+          "order": 25,
+          "role": "ablation",
+          "source_arm": "REDUCER_TOP25"
+        },
+        {
+          "arm": "REDUCER_TOP50",
+          "changed_factor": "REDUCER_TOP_FRACTION",
+          "experiment_group": "REDUCER_TOP_FRACTION",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "REDUCER_TOP50",
+            "fusion": "legacy_intersection",
+            "incidence": "released",
+            "is_final": false,
+            "matching_scope": "global",
+            "memory": "median_reference",
+            "model_name": "ViT-B-16",
+            "patch_grid": [
+              14,
+              14
+            ],
+            "reducer_kind": "top_fraction",
+            "reducer_value": 0.5,
+            "scales": [
+              "P",
+              "M",
+              "L"
+            ],
+            "stride": 60,
+            "temporal": "legacy",
+            "window": 240
+          },
+          "order": 26,
+          "role": "ablation",
+          "source_arm": "REDUCER_TOP50"
+        },
+        {
+          "arm": "IHP0_NCTP0",
+          "changed_factor": "IHP_X_NCTP",
+          "experiment_group": "IHP_X_NCTP",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "IHP0_NCTP0",
+            "fusion": "legacy_intersection",
+            "incidence": "released",
+            "is_final": false,
+            "matching_scope": "global",
+            "memory": "median_reference",
+            "model_name": "ViT-B-16",
+            "patch_grid": [
+              14,
+              14
+            ],
+            "reducer_kind": "top_fraction",
+            "reducer_value": 0.25,
+            "scales": [
+              "P",
+              "M",
+              "L"
+            ],
+            "stride": 60,
+            "temporal": "legacy",
+            "window": 240
+          },
+          "order": 27,
+          "role": "ablation",
+          "source_arm": "IHP0_NCTP0"
+        },
+        {
+          "arm": "IHP1_NCTP0",
+          "changed_factor": "IHP_X_NCTP",
+          "experiment_group": "IHP_X_NCTP",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "IHP1_NCTP0",
+            "fusion": "active_valid",
+            "incidence": "literal",
+            "is_final": false,
+            "matching_scope": "global",
+            "memory": "median_reference",
+            "model_name": "ViT-B-16",
+            "patch_grid": [
+              14,
+              14
+            ],
+            "reducer_kind": "top_fraction",
+            "reducer_value": 0.25,
+            "scales": [
+              "P",
+              "M",
+              "L"
+            ],
+            "stride": 60,
+            "temporal": "legacy",
+            "window": 240
+          },
+          "order": 28,
+          "role": "ablation",
+          "source_arm": "IHP1_NCTP0"
+        },
+        {
+          "arm": "IHP0_NCTP1",
+          "changed_factor": "IHP_X_NCTP",
+          "experiment_group": "IHP_X_NCTP",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "IHP0_NCTP1",
+            "fusion": "legacy_intersection",
+            "incidence": "released",
+            "is_final": false,
+            "matching_scope": "global",
+            "memory": "median_reference",
+            "model_name": "ViT-B-16",
+            "patch_grid": [
+              14,
+              14
+            ],
+            "reducer_kind": null,
+            "reducer_value": null,
+            "scales": [
+              "P",
+              "M",
+              "L"
+            ],
+            "stride": 60,
+            "temporal": "nctp_linear",
+            "window": 240
+          },
+          "order": 29,
+          "role": "ablation",
+          "source_arm": "IHP0_NCTP1"
+        },
+        {
+          "arm": "IHP1_NCTP1",
+          "changed_factor": "IHP_X_NCTP",
+          "experiment_group": "IHP_X_NCTP",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "IHP1_NCTP1",
+            "fusion": "active_valid",
+            "incidence": "literal",
+            "is_final": false,
+            "matching_scope": "global",
+            "memory": "median_reference",
+            "model_name": "ViT-B-16",
+            "patch_grid": [
+              14,
+              14
+            ],
+            "reducer_kind": null,
+            "reducer_value": null,
+            "scales": [
+              "P",
+              "M",
+              "L"
+            ],
+            "stride": 60,
+            "temporal": "nctp_linear",
+            "window": 240
+          },
+          "order": 30,
+          "role": "ablation",
+          "source_arm": "IHP1_NCTP1"
+        },
+        {
+          "arm": "TEMP_NCTP_LINEAR",
+          "changed_factor": "TEMPORAL",
+          "experiment_group": "TEMPORAL",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "TEMP_NCTP_LINEAR",
+            "fusion": "active_valid",
+            "incidence": "literal",
+            "is_final": false,
+            "matching_scope": "global",
+            "memory": "median_reference",
+            "model_name": "ViT-B-16",
+            "patch_grid": [
+              14,
+              14
+            ],
+            "reducer_kind": null,
+            "reducer_value": null,
+            "scales": [
+              "P",
+              "M",
+              "L"
+            ],
+            "stride": 60,
+            "temporal": "nctp_linear",
+            "window": 240
+          },
+          "order": 31,
+          "role": "ablation",
+          "source_arm": "TEMP_NCTP_LINEAR"
+        },
+        {
+          "arm": "TEMP_NCTP_NEAREST",
+          "changed_factor": "TEMPORAL",
+          "experiment_group": "TEMPORAL",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "TEMP_NCTP_NEAREST",
+            "fusion": "active_valid",
+            "incidence": "literal",
+            "is_final": false,
+            "matching_scope": "global",
+            "memory": "median_reference",
+            "model_name": "ViT-B-16",
+            "patch_grid": [
+              14,
+              14
+            ],
+            "reducer_kind": null,
+            "reducer_value": null,
+            "scales": [
+              "P",
+              "M",
+              "L"
+            ],
+            "stride": 60,
+            "temporal": "nctp_nearest",
+            "window": 240
+          },
+          "order": 32,
+          "role": "ablation",
+          "source_arm": "TEMP_NCTP_NEAREST"
+        },
+        {
+          "arm": "TEMP_TRACE_SOFT",
+          "changed_factor": "TEMPORAL",
+          "experiment_group": "TEMPORAL",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "TEMP_TRACE_SOFT",
+            "fusion": "active_valid",
+            "incidence": "literal",
+            "is_final": false,
+            "matching_scope": "global",
+            "memory": "median_reference",
+            "model_name": "ViT-B-16",
+            "patch_grid": [
+              14,
+              14
+            ],
+            "reducer_kind": null,
+            "reducer_value": null,
+            "scales": [
+              "P",
+              "M",
+              "L"
+            ],
+            "stride": 60,
+            "temporal": "trace_soft",
+            "window": 240
+          },
+          "order": 33,
+          "role": "ablation",
+          "source_arm": "TEMP_TRACE_SOFT"
+        },
+        {
+          "arm": "TEMP_TRACE_HARD",
+          "changed_factor": "TEMPORAL",
+          "experiment_group": "TEMPORAL",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "TEMP_TRACE_HARD",
+            "fusion": "active_valid",
+            "incidence": "literal",
+            "is_final": false,
+            "matching_scope": "global",
+            "memory": "median_reference",
+            "model_name": "ViT-B-16",
+            "patch_grid": [
+              14,
+              14
+            ],
+            "reducer_kind": null,
+            "reducer_value": null,
+            "scales": [
+              "P",
+              "M",
+              "L"
+            ],
+            "stride": 60,
+            "temporal": "trace_hard",
+            "window": 240
+          },
+          "order": 34,
+          "role": "ablation",
+          "source_arm": "TEMP_TRACE_HARD"
+        },
+        {
+          "arm": "TEMP_LEGACY",
+          "changed_factor": "TEMPORAL",
+          "experiment_group": "TEMPORAL",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "TEMP_LEGACY",
+            "fusion": "active_valid",
+            "incidence": "literal",
+            "is_final": false,
+            "matching_scope": "global",
+            "memory": "median_reference",
+            "model_name": "ViT-B-16",
+            "patch_grid": [
+              14,
+              14
+            ],
+            "reducer_kind": "top_fraction",
+            "reducer_value": 0.25,
+            "scales": [
+              "P",
+              "M",
+              "L"
+            ],
+            "stride": 60,
+            "temporal": "legacy",
+            "window": 240
+          },
+          "order": 35,
+          "role": "ablation",
+          "source_arm": "TEMP_LEGACY"
+        }
+      ],
+      "configuration_id": "CACHE_B16_W240_S60",
+      "expected_series": 492,
+      "root": "D:\\qintian_experiments\\ViTTrace_ablation_full_v3_20260718_193834\\runs\\cache_only_b16_w240_s60",
+      "stage_group": "cache_only_controls",
+      "stage_id": "CACHE_ONLY_B16_W240_S60",
+      "stage_kind": "cache_only",
+      "status_path": null
+    },
+    {
+      "arms": [
+        {
+          "arm": "CTRL_CLS_LEGACY",
+          "changed_factor": "PATCH_EMBEDDING",
+          "experiment_group": "PATCH_EMBEDDING",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "CTRL_CLS_LEGACY",
+            "embedding": "true_global",
+            "encoder_calls": 0,
+            "ihp": "bypassed",
+            "is_final": false,
+            "model_key": "B16",
+            "nctp": "bypassed",
+            "representation": "line",
+            "stride": 60,
+            "window": 240
+          },
+          "order": 36,
+          "role": "inherited_control",
+          "source_arm": "CTRL_CLS_LEGACY"
+        },
+        {
+          "arm": "CTRL_CLS_NATIVE_W240",
+          "changed_factor": "PATCH_EMBEDDING",
+          "experiment_group": "PATCH_EMBEDDING",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "CTRL_CLS_NATIVE_W240",
+            "embedding": "true_global",
+            "encoder_calls": 0,
+            "ihp": "bypassed",
+            "is_final": false,
+            "model_key": "B16",
+            "nctp": "bypassed",
+            "representation": "line",
+            "stride": 60,
+            "window": 240
+          },
+          "order": 37,
+          "role": "inherited_control",
+          "source_arm": "CTRL_CLS_NATIVE_W240"
+        },
+        {
+          "arm": "CTRL_PATCH_MEAN_NATIVE_W240",
+          "changed_factor": "PATCH_EMBEDDING",
+          "experiment_group": "PATCH_EMBEDDING",
+          "fixed_factors": {
+            "metrics_mask": "COMMON_488",
+            "protocol": "VLM4TS_492"
+          },
+          "fp_threshold": 0.0,
+          "metadata": {
+            "display_name": "CTRL_PATCH_MEAN_NATIVE_W240",
+            "embedding": "patch_mean",
+            "encoder_calls": 0,
+            "ihp": "bypassed",
+            "is_final": false,
+            "model_key": "B16",
+            "nctp": "bypassed",
+            "representation": "line",
+            "stride": 60,
+            "window": 240
+          },
+          "order": 38,
+          "role": "inherited_control",
+          "source_arm": "CTRL_PATCH_MEAN_NATIVE_W240"
+        }
+      ],
+      "configuration_id": "ENCODER_B16_W240_S60",
+      "expected_series": 492,
+      "root": "D:\\qintian_experiments\\ViTTrace_ablation_full_v3_20260718_193834\\encoder_stage\\line_B16_W240_S60_B64__45FC91727681",
+      "stage_group": "encoder_controls",
+      "stage_id": "ENCODER_CONTROLS_B16_W240_S60",
+      "stage_kind": "encoder_controls",
+      "status_path": "D:\\qintian_experiments\\ViTTrace_ablation_full_v3_20260718_193834\\encoder_stage\\line_B16_W240_S60_B64__45FC91727681\\encoder_controls_status.json"
+    }
+  ]
+}

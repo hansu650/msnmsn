@@ -1,0 +1,21 @@
+{
+  "bootstrap_replicates": 10000,
+  "bootstrap_seed": 2027,
+  "common_valid_series": 488,
+  "confirmation_status": "CONFIRMATION_BLOCKED",
+  "created_at_utc": "2026-07-19T02:11:38.881845Z",
+  "factorial_arms": [
+    "IHP0_NCTP0",
+    "IHP1_NCTP0",
+    "IHP0_NCTP1",
+    "IHP1_NCTP1"
+  ],
+  "figures_emitted": 0,
+  "git_commit": "0ad5cfd8d6a1a9111d945a4fd752b3bc797fa6e1",
+  "manuscript_edits": 0,
+  "model_or_encoder_runs": 0,
+  "runtime_coverage": 488,
+  "runtime_protocol_deviation": "historical one-pass per-series records; no repeated interleaving",
+  "schema_version": "vittrace-supplement-data-only/1",
+  "series_count": 492
+}
